@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- START_HIGHLIGHT -->
   <title>Pragprog Books Online Store</title>
-<!-- END_HIGHLIGHT -->
+
   <!-- <label id="code.slt"/> --><%= stylesheet_link_tag    "application", media: "all",
     "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -17,13 +16,25 @@
   </div>
   <div id="columns">
     <div id="side">
-		<div id="cart">
-			<%= render @cart %>
-		</div>
+		
+		<% if @cart %>
+			<div id="cart">
+				<%= render @cart %>
+			</div>
+		<% end %>
       	<ul>
 			<li><%= link_to 'Home', store_url %></li>
         	<li><%= link_to 'New Product', new_product_url %></li>
 			<li><%= link_to 'All Products', products_url %></li>
+			<li><%= link_to 'Register New User', new_user_url %></li>
+			
+			
+			<% if session[:user_id] %>
+				<li><%= link_to @user.name, user_url(@user.id) %></li>
+				<li><%= link_to 'Log Out', login_url, method: :delete %></li>
+			<% else %>
+				<li><%= link_to 'Log In', login_url %></li>
+			<% end %>
       	</ul>
     </div>
     <div id="main">
