@@ -23,6 +23,14 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+
+<% if session[:user_id] && @current_user.role.name == 'administrator'  %>
+  <div class="field">
+	  <%= f.label :role %><br>
+	  <%= f.collection_select :role_id, Role.order(:name), :id, :name %>
+  </div>
+<% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :roles
+
   get 'admin' => 'admin#index'
 
   controller :session do

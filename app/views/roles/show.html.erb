@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>
+
+<h2> Users: </h2>
+
+<table>
+	<% @role_users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= link_to 'Edit', edit_user_url(user.id) %></td>
+		</tr>
+	<% end %>
+	
+	<% if @role_users.empty? %>
+		-- none
+	<% end %>
+</table>
