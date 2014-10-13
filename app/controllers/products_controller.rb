@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :limit_access, only: [:edit, :update, :destroy, :new, :create]
+  before_action :limit_access_to_administrator, only: [:new, :create, :edit, :update, :destroy] # regular user can access only :index and :show
 
   # GET /products
   # GET /products.json

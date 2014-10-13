@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
 protected 
   def authorize
 	  unless @current_user
-		  redirect_to login_url, notice: "Please log in"
+		  redirect_to login_url, alert: "Before seeing this page you have to log in."
 	  end
   end
 
 	
-  def limit_access
+  def limit_access_to_administrator
 	  unless @current_user.role.name == "administrator"
 		  redirect_to store_url, notice: "You are not allowed to access this page."
 	  end

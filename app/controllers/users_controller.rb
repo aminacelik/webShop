@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-#  skip_before_action :authorize, only: [:new, :create, :show]
+  skip_before_action :authorize, only: [:new, :create]
 #  before_action :limit_access
 #  skip_before_action :limit_access, only: [:new, :create, :show]
 
+	
+  def 
+	  
   # GET /users
   # GET /users.json
   def index
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: "User #{@user.name} was successfully created." }
+        format.html { redirect_to login_url, alert: "User #{@user.name} was successfully created. Please Log in!" }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

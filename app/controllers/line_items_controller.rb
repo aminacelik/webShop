@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+	
+  skip_before_action :authorize
 
   include CurrentCart
   
