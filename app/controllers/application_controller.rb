@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :find_current_user
   before_action :authorize
   
+	
+#	??
   def find_current_user
 	  if(session[:user_id])
 		@current_user = User.find(session[:user_id])
@@ -13,14 +15,14 @@ class ApplicationController < ActionController::Base
 	
 protected 
   def authorize
-	  unless @current_user
+	  unless (session[:user_id])
 		  redirect_to login_url, alert: "Before seeing this page you have to log in."
 	  end
   end
 
 	
   def limit_access_to_administrator
-	  unless @current_user.role.name == "administrator"
+	  unless session[:role] == "administrator"
 		  redirect_to store_url, notice: "You are not allowed to access this page."
 	  end
   end

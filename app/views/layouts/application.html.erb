@@ -11,43 +11,64 @@
 <body class="<%= controller.controller_name %>">
 
   <div id="banner">
-    <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %>
-  </div>
-  <div id="columns">
-    <div id="side">
-		
-		<% if @cart %>
-			<div id="cart">
-				<%= render @cart %>
-			</div>
-		<% end %>
-      	<ul>
-			<li><%= link_to 'Home', store_url %></li>			
-			
+    <div id="title">Web Shop</div>
+	
+	
+	  <div id="login_register">
+		<ul>
 			<% if session[:user_id] %>
-<!--			Logovani korisnici -->
-				
-				<% if @current_user.role.name == 'administrator' %>
-					
-					<li><%= link_to 'New Role', new_role_url %></li>
-					<li><%= link_to 'New User', new_user_url %></li>
-					<li><%= link_to 'New Product', new_product_url %></li>
-					<li><%= link_to 'All Roles', roles_url %></li>
-					<li><%= link_to 'All Users', users_url %></li>
-				<% end %>
-				<li><%= link_to 'All Products', products_url %></li>
 				<li><%= link_to @current_user.name, user_url(@current_user.id) %></li>
 				<li><%= link_to 'Log Out', login_url, method: :delete %></li>
-				
-				
 			<% else %>
-<!--			Korisnici koji nisu logovani -->
-				<li><%= link_to 'Register New User', new_user_url %></li>
+	  			<li><%= link_to 'Register', new_user_url %></li>
 				<li><%= link_to 'Log In', login_url %></li>
 			<% end %>
-      	</ul>
-    </div>
+		</ul>
+	  </div>
+	  
+	  
+  </div>
+	
+	<div id="top_menu">
+		<div id="categories">
+			<ul>
+				<li>Odjeca</li>
+				<li>Obuca</li>
+				<li>Mobiteli</li>
+				<li>Racunari</li>
+			</ul>
+		</div>
+		
+		<div id="cart">
+			
+			CART
+<!--
+			<% if @cart %>
+				<%= render @cart %>
+			<% end %>
+-->
+		</div>
+	</div>
+	
+	
+	
+	
+ 
+<!--	  Administratorski menu -->
+	<% if session[:role]=='administrator' %>
+    	<div id="side_menu">
+      		<ul>		
+				<li><%= link_to 'New Role', new_role_url %></li>
+				<li><%= link_to 'New Product', new_product_url %></li>
+				<li><%= link_to 'Roles', roles_url %></li>
+				<li><%= link_to 'Products', products_url %></li>
+			</ul>
+		</div>
+	<% end %>
+      	
+
+	  
+	  
     <div id="main">
 
       <%= yield %>

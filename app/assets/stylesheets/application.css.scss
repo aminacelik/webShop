@@ -15,16 +15,92 @@
  */
 
 #banner {
-  background: #9c9;
-  padding: 10px;
-  border-bottom: 2px solid;
-  font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
+	
+  
+  font: "Times New Roman", serif;
   text-align: center;
+  width: 100%;
 
-  img {
-    float: left;
+	
+ #title{
+  	font-size: 25px;
+	width: 80%;
+	float: left;
+	font-family: Arial;
+	padding-top: 20px;
+	padding-bottom: 20px;
   }
+
+#login_register{
+	float: left;
+	width: 18%;
+
+	height: inherit;
+	ul {
+		list-style: none;
+		float: right;
+
+		li {
+			display: inline;
+		  }
+	  }
+}
+ 
+}
+
+
+
+	
+#side_menu {
+	width: 100%;
+	background-color: pink;
+	
+	
+	
+	ul{
+		list-style: none;
+		
+		li{
+			display: inline;
+		}
+		
+	}
+}
+
+
+
+#top_menu {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: auto;
+	
+	
+	#categories {
+		background-color: orange;
+		float: left;
+		width: 80%;
+		
+		ul{
+			list-style: none;
+
+
+
+			li{
+				display: inline;
+				margin: 0 1% 0 1%;
+			}
+		}
+	}
+	
+	#cart {
+		background-color: blue;
+		float: right;
+		width: 20%;
+		height: inherit;
+	
+	}
+	
 }
 
 #notice {
@@ -32,21 +108,21 @@
   border: 2px solid red;
   padding: 1em;
   margin-bottom: 2em;
-  background-color: #f0f0f0;
   font: bold smaller sans-serif;
 }
 
 #columns {
-  background: #141;
+  
 
   #main {
-    margin-left: 17em;
+    
     padding: 1em;
     background: white;
   }
 
 //#START:side
   #side {
+	display: none;
     float: left;
     padding: 1em 2em;
     width: 13em;

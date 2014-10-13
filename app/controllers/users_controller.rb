@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:new, :create]
-#  before_action :limit_access
-#  skip_before_action :limit_access, only: [:new, :create, :show]
+  
+	
 
 	
   def 
@@ -38,16 +38,19 @@ class UsersController < ApplicationController
 		@role = Role.find_by(name: 'regular user');
 	end
 	@user = @role.users.build(user_params)
-
+	
     respond_to do |format|
       if @user.save
-        format.html { redirect_to login_url, alert: "User #{@user.name} was successfully created. Please Log in!" }
+        format.html { redirect_to @user, alert: "User #{@user.name} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+	  
+	session[:user_id] = @user.id
+	session[:role] = @user.role.name
   end
 
   # PATCH/PUT /users/1
@@ -77,8 +80,14 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+		if(session[:role]=='administrator')
+      		@user = User.find(params[:id])
+		else
+			@user = @current_user
+		end
     end
+	  
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
