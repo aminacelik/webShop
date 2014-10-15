@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :limit_access_to_administrator, only: [:new, :create, :edit, :update, :destroy] # regular user can access only :index and :show
+  before_action :limit_access_to_administrator, except: [:show] #unregistered user can access only :show
+  skip_before_action :authorize, only: [:show]
+  include CurrentCart
+  before_action :set_cart
 
   # GET /products
   # GET /products.json
@@ -25,7 +28,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+	@category = Category.find(params[:product][:category_id])
+    @product = @category.products.build(product_params)
 
     respond_to do |format|
       if @product.save
@@ -70,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :image_url, :price, :category_id)
     end
 end

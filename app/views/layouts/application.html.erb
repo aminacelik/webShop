@@ -3,21 +3,31 @@
 <head>
   <title>Pragprog Books Online Store</title>
 
-  <!-- <label id="code.slt"/> --><%= stylesheet_link_tag    "application", media: "all",
-    "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
 
-  <div id="banner">
-    <div id="title">Web Shop</div>
+  <div id="header">
+	  
+    <div id="logo">Web Shop</div>
+
+	<div id="cart">
+		<% if  @cart %>
+			<%= render @cart %>
+		<% end %>
+	</div>
 	
-	
-	  <div id="login_register">
+	  <div id="user_options">
 		<ul>
 			<% if session[:user_id] %>
-				<li><%= link_to @current_user.name, user_url(@current_user.id) %></li>
+				<li><%= link_to @current_user.name, user_url(@current_user.id) %>
+					<ul>
+						<li><%= link_to 'Purchase History' %></li>
+						<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
+					</ul>
+				</li>
 				<li><%= link_to 'Log Out', login_url, method: :delete %></li>
 			<% else %>
 	  			<li><%= link_to 'Register', new_user_url %></li>
@@ -29,25 +39,16 @@
 	  
   </div>
 	
-	<div id="top_menu">
+	
 		<div id="categories">
 			<ul>
-				<li>Odjeca</li>
-				<li>Obuca</li>
-				<li>Mobiteli</li>
-				<li>Racunari</li>
+				<li><%= link_to 'Home', store_url %></li>
+				<% @categories.each do |c| %>
+					<li><%= link_to c.name, category_path(c) %></li>
+				<% end %>
 			</ul>
-		</div>
-		
-		<div id="cart">
 			
-			CART
-<!--
-			<% if @cart %>
-				<%= render @cart %>
-			<% end %>
--->
-		</div>
+		
 	</div>
 	
 	

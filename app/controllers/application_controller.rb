@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :find_current_user
-  before_action :authorize
+  before_action :authorize, :find_categories
   
-	
-#	??
+  def find_categories
+	  @categories = Category.all
+  end
+
   def find_current_user
 	  if(session[:user_id])
 		@current_user = User.find(session[:user_id])
@@ -14,13 +16,15 @@ class ApplicationController < ActionController::Base
   end
 	
 protected 
+	
+	# provjerava da li je logovan user
   def authorize
 	  unless (session[:user_id])
 		  redirect_to login_url, alert: "Before seeing this page you have to log in."
 	  end
   end
 
-	
+	# za stranice kojima pristup treba imati samo administrator
   def limit_access_to_administrator
 	  unless session[:role] == "administrator"
 		  redirect_to store_url, notice: "You are not allowed to access this page."

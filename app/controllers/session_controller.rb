@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 	
-	skip_before_action :authorize
+  skip_before_action :authorize
   def new
   end
 
@@ -9,7 +9,13 @@ class SessionController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
 	  session[:role] = user.role.name
-      redirect_to store_url, notice: "Logged in!"
+	
+	  if session[:role]=='administrator'
+		  redirect_to products_url, notice: "Logged in!"
+	  else 
+		  redirect_to store_url, notice: "Logged in!"
+	  end
+		
     else
       redirect_to login_url, alert: "Invalid user/password combination."
     end

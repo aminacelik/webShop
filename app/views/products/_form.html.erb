@@ -27,6 +27,11 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+
+	<div class="field">
+	  <%= f.label :category %><br>
+	  <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -18,47 +18,6 @@
   }
 
   /* An entry in the store catalog */
-  .entry {
-    overflow: auto;
-    border-bottom: 1px dotted #77d;
-    min-height: 100px;
-	width: 15%;
-	float: left;
-	margin: 10px 2%  10px 2%;
-	background-color: lightblue;
-	padding: 20px 3% 20px 3%;
 
-    img {
-      width: 80px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      position: absolute;
-    }
-
-    h3 {
-      font-size: 120%;
-      font-family: sans-serif;
-      margin-left: 100px;
-      margin-top: 0;
-      margin-bottom: 2px;
-      color: #227;
-    }
-
-    p, div.price_line {
-      margin-left: 100px;
-      margin-top: 0.5em; 
-      margin-bottom: 0.8em; 
-    }
-	
-	form, div {
-		display: inline;
-	}
-
-    .price {
-      color: #44a;
-      font-weight: bold;
-      margin-right: 3em;
-    }
-  }
 }
 /* END_HIGHLIGHT */

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :categories
+
   resources :roles
 
   get 'admin' => 'admin#index'

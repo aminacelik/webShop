@@ -12,17 +12,8 @@
 		<% @products.each do |product| %>
 
 			<% cache ['entry', product] do %>
-				<div class="entry">
-					<%= image_tag(product.image_url) %>
-					<h3><%= product.title %></h3>
-					<%= truncate( sanitize(product.description), length: 150) %>
-
-					<div class="price_line">
-						<span class="price"><%= number_to_currency(product.price) %></span>
-						<%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
-					</div>
-
-				</div>
+				<%= render partial: "products/product", locals: {product: product} %>
+				
 			<% end %>
 		<% end %>
 	<% end %>

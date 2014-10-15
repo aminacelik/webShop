@@ -3,6 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* START_HIGHLIGHT */
+
+
+#left {
+	width: 30%;
+	float: left;
+
+	img {
+		width: 90%;
+		height: auto;
+	}
+}
+
+#right {
+	width: 45%;
+	margin-left: 5%;
+	float: left;
+	
+
+}
 .products {
   table {
     border-collapse: collapse;

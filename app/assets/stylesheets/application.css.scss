@@ -14,48 +14,127 @@
  *= require_tree .
  */
 
-#banner {
+  .entry {
+    overflow: auto;
+    border-bottom: 1px dotted #77d;
+    min-height: 100px;
+	width: 40%;
+	float: left;
+	margin: 10px 2%  10px 2%;
+	background-color: lightblue;
+	padding: 20px 3% 20px 3%;
+
+    img {
+      width: 80px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: absolute;
+    }
+
+    h3 {
+      font-size: 120%;
+      font-family: sans-serif;
+      margin-left: 100px;
+      margin-top: 0;
+      margin-bottom: 2px;
+      color: #227;
+    }
+
+    p, div.price_line {
+      margin-left: 100px;
+      margin-top: 0.5em; 
+      margin-bottom: 0.8em; 
+    }
 	
-  
+	form, div {
+		display: inline;
+	}
+
+    .price {
+      color: #44a;
+      font-weight: bold;
+      margin-right: 3em;
+    }
+  }
+
+#header {
+  top: 0;
   font: "Times New Roman", serif;
   text-align: center;
   width: 100%;
-
+  background-color: black;
+  color: lightgrey;
 	
- #title{
+ #logo{
   	font-size: 25px;
-	width: 80%;
+	width: 60%;
 	float: left;
 	font-family: Arial;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	
   }
 
-#login_register{
-	float: left;
-	width: 18%;
-
+#user_options {
+	width: 20%;
 	height: inherit;
+	float: left;
+	
 	ul {
 		list-style: none;
-		float: right;
+		float: left;
 
 		li {
 			display: inline;
-		  }
-	  }
+			position: relative;
+			
+			ul {
+				display: none;
+				position: absolute;
+				top: 1em;
+				right: 0;
+			}
+		}
+		
+		li:hover {
+		
+			ul{
+				display: block;
+			}
+		}
+		
+	}
+}
+
+#cart {
+	float: left;
+	width: 20%;
+	height: inherit;
 }
  
+}
+
+#categories {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: auto;
+
+	
+	ul{
+		list-style: none;
+			li{
+				display: inline;
+				margin: 0 1% 0 1%;
+			}
+	}
 }
 
 
 
 	
 #side_menu {
-	width: 100%;
-	background-color: pink;
-	
-	
+	width: 100%;	
 	
 	ul{
 		list-style: none;
@@ -69,39 +148,7 @@
 
 
 
-#top_menu {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	overflow: auto;
-	
-	
-	#categories {
-		background-color: orange;
-		float: left;
-		width: 80%;
-		
-		ul{
-			list-style: none;
 
-
-
-			li{
-				display: inline;
-				margin: 0 1% 0 1%;
-			}
-		}
-	}
-	
-	#cart {
-		background-color: blue;
-		float: right;
-		width: 20%;
-		height: inherit;
-	
-	}
-	
-}
 
 #notice {
   color: #000 !important;

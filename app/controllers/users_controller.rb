@@ -4,13 +4,10 @@ class UsersController < ApplicationController
   
 	
 
-	
-  def 
-	  
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    @users = User.all
   end
 
   # GET /users/1
@@ -35,7 +32,7 @@ class UsersController < ApplicationController
 	if params[:user][:role_id]
 		@role = Role.find(params[:user][:role_id])
 	else
-		@role = Role.find_by(name: 'regular user');
+		@role = Role.find_by(name: 'registered user');
 	end
 	@user = @role.users.build(user_params)
 	
