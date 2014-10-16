@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  resources :cities
+
+  resources :countries
+
+  resources :addresses
+
+  resources :address_types
+
   resources :categories
 
   resources :roles

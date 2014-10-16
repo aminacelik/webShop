@@ -5,6 +5,8 @@
   <%= @category.name %>
 </p>
 
+
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
 
@@ -21,7 +23,7 @@
 
 <div id="product_list">
 <h2>Products</h2>
-<% @category.products.each do |product| %>
+<% @products.each do |product| %>
 	<%= render partial: "products/product", locals: {product: product} %>
 <% end %>
 

@@ -10,6 +10,11 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+	  if params[:price_range]
+	  	@products = @category.products.where("price between ? and ?", params[:price_range][0],params[:price_range][1])
+	  else
+		  @products = @category.products
+	  end
   end
 
   # GET /categories/new
