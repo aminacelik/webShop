@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pragprog Books Online Store</title>
+  <title>abhShoes</title>
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -9,73 +9,76 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
-  <div id="header">
-	  
-    <div id="logo">Web Shop</div>
+	
+	
 
-	<div id="cart">
-		<% if  @cart %>
-			<%= render @cart %>
-		<% end %>
-	</div>
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>	
+
 	
-	  <div id="user_options">
-		<ul>
-			<% if session[:user_id] %>
-				<li><%= link_to @current_user.name, user_url(@current_user.id) %>
-					<ul>
-						<li><%= link_to 'Purchase History' %></li>
-						<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
+		
+			<div id="header">
+				<div id="menu_container">
+					<div id="logo"><%=image_tag('logo.png')%></div>
+
+					<ul id="menu">
+						<li><%= link_to 'Home', store_url %></li>
+						<% @categories.each do |c| %>
+							<li><%= link_to c.name, category_path(c) %></li>
+						<% end %>
 					</ul>
-				</li>
-				<li><%= link_to 'Log Out', login_url, method: :delete %></li>
-			<% else %>
-	  			<li><%= link_to 'Register', new_user_url %></li>
-				<li><%= link_to 'Log In', login_url %></li>
-			<% end %>
-		</ul>
-	  </div>
-	  
-	  
-  </div>
+				<% unless session[:role]=='administrator' %>
+					<div id="cart">
+						<%= link_to image_tag('ico_korpa.png'), cart_path(@cart.id) %>	
+						<div id="number_of_products">
+							<%= @cart.number_of_products %>
+						</div>
+					</div>
+				<% end %>
+<!--
+					<ul id="login_register">
+						<% if session[:user_id] %>
+							<li><%= link_to @current_user.name, user_url(@current_user.id) %>
 	
+								<ul>
+									<li><%= link_to 'Purchase History' %></li>
+									<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
+
+								</ul>
 	
-		<div id="categories">
-			<ul>
+							</li>
+							<li><%= link_to 'Log Out', login_url, method: :delete %></li>
+						<% else %>
+							<li><%= link_to 'Register', new_user_url %></li>
+							<li><%= link_to 'Log In', login_url %></li>
+						<% end %>
+					</ul>
+-->
+				</div>
+
+		</div>
+	
+	<div id="container">
+		<div id="content">
+		
+			<%=yield %>
+		</div>
+	
+		
+		<div id="footer">
+			<div id="copyright">
+				<small>Copyright @abhShoes. All rights reserved. </small>
+			</div>
+			<ul id="footer_menu">
 				<li><%= link_to 'Home', store_url %></li>
 				<% @categories.each do |c| %>
 					<li><%= link_to c.name, category_path(c) %></li>
 				<% end %>
 			</ul>
-			
-		
-	</div>
-	
-	
-	
-	
- 
-<!--	  Administratorski menu -->
-	<% if session[:role]=='administrator' %>
-    	<div id="side_menu">
-      		<ul>		
-				<li><%= link_to 'New Role', new_role_url %></li>
-				<li><%= link_to 'New Product', new_product_url %></li>
-				<li><%= link_to 'Roles', roles_url %></li>
-				<li><%= link_to 'Products', products_url %></li>
-			</ul>
 		</div>
-	<% end %>
-      	
-
-	  
-	  
-    <div id="main">
-
-      <%= yield %>
-
-    </div>
-  </div>
-
+	
+	</div>
 </body>
+
 </html>

@@ -1,55 +1,69 @@
-<p id="notice"><%= notice %></p>
 
 
-<div id="left">
-	<%= image_tag(@product.image_url, class: 'list_image') %>
+
+<div id="product_display">
+	<%= image_tag(@product.image_url) %>
+
+	<div id="product_details">
+
+		<p >Category:
+			<%= @product.category.name %>
+		</p>
+		<p>
+			Title:
+			<%= @product.title %>
+		</p>
+
+			<p>
+			Description:
+		<%= sanitize(@product.description) %>
+		</p>
+
+		<p>
+			Price:
+			<%= @product.price %>
+		</p>
+
+
+
+		<div id="variants_chooser">
+			<p>Choose color:
+				<select name="post[category]">
+					<option>Red</option>
+					<option>Green</option>
+					<option>Blue</option>
+				</select>
+			</p>
+
+			<p>Choose size:
+				<select name="post[category]">
+					<option>S</option>
+					<option>M</option>
+					<option>L</option>
+				</select>
+			</p>
+
+			
+
+			<% if session[:role]=='administrator' %>
+				<%= link_to 'Edit', edit_product_path(@product) %> 
+			<% else %>
+			<%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true, class: 'button' %>
+			<% end %>
+			<%= link_to 'Back', :back %>
+		</div>
+	</div>
 </div>
 
 
-<div id="right">
-	
-	<p>
-  		<strong>Category:</strong>
-  		<%= @product.category.name %>
-	</p>
-	<p>
-  		<strong>Title:</strong>
-  		<%= @product.title %>
-	</p>
+<div id="similar_products">
+<h2>Similar products</h2>
+		<% @similar_products.each do |product| %>
 
-	
-	<p>Choose color:
-		<select name="post[category]">
-  			<option>Red</option>
-  			<option>Green</option>
-  			<option>Blue</option>
-		</select>
-	</p>
-	
-	<p>Choose size:
-		<select name="post[category]">
-  			<option>S</option>
-  			<option>M</option>
-  			<option>L</option>
-		</select>
-	</p>
-	<p>
-		<strong>Description:</strong>
-  	<%= sanitize(@product.description) %>
-	</p>
-
-
-	<p>
-  		<strong>Price:</strong>
-  		<%= @product.price %>
-	</p>
-
-	<%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %>
-
-<% if session[:role]=='administrator' %>
-	<%= link_to 'Edit', edit_product_path(@product) %> 
-<% end %>
-<%= link_to 'Back', :back %>
+			<% cache ['entry', product] do %>
+				<%= render partial: "products/product", locals: {product: product} %>
+				
+			<% end %>
+		<% end %>
 </div>
-
 

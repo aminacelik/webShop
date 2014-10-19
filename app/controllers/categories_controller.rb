@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authorize, only: [:show]
+	
+  include CurrentCart
+  before_action :set_cart
   # GET /categories
   # GET /categories.json
   def index

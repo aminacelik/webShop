@@ -1,213 +1,341 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will
- * include all the files listed below.
- * 
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
- * vendor/assets/stylesheets, or vendor/assets/stylesheets of plugins, if any,
- * can be referenced here using a relative path.
- * 
- * You're free to add application-wide styles to this file and they'll appear
- * at the top of the compiled file, but it's generally better to create a new
- * file per style scope.
- * 
- *= require_self
- *= require_tree .
- */
+*{
+	margin: 0;
+}
 
-  .entry {
-    overflow: auto;
-    border-bottom: 1px dotted #77d;
-    min-height: 100px;
-	width: 40%;
-	float: left;
-	margin: 10px 2%  10px 2%;
-	background-color: lightblue;
-	padding: 20px 3% 20px 3%;
-
-    img {
-      width: 80px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      position: absolute;
-    }
-
-    h3 {
-      font-size: 120%;
-      font-family: sans-serif;
-      margin-left: 100px;
-      margin-top: 0;
-      margin-bottom: 2px;
-      color: #227;
-    }
-
-    p, div.price_line {
-      margin-left: 100px;
-      margin-top: 0.5em; 
-      margin-bottom: 0.8em; 
-    }
-	
-	form, div {
-		display: inline;
-	}
-
-    .price {
-      color: #44a;
-      font-weight: bold;
-      margin-right: 3em;
-    }
-  }
+body {
+	font-family: 'ProximaNova';
+}
 
 #header {
-  top: 0;
-  font: "Times New Roman", serif;
-  text-align: center;
-  width: 100%;
-  background-color: black;
-  color: lightgrey;
-	
- #logo{
-  	font-size: 25px;
-	width: 60%;
-	float: left;
-	font-family: Arial;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	
-  }
+	background-image: url(menu_background.jpg);
+	background-repeat: repeat-x;
+	height: 80px;
+	width: 100%;
+	margin-top: 0;
 
-#user_options {
-	width: 20%;
-	height: inherit;
-	float: right;
+	// 	MENU CONTAINER
+	#menu_container {
+		height: 80px;
+		width: 1180px;
+		margin: 0 auto;
+		padding-top: 20px;
 	
-	ul {
-		list-style: none;
+		#logo{
+			width: 150px;
+			float: left;
+		}
+		
+		#cart {
+			width: 47px;
+			float: right;
+			
+			img {
+				margin-top: 10px;
+			}
+			#number_of_products {
+				float: right;
+				margin-bottom: 20px;
+				background-color: #e74c3c;
+				border-radius: 10px;
+				color: white;
+				text-align: center;
+				font-weight: 400;
+				width: 18px;
+				height: 18px;
+				
+			}
+		}
+	
+		#menu, #login_register {
+			list-style-type: none;
+			float: left;
+			font-family: 'ProximaNova';
+			font-weight: 600;
+			text-transform: uppercase;
+			margin: 10px auto;
+			
+			
+			li {
+				float: left;
+				margin: 0 30px 0 0;
+				color: white;
+			}
+			
+			a {
+				text-decoration: none;
+				font-family: Verdana;
+				font-size: 14px;
+			}
+			a:visited {
+				color: white;
+				text-decoration: none;
+			}
+		
+			}
+		
+		#login_register{
+			float: right;
+		}
+
+
+	
+	}	
+	
+	
+}
+
+
+#container {
+	width: 1180px;
+	margin: 0 auto;
+	
+	// CONTENT
+	#content {
+		width: 1180px;
+//		margin-top: 380px;
+//		border-top-left-radius: 20px;
+//		border-top-right-radius: 20px;
+		overflow: hidden;
+		background-color: white;
+//		margin-bottom: 80px;
+		margin: 0 auto 80px auto;
+	}
+
+// FOOTER
+	#footer {
+		width: 100%;
+		height: 200px;
+		border-top: 1px solid grey;
+		background-color: white;
+		
+	
+		#copyright {
+			width: 30%;
+			float: left;
+			color: grey;
+			font-size: 12px;
+			padding-top: 10px;
+		}
+		
+
+		#footer_menu {
+			margin-top: 0;
+			padding-top: 8px;
+			font-size: 14px;
+			font-weight: 400;
+			list-style: none;
+			float: right;
+			
+
+			li {
+				text-decoration: none;
+				margin-left: 20px;
+				margin-right: 20px;
+				float: right;
+				list-style-type: circle;
+				a {
+					text-decoration: none;
+					color: grey;
+				}
+				a:visited {
+					text-decoration: none;
+					color: grey;
+				}
+				a:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+
+
+.button {
+	background-color: #e74c3c;
+	border-radius: 6px;
+	color: white;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+//	float: right;
+	height: 30px;
+	margin: 10px 5px 10px 5px;
+}
+
+.cancel_button {
+	background-color: #645c64;
+	border-radius: 6px;
+	color: white;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+//	float: right;
+	height: 30px;
+	margin: 10px 5px 10px 5px;
+}
+
+h2 {
+	font-family: 'Arial';
+	margin-left: 5%;
+	color: darkgrey;
+	text-transform: uppercase;
+	font-size: 12px;
+	margin-top: 40px;
+}
+
+
+
+// PRODUCT
+
+.product {
+	width: 200px;
+	height: 300px;
+	float: left;
+	color: #aaaaaa;
+	font-size: 12px;
+	font-family: 'ProximaNova Semibold';
+	text-decoration: none;
+	margin: 15px 25px 15px 25px;
+	padding: 20px 20px 20px 20px;
+	border: 3px solid white;
+	border-radius: 25px;
+	
+	.price_line {
+		font-size: 16px;
+		font-weight: 800;
+		margin: 0 auto;
+		color: #7d7d7d;
+	}
+	
+	img {
+		height: 160px;
+		max-width: 98%;
+	
+	}
+	a {
+		text-decoration: none;
+		color: #aaaaaa;
+	}
+	a:visited {
+		text-decoration: none;
+		color: #aaaaaa;
+	}
+	a:hover {
+		color: #aaaaaa;
+		text-decoration: underline;
+	}
+}
+.product:hover {
+
+	border: 3px solid #e6e6e6;
+	border-radius: 25px;
+}
+
+// PRODUCT SHOW
+
+#product_display {
+	float: left;
+	width: 1180px;
+	height: 600px;
+//	margin-left: 20px;
+//	margin-right: 100px;
+	overflow: hidden;
+	
+	img {
+		width: 500px;
+		float: left;
+	}
+	
+
+	#product_details {
+		border-left: 2px solid darkgrey;
+		padding-left: 50px;
+		font-family: 'ProximaNova Semibold';
+		margin: 100px 0 0 100px;
+		color: grey;
 		float: left;
 
-		li {
-			display: inline;
-			position: relative;
-			
-			ul {
-				display: none;
-				position: absolute;
-				top: 1em;
-				right: 0;
-			}
+		#variants_chooser{
+			margin-top: 50px;
+			color: black;
 		}
-		
-		li:hover {
-		
-			ul{
-				display: block;
-			}
-		}
-		
 	}
 }
 
-#cart {
-	float: left;
-	width: 20%;
-	height: inherit;
-}
- 
+strong {
+	font-weight: 600;
+	color: darkgrey;
+	font-size: 15px;
+
 }
 
-#categories {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	overflow: auto;
-
+#similar_products{
+	width: 1180px;
+	margin-top: 250px;
 	
-	ul{
-		list-style: none;
-			li{
-				display: inline;
-				margin: 0 1% 0 1%;
+}
+
+
+
+
+
+// ADMIN INDEX
+
+#product_list {
+	width: 1180px;
+	font-family: 'ProximaNova Semibold';
+	font-size: 16px;
+	color: darkgrey;
+	
+	#product_in_list {
+		width: 900px;
+		margin: 15px 20px 15px 20px;
+		padding: 10px 10px 10px 10px;
+		border: 3px solid white;
+		overflow: hidden;
+		
+			#product_price {
+				float: right;
+				font-size: 20px;
+				font-weight: 600;
+			}
+			.product_list_details {
+				color: #aaaaaa;
+				margin-left: 50px;
+				width: 70%;
+			}
+
+			.product_list_actions {
+				float: right;
+				
+				a {
+					color: #e74c3c;
+					text-decoration: none;
+				}
+				a:hover {
+					color: #e74c3c;
+					text-decoration: underline;
+				}
+				a:visited {
+					color: #e74c3c;
+					text-decoration: none;
+				}
+			}
+			img {
+				float: left;
+				height: 120px;
+				width: 120px;
 			}
 	}
-}
-
-
-
-	
-#side_menu {
-	width: 100%;	
-	
-	ul{
-		list-style: none;
-		
-		li{
-			display: inline;
-		}
-		
+	#product_in_list:hover {
+		border: 2px solid #aaaaaa;
+		border-radius: 20px;
 	}
+	
+	
+	
+	
 }
 
 
-
-
-
-#notice {
-  color: #000 !important;
-  border: 2px solid red;
-  padding: 1em;
-  margin-bottom: 2em;
-  font: bold smaller sans-serif;
-}
-
-#columns {
-  
-
-  #main {
-    
-    padding: 1em;
-    background: white;
-  }
-
-//#START:side
-  #side {
-	display: none;
-    float: left;
-    padding: 1em 2em;
-    width: 13em;
-    background: #141;
-
-/* START_HIGHLIGHT */
-    form, div {
-      display: inline;
-    }  
- 
-    input {
-      font-size: small;
-    }
-
-    #cart {
-      font-size: smaller;
-      color:     white;
-
-      table {
-        border-top:    1px dotted #595;
-        border-bottom: 1px dotted #595;
-        margin-bottom: 10px;
-      }
-    }
-
-/* END_HIGHLIGHT */
-    ul {
-      padding: 0;
-
-      li {
-        list-style: none;
-
-        a {
-          color: #bfb;
-          font-size: small;
-        }
-      }
-    }
-  }
-//#END:side
-}

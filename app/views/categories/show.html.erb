@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+  <h2><%= @category.name %></h2>
 
 
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<% if session[:role]=='administrator' %>
+<%= link_to 'Edit', edit_category_path(@category) %>
+<% end %>
+
 
 <!--
 <div id="category_menu">
@@ -22,7 +20,6 @@
 -->
 
 <div id="product_list">
-<h2>Products</h2>
 <% @products.each do |product| %>
 	<%= render partial: "products/product", locals: {product: product} %>
 <% end %>

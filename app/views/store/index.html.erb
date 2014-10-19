@@ -1,14 +1,12 @@
 
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>
-
+<!--
 	<div id="items_on_sale">
 	</div>
+-->
 
 	<% cache ['store', Product.latest] do %>
 
-	<h2>Newest products on page</h2>
+	<h2>New in store</h2>
 		<% @products.each do |product| %>
 
 			<% cache ['entry', product] do %>
