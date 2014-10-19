@@ -1,0 +1,19 @@
+<div id="product_in_list">
+	
+	<%= image_tag(line_item.product.image_url) %>
+	<div class="product_list_details">
+		 <%= line_item.quantity %>&times; <%= line_item.product.title %><br>
+         <%= truncate(strip_tags(line_item.product.description), length: 100) %><br>
+		Size: 38<br>
+		Color: red<br>
+	</div>
+  	
+		<div id="product_price">
+			Price: <strong><%= number_to_currency(line_item.product.price) %><br>
+			Quantity: 1 <br>
+		</div>
+			
+
+	
+
+</div>

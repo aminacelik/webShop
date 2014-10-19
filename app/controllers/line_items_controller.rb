@@ -16,6 +16,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+	  @product = line_item.get_product
   end
 
   # GET /line_items/new

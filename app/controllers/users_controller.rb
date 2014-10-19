@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:new, :create]
   
+	include CurrentCart
+	before_action :set_cart
 	
 
   # GET /users
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+	  @addresses = @user.addresses
   end
 
   # GET /users/new

@@ -1,5 +1,8 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+	
+	include CurrentCart
+	before_action :set_cart
 
   # GET /addresses
   # GET /addresses.json
