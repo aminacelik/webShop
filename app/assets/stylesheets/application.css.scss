@@ -159,10 +159,14 @@ body {
 	text-transform: uppercase;
 	font-size: 11px;
 	font-weight: 600;
-	float: left;
+//	float: left;
 	height: 30px;
 	width: 100px;
 	margin: 10px 5px 10px 5px;
+
+}
+.button:hover {
+	cursor: pointer;
 }
 
 .cancel_button {
@@ -396,5 +400,25 @@ strong {
 	border-bottom: 1px solid #aaaaaa;
 	margin: 10px 10px 10px 10px;
 	padding-bottom: 10px;
+	width: 600px;
 
+}
+
+
+.product_variant {
+	margin: 20px 10px 20px 10px;
+	border-left: 1px solid #aaaaaa;
+	padding-left: 20px;
+	width: 900px;
+	float: left;
+	
+}
+
+
+
+table {
+	td, th {
+		width: 200px;
+		text-align: center;
+	}
 }

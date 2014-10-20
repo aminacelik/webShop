@@ -1,13 +1,12 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Product:</strong>
-  <%= @product_variant.product %>
+  <%= @product_variant.product.title %>
 </p>
 
 <p>
   <strong>Size:</strong>
-  <%= @product_variant.size %>
+  <%= @product_variant.size.size %>
 </p>
 
 <p>
@@ -15,5 +14,4 @@
   <%= @product_variant.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_product_variant_path(@product_variant) %> |
-<%= link_to 'Back', product_variants_path %>
+<%= link_to 'Edit', edit_product_variant_path(@product_variant) %> 

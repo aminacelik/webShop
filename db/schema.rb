@@ -83,11 +83,13 @@ ActiveRecord::Schema.define(version: 20141019142807) do
   create_table "product_variants", force: true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
+    t.integer  "color_id"
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "product_variants", ["color_id"], name: "index_product_variants_on_color_id", using: :btree
   add_index "product_variants", ["product_id"], name: "index_product_variants_on_product_id", using: :btree
   add_index "product_variants", ["size_id"], name: "index_product_variants_on_size_id", using: :btree
 
@@ -99,11 +101,9 @@ ActiveRecord::Schema.define(version: 20141019142807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.integer  "color_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["color_id"], name: "index_products_on_color_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

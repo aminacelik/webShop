@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
   skip_before_action :authorize, only: [:show]
   include CurrentCart
   before_action :set_cart
+	
+	
+	
 
   # GET /products
   # GET /products.json
@@ -20,9 +23,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-	@all_categories = Category.all
-	@all_colors = Color.all
-	@all_sizes = Size.all
   end
 
   # GET /products/1/edit
@@ -33,11 +33,11 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
 	@category = Category.find(params[:product][:category_id])
-    @product = @category.products.new(product_params.merge(color_id: params[:product][:color_id]))
+    @product = @category.products.build(product_params)
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to new_product_variant_url(@product), notice: 'Product was successfully created.' }
+        format.html { redirect_to product_variants_url(product_id: @product.id), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -78,6 +78,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :color_id)
+      params.require(:product).permit(:title, :description, :image_url, :price, :category_id)
     end
+
 end

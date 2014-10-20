@@ -4,7 +4,8 @@ class ProductVariantsController < ApplicationController
   # GET /product_variants
   # GET /product_variants.json
   def index
-    @product_variants = ProductVariant.all
+	 @product = Product.find(params[:product_id])    
+	 @product_variants = @product.product_variants
   end
 
   # GET /product_variants/1
@@ -14,9 +15,9 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/new
   def new
+	@product = Product.find(params[:product_id])
 	@all_sizes = Size.all
     @product_variant = ProductVariant.new
-	
   end
 
   # GET /product_variants/1/edit
@@ -26,19 +27,20 @@ class ProductVariantsController < ApplicationController
   # POST /product_variants
   # POST /product_variants.json
   def create
-	@size = Size.find(params[:size_id])
-    @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: @size.id))
+	@product = Product.find(params[:product_id])
 
-    respond_to do |format|
-      if @product_variant.save
-        format.html { redirect_to @product_variant, notice: 'Product variant was successfully created.' }
-        format.json { render :show, status: :created, location: @product_variant }
-      else
-        format.html { render :new }
-        format.json { render json: @product_variant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	@product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
+	   respond_to do |format|
+		  if @product_variant.save
+			format.html { redirect_to product_variants_url(product_id: @product.id) }
+			format.json {  }
+		  else
+			format.html { render :new }
+			format.json { render json: @product_variant.errors, status: :unprocessable_entity }
+		  end
+	   end
+	
+end
 
   # PATCH/PUT /product_variants/1
   # PATCH/PUT /product_variants/1.json
@@ -72,6 +74,6 @@ class ProductVariantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_variant_params
-      params.require(:product_variant).permit(:product_id, :size_id, :quantity)
+      params.require(:product_variant).permit(:product_id, :size_id, :color_id, :quantity)
     end
 end

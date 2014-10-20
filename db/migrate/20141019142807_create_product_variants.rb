@@ -3,6 +3,7 @@ class CreateProductVariants < ActiveRecord::Migration
     create_table :product_variants do |t|
       t.references :product, index: true
       t.references :size, index: true
+	  t.references :color, index: true
       t.integer :quantity
 
       t.timestamps

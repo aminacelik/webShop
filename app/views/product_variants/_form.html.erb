@@ -1,3 +1,7 @@
+<h2><%= @product.title %></h2>
+
+
+
 <%= form_for(@product_variant) do |f| %>
   <% if @product_variant.errors.any? %>
     <div id="error_explanation">
@@ -10,24 +14,24 @@
       </ul>
     </div>
   <% end %>
-
-<% @all_sizes.each do |s| %>
-
-<div class="product_sizes_creator">
+<table>
 	
-		Size: <%= s.size %>
-		Quantity: <%= f.text_field :quantity %>
+	 <tr>
+	  	<td><%= f.label :size %></td>
+	  	<td><%= f.collection_select :size_id, Size.all, :id, :size %></td>
+  	</tr>
 	
-    <%= f.submit 'Create', class: 'button' %>
-  
-</div>
-<% end %>
+	 <tr>
+	  	<td><%= f.label :color %></td>
+	  	<td><%= f.collection_select :color_id, Color.all, :id, :name %></td>
+  	</tr> 
+	<tr>
+		<td><%= f.label :quantity %></td>
+    	<td><%= f.text_field :quantity %></td>
+	</tr>
+	<%= hidden_field_tag :product_id, @product.id %>
+</table>
+<%= f.submit 'Create', class: 'button' %>
 
 
-
-
-<!--
- 
-
--->
 <% end %>

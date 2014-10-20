@@ -12,7 +12,7 @@
 
 	<div class="buttons">
 		<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'cancel_button' %>
-		<%= button_to 'Check Out', @cart, { class: 'button' } %>
+		<%= button_to 'Continue', addresses_url, {method: :get,  class: 'button' } %>
     </div>
 	
 </div>
