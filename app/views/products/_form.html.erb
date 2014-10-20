@@ -11,28 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
+<table>
+  <tr>
+    <td><%= f.label :title %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :description %></td>
+    <td><%= f.text_area :description, rows: '4' %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :image_url %></td>
+    <td><%= f.text_field :image_url %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :price %></td>
+    <td><%= f.text_field :price %></td>
+  </tr>
 
-	<div class="field">
-	  <%= f.label :category %><br>
-	  <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
-  </div>
+  <tr>
+	  <td><%= f.label :category %></td>
+	  <td><%= f.collection_select :category_id, @all_categories, :id, :name, include_blank: true %></td>
+  </tr>
+
+	<tr>
+	  <td><%= f.label :main_color %></td>
+	  <td><%= f.collection_select :color_id, @all_colors, :id, :name, include_blank: true %></td>
+  </tr>
+	
+</table>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create', class: 'button' %>
   </div>
 <% end %>

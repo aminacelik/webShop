@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016113915) do
+ActiveRecord::Schema.define(version: 20141019142807) do
 
   create_table "address_types", force: true do |t|
     t.string   "name"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20141016113915) do
 
   add_index "cities", ["country_id"], name: "index_cities_on_country_id", using: :btree
 
+  create_table "colors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -74,6 +80,17 @@ ActiveRecord::Schema.define(version: 20141016113915) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
+  create_table "product_variants", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_variants", ["product_id"], name: "index_product_variants_on_product_id", using: :btree
+  add_index "product_variants", ["size_id"], name: "index_product_variants_on_size_id", using: :btree
+
   create_table "products", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -82,12 +99,20 @@ ActiveRecord::Schema.define(version: 20141016113915) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.integer  "color_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["color_id"], name: "index_products_on_color_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sizes", force: true do |t|
+    t.integer  "size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

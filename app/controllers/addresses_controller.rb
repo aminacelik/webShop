@@ -29,8 +29,22 @@ class AddressesController < ApplicationController
   def create
 	@city = City.find(params[:address][:city_id])
 	@address_type = AddressType.find(params[:address][:address_type_id])
-	@address = @city.addresses.new(address_params.merge(user_id: @current_user.id, city_id: @city.id))
+	  
+	  
+	  
+#	 the newest added address is the default addres
+	  @all_user_addresses = @current_user.addresses
+	  @all_user_addresses.each do |adr|
+		  if adr.default == true
+			  adr.default = false
+		  end
+	  end
+	  
+	  
+	@address = @city.addresses.new(address_params.merge(user_id: @current_user.id, city_id: @city.id, default: true))
 	
+	
+	 
 #    @address = Address.new(address_params)
 
     respond_to do |format|

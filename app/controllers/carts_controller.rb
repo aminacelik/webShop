@@ -11,7 +11,9 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-	 
+	 if @current_user 
+	 	@default_address = Address.where(user_id: @current_user.id, default: true).last
+	  end
   end
 
   # GET /carts/new

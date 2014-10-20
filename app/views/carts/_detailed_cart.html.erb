@@ -14,4 +14,16 @@
 		<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'cancel_button' %>
 		<%= button_to 'Check Out', @cart, { class: 'button' } %>
     </div>
+	
+</div>
+
+
+<div class="default_address">
+	<% if @default_address %>
+		<%= @default_address.street %><br>
+		<%= @default_address.city_details %><br>
+		<%= @default_address.country_name %><br>
+	<% else %>
+		<%= link_to 'Add Address', new_address_path %>
+	<% end %>
 </div>

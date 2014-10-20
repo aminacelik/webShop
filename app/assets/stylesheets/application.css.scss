@@ -1,9 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
 *{
 	margin: 0;
 }
 
 body {
-	font-family: 'ProximaNova';
+	font-family: 'Montserrat';
 }
 
 #header {
@@ -49,7 +51,7 @@ body {
 		#menu, #login_register {
 			list-style-type: none;
 			float: left;
-			font-family: 'ProximaNova';
+			font-family: 'Montserrat';
 			font-weight: 600;
 			text-transform: uppercase;
 			margin: 10px auto;
@@ -180,15 +182,23 @@ body {
 	float: right;
 }
 h2 {
-	font-family: 'Arial';
 	margin-left: 5%;
 	color: darkgrey;
 	text-transform: uppercase;
 	font-size: 12px;
 	margin-top: 40px;
+	margin-bottom: 30px;
 }
 
-
+input:not([type=submit]):not([type=file]), select, textarea {
+	width: 200px;
+	height: 30px;
+	border-radius: 10px;
+	margin: 5px 5px 5px 5px;
+	padding: 0 10px 0 10px;
+	font-size: 18px;
+	font-weight: 200;
+}
 
 // PRODUCT
 
@@ -198,7 +208,6 @@ h2 {
 	float: left;
 	color: #aaaaaa;
 	font-size: 12px;
-	font-family: 'ProximaNova Semibold';
 	text-decoration: none;
 	margin: 15px 25px 15px 25px;
 	padding: 20px 20px 20px 20px;
@@ -255,7 +264,6 @@ h2 {
 	#product_details {
 		border-left: 2px solid darkgrey;
 		padding-left: 50px;
-		font-family: 'ProximaNova Semibold';
 		margin: 100px 0 0 100px;
 		color: grey;
 		float: left;
@@ -288,12 +296,11 @@ strong {
 
 #product_list {
 	width: 1180px;
-	font-family: 'ProximaNova Semibold';
 	font-size: 16px;
 	color: darkgrey;
 	
 	#product_in_list {
-		width: 900px;
+		width: 600px;
 		margin: 15px 20px 15px 20px;
 		padding: 10px 10px 10px 10px;
 		border: 3px solid white;
@@ -379,4 +386,15 @@ strong {
 		text-align: right;
 	}
 	
+}
+
+
+
+//
+
+.product_sizes_creator {
+	border-bottom: 1px solid #aaaaaa;
+	margin: 10px 10px 10px 10px;
+	padding-bottom: 10px;
+
 }

@@ -45,10 +45,7 @@
 					</ul>
 				<% unless session[:role]=='administrator' %>
 					<div id="cart">
-						<%= link_to image_tag('ico_korpa.png'), cart_path(@cart.id) %>	
-						<div id="number_of_products">
-							<%= @cart.number_of_products %>
-						</div>
+						<%= render @cart %>
 					</div>
 				<% end %>
 <!--

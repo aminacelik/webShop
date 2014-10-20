@@ -1,39 +1,121 @@
+
+# COLORS
+Color.delete_all
+Color.create!(name: 'black')
+Color.create!(name: 'brown')
+Color.create!(name: 'red')
+Color.create!(name: 'white')
+Color.create!(name: 'pink')
+Color.create!(name: 'grey')
+
+
+
+# PRODUCTS
 Product.delete_all
-Product.create!(title: 'CoffeeScript',
-  description: 
-    %{<p>
-        CoffeeScript is JavaScript done right. It provides all of JavaScript's
-	functionality wrapped in a cleaner, more succinct syntax. In the first
-	book on this exciting new language, CoffeeScript guru Trevor Burnham
-	shows you how to hold onto all the power and flexibility of JavaScript
-	while writing clearer, cleaner, and safer code.
-      </p>},
-  image_url:   'cs.jpg',    
-  price: 36.00,
-	category_id: 3)
 
-Product.create!(title: 'Programming Ruby 1.9 & 2.0',
-  description:
-    %{<p>
-        Ruby is the fastest growing and most exciting dynamic language
-        out there. If you need to get working programs delivered fast,
-        you should add Ruby to your toolbox.
-      </p>},
-  image_url: 'ruby.jpg',
-  price: 49.95,
-	category_id: 3)
+#1
+Product.create!(title: 'Christian Louboutin Fifi',
+  				description: 'Fabulous "Fifi" is a single sole must-have for the Louboutin lady. Her round toe and slender heel provide a sophisticated silhouette that is perfect for a day in the office or an evening out on the town.',
+  				image_url: 'fifi.jpg',    
+  				price: 136.00,
+				category_id: 4,
+				color_id: 4)
+#2
+Product.create!(title: 'Christian Louboutin Pigalle Follies Red',
+  				description:'A new variation on a very classic theme, "Pigalle Follies" is our iconic "Pigalle" refitted with a superfine stiletto heel. The effect is a daring new "Pigalle" with a plunging 120mm pitch.',
+				image_url: 'pigalle_follies.jpg',
+				price: 149.95,
+				category_id: 4,
+				color_id: 3)
+#3
+Product.create!(title: 'Christian Louboutin Pigalle Follies Red Limited Edition',
+  				description:'Limited Edition',
+				image_url: 'shoes3.jpg',
+				price: 149.95,
+				category_id: 4,
+				color_id: 3)
+#4
+Product.create!(title: 'Christian Louboutin Pigalle Follies Black',
+  				description:'A new variation on a very classic theme, "Pigalle Follies" is our iconic "Pigalle" refitted with a superfine stiletto heel. The effect is a daring new "Pigalle" with a plunging 120mm pitch.',
+				image_url: 'shoes4.jpg',
+				price: 149.95,
+				category_id: 4,
+				color_id: 1)
+#5
+Product.create!(title: 'Christian Louboutin So Kate',
+  				description: 'Her superfine heel makes "So Kate" one of the most delicate of all Louboutin pointed toe pumps. And in our newest "Tissu Beauty," "So Kate" is one sultry stiletto who\'s ready to turn heads.',
+  				image_url: 'so_kate.jpg',
+  				price: 134.95,
+				category_id: 4,
+				color_id: 1)
+#6
+Product.create!(title: 'Louis Junior Sp Crepe',
+  				description: 'Satin/Satin/Lurex',
+  				image_url: 'louis.jpg',
+  				price: 204.95,
+				category_id: 4,
+				color_id: 5)
+#7
+Product.create!(title: 'Glitter Grey Shoes',
+  				description: 'Limited Edition',
+  				image_url: 'shoes2.jpg',
+  				price: 120.00,
+				category_id: 4,
+				color_id: 6)
+
+#8 
+Product.create!(title: 'Glitter Bridal Shoes',
+  				description: 'Very Expensive',
+  				image_url: 'shoes1.jpg',
+  				price: 404.95,
+				category_id: 4,
+				color_id: 4)
 
 
-Product.create!(title: 'Rails Test Prescriptions',
-  description: 
-    %{<p>
-        <em>Rails Test Prescriptions</em> is a comprehensive guide to testing
-        Rails applications, covering Test-Driven Development from both a
-        theoretical perspective (why to test) and from a practical perspective
-        (how to test effectively). It covers the core Rails testing tools and
-        procedures for Rails 2 and Rails 3, and introduces popular add-ons,
-        including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
-      </p>},
-  image_url: 'rtp.jpg',
-  price: 34.95,
-	category_id: 2)
+# MEN SHOES
+
+#1
+Product.create!(title: 'Autumn Shoes',
+  				description: 'Stylish',
+  				image_url: 'men_shoes1.jpg',
+  				price: 93.95,
+				category_id: 5,
+				color_id: 2)
+#2
+Product.create!(title: 'Just another regular shoes',
+  				description: '425316',
+  				image_url: 'men_shoes2.jpg',
+  				price: 104.95,
+				category_id: 5,
+				color_id: 1)
+#3
+Product.create!(title: 'Winter Boots',
+  				description: 'Material: leather',
+  				image_url: 'men_shoes3.jpg',
+  				price: 211.00,
+				category_id: 5,
+				color_id: 1)
+#4
+Product.create!(title: 'Dolce & Gabanna 2425',
+  				description: '364636',
+  				image_url: 'men_shoes4.jpg',
+  				price: 344.55,
+				category_id: 5,
+				color_id: 1)
+
+
+
+
+
+#SIZES
+Size.delete_all
+Size.create!(size: 36)
+Size.create!(size: 37)
+Size.create!(size: 38)
+Size.create!(size: 39)
+Size.create!(size: 40)
+Size.create!(size: 41)
+Size.create!(size: 42)
+Size.create!(size: 43)
+
+
