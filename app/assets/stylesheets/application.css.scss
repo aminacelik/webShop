@@ -195,9 +195,9 @@ h2 {
 }
 
 input:not([type=submit]):not([type=file]), select, textarea {
-	width: 200px;
-	height: 30px;
-	border-radius: 10px;
+	width: 250px;
+	height: 45px;
+	border-radius: 5px;
 	margin: 5px 5px 5px 5px;
 	padding: 0 10px 0 10px;
 	font-size: 18px;
@@ -251,19 +251,33 @@ input:not([type=submit]):not([type=file]), select, textarea {
 
 // PRODUCT SHOW
 
-#product_display {
+#product_display_form {
 	float: left;
 	width: 1180px;
 	height: 600px;
-//	margin-left: 20px;
-//	margin-right: 100px;
+	margin: 20px 20px 20px 20px;
 	overflow: hidden;
 	
+	.product_title {
+		font-size: 16px;
+		float: left;
+		width: 1160px;
+	}
+	
+	.product_description {
+		width: 550px;
+		float: left;
+		margin: 30px 20px 30px 20px;
+	}
 	img {
 		width: 500px;
 		float: left;
 	}
 	
+	.button {
+		float: right;
+		margin-right: 100px;
+	}
 
 	#product_details {
 		border-left: 2px solid darkgrey;
@@ -420,5 +434,93 @@ table {
 	td, th {
 		width: 200px;
 		text-align: center;
+	}
+}
+
+
+// LOGIN FORM
+
+#login_form {
+	margin: 0 auto;
+	background-color: #f9fafa;
+	border: 2px solid #e5e5e5;
+	border-radius: 10px;
+	height: 250px;
+	width: 500px;
+	text-align: left;
+	
+	#login_data {
+		margin: 20px 20px 10px 20px;
+		padding: 10px 10px 10px 10px;
+	}
+	
+	
+	.button {
+		float: right;
+	}
+	
+	h3{
+		float: left;
+		margin-left: 10px;
+		margin-top: 15px;
+	}
+	
+	a {
+		float: right;
+		color: #7ca3cc;
+		text-decoration: none;
+		margin-right: 10px;
+		margin-top: 15px;
+	}
+	a:visited{
+		color: #7ca3cc;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+
+// SIGN UP FORM
+
+#sign_up_form {
+	margin: 0 auto;
+	background-color: #f9fafa;
+	border: 2px solid #e5e5e5;
+	border-radius: 10px;
+	height: 350px;
+	width: 500px;
+	text-align: left;
+	
+	#sign_up_data {
+		margin: 20px 20px 10px 20px;
+		padding: 10px 10px 10px 10px;
+	}
+	
+	
+	.actions {
+		float: right;
+	}
+	
+	h3{
+		float: left;
+		margin-left: 10px;
+		margin-top: 15px;
+	}
+	
+	a {
+		float: right;
+		color: #7ca3cc;
+		text-decoration: none;
+		margin-right: 10px;
+		margin-top: 15px;
+	}
+	a:visited{
+		color: #7ca3cc;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
 	}
 }

@@ -11,27 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
+
+<div id="sign_up_data">
+	<%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
+    <%= f.password_field :password %><br>
+ 
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
+    <%= f.password_field :password_confirmation %><br>
+
 
 <% if session[:user_id] && @current_user.role.name == 'administrator'  %>
-  <div class="field">
+ 
 	  <%= f.label :role %><br>
-	  <%= f.collection_select :role_id, Role.order(:name), :id, :name %>
-  </div>
+	  <%= f.collection_select :role_id, Role.order(:name), :id, :name %><br>
+
 <% end %>
 
   <div class="actions">
     <%= f.submit 'Create', class: 'button' %>
   </div>
+
+
+</div>
+
 <% end %>

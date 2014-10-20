@@ -1,26 +1,18 @@
 
 
   <%= form_tag do %>
-    
-      <h2>Please Log In</h2>
-<table>
-      <tr>
-        <td><%= label_tag :name, 'Name:' %></td>
-        <td><%= text_field_tag :name, params[:name] %></td>
-      </tr>
-      <tr>
-        <td><%= label_tag :password, 'Password:' %></td>
-        <td><%= password_field_tag :password, params[:password] %></td>
-      </tr>
+  <div id="login_form">
+     <h3>Login to your account</h3>
+
+	<%= link_to 'Create account', new_user_path %><br>
+	  <div id="login_data">
+        <%= label_tag :name, 'Name:' %><br>
+        <%= text_field_tag :name, params[:name] %><br>
+      
+		<%= label_tag :password, 'Password:' %><br>
+        <%= password_field_tag :password, params[:password] %><br>
      
-		 
-		 	<tr>
-				<td></td>
-		   		<td colspan='2'><%= submit_tag "Login", class: 'button' %></td>
-			</tr>
-		
-        
-      </tr>
-</table>
-    
+		<%= submit_tag "Login", class: 'button' %>
+	</div>
+  </div>
   <% end %>
