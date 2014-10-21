@@ -39,7 +39,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to product_url(@product.id), notice: 'Added!' }
-		format.js
+		format.js {}
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 	 if @current_user 
 	 	@default_address = Address.where(user_id: @current_user.id, default: true).last
 	  end
-	  
+	  @cart_items = @cart.line_items
   end
 
   # GET /carts/new
