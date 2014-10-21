@@ -61,11 +61,29 @@ body {
 				float: left;
 				margin: 0 30px 0 0;
 				color: white;
+				
+				ul {
+					text-transform: lowercase;
+					font-weight: 400;
+					font-size: 12px;
+					
+					li:hover {
+						text-decoration: underline;
+					}
+				}
+				
+					a {
+					text-decoration: none;
+					font-size: 14px;
+				}
+				a:visited {
+					color: white;
+					text-decoration: none;
+			}
 			}
 			
 			a {
 				text-decoration: none;
-				font-family: Verdana;
 				font-size: 14px;
 			}
 			a:visited {
@@ -208,7 +226,7 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea
 
 .product {
 	width: 200px;
-	height: 300px;
+	height: 200px;
 	float: left;
 	color: #aaaaaa;
 	font-size: 12px;
@@ -219,7 +237,7 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea
 	border-radius: 25px;
 	
 	.price_line {
-		font-size: 16px;
+		font-size: 22px;
 		font-weight: 800;
 		margin: 0 auto;
 		color: #7d7d7d;
@@ -268,6 +286,10 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea
 		width: 550px;
 		float: left;
 		margin: 30px 20px 30px 20px;
+		
+		.price_line {
+			font-size: 30px;
+		}
 	}
 	img {
 		width: 500px;
@@ -276,7 +298,7 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea
 	
 	.button {
 		float: right;
-		margin-right: 200px;
+		margin-right: 300px;
 	}
 
 	#product_details {

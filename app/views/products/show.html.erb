@@ -14,11 +14,15 @@
 
 	<div class="product_description">
 		<%= @product.description %><br><br>
-	
+		
+		<br>Price<br>
+		<div class="price_line">
+			<%= number_to_currency(@product.price) %>
+		</div><br><br>
 	
 <%= form_tag(line_items_path, method: :post) do %>
 	<%= hidden_field_tag :product_id, @product.id %>
-	Size<br>
+	Pick size<br>
 	<%= select_tag "size_id", options_from_collection_for_select(@sizes, :id, :size) %><br>
 		
 	

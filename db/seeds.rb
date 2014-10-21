@@ -20,7 +20,7 @@ Product.create!(title: 'Christian Louboutin Fifi',
   				description: 'Fabulous "Fifi" is a single sole must-have for the Louboutin lady. Her round toe and slender heel provide a sophisticated silhouette that is perfect for a day in the office or an evening out on the town.',
   				image_url: 'fifi.jpg',    
   				price: 136.00,
-				category_id:4 )
+				category_id: 4 )
 #2
 Product.create!(title: 'Christian Louboutin Pigalle Follies Red',
   				description:'A new variation on a very classic theme, "Pigalle Follies" is our iconic "Pigalle" refitted with a superfine stiletto heel. The effect is a daring new "Pigalle" with a plunging 120mm pitch.',
