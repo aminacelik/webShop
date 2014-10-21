@@ -1,10 +1,10 @@
 class LineItemsController < ApplicationController
 	
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create, :delete, :destroy]
 
   include CurrentCart
   
-  before_action :set_cart, only: [:create]
+  before_action :set_cart
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -34,10 +34,11 @@ class LineItemsController < ApplicationController
   
     product_variant = ProductVariant.where(product_id: params[:product_id], size_id: params[:size_id]).first
     @line_item = @cart.add_product_variant(product_variant.id)
-
+	@product = @line_item.product_variant.product
+	  
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_url }
+        format.html { redirect_to product_url(@product.id), notice: 'Added!' }
 		format.js
         format.json { render :show, status: :created, location: @line_item }
       else
@@ -66,7 +67,8 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to cart_url(@cart.id) }
+	  format.js
       format.json { head :no_content }
     end
   end

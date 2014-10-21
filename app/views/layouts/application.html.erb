@@ -10,13 +10,6 @@
 <body class="<%= controller.controller_name %>">
 
 	
-	
-
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>	
-
-	
 		
 			<div id="header">
 				<div id="menu_container">
@@ -26,36 +19,38 @@
 						<li><%= link_to 'Home', store_url %></li>
 						<% @categories.each do |c| %>
 							<li><%= link_to c.name, category_path(c) %></li>
+						<% end %>						
+					</ul>
+					
+						<% unless session[:role]=='administrator' %>
+							<div id="cart">
+								<%= render @cart %>
+							</div>
 						<% end %>
-						
-						<% if session[:user_id] %>
+					
+				<div id="login_register">
+					<% if session[:user_id] %>
 						<li><%= link_to @current_user.name, user_url(@current_user.id) %>
 							<ul>
 								<li><%= link_to 'Purchase History' %></li>
 								<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
 
 							</ul>
-						</li>
-						<li><%= link_to 'Log Out', login_url, method: :delete %></li>
+						</li> 
+						<li><%= link_to 'Log Out', login_url, method: :delete, class: 'orange' %></li>
 					<% else %>
-						<li><%= link_to 'Register', new_user_url %></li>
-						<li><%= link_to 'Log In', login_url %></li>
+						<li><%= link_to 'Register', new_user_url %></li> 
+						<li><%= link_to 'Log In', login_url, class: 'orange' %></li>
 					<% end %>
-						
-					</ul>
-				<% unless session[:role]=='administrator' %>
-					<div id="cart">
-						<%= render @cart %>
-					</div>
-				<% end %>
-<!--
-				<ul id="login_register">
+				</div>
 					
-				</ul>
--->
 			</div>
 
 		</div>
+	
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>
 	
 	<div id="container">
 		<div id="content">

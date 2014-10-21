@@ -8,6 +8,9 @@ body {
 	font-family: 'Montserrat';
 }
 
+
+
+
 #header {
 	background-image: url(menu_background.jpg);
 	background-repeat: repeat-x;
@@ -62,6 +65,12 @@ body {
 				margin: 0 30px 0 0;
 				color: white;
 				
+				a {
+					.orange {
+						color: #f0b49e;
+					}
+				}
+				
 				ul {
 					text-transform: lowercase;
 					font-weight: 400;
@@ -72,16 +81,26 @@ body {
 					}
 				}
 				
-					a {
+				a {
 					text-decoration: none;
 					font-size: 14px;
 				}
 				a:visited {
 					color: white;
 					text-decoration: none;
-			}
+				}
+				li:hover {
+					color: #f0b49e;
+				}
 			}
 			
+			li:hover {
+				a:hover {
+					color: #f0b49e;
+				}
+				
+				cursor: pointer;
+			}
 			a {
 				text-decoration: none;
 				font-size: 14px;
@@ -96,13 +115,22 @@ body {
 		#login_register{
 			float: right;
 		}
-
-
-	
 	}	
-	
-	
 }
+
+// NOTICE AREA
+
+#notice {
+	height: 30px;
+	width: 250px;
+	background-color: rgba(100,92,100,0.3);
+	color: #e74c3c;
+	padding: 10px;
+	font-size: 12px;
+	float: right;
+	right: 0;
+}
+
 
 
 #container {
@@ -185,12 +213,13 @@ body {
 }
 .button:hover {
 	cursor: pointer;
+	background-color: #f16354;
 }
 
 .cancel_button {
-	background-color: #645c64;
+	border: 2px solid #7d7d7d;
 	border-radius: 6px;
-	color: white;
+	color: #555555;
 	text-transform: uppercase;
 	font-size: 11px;
 	font-weight: 600;
@@ -198,6 +227,12 @@ body {
 	height: 40px;
 	width: 100px;
 	margin: 10px 5px 10px 5px;
+	background-color: white;
+}
+
+.cancel_button:hover {
+	background-color: #eff3f3;
+	cursor: pointer;
 }
 
 .buttons {
@@ -222,11 +257,19 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea
 	font-weight: 200;
 }
 
+select {
+	cursor: pointer;
+	
+	option {
+		background-color: #959595;
+	}
+}
+
 // PRODUCT
 
 .product {
 	width: 200px;
-	height: 200px;
+	height: 230px;
 	float: left;
 	color: #aaaaaa;
 	font-size: 12px;
@@ -438,6 +481,8 @@ strong {
 	margin-top: 50px;
 	border-bottom: 1px solid #aaaaaa;
 	
+	
+	
 	img {
 		width: 120px;
 		height: 120px;
@@ -453,6 +498,17 @@ strong {
 	.product_price {
 		width: 250px;
 		float: left;
+	}
+	
+	.delete_icon {
+		float: right;
+		vertical-align: middle;
+		
+		img {
+			height: 17px;
+			width: 17px;
+		}
+		
 	}
 }
 
@@ -521,9 +577,10 @@ table {
 	background-color: #f9fafa;
 	border: 2px solid #e5e5e5;
 	border-radius: 10px;
-	height: 250px;
+	height: 270px;
 	width: 500px;
 	text-align: left;
+	padding-bottom: 30px;
 	
 	#login_data {
 		margin: 20px 20px 10px 20px;

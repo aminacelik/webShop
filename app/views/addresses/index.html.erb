@@ -10,34 +10,31 @@
 	<%= label_tag :default %>
 	<%= check_box_tag(:default,1, address.default ? :checked : nil, disabled: true) %> 
 	
-	<div class="links">
-		<%= link_to 'Edit', edit_address_path(address) %><br>
-     	<%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %><br>
-	</div>
+
 </div>
 <% end %>
 
 
 <br>
 
-<h1>Billing Address</h1>
-<div class="user_address">
+
 <% if @billing_address.present? %> 
-	<%= @billing_address.street %><br>
-	<%= @billing_address.city_details %><br>
-	<%= @billing_address.country_name %><br>
-	
-	<%= label_tag :default %>
-	<%= check_box("default", @billing_address.default, {checked: @billing_address.default}) %>
-	
-	<div class="links">
-		<%= link_to 'Edit', edit_address_path(@billing_address) %><br>
-     	<%= link_to 'Destroy', @billing_address, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+	<h1>Billing Address</h1>
+	<div class="user_address">
+		<%= @billing_address.street %><br>
+		<%= @billing_address.city_details %><br>
+		<%= @billing_address.country_name %><br>
+
+		<%= label_tag :default %>
+		<%= check_box("default", @billing_address.default, {checked: @billing_address.default}) %>
+
 	</div>
 <% end %>
-</div>
+
 
 
 
 <%= link_to 'New Address', new_address_path %>
+
+<%= render partial: "carts/order_cart" %>
 

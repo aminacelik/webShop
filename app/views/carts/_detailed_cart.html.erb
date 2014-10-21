@@ -5,13 +5,12 @@
 	<div id="product_list">
 		<%= render(@cart.line_items) %>
 	</div>
-	
-	
 
-	
-	
 </div>
 
 
-
-<%= render("order_cart") %>
+<% unless @cart.number_of_products == 0 %>
+	<%= render("order_cart") %>
+<% else %>
+	<h2>Your cart is empty.</h2>
+<% end %>

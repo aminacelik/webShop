@@ -11,22 +11,24 @@ body {
 	font-family: 'Montserrat';
 }
 
-#container {
-	width: 1180px;
-	margin: 0 auto;
-	
+#header {
+	background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.2));
+	height: 80px;
+	width: 100%;
+	margin-top: 0;
+
 	// 	MENU CONTAINER
 	#menu_container {
 		height: 80px;
 		width: 1180px;
+		margin: 0 auto;
+		padding-top: 20px;
 	
 		#logo{
 			width: 150px;
 			float: left;
 		}
-
-
-		// CART
+		
 		#cart {
 			width: 47px;
 			float: right;
@@ -47,12 +49,11 @@ body {
 				
 			}
 		}
-		
-		
+	
 		#menu, #login_register {
 			list-style-type: none;
 			float: left;
-			font-family: 'ProximaNova';
+			font-family: 'Montserrat';
 			font-weight: 600;
 			text-transform: uppercase;
 			margin: 10px auto;
@@ -67,12 +68,34 @@ body {
 					text-transform: lowercase;
 					font-weight: 400;
 					font-size: 12px;
+					
+					li:hover {
+						text-decoration: underline;
+					}
 				}
+				
+					a {
+					text-decoration: none;
+					font-size: 14px;
+				}
+				a:visited {
+					color: white;
+					text-decoration: none;
+				}
+				.orange {
+					color: #f0b49e;
+				}
+				
 			}
-			
+			li:hover {
+				a:hover {
+					color: #f0b49e;
+				}
+				
+				cursor: pointer;
+			}
 			a {
 				text-decoration: none;
-				font-family: Verdana;
 				font-size: 14px;
 			}
 			a:visited {
@@ -80,16 +103,30 @@ body {
 				text-decoration: none;
 			}
 		
-		}
+			}
 		
 		#login_register{
 			float: right;
 		}
+	}	
+
+}
 
 
-	}
+#container {
+	width: 1180px;
+	margin: 0 auto;
 	
-	// FOOTER
+	// CONTENT
+	#content {
+		width: 1180px;
+		overflow: hidden;
+		background-color: white;
+		margin-bottom: 80px;
+		margin-top: 380px;
+	}
+
+// FOOTER
 	#footer {
 		width: 100%;
 		height: 200px;
@@ -135,11 +172,23 @@ body {
 			}
 		}
 	}
-	
 }
 
 
 
+
+// NOTICE AREA
+
+#notice {
+	height: 30px;
+	width: 250px;
+	background-color: rgba(100,92,100,0.3);
+	color: #e74c3c;
+	padding: 10px;
+	font-size: 12px;
+	float: right;
+	right: 0;
+}
 
 
 
@@ -147,7 +196,7 @@ body {
 
 .product {
 	width: 200px;
-	height: 200px;
+	height: 230px;
 	float: left;
 	color: #aaaaaa;
 	font-size: 12px;
@@ -199,7 +248,10 @@ body {
 	margin-bottom: 80px;
 }
 
-
+#login_register {
+	float: right;
+	margin-right: 20px;
+}
 .button {
 	background-color: #e74c3c;
 	border-radius: 6px;
@@ -207,9 +259,36 @@ body {
 	text-transform: uppercase;
 	font-size: 11px;
 	font-weight: 600;
-//	float: right;
-	height: 30px;
+//	float: left;
+	height: 40px;
+	width: 100px;
 	margin: 10px 5px 10px 5px;
+
+}
+
+
+.button:hover {
+	cursor: pointer;
+	background-color: #f16354;
+}
+
+.cancel_button {
+	border: 2px solid #7d7d7d;
+	border-radius: 6px;
+	color: #555555;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+//	float: left;
+	height: 40px;
+	width: 100px;
+	margin: 10px 5px 10px 5px;
+	background-color: white;
+}
+
+.cancel_button:hover {
+	background-color: #eff3f3;
+	cursor: pointer;
 }
 
 h2 {

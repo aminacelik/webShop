@@ -40,7 +40,7 @@
   </div>
   <div class="actions">
     <%= f.submit 'Add Address', class: 'button' %>
-	<%= button_to 'Cancel', addresses_path, {method: :get, class: 'cancel_button'} %>
+	<%= button_to 'Cancel', addresses_path(@current_user.id), method: :get, class: 'cancel_button' %>
   </div>
 <% end %>
 

@@ -19,13 +19,13 @@ class ProductsController < ApplicationController
   def show
 	  @similar_products = Product.where(category_id: @product.category.id).last(4)
 	  @variants = ProductVariant.where(product_id: @product.id)
-	  @sizes = []
 	  
+	  @sizes = []
 	  @variants.each do |var| 
 		  @sizes << var.size
 	  end
 	  
-	  @sizes
+
   end
 
   # GET /products/new
