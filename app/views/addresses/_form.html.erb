@@ -1,3 +1,5 @@
+<div id="address_form">
+
 <%= form_for(@address) do |f| %>
   <% if @address.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +12,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <div class="field">
     <%= f.label :street_name %><br>
@@ -31,11 +34,15 @@
     <%= f.collection_select :address_type_id, AddressType.all, :id, :name %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= f.label :city %><br>
     <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Add Address', class: 'button' %>
+	<%= button_to 'Cancel', addresses_path, {method: :get, class: 'cancel_button'} %>
   </div>
 <% end %>
+
+</div>
+<%= render partial: "carts/order_cart" %>

@@ -32,8 +32,8 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
   
-    product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    product_variant = ProductVariant.where(product_id: params[:product_id], size_id: params[:size_id]).first
+    @line_item = @cart.add_product_variant(product_variant.id)
 
     respond_to do |format|
       if @line_item.save
@@ -79,6 +79,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_variant_id, :cart_id, :size_id)
     end
 end

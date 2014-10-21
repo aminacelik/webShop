@@ -160,7 +160,7 @@ body {
 	font-size: 11px;
 	font-weight: 600;
 //	float: left;
-	height: 30px;
+	height: 40px;
 	width: 100px;
 	margin: 10px 5px 10px 5px;
 
@@ -176,8 +176,8 @@ body {
 	text-transform: uppercase;
 	font-size: 11px;
 	font-weight: 600;
-	float: left;
-	height: 30px;
+//	float: left;
+	height: 40px;
 	width: 100px;
 	margin: 10px 5px 10px 5px;
 }
@@ -194,7 +194,7 @@ h2 {
 	margin-bottom: 30px;
 }
 
-input:not([type=submit]):not([type=file]), select, textarea {
+input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea {
 	width: 250px;
 	height: 45px;
 	border-radius: 5px;
@@ -276,7 +276,7 @@ input:not([type=submit]):not([type=file]), select, textarea {
 	
 	.button {
 		float: right;
-		margin-right: 100px;
+		margin-right: 200px;
 	}
 
 	#product_details {
@@ -386,10 +386,13 @@ strong {
 
 // CART DISPLAY
 
-#cart_display {
+
+
+#cart_items {
 	margin: 20px 10px 20px 10px;
-	border-left: 1px solid #aaaaaa;
 	padding-left: 20px; 
+	float: left;
+	width: 700px;
 	
 	.cart_title {
 		font-size: 20px;
@@ -404,6 +407,57 @@ strong {
 		text-align: right;
 	}
 	
+}
+
+#product_in_cart {
+	width: 700px;
+	height: 120px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	border-bottom: 1px solid #aaaaaa;
+	
+	img {
+		width: 120px;
+		height: 120px;
+		float: left;
+	}
+	
+	.product_details{
+		width: 250px;
+		float: left;
+		margin-left: 80px;
+		
+	}
+	.product_price {
+		width: 250px;
+		float: left;
+	}
+}
+
+
+#cart_details {
+	float: right;
+	border: 2px solid #b7b7b7;
+	border-radius: 5px;
+	width: 350px;
+	height: auto;
+	text-align: right;
+	color: black;
+	padding-right: 50px;
+	padding-top: 50px;
+	text-transform: uppercase;
+	font-family: 'Montserrat';
+	padding-bottom: 20px;
+	
+	
+	.cart_total {
+		border-top: 2px solid #b7b7b7;
+		padding-top: 20px;
+		font-weight: 600;
+		font-size: 20px;
+		margin-top: 50px;
+		
+	}
 }
 
 
@@ -524,3 +578,21 @@ table {
 		text-decoration: underline;
 	}
 }
+
+#address_form {
+	width: 700px;
+	float: left;
+	
+}
+
+.user_address {
+	border-left: 1px solid #aaaaaa;
+	padding-bottom: 20px;
+	margin-top: 20px;
+	width: 400px;
+	float: left;
+	margin-right: 70px;
+	padding-left: 20px;
+	
+}
+

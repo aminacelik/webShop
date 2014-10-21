@@ -1,0 +1,21 @@
+<div id="cart_details">
+
+	Order:<br>
+	<%= pluralize(@cart.number_of_products, 'product') %> <br>
+	
+	Total price for products:<br>
+	<%= number_to_currency(@cart.total_price) %> <br>
+	
+	Total price for delivery: <br>
+	<%= number_to_currency(@cart.delivery_price) %><br>
+	
+	<div class="cart_total">
+		Total: <%= number_to_currency(@cart.total_delivery_and_products_price) %><br>
+	</div>
+	
+</div>
+
+<div class="buttons">
+	<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'cancel_button' %>
+	<%= button_to 'Continue', addresses_url, {method: :get,  class: 'button' } %>
+</div>

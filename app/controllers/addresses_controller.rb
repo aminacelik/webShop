@@ -1,13 +1,16 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-	
+ 
 	include CurrentCart
 	before_action :set_cart
-
+	before_action :remove_default_address, only: [:create, :update, :make_default_address]
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = @current_user.addresses
+	@shipping_type = AddressType.where(name: 'shipping').first
+	@billing_type = AddressType.where(name: 'billing').first
+    @shipping_addresses = @current_user.addresses.where(address_type_id: @shipping_type.id)
+	@billing_address = @current_user.addresses.where(address_type_id: @billing_type.id).first
   end
 
   # GET /addresses/1
@@ -30,26 +33,13 @@ class AddressesController < ApplicationController
 	@city = City.find(params[:address][:city_id])
 	@address_type = AddressType.find(params[:address][:address_type_id])
 	  
-	  
-	  
-#	 the newest added address is the default addres
-	  @all_user_addresses = @current_user.addresses
-	  @all_user_addresses.each do |adr|
-		  if adr.default == true
-			  adr.default = false
-		  end
-	  end
-	  
-	  
+#	remove_default_address
 	@address = @city.addresses.new(address_params.merge(user_id: @current_user.id, city_id: @city.id, default: true))
-	
-	
-	 
-#    @address = Address.new(address_params)
+
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to addresses_path, notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -92,4 +82,22 @@ class AddressesController < ApplicationController
     def address_params
       params.require(:address).permit(:street_name, :street_number, :floor, :flat, :default, :user_id, :address_type_id)
     end
+	
+	
+	def remove_default_address
+	  @all_user_addresses = @current_user.addresses
+	  @all_user_addresses.each do |adr|
+		  if adr.default == true
+			  adr.default = false
+			  adr.save
+		  end
+	  end
+	end
+	
+	
+	def make_default_address(id)
+		@new_default_address = @current_user.addresses.where(id: id)
+		@new_default_address.default = true
+		@new_default_address.save
+	end
 end

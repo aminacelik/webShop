@@ -1,17 +1,16 @@
-<div id="product_in_list">
+<div id="product_in_cart">
 	
-	<%= image_tag(line_item.product.image_url) %>
-	<div class="product_list_details">
-		 <%= line_item.quantity %>&times; <%= line_item.product.title %><br>
-         <%= truncate(strip_tags(line_item.product.description), length: 100) %><br>
-		Size: 38<br>
-		Color: red<br>
+	<%= image_tag(line_item.product_variant.product.image_url) %>
+	<div class="product_details">
+		 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
+		Size: <%= line_item.product_variant.size.size %><br>
+		Color: <%= line_item.product_variant.color.name %><br>
 	</div>
   	
-		<div id="product_price">
-			Price: <strong><%= number_to_currency(line_item.product.price) %><br>
-			Quantity: 1 <br>
-		</div>
+	<div class="product_price">
+		Price: <strong><%= number_to_currency(line_item.product_variant.product.price) %><br>
+		
+	</div>
 			
 
 	

@@ -2,7 +2,7 @@
 <div id="product_display_form">
 	
 	<div class="product_title">
-		<%= link_to @product.category.name, category_path(@product.category) %> >> 
+		<%= link_to @product.category.name, category_path(@product.category) %> » 
 		<%= link_to @product.title, product_path %>
 		
 		<% if session[:role]=='administrator' %>
@@ -16,20 +16,28 @@
 		<%= @product.description %><br><br>
 	
 	
-
+<%= form_tag(line_items_path, method: :post) do %>
+	<%= hidden_field_tag :product_id, @product.id %>
 	Size<br>
-	 <%= collection_select "size_select", :size, Size.all, :id, :size %><br>
+	<%= select_tag "size_id", options_from_collection_for_select(@sizes, :id, :size) %><br>
+		
 	
+<!--
 	Quantity<br>
 	<%= text_field :quantity, params[:quantity], value: '1' %><br>
 		
+-->
+		
+	<% unless session[:role]=='administrator' %>
+		<%= submit_tag 'Add to Cart', remote: true, class: 'button' %>
+	<% end %>
+		
+		
 	</div>
 	
-	<% unless session[:role]=='administrator' %>
-		<%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true, class: 'button' %>
-	<% end %>
+	
 
-			
+<% end %>			
 			
 </div>
 
