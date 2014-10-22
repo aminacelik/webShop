@@ -10,6 +10,7 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
+	session[:redirect_to_address]=nil 
 	@shipping_type = AddressType.where(name: 'shipping').first
 	@billing_type = AddressType.where(name: 'billing').first
     @shipping_addresses = @current_user.addresses.where(address_type_id: @shipping_type.id)

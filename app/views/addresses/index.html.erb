@@ -1,20 +1,6 @@
 
 <div id="all_user_addresses">
 	
-	<% if @billing_address.present? %> 
-		<h1>Your Billing Address</h1>
-		<div class="user_address">
-			<%= @billing_address.street %><br>
-			<%= @billing_address.city_details %><br>
-			<%= @billing_address.country_name %><br>
-
-		</div>
-	<% end %>
-	
-	<%= check_box_tag 'the_same_addresses', 'yes', true %>Shipping address is the same as billing address.<br>
-	<small>(If not, add new or pick existing shipping address.)</small>
-	<br><br>
-	
 	<% if @shipping_addresses.present? %>
 		<h1>Your Shipping Addresses</h1>
 		<% @shipping_addresses.each do |address| %>
@@ -28,6 +14,19 @@
 
 		</div>
 		<% end %>
+	<% end %>
+	
+	<%= check_box_tag 'the_same_addresses', 'yes', true %>Shipping address is the same as billing address.<br>
+		<small>(If not, add new or pick existing shipping address.)</small>
+		<br><br>
+	<% if @billing_address.present? %> 
+		<h1>Your Billing Address</h1>
+		<div class="user_address">
+			<%= @billing_address.street %><br>
+			<%= @billing_address.city_details %><br>
+			<%= @billing_address.country_name %><br>
+
+		</div>
 	<% end %>
 
 <%= link_to 'New Address', new_address_path %>

@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create]
   
 	include CurrentCart
+	include SessionHelper
+		
 	before_action :set_cart
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 	
+  skip_before_action :authorize, only: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -41,13 +43,12 @@ class UsersController < ApplicationController
 	
     respond_to do |format|
       if @user.save
+		  
+		set_session_for_user(@user)
+		  
         format.html { 
-			id = @cart.id
-		  	if session[:url] == "/carts/#{id}"
-			  redirect_to addresses_url, notice: 'You are logged in. Now choose your address.'
-		  	else
-				redirect_to @user, alert: "User #{@user.name} was successfully created." 
-			end
+			redirect_to addresses_url and return if session[:redirect_to_address]
+			redirect_to @user, alert: "User #{@user.name} was successfully created." 
 		}
         format.json { render :show, status: :created, location: @user }
       else

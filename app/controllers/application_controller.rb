@@ -19,9 +19,17 @@ protected
 	
 	# provjerava da li je logovan user
   def authorize
+	  
+	  
+	  
+	  puts "CONTROLLER : #{params.inspect}"
+	  
+	  
 	  unless (session[:user_id])
-		  redirect_to login_url, alert: "Before seeing this page you have to log in."
+	  	session[:redirect_to_address] = true if params[:action] == "index" && params[:controller] == "addresses"
+		redirect_to login_url, alert: "Before seeing this page you have to log in."
 	  end
+	  
   end
 
 	# za stranice kojima pristup treba imati samo administrator

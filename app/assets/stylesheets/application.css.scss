@@ -8,10 +8,6 @@ body {
 	font-family: 'Montserrat';
 }
 
-a {
-	color: white;
-}
-
 
 #header {
 	background-image: url(menu_background.jpg);
@@ -61,6 +57,7 @@ a {
 			text-transform: uppercase;
 			margin: 10px auto;
 			height: 40px;
+			color: white;
 			
 			li {
 				float: left;
@@ -70,6 +67,7 @@ a {
 				height: 50px;
 				
 				a {
+					color: white;
 					.orange {
 						color: #f0b49e;
 					}
