@@ -2,7 +2,7 @@
 Role.delete_all
 role = Role.find_or_initialize_by(name: 'Administrator');
 role.save!
-role = Role.find_or_initialize_by(name: 'regular user');
+role = Role.find_or_initialize_by(name: 'registered user');
 role.save!
 
 # LINE ITEMS
