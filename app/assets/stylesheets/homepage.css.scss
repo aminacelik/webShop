@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
+
 *{
 	margin: 0;
 }
@@ -6,7 +7,7 @@
 body {
 	background-image: url(background.jpg);
 	background-repeat: no-repeat;
-  	background-position: top left;
+  background-position: top left;
 	background-size: contain;
 	font-family: 'Montserrat';
 }
@@ -20,7 +21,7 @@ body {
 	// 	MENU CONTAINER
 	#menu_container {
 		height: 80px;
-		width: 1180px;
+		width: 80%;
 		margin: 0 auto;
 		padding-top: 20px;
 	
@@ -143,16 +144,16 @@ body {
 
 
 #container {
-	width: 1180px;
+	width: 80%;
 	margin: 0 auto;
 	
 	// CONTENT
 	#content {
-		width: 1180px;
+		width: 100%;
 		overflow: hidden;
 		background-color: white;
 		margin-bottom: 80px;
-		margin-top: 380px;
+		margin-top: 250px;
 	}
 
 // FOOTER
@@ -211,12 +212,15 @@ body {
 #notice {
 	height: 30px;
 	width: 250px;
-	background-color: rgba(100,92,100,0.3);
+	background-color: rgba(100,92,100,0.5);
 	color: #e74c3c;
 	padding: 10px;
 	font-size: 12px;
 	float: right;
-	right: 0;
+	margin-right: 10%;
+  
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 
@@ -224,7 +228,7 @@ body {
 // PRODUCT
 
 .product {
-	width: 200px;
+	width: 15%;
 	height: 230px;
 	float: left;
 	color: #aaaaaa;
@@ -233,14 +237,14 @@ body {
 	margin: 15px 25px 15px 25px;
 	padding: 20px 20px 20px 20px;
 	border: 3px solid white;
-	border-radius: 25px;
+	border-radius: 20px;
 	text-align: center;
 	
 	.price_line {
-		font-size: 22px;
+		font-size: 20px;
 		font-weight: 800;
 		margin: 0 auto;
-		color: #7d7d7d;
+		color: black;
 	}
 	
 	img {
@@ -250,14 +254,14 @@ body {
 	}
 	a {
 		text-decoration: none;
-		color: #aaaaaa;
+		color: darkgrey;
 	}
 	a:visited {
 		text-decoration: none;
-		color: #aaaaaa;
+		color: darkgrey;
 	}
 	a:hover {
-		color: #aaaaaa;
+		color: darkgrey;
 		text-decoration: underline;
 	}
 }
@@ -268,7 +272,7 @@ body {
 }
 // CONTENT
 #content {
-	width: 1180px;
+	width: 80%;
 	margin-top: 380px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;

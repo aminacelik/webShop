@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 	
 	
   post 'payment/do_payment'
+  get 'payment/confirmation'
+  
   
   resources :product_variants
 

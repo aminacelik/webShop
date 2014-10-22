@@ -1,27 +1,29 @@
-
+<div id="address_container">
 <div id="all_user_addresses">
 	
 	<% if @shipping_addresses.present? %>
 		<h1>Your Shipping Addresses</h1>
 		<% @shipping_addresses.each do |address| %>
 		<div class="user_address">
+      <%= @current_user.name %><br>
 			<%= address.street %><br>
 			<%= address.city_details %><br>
 			<%= address.country_name %><br>
-			<div class='orange'>
-				<%= radio_button_tag :selected, address %>Select this address for delivery.
-			</div>
+		
 
 		</div>
 		<% end %>
 	<% end %>
 	
+  
+  <br>
 	<%= check_box_tag 'the_same_addresses', 'yes', true %>Shipping address is the same as billing address.<br>
-		<small>(If not, add new or pick existing shipping address.)</small>
+		<small>(If not, add billing address.)</small>
 		<br><br>
 	<% if @billing_address.present? %> 
 		<h1>Your Billing Address</h1>
 		<div class="user_address">
+      <%= @current_user.name %><br>
 			<%= @billing_address.street %><br>
 			<%= @billing_address.city_details %><br>
 			<%= @billing_address.country_name %><br>
@@ -29,11 +31,16 @@
 		</div>
 	<% end %>
 
-<%= link_to 'New Address', new_address_path %>
+<%= button_to 'New Address', new_address_path, method: :get, class: 'grey_button' %>
 	
 </div>
 
-<%= render partial: "carts/order_cart" %>
+<% unless @cart.number_of_products == 0 %>
+  <div class="step">Step 2 of 2</div>
+  <%= render partial: "carts/order_cart" %>
+<% end %>
+
+
 <div class="buttons">
 
 	<%=form_tag '/payment/do_payment' do %>
@@ -42,4 +49,5 @@
           data-description="Pay for your items"
           data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i%>"></script>
 <% end %>
+</div>
 </div>

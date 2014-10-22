@@ -28,7 +28,7 @@ class PaymentController < ApplicationController
 			
 		puts "charge = #{charge.inspect}"
 			
-		render nothing: true
+		render 'charges/confirmation'
 			
 	end
 	

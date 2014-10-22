@@ -26,7 +26,8 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.json
   def create
-    @city = City.new(city_params)
+    @country = Country.find(params[:city][:country_id])
+    @city = @country.cities.build(city_params)
 
     respond_to do |format|
       if @city.save

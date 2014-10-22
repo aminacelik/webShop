@@ -38,13 +38,10 @@
     <%= f.label :city %><br>
     <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Add Address', class: 'button' %>
+  <div class="dugmad">
+    <%= f.submit 'Add Address', class: 'grey_button' %>
 	<%= button_to 'Cancel', addresses_path(@current_user.id), method: :get, class: 'cancel_button' %>
   </div>
 <% end %>
 
 </div>
-
-
-<%= render partial: "carts/order_cart" %>
