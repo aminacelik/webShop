@@ -1,6 +1,6 @@
 # ROLES
 Role.delete_all
-role = Role.find_or_initialize_by(name: 'Administrator');
+role = Role.find_or_initialize_by(name: 'administrator');
 role.save!
 role = Role.find_or_initialize_by(name: 'registered user');
 role.save!
@@ -12,6 +12,15 @@ at = AddressType.find_or_initialize_by(name: 'shipping');
 at.save!
 at = AddressType.find_or_initialize_by(name: 'billing');
 at.save!
+
+
+
+# USERS
+User.delete_all
+role = Role.find_by(name: 'administrator');
+User.create!(name: "amina",
+							password: "amina",
+							role_id: "#{role.id}")
 
 # LINE ITEMS
 LineItem.delete_all
