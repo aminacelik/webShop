@@ -5,6 +5,14 @@ role.save!
 role = Role.find_or_initialize_by(name: 'registered user');
 role.save!
 
+
+# ADDRESS TYPES
+AddressType.delete_all
+at = AddressType.find_or_initialize_by(name: 'shipping');
+at.save!
+at = AddressType.find_or_initialize_by(name: 'billing');
+at.save!
+
 # LINE ITEMS
 LineItem.delete_all
 
