@@ -15,7 +15,12 @@ class SessionController < ApplicationController
 	  if session[:role]=='administrator'
 		  redirect_to products_url, notice: "Logged in!"
 	  else 
+		  id = @cart.id
+		  if session[:url] == "/carts/#{id}"
+			  redirect_to addresses_url, notice: 'You are logged in. Now choose your address.'
+		  else
 		  redirect_to store_url, notice: "Logged in!"
+		  end
 	  end
 		
     else

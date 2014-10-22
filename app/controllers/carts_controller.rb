@@ -15,6 +15,7 @@ class CartsController < ApplicationController
 	 	@default_address = Address.where(user_id: @current_user.id, default: true).last
 	  end
 	  @cart_items = @cart.line_items
+	  session[:url] = request.path
   end
 
   # GET /carts/new

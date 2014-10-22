@@ -1,5 +1,8 @@
 class ChargesController < ApplicationController
+	before_action :authorize
 	
+	include CurrentCart
+	before_action :set_cart
 	def new
 	end
 
