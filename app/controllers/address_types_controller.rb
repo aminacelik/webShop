@@ -1,5 +1,7 @@
 class AddressTypesController < ApplicationController
   before_action :set_address_type, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+  before_action :limit_access_to_administrator
 
   # GET /address_types
   # GET /address_types.json

@@ -1,5 +1,7 @@
 class ColorsController < ApplicationController
   before_action :set_color, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+  before_action :limit_access_to_administrator
 
   # GET /colors
   # GET /colors.json

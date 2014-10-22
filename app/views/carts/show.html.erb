@@ -1,3 +1,4 @@
 
-
-<%= render ("detailed_cart") %>
+<div id="cart_container">
+	<%= render partial: "detailed_cart", locals: {items: @cart_items} %>
+</div>

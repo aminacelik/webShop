@@ -1,40 +1,40 @@
 
-<h1>Your Shipping Addresses</h1>
-
-<% @shipping_addresses.each do |address| %>
-<div class="user_address">
-	<%= address.street %><br>
-	<%= address.city_details %><br>
-	<%= address.country_name %><br>
+<div id="all_user_addresses">
 	
-	<%= label_tag :default %>
-	<%= check_box_tag(:default,1, address.default ? :checked : nil, disabled: true) %> 
+	<% if @billing_address.present? %> 
+		<h1>Your Billing Address</h1>
+		<div class="user_address">
+			<%= @billing_address.street %><br>
+			<%= @billing_address.city_details %><br>
+			<%= @billing_address.country_name %><br>
+
+		</div>
+	<% end %>
 	
+	<%= check_box_tag 'the_same_addresses', 'yes', true %>Shipping address is the same as billing address.<br>
+	<small>(If not, add new or pick existing shipping address.)</small>
+	<br><br>
+	
+	<% if @shipping_addresses.present? %>
+		<h1>Your Shipping Addresses</h1>
+		<% @shipping_addresses.each do |address| %>
+		<div class="user_address">
+			<%= address.street %><br>
+			<%= address.city_details %><br>
+			<%= address.country_name %><br>
+			<div class='orange'>
+				<%= radio_button_tag :selected, address %>Select this address for delivery.
+			</div>
 
-</div>
-<% end %>
-
-
-<br>
-
-
-<% if @billing_address.present? %> 
-	<h1>Billing Address</h1>
-	<div class="user_address">
-		<%= @billing_address.street %><br>
-		<%= @billing_address.city_details %><br>
-		<%= @billing_address.country_name %><br>
-
-		<%= label_tag :default %>
-		<%= check_box("default", @billing_address.default, {checked: @billing_address.default}) %>
-
-	</div>
-<% end %>
-
-
-
+		</div>
+		<% end %>
+	<% end %>
 
 <%= link_to 'New Address', new_address_path %>
+	
+</div>
 
 <%= render partial: "carts/order_cart" %>
-
+<div class="buttons">
+	<%= button_to 'Confirm', new_charge_url, method: :get, class: 'button' %>
+</div>

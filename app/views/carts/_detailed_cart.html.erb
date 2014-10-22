@@ -3,7 +3,7 @@
 	<h1>Your Cart</h1>
 
 	<div id="product_list">
-		<%= @cart_items.each do |line_item| %>
+		<%= items.each do |line_item| %>
 			<div id="product_in_cart">
 				<%= image_tag(line_item.product_variant.product.image_url) %>
 				<div class="product_details">
@@ -30,7 +30,10 @@
 
 
 <% unless @cart.number_of_products == 0 %>
-	<%= render("order_cart") %>
+	<%= render("carts/order_cart") %>
+	<div class="buttons">
+		<%= button_to 'Continue', addresses_url, method: :get,  class: 'button' %>
+	</div>
 <% else %>
 	<h2>Your cart is empty.</h2>
 <% end %>

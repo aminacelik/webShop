@@ -1,1 +1,3 @@
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+$('#cart_container').html("<%= escape_javascript render partial: 'carts/detailed_cart', locals: {items: @cart.line_items } %>");
+

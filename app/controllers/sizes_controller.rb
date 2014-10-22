@@ -1,5 +1,8 @@
 class SizesController < ApplicationController
   before_action :set_size, only: [:show, :edit, :update, :destroy]
+ 
+  before_action :authorize
+  before_action :limit_access_to_administrator
 
   # GET /sizes
   # GET /sizes.json

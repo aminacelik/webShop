@@ -358,7 +358,7 @@ h2 {
 	margin-bottom: 30px;
 }
 
-input:not([type=submit]):not([type=file]):not([type=checkbox]), select, textarea {
+input:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]), select, textarea {
 	width: 250px;
 	height: 45px;
 	border-radius: 5px;
@@ -372,6 +372,9 @@ select {
 	cursor: pointer;
 	
 	option {
+		
+	}
+	option:hover {
 		background-color: #959595;
 	}
 }
@@ -775,14 +778,29 @@ table {
 	
 }
 
-.user_address {
-	border-left: 1px solid #aaaaaa;
-	padding-bottom: 20px;
-	margin-top: 20px;
-	width: 400px;
+
+#all_user_addresses {
+	width: 700px;
 	float: left;
-	margin-right: 70px;
-	padding-left: 20px;
 	
+	.user_address {
+		border-left: 1px solid #aaaaaa;
+		padding-bottom: 20px;
+		margin-top: 20px;
+		width: 650px;
+		float: left;
+		margin-right: 70px;
+		padding-left: 20px;
+		
+		a {
+			width: 100%;
+			float: left;
+		}
+		
+		.orange {
+			color: #e74c3c;
+		}
+
+	}
 }
 

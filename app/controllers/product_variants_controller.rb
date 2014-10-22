@@ -1,5 +1,6 @@
 class ProductVariantsController < ApplicationController
   before_action :set_product_variant, only: [:show, :edit, :update, :destroy]
+  before_action :limit_access_to_administrator, only: [:new, :create, :edit, :update, :delete]
 
   # GET /product_variants
   # GET /product_variants.json

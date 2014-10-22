@@ -1,5 +1,7 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+  before_action :limit_access_to_administrator
 
   # GET /cities
   # GET /cities.json

@@ -1,9 +1,12 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
- 
+  before_action :authorize
+  
 	include CurrentCart
 	before_action :set_cart
-	before_action :remove_default_address, only: [:create, :update, :make_default_address]
+#	before_action :remove_default_address, only: [:create, :update, :make_default_address]
+	
+	
   # GET /addresses
   # GET /addresses.json
   def index
@@ -33,8 +36,12 @@ class AddressesController < ApplicationController
 	@city = City.find(params[:address][:city_id])
 	@address_type = AddressType.find(params[:address][:address_type_id])
 	  
-#	remove_default_address
-	@address = @city.addresses.new(address_params.merge(user_id: @current_user.id, city_id: @city.id, default: true))
+	@billing_address_type = AddressType.where(name: 'billing').first
+	  if params[:address][:address_type_id] == @billing_address_type.id
+		  remove_billing_address
+	  end
+#	for now we dont have to worry about default address. 
+	@address = @city.addresses.new(address_params.merge(user_id: @current_user.id, address_type_id: @address_type.id))
 
 
     respond_to do |format|
@@ -84,20 +91,28 @@ class AddressesController < ApplicationController
     end
 	
 	
-	def remove_default_address
-	  @all_user_addresses = @current_user.addresses
-	  @all_user_addresses.each do |adr|
-		  if adr.default == true
-			  adr.default = false
-			  adr.save
-		  end
-	  end
+#	def remove_default_address
+#	  @all_user_addresses = @current_user.addresses
+#	  @all_user_addresses.each do |adr|
+#		  if adr.default == true
+#			  adr.default = false
+#			  adr.save
+#		  end
+#	  end
+#	end
+#	
+#	def make_default_address(id)
+#		@new_default_address = @current_user.addresses.where(id: id)
+#		@new_default_address.default = true
+#		@new_default_address.save
+#	end
+#	
+	#user is allowed to have only one billing address
+	def remove_billing_address
+		@billing_address_type = AddressType.where(name: 'billing').first
+		@address = @current_user.addresses.where(address_type_id: @billing_address_type.id)
+		@address.destroy
 	end
 	
-	
-	def make_default_address(id)
-		@new_default_address = @current_user.addresses.where(id: id)
-		@new_default_address.default = true
-		@new_default_address.save
-	end
+
 end
