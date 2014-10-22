@@ -492,9 +492,9 @@ select {
 		border-left: 2px solid darkgrey;
 		padding-left: 50px;
 		margin: 100px 0 0 100px;
-		color: #7d7d7d;
+		color: #6c6c6c;
 		float: left;
-    font-weight: 400;
+    font-weight: 200;
 
 		#variants_chooser{
 			margin-top: 50px;
@@ -588,6 +588,9 @@ strong {
 		width: 250px;
 		float: left;
 		margin-left: 80px;
+    margin-right: 20px;
+    color: 6c6c6c;
+    font-weight: 400;
 		
 	}
 	.product_price {
@@ -615,8 +618,11 @@ strong {
   #product_list {
 	width: 600px;
 	font-size: 16px;
-	color: darkgrey;
-    float: left;
+	color: #6c6c6c;
+  font-weight: 400;
+  float: left;
+    
+    
 	#product_in_list {
 		width: 600px;
 		margin: 15px 20px 15px 20px;
@@ -636,8 +642,8 @@ strong {
 			}
 
 			.product_list_actions {
-				float: left;
-				
+				float: right;
+				width: 500px;
 				a {
 					color: #e74c3c;
 					text-decoration: none;
@@ -914,4 +920,8 @@ table {
   background-color: #faf9fa;
   text-align: center;
   font-size: 22px;
+}
+
+strong {
+  color: #6c6c6c;
 }
