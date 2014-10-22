@@ -65,12 +65,16 @@ body {
 				color: white;
 				position: relative;
 				height: 50px;
+				color: white;
 				
 				a {
 					color: white;
 					.orange {
 						color: #f0b49e;
 					}
+				}
+				a:visited {
+					color: white;
 				}
 				
 				ul {
@@ -143,12 +147,12 @@ body {
 #notice {
 	height: 30px;
 	width: 250px;
-	background-color: rgba(100,92,100,0.3);
+	background-color: rgba(100,92,100,1);
 	color: #e74c3c;
 	padding: 10px;
 	font-size: 12px;
 	float: right;
-	right: 0;
+	margin-right: 100;
 }
 
 // ADMIN MENU
@@ -348,6 +352,9 @@ body {
 
 .buttons {
 	float: right;
+	width: 400px;
+	text-align: right;
+	margin-top: 10px;
 }
 h2 {
 	margin-left: 5%;
@@ -632,7 +639,7 @@ strong {
 	border: 2px solid #b7b7b7;
 	border-radius: 5px;
 	width: 350px;
-	height: auto;
+	min-height: 220px;
 	text-align: right;
 	color: black;
 	padding-right: 50px;
@@ -782,6 +789,7 @@ table {
 #all_user_addresses {
 	width: 700px;
 	float: left;
+	min-height: 350px;
 	
 	.user_address {
 		border-left: 1px solid #aaaaaa;

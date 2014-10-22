@@ -65,12 +65,15 @@ body {
 				color: white;
 				position: relative;
 				height: 50px;
-				
 				a {
-					.orange {
-						color: #f0b49e;
+						color: white;
+						.orange {
+							color: #f0b49e;
+						}
 					}
-				}
+					a:visited {
+						color: white;
+					}
 				
 				ul {
 					text-transform: lowercase;

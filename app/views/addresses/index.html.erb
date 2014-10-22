@@ -35,5 +35,8 @@
 
 <%= render partial: "carts/order_cart" %>
 <div class="buttons">
-	<%= button_to 'Confirm', new_charge_url, method: :get, class: 'button' %>
+	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:pk_test_Cnh27zogL5NcjyVeTcLBWmle ] %>"
+          data-description="A month's subscription"
+          data-amount="500"></script>
 </div>
