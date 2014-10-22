@@ -41,7 +41,14 @@ class UsersController < ApplicationController
 	
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, alert: "User #{@user.name} was successfully created." }
+        format.html { 
+			id = @cart.id
+		  	if session[:url] == "/carts/#{id}"
+			  redirect_to addresses_url, notice: 'You are logged in. Now choose your address.'
+		  	else
+				redirect_to @user, alert: "User #{@user.name} was successfully created." 
+			end
+		}
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
