@@ -35,8 +35,11 @@
 
 <%= render partial: "carts/order_cart" %>
 <div class="buttons">
+
+	<%=form_tag '/payment/do_payment' do %>
 	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:pk_test_Cnh27zogL5NcjyVeTcLBWmle ] %>"
-          data-description="A month's subscription"
-          data-amount="500"></script>
+          data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
+          data-description="Pay for your items"
+          data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i%>"></script>
+<% end %>
 </div>

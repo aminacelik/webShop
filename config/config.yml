@@ -1,4 +1,6 @@
 development:
-	publishable_key: "pk_test_Cnh27zogL5NcjyVeTcLBWmle"
-	secret_key: "sk_test_Sy6a6PMcPS9p6fNqMN8Yn2qL"
+  publishable_key: "pk_test_Cnh27zogL5NcjyVeTcLBWmle"
+  secret_key: "sk_test_Sy6a6PMcPS9p6fNqMN8Yn2qL"
 production:
+  publishable_key: ""
+  secret_key: ""

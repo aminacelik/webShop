@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	
 	
-  resources :charges
+  post 'payment/do_payment'
   
   resources :product_variants
 
