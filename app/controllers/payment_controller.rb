@@ -27,7 +27,8 @@ class PaymentController < ApplicationController
 		
 			
 		puts "charge = #{charge.inspect}"
-			
+		
+    @cart.destroy
 		render 'charges/confirmation'
 			
 	end
