@@ -22,6 +22,7 @@
 
 body {
 	font-family: 'Montserrat';
+  background-color: transparent;
 }
 
 
@@ -48,9 +49,16 @@ body {
 			width: 47px;
 			float: right;
 			
-			img {
-				margin-top: 10px;
-			}
+		a{
+      	img {
+          margin-top: 10px;
+          background-color: transparent;
+        }
+      
+        &:hover {
+            background-color: transparent;
+        }
+    }
 			#number_of_products {
 				float: right;
 				margin-bottom: 20px;
@@ -88,6 +96,9 @@ body {
 					.orange {
 						color: #f0b49e;
 					}
+            &:hover {
+                background-color: transparent;
+            }
 				}
 				a:visited {
 					color: white;
@@ -485,4 +496,12 @@ table {
 
 strong {
   color: #6c6c6c;
+}
+
+a:hover {
+    background-color: transparent;
+}
+
+a:visited{
+    background-color: transparent;
 }

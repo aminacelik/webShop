@@ -27,23 +27,41 @@
 		max-width: 98%;
 	
 	}
-	a {
-		text-decoration: none;
-		color: #aaaaaa;
-	}
-	a:visited {
-		text-decoration: none;
-		color: #aaaaaa;
-	}
-	a:hover {
-		color: #aaaaaa;
-		text-decoration: underline;
-	}
+  
+  a {
+   
+    &:hover {
+      background-color: transparent;
+    }
+  }
+    
+  h3 {
+  
+    a {
+      text-decoration: none;
+      color: #aaaaaa;
+      
+       &:visited {
+        text-decoration: none;
+        color: #aaaaaa;
+        background-color: transparent;
+      }
+      &:hover {
+        color: #aaaaaa;
+        text-decoration: underline;
+        background-color: transparent;
+      }
+    }
+   
+    
+  }
 }
 .product:hover {
 
 	border: 3px solid #e6e6e6;
 	border-radius: 25px;
+  
+
 }
 
 
@@ -61,6 +79,15 @@
 		font-size: 16px;
 		float: left;
 		width: 1160px;
+      
+      a:hover {
+            background-color: transparent;
+        }
+
+        a:visited{
+            background-color: transparent;
+        }
+      
 	}
 	
 	.product_description {
