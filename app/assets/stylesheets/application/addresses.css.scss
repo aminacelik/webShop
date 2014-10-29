@@ -1,0 +1,94 @@
+
+#address_list {
+	width: 1180px;
+	overflow: hidden;
+	
+	.address_display {
+		margin: 20px 10px 20px 10px;
+		border-left: 1px solid #aaaaaa;
+		padding-left: 20px;
+		float: left;
+	}
+	
+}
+  
+#address_form {
+	width: 700px;
+	float: left;
+	
+}
+
+#address_container {
+  width: 100%;
+  
+  #all_user_addresses {
+    width: 600px;
+    float: left;
+    min-height: 350px;
+    margin-right: 60px;
+    
+    .grey_button {
+      float: left;
+      margin-right: 400px;
+    }
+   
+    .user_address {
+      border: 2px solid lightgrey;
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 20px;
+      width: 208px;
+      float: left;
+      margin-right: 45px;
+      margin-bottom: 40px;
+
+      a {
+        width: 100%;
+        float: left;
+      }
+
+      .orange {
+        color: #e74c3c;
+      }
+
+    }
+    
+    .user_address:hover {
+      border: 2px solid #cbebd8;
+      border-radius: 5px;
+    }
+  }
+   #cart_details {
+    float: right;
+    border: 2px solid #b7b7b7;
+    border-radius: 4px;
+    width: 350px;
+    min-height: 220px;
+    text-align: right;
+    font-weight: 200;
+    padding-right: 30px;
+    padding-top: 40px;
+    font-family: 'Montserrat';
+    padding-bottom: 20px;
+
+    .lightgrey{
+      color: lightgrey;
+    }
+    .darkgrey {
+      color: #64566c;
+    }
+
+    .cart_total {
+      border-top: 2px solid #b7b7b7;
+      padding-top: 20px;
+      font-weight: 600;
+      font-size: 20px;
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+  }
+
+  
+  
+}
+

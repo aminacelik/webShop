@@ -1,0 +1,163 @@
+#cart_container {
+  width: 100%;
+
+  #product_list {
+	width: 600px;
+	font-size: 16px;
+	color: #6c6c6c;
+  font-weight: 400;
+  float: left;
+    
+    
+	#product_in_list {
+		width: 600px;
+		margin: 15px 20px 15px 20px;
+		padding: 10px 10px 10px 10px;
+		border: 3px solid white;
+		overflow: hidden;
+		
+			#product_price {
+				float: right;
+				font-size: 20px;
+				font-weight: 600;
+			}
+			.product_list_details {
+				color: #aaaaaa;
+				margin-left: 50px;
+				width: 70%;
+			}
+
+			.product_list_actions {
+				float: right;
+				width: 500px;
+				a {
+					color: #e74c3c;
+					text-decoration: none;
+				}
+				a:hover {
+					color: #e74c3c;
+					text-decoration: underline;
+				}
+				a:visited {
+					color: #e74c3c;
+					text-decoration: none;
+				}
+			}
+			img {
+				float: left;
+				height: 100px;
+				width: 100px;
+			}
+	}
+	#product_in_list:hover {
+		border: 2px solid #aaaaaa;
+		border-radius: 20px;
+	}
+	
+	
+  }
+
+  #cart_details {
+    float: right;
+    border: 2px solid #b7b7b7;
+    border-radius: 4px;
+    width: 350px;
+    min-height: 220px;
+    text-align: right;
+    font-weight: 200;
+    padding-right: 30px;
+    padding-top: 40px;
+    font-family: 'Montserrat';
+    padding-bottom: 20px;
+
+    .lightgrey{
+      color: lightgrey;
+    }
+    .darkgrey {
+      color: #64566c;
+    }
+
+    .cart_total {
+      border-top: 2px solid #b7b7b7;
+      padding-top: 20px;
+      font-weight: 600;
+      font-size: 20px;
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+  }
+
+}
+
+
+// CART DISPLAY
+
+
+
+#cart_items {
+	margin: 20px 10px 20px 10px;
+	padding-left: 20px; 
+	float: left;
+	width: 600px;
+	
+	.cart_title {
+		font-size: 20px;
+		font-weight: 500;
+	}
+	
+	#cart_total {
+		border-top: 1px solid #aaaaaa;
+		color: black;
+		font-size: 20px;
+		font-weight: 400;
+		text-align: right;
+    margin-left: 20px;
+    width: 200px;
+	}
+	
+}
+
+#product_in_cart {
+	width: 600px;
+	height: 120px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	border-bottom: 1px solid #aaaaaa;
+	
+	
+	
+	img {
+		width: 120px;
+		height: 120px;
+		float: left;
+	}
+	
+	.product_details{
+		width: 250px;
+		float: left;
+		margin-left: 80px;
+    margin-right: 20px;
+    color: 6c6c6c;
+    font-weight: 400;
+		
+	}
+	.product_price {
+		width: 250px;
+		float: left;
+    margin-left: 80px;
+//    color: black;
+	}
+	
+	.delete_icon {
+		float: right;
+		vertical-align: top;
+		
+		img {
+			height: 17px;
+			width: 17px;
+		}
+		
+	}
+}
+
+

@@ -1,3 +1,19 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will
+ * include all the files listed below.
+ * 
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
+ * vendor/assets/stylesheets, or vendor/assets/stylesheets of plugins, if any,
+ * can be referenced here using a relative path.
+ * 
+ * You're free to add application-wide styles to this file and they'll appear
+ * at the top of the compiled file, but it's generally better to create a new
+ * file per style scope.
+ * 
+ *= require_self
+ *= require_tree ./application/
+ */
+
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 *{
@@ -20,23 +36,25 @@ body {
 
 	// 	MENU CONTAINER
 	#menu_container {
-		height: 80px;
+		height: inherit;
 		width: 80%;
 		margin: 0 auto;
 		padding-top: 20px;
 	
 		#logo{
-			width: 150px;
+			width: 10%; //?-----------------------
 			float: left;
 		}
 		
 		#cart {
-			width: 47px;
+			width: 5%;
 			float: right;
 			
 			img {
 				margin-top: 10px;
 			}
+      
+      
 			#number_of_products {
 				float: right;
 				margin-bottom: 20px;
@@ -45,7 +63,7 @@ body {
 				color: white;
 				text-align: center;
 				font-weight: 400;
-				width: 18px;
+				width: 35%;
 				height: 18px;
 				
 			}
@@ -84,7 +102,7 @@ body {
 					position: absolute;
 					top: 50px;
 					left: -75px;
-					width: 150px;
+					width: 150px; //------------------------------
 					
 					li {
 						display: block;
@@ -211,7 +229,7 @@ body {
 
 #notice {
 	height: 30px;
-	width: 250px;
+	width: 20%;
 	background-color: rgba(100,92,100,0.5);
 	color: #e74c3c;
 	padding: 10px;
@@ -225,51 +243,6 @@ body {
 
 
 
-// PRODUCT
-
-.product {
-	width: 15%;
-	height: 230px;
-	float: left;
-	color: #aaaaaa;
-	font-size: 12px;
-	text-decoration: none;
-	margin: 15px 25px 15px 25px;
-	padding: 20px 20px 20px 20px;
-	border: 3px solid white;
-	border-radius: 20px;
-	text-align: center;
-	
-	.price_line {
-		font-size: 20px;
-		font-weight: 800;
-		margin: 0 auto;
-		color: black;
-	}
-	
-	img {
-		height: 160px;
-		max-width: 98%;
-	
-	}
-	a {
-		text-decoration: none;
-		color: darkgrey;
-	}
-	a:visited {
-		text-decoration: none;
-		color: darkgrey;
-	}
-	a:hover {
-		color: darkgrey;
-		text-decoration: underline;
-	}
-}
-.product:hover {
-
-	border: 3px solid #e6e6e6;
-	border-radius: 25px;
-}
 // CONTENT
 #content {
 	width: 80%;
@@ -281,10 +254,7 @@ body {
 	margin-bottom: 80px;
 }
 
-#login_register {
-	float: right;
-	margin-right: 20px;
-}
+
 .button {
 	background-color: #e74c3c;
 	border-radius: 6px;

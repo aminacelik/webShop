@@ -1,0 +1,44 @@
+
+#login_form {
+	margin: 0 auto;
+	background-color: #faf9fa;
+	border: 1px solid #e5e5e5;
+	border-radius: 10px;
+	height: 270px;
+	width: 500px;
+	text-align: left;
+	padding-bottom: 30px;
+	
+	#login_data {
+		margin: 50px 20px 10px 20px;
+		padding: 10px 10px 10px 10px;
+	}
+	
+	
+	.button {
+		float: right;
+	}
+	
+	h3{
+		float: left;
+		margin-left: 10px;
+		margin-top: 15px;
+	}
+	
+	a {
+		float: right;
+		color: #7ca3cc;
+		text-decoration: none;
+		margin-right: 10px;
+		margin-top: 15px;
+	}
+	a:visited{
+		color: #7ca3cc;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+

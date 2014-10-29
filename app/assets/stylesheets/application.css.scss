@@ -1,3 +1,19 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will
+ * include all the files listed below.
+ * 
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets,
+ * vendor/assets/stylesheets, or vendor/assets/stylesheets of plugins, if any,
+ * can be referenced here using a relative path.
+ * 
+ * You're free to add application-wide styles to this file and they'll appear
+ * at the top of the compiled file, but it's generally better to create a new
+ * file per style scope.
+ * 
+ *= require_self
+ *= require_tree ./application/
+ */
+
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 *{
@@ -404,119 +420,6 @@ select {
 	}
 }
 
-// PRODUCT
-
-.product {
-	width: 15%;
-	height: 230px;
-	float: left;
-	color: #aaaaaa;
-	font-size: 12px;
-	text-decoration: none;
-	margin: 15px 25px 15px 25px;
-	padding: 20px 20px 20px 20px;
-	border: 3px solid white;
-	border-radius: 25px;
-  text-align: center;
-	
-	.price_line {
-		font-size: 20px;
-		font-weight: 800;
-		margin: 0 auto;
-		color: black;
-	}
-	
-	img {
-		height: 160px;
-		max-width: 98%;
-	
-	}
-	a {
-		text-decoration: none;
-		color: #aaaaaa;
-	}
-	a:visited {
-		text-decoration: none;
-		color: #aaaaaa;
-	}
-	a:hover {
-		color: #aaaaaa;
-		text-decoration: underline;
-	}
-}
-.product:hover {
-
-	border: 3px solid #e6e6e6;
-	border-radius: 25px;
-}
-
-// PRODUCT SHOW
-
-#product_display_form {
-	float: left;
-	width: 1180px;
-	height: 600px;
-	margin: 20px 20px 20px 20px;
-	overflow: hidden;
-	
-	.product_title {
-		font-size: 16px;
-		float: left;
-		width: 1160px;
-	}
-	
-	.product_description {
-		width: 500px;
-		float: left;
-		margin: 30px 20px 30px 20px;
-		
-		.price_line {
-			font-size: 30px;
-		}
-    
-    .button{
-      float: right;
-    }
-	}
-	img {
-		width: 450px;
-		float: left;
-	}
-	
-	.button {
-		float: right;
-		margin-right: 250px;
-	}
-
-	#product_details {
-		border-left: 2px solid darkgrey;
-		padding-left: 50px;
-		margin: 100px 0 0 100px;
-		color: #6c6c6c;
-		float: left;
-    font-weight: 200;
-
-		#variants_chooser{
-			margin-top: 50px;
-			color: black;
-		}
-	}
-}
-
-strong {
-	font-weight: 600;
-	color: darkgrey;
-	font-size: 15px;
-
-}
-
-#similar_products{
-	width: 1180px;
-	margin-top: 150px;
-	
-}
-
-
 
 
 
@@ -525,183 +428,14 @@ strong {
 
 // ADDRESSES 
 
-#address_list {
-	width: 1180px;
-	overflow: hidden;
-	
-	.address_display {
-		margin: 20px 10px 20px 10px;
-		border-left: 1px solid #aaaaaa;
-		padding-left: 20px;
-		float: left;
-	}
-	
-}
+
 #user_links {
 	margin-top: 30px;
 }
 
 
-// CART DISPLAY
 
 
-
-#cart_items {
-	margin: 20px 10px 20px 10px;
-	padding-left: 20px; 
-	float: left;
-	width: 600px;
-	
-	.cart_title {
-		font-size: 20px;
-		font-weight: 500;
-	}
-	
-	#cart_total {
-		border-top: 1px solid #aaaaaa;
-		color: black;
-		font-size: 20px;
-		font-weight: 400;
-		text-align: right;
-    margin-left: 20px;
-    width: 200px;
-	}
-	
-}
-
-#product_in_cart {
-	width: 600px;
-	height: 120px;
-	margin-bottom: 50px;
-	margin-top: 50px;
-	border-bottom: 1px solid #aaaaaa;
-	
-	
-	
-	img {
-		width: 120px;
-		height: 120px;
-		float: left;
-	}
-	
-	.product_details{
-		width: 250px;
-		float: left;
-		margin-left: 80px;
-    margin-right: 20px;
-    color: 6c6c6c;
-    font-weight: 400;
-		
-	}
-	.product_price {
-		width: 250px;
-		float: left;
-    margin-left: 80px;
-//    color: black;
-	}
-	
-	.delete_icon {
-		float: right;
-		vertical-align: top;
-		
-		img {
-			height: 17px;
-			width: 17px;
-		}
-		
-	}
-}
-
-#cart_container {
-  width: 100%;
-
-  #product_list {
-	width: 600px;
-	font-size: 16px;
-	color: #6c6c6c;
-  font-weight: 400;
-  float: left;
-    
-    
-	#product_in_list {
-		width: 600px;
-		margin: 15px 20px 15px 20px;
-		padding: 10px 10px 10px 10px;
-		border: 3px solid white;
-		overflow: hidden;
-		
-			#product_price {
-				float: right;
-				font-size: 20px;
-				font-weight: 600;
-			}
-			.product_list_details {
-				color: #aaaaaa;
-				margin-left: 50px;
-				width: 70%;
-			}
-
-			.product_list_actions {
-				float: right;
-				width: 500px;
-				a {
-					color: #e74c3c;
-					text-decoration: none;
-				}
-				a:hover {
-					color: #e74c3c;
-					text-decoration: underline;
-				}
-				a:visited {
-					color: #e74c3c;
-					text-decoration: none;
-				}
-			}
-			img {
-				float: left;
-				height: 100px;
-				width: 100px;
-			}
-	}
-	#product_in_list:hover {
-		border: 2px solid #aaaaaa;
-		border-radius: 20px;
-	}
-	
-	
-  }
-
-  #cart_details {
-    float: right;
-    border: 2px solid #b7b7b7;
-    border-radius: 4px;
-    width: 350px;
-    min-height: 220px;
-    text-align: right;
-    font-weight: 200;
-    padding-right: 30px;
-    padding-top: 40px;
-    font-family: 'Montserrat';
-    padding-bottom: 20px;
-
-    .lightgrey{
-      color: lightgrey;
-    }
-    .darkgrey {
-      color: #64566c;
-    }
-
-    .cart_total {
-      border-top: 2px solid #b7b7b7;
-      padding-top: 20px;
-      font-weight: 600;
-      font-size: 20px;
-      margin-left: 30px;
-      margin-top: 30px;
-    }
-  }
-
-}
 
 //
 
@@ -733,173 +467,8 @@ table {
 }
 
 
-// LOGIN FORM
-
-#login_form {
-	margin: 0 auto;
-	background-color: #faf9fa;
-	border: 1px solid #e5e5e5;
-	border-radius: 10px;
-	height: 270px;
-	width: 500px;
-	text-align: left;
-	padding-bottom: 30px;
-	
-	#login_data {
-		margin: 50px 20px 10px 20px;
-		padding: 10px 10px 10px 10px;
-	}
-	
-	
-	.button {
-		float: right;
-	}
-	
-	h3{
-		float: left;
-		margin-left: 10px;
-		margin-top: 15px;
-	}
-	
-	a {
-		float: right;
-		color: #7ca3cc;
-		text-decoration: none;
-		margin-right: 10px;
-		margin-top: 15px;
-	}
-	a:visited{
-		color: #7ca3cc;
-		text-decoration: none;
-	}
-	a:hover {
-		text-decoration: underline;
-	}
-}
 
 
-// SIGN UP FORM
-
-#sign_up_form {
-	margin: 0 auto;
-	background-color: #faf9fa;
-	border: 1px solid #e5e5e5;
-	border-radius: 10px;
-	height: 350px;
-	width: 500px;
-	text-align: left;
-	
-	#sign_up_data {
-		margin: 50px 20px 10px 20px;
-		padding: 10px 10px 10px 10px;
-	}
-	
-	
-	.actions {
-		float: right;
-	}
-	
-	h3{
-		float: left;
-		margin-left: 10px;
-		margin-top: 15px;
-	}
-	
-	a {
-		float: right;
-		color: #7ca3cc;
-		text-decoration: none;
-		margin-right: 10px;
-		margin-top: 15px;
-	}
-	a:visited{
-		color: #7ca3cc;
-		text-decoration: none;
-	}
-	a:hover {
-		text-decoration: underline;
-	}
-}
-
-#address_form {
-	width: 700px;
-	float: left;
-	
-}
-
-#address_container {
-  width: 100%;
-  
-  #all_user_addresses {
-    width: 600px;
-    float: left;
-    min-height: 350px;
-    margin-right: 60px;
-    
-    .grey_button {
-      float: left;
-      margin-right: 400px;
-    }
-   
-    .user_address {
-      border: 2px solid lightgrey;
-      border-radius: 5px;
-      padding: 20px;
-      margin-top: 20px;
-      width: 208px;
-      float: left;
-      margin-right: 45px;
-      margin-bottom: 40px;
-
-      a {
-        width: 100%;
-        float: left;
-      }
-
-      .orange {
-        color: #e74c3c;
-      }
-
-    }
-    
-    .user_address:hover {
-      border: 2px solid #cbebd8;
-      border-radius: 5px;
-    }
-  }
-   #cart_details {
-    float: right;
-    border: 2px solid #b7b7b7;
-    border-radius: 4px;
-    width: 350px;
-    min-height: 220px;
-    text-align: right;
-    font-weight: 200;
-    padding-right: 30px;
-    padding-top: 40px;
-    font-family: 'Montserrat';
-    padding-bottom: 20px;
-
-    .lightgrey{
-      color: lightgrey;
-    }
-    .darkgrey {
-      color: #64566c;
-    }
-
-    .cart_total {
-      border-top: 2px solid #b7b7b7;
-      padding-top: 20px;
-      font-weight: 600;
-      font-size: 20px;
-      margin-left: 30px;
-      margin-top: 30px;
-    }
-  }
-
-  
-  
-}
 
 .step {
   float: right;
@@ -912,15 +481,7 @@ table {
   float: left;
 }
 
-#confirm_container {
-  margin: 0 auto;
-  padding: 40px;
-  width: 500px;
-  height: 100px;
-  background-color: #faf9fa;
-  text-align: center;
-  font-size: 22px;
-}
+
 
 strong {
   color: #6c6c6c;
