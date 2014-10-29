@@ -13,9 +13,9 @@ class CartsController < ApplicationController
   def show
 	 if @current_user 
 	 	@default_address = Address.where(user_id: @current_user.id, default: true).last
-	  end
+	 end
 	  @cart_items = @cart.line_items
-	  session[:url] = request.path
+#	  session[:url] = request.path
   end
 
   # GET /carts/new

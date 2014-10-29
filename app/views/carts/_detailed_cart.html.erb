@@ -3,8 +3,8 @@
 	<h1>Your Cart</h1>
 
 	<div id="product_list">
-		<%= items.each do |line_item| %>
-			<div id="product_in_cart">
+		<% items.each do |line_item| %>
+			<div class="product_in_cart">
 				<%= image_tag(line_item.product_variant.product.image_url) %>
 				<div class="product_details">
 					 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
@@ -13,7 +13,7 @@
 				</div>
 
 				<div class="product_price">
-					Price: <strong><%= number_to_currency(line_item.product_variant.product.price) %><br>
+					Price: <strong><%= number_to_currency(line_item.product_variant.product.price) %></strong><br>
 				</div>
 
 
