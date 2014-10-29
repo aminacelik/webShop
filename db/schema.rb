@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020200635) do
+ActiveRecord::Schema.define(version: 20141029101136) do
 
   create_table "address_types", force: true do |t|
     t.string   "name"
@@ -123,8 +123,10 @@ ActiveRecord::Schema.define(version: 20141020200635) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role_id"
+    t.string   "email"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
 end
