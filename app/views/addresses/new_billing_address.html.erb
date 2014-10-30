@@ -1,0 +1,57 @@
+<h1>New billing address</h1>
+
+<div id="address_form">
+
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="field">
+    <%= f.label :street_name %><br>
+    <%= f.text_field :street_name %><br>
+	  <%= f.label :street_number %><br>
+    <%= f.number_field :street_number %><br>
+    <%= f.label :details %><br>
+    <%= f.text_field :details %>
+  </div>
+
+ 
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.collection_select :city_id, City.all, :id, :name %>
+  </div>
+  
+  <br>Person details:<br>
+   <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+  </div>
+  
+   <div class="field">
+     <%= f.check_box :shipping_default, {checked: true} %> I want this billing address also to be my default shipping address.
+  </div>
+  
+  
+   <%= hidden_field_tag :billing, true %>
+ 
+ 
+  
+  <div class="dugmad">
+    <%= f.submit 'Add Address', class: 'grey_button' %>
+	<%= button_to 'Cancel', addresses_path(@current_user.id), method: :get, class: 'cancel_button' %>
+  </div>
+<% end %>
+
+</div>

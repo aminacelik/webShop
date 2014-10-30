@@ -34,6 +34,7 @@
 							<ul>
 								 <% unless session[:role]=='administrator' %>
 								  <li><%= link_to 'Purchase History' %></li>
+                  <li><%= link_to 'Edit my Addresses', addresses_user_addresses_path %></li>
                 <% end %>
 								<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
 

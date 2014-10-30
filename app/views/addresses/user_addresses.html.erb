@@ -1,0 +1,27 @@
+<div id="address_container">
+  <div id="all_user_addresses">
+
+    <% if @user_addresses.present? %>
+      <h1>Your Addresses</h1>
+      <% @user_addresses.each do |address| %>
+      <div class="user_address">
+        <%= @current_user.name %><br>
+        <%= address.street %><br>
+        <%= address.city_details %><br>
+        <%= address.country_name %><br>
+        Billing: <%= address.billing %><br>
+        Shipping default: <%= address.shipping_default %><br>
+        <%= link_to 'Edit', edit_address_path(address) %>
+        <%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <% end %>
+    <% end %>
+
+
+  <% unless @current_user.has_billing_address? %>
+    <%= link_to 'Add Biling Address', addresses_new_billing_address_path %> | 
+  <% end %>
+    <%= link_to 'Add Shipping Address', new_address_path %> 
+
+  </div>
+</div>

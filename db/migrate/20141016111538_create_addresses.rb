@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.boolean :default
       t.references :user, index: true
       t.references :address_type, index: true
-	  t.references :city, index: true
+	    t.references :city, index: true
 
       t.timestamps
     end

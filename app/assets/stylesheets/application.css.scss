@@ -351,7 +351,7 @@ body {
 	height: 31px;
 	width: 120px;
 	margin: 10px 5px 10px 5px;
-
+  border: 2px solid #e74c3c;
 }
 
 .grey_button {
@@ -366,6 +366,7 @@ body {
 	height: 31px;
 	width: 120px;
 	margin: 10px 5px 10px 5px;
+  border: 2px solid #645c64;
   
 }
 .grey_button:hover {
@@ -374,6 +375,7 @@ body {
 .button:hover {
 	cursor: pointer;
 	background-color: #f16354;
+  border: 2px solid #f16354;
 }
 
 .cancel_button {

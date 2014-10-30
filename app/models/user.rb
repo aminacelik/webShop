@@ -13,4 +13,22 @@ class User < ActiveRecord::Base
   has_secure_password #validates if the pass and pass confirmation match
 	
 
+
+  def has_billing_address?
+    addresses.where(billing: true).present?
+  end
+    
+  def the_same_billling_and_shipping_address?
+    addresses.where(billing: true, shipping_default: true).first.present?
+  end
+
+  def billing_address
+    addresses.where(billing: true).first
+  end
+    
+  def default_shipping_address
+    addresses.where(shipping_default: true).first
+  end
+
+
 end

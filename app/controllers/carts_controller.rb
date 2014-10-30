@@ -11,9 +11,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-	 if @current_user 
-	 	@default_address = Address.where(user_id: @current_user.id, default: true).last
-	 end
+    
 	  @cart_items = @cart.line_items
 #	  session[:url] = request.path
   end
@@ -64,7 +62,7 @@ class CartsController < ApplicationController
 	  session[:cart_id] = nil
 	  
     respond_to do |format|
-      format.html { redirect_to store_url, notice: 'Your cart is empty.' }
+      format.html { redirect_to store_url, notice: 'Your cart is now empty.' }
       format.json { head :no_content }
     end
   end

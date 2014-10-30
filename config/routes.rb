@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 	
-	
+  get 'addresses/user_addresses'
+  
+  get 'addresses/new_billing_address'
+  
   post 'payment/do_payment'
   get 'payment/confirmation'
-  
   
   resources :product_variants
 

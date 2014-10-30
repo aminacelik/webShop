@@ -11,29 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029101136) do
-
-  create_table "address_types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141029182024) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
     t.integer  "street_number"
-    t.integer  "floor"
-    t.string   "flat"
-    t.boolean  "default"
+    t.boolean  "shipping_default", default: false
     t.integer  "user_id"
-    t.integer  "address_type_id"
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "details"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "billing",          default: false
   end
 
-  add_index "addresses", ["address_type_id"], name: "index_addresses_on_address_type_id", using: :btree
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["shipping_default"], name: "index_addresses_on_shipping_default", using: :btree
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "carts", force: true do |t|
