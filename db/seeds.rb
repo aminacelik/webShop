@@ -9,12 +9,7 @@ role.save!
 
 
 # USERS
-role = Role.find_by(name: 'administrator');
-u = User.find_or_initialize_by(name: "amina",
-							                 password: "amina",
-							                 role_id: "#{role.id}",
-                                email:"amina-ch2010@hotmail.coms")
-u.save!
+# do not delete all because of admin
 
 # LINE ITEMS
 LineItem.delete_all
