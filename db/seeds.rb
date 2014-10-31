@@ -9,7 +9,11 @@ role.save!
 
 
 # USERS
-# do not delete all because of admin
+role = Role.find_by(name: 'administrator');
+User.create!(name: 'amina',
+             password: 'amina',
+             role_id: "#{role.id}",
+             email: 'amina@amina.com')
 
 # LINE ITEMS
 LineItem.delete_all

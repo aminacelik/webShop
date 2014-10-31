@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 		
 	before_action :set_cart
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-	
+	before_action :limit_access_to_administrator, only: [:index]
   skip_before_action :authorize, only: [:new, :create]
 
   # GET /users
