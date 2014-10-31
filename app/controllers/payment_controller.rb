@@ -9,7 +9,7 @@ class PaymentController < ApplicationController
 	def do_payment
 	 
 		puts "PaymentController::do_payment params= #{params.inspect}"
-		Stripe.api_key = CFG["secret_key"] #"sk_test_Sy6a6PMcPS9p6fNqMN8Yn2qL"
+		Stripe.api_key = CFG["secret_key"]
 			
 	  customer = Stripe::Customer.create(
 															:email => 'example@stripe.com',

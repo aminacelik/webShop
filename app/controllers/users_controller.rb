@@ -57,6 +57,8 @@ class UsersController < ApplicationController
       end
     end
 	
+    Mandrill::MANDRILL_APIKEY = ENV['MANDRILL_APIKEY']
+    UserNotifier.welcome(@user).deliver
   end
 
   # PATCH/PUT /users/1
