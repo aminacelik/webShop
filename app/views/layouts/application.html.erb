@@ -29,7 +29,7 @@
 						<% end %>
 					
 				<div id="login_register">
-					<% if session[:user_id] %>
+					<% if @current_user %>
 						<li><%= link_to @current_user.name, user_url(@current_user.id) %>
 							<ul>
 								 <% unless session[:role]=='administrator' %>

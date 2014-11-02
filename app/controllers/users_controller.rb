@@ -41,25 +41,28 @@ class UsersController < ApplicationController
 	end
 	@user = @role.users.build(user_params)
 	
-    respond_to do |format|
-      if @user.save
-		  
-		set_session_for_user(@user)
-		  
-        format.html { 
-			redirect_to addresses_url and return if session[:redirect_to_address]
-			redirect_to @user, alert: "User #{@user.name} was successfully created." 
-		}
-        format.json { render :show, status: :created, location: @user }
-      else
+    
+    
+  respond_to do |format|
+    if @user.save
+
+      set_session_for_user(@user)
+      UserNotifier.welcome(@user).deliver
+
+      format.html { 
+        redirect_to addresses_url and return if session[:redirect_to_address]
+        redirect_to @user, alert: "User #{@user.name} was successfully created." 
+      }
+      format.json { render :show, status: :created, location: @user }
+    else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
     end
+  end
 	
     
-    UserNotifier.welcome(@user).deliver
-  end
+    
+end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

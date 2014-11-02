@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	
   get 'addresses/user_addresses'
-  
+  get 'addresses/new_addresses'
   get 'addresses/new_billing_address'
   
   post 'payment/do_payment'
@@ -41,7 +41,9 @@ Rails.application.routes.draw do
 
   resources :line_items
 
-  resources :carts
+  resources :carts do
+    post 'check_user_addresses', :on => :collection
+  end
 
   get 'store/index'
 	

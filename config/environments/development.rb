@@ -37,5 +37,6 @@ Rails.application.configure do
   
   
   config.mandrill_mailer.default_url_options = { :host =>  'localhost' }
+  config.mandrill_mailer.api_key = '5X_GofG5pOJqp-LQgkWFJg' #ENV['MANDRILL_API_KEY']
 
 end

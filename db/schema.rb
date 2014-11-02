@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029182024) do
+ActiveRecord::Schema.define(version: 20141102185253) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
     t.integer  "street_number"
-    t.boolean  "shipping_default", default: false
     t.integer  "user_id"
     t.integer  "city_id"
     t.datetime "created_at"
@@ -24,11 +23,12 @@ ActiveRecord::Schema.define(version: 20141029182024) do
     t.string   "details"
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "billing",          default: false
+    t.boolean  "shipping",      default: false
+    t.boolean  "billing",       default: false
+    t.boolean  "default",       default: false
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
-  add_index "addresses", ["shipping_default"], name: "index_addresses_on_shipping_default", using: :btree
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "carts", force: true do |t|

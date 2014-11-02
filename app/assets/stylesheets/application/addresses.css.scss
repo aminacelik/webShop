@@ -1,4 +1,7 @@
 
+
+
+
 #address_list {
 	width: 1180px;
 	overflow: hidden;
@@ -13,8 +16,35 @@
 }
   
 #address_form {
-	width: 700px;
+	width: 600px;
 	float: left;
+  border: 2px solid #aaaaaa;
+  border-radius: 5px;
+  margin: 20px;
+  margin-bottom: 40px;
+  padding: 30px 10px 10px 10px;
+
+  .field {
+    input[type="number"] {
+      width: 80px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+    }
+
+    select {
+      width: 320px;
+    }
+  
+
+  }
+  .smaller_fields {
+     input[type="text"] {
+      width: 190px;
+    }
+
+  }
 	
 }
 
@@ -37,10 +67,14 @@
       border-radius: 5px;
       padding: 20px;
       margin-top: 20px;
-      width: 208px;
+      width: 560px;
       float: left;
-      margin-right: 45px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      
+      .address_person {
+        border-bottom: 1px solid lightgrey;
+  
+      }
 
       a {
         width: 100%;

@@ -67,6 +67,14 @@ class CartsController < ApplicationController
     end
   end
 
+  def check_user_addresses
+    if @current_user.has_no_address?
+      redirect_to new_address_path
+    else
+      redirect_to addresses_user_addresses_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
