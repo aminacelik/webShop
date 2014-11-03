@@ -11,10 +11,11 @@ class AddressesController < ApplicationController
   # GET /addresses.json
   def index
 	   session[:redirect_to_address]=nil 
-
+# First we are searching addresses selected by session variables
     @selected_shipping = Address.where(id: session[:shipping_id]).first
     @selected_billing = Address.where(id: session[:billing_id]).first
 
+# If we dont find any, we are trying to find default addresses and to select them
     if @selected_shipping.nil?
       @selected_shipping = @current_user.default_shipping_address
     end
@@ -23,25 +24,28 @@ class AddressesController < ApplicationController
       @selected_billing = @current_user.default_billing_address
     end
 
+# If the user has no default addresses, we are offering a form for creating them
     if @selected_shipping.nil?
       @new_shipping= Address.new
+    else
+      session[:shipping_id] = @selected_shipping.id
     end
     
     if @selected_billing.nil?
       @new_billing= Address.new
+    else
+      session[:billing_id] = @selected_billing.id
     end
 
-
-
-
+# If the user has selected the same shipping adn billing addresses, we are showing just one
     if @selected_billing && @selected_shipping && (@selected_shipping == @selected_billing)
       @the_same_addresses = true
     else
       @the_same_addresses = false
     end
 
-    # session[:shipping_id] = @selected_shipping.id
-    # session[:billing_id] = @selected_billing.id
+    
+  
     
 end
 
@@ -119,7 +123,7 @@ end
   
   def user_addresses
     @user_addresses = @current_user.addresses
-    @shipping_type = params[:type]
+    @address_type = params[:type]
   end
   
   def select_address

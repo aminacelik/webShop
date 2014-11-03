@@ -1,3 +1,14 @@
+<% if @new_shipping.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_shipping.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @new_shipping.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
 
 <div id="address_form" name="billing_form">
 

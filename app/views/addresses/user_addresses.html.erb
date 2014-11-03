@@ -5,15 +5,18 @@
       <h1>Your Addresses</h1>
       <% @user_addresses.each do |address| %>
      
-        <%= render partial: 'address', locals: {address: address, type: @shipping_type} %>
+        <%= render partial: 'address', locals: {address: address, type: @address_type} %>
         
       <% end %>
     <% end %>
 
 
     <br>
-    <%= link_to 'Add Biling Address', addresses_new_billing_address_path %> | 
-    <%= link_to 'Add Shipping Address', new_address_path %> 
+    <% if @address_type == "billing" %>
+      <%= link_to 'Add Biling Address', addresses_new_billing_address_path %> 
+    <% else %>
+      <%= link_to 'Add Shipping Address', new_address_path %> 
+    <% end %>
 
 
     <br>
