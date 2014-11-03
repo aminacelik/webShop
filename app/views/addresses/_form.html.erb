@@ -3,7 +3,7 @@
   <h1>Your shipping address</h1>
 
 
-<%= form_for(address) do |f| %>
+<%= form_for(@new_shipping) do |f| %>
 
  
   <div class="smaller_fields">
@@ -25,8 +25,10 @@
   </div>
 
   <div class="field">
-     <%= f.check_box :billing, {checked: true} %> I want this address to be my billing address too.
+     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> I want this address to be my billing address too.
   </div>
+
+
   
   <%= f.hidden_field :shipping, value: true %>
 

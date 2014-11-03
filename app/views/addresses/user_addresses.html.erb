@@ -5,8 +5,8 @@
       <h1>Your Addresses</h1>
       <% @user_addresses.each do |address| %>
      
-        <%= render partial: 'address', locals: {address: address} %>
-   
+        <%= render partial: 'address', locals: {address: address, type: @shipping_type} %>
+        
       <% end %>
     <% end %>
 

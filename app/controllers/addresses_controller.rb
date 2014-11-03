@@ -11,24 +11,39 @@ class AddressesController < ApplicationController
   # GET /addresses.json
   def index
 	   session[:redirect_to_address]=nil 
-    
- 
-    @default_billing = @current_user.default_billing_address
-    if @default_billing.nil?
-      @new_billing= Address.new
+
+    @selected_shipping = Address.where(id: session[:shipping_id]).first
+    @selected_billing = Address.where(id: session[:billing_id]).first
+
+    if @selected_shipping.nil?
+      @selected_shipping = @current_user.default_shipping_address
     end
-    @default_shipping = @current_user.default_shipping_address
-    if @default_shipping.nil?
-      @new_shipping= Address.new
+    
+    if @selected_billing.nil?
+      @selected_billing = @current_user.default_billing_address
     end
 
-    if @default_billing && @default_shipping && (@default_billing == @default_shipping)
+    if @selected_shipping.nil?
+      @new_shipping= Address.new
+    end
+    
+    if @selected_billing.nil?
+      @new_billing= Address.new
+    end
+
+
+
+
+    if @selected_billing && @selected_shipping && (@selected_shipping == @selected_billing)
       @the_same_addresses = true
     else
       @the_same_addresses = false
     end
+
+    # session[:shipping_id] = @selected_shipping.id
+    # session[:billing_id] = @selected_billing.id
     
-  end
+end
 
   # GET /addresses/1
   # GET /addresses/1.json
@@ -37,8 +52,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
-    @shipping_type = AddressType.where(name: 'shipping')
-    @address = Address.new
+    @new_shipping = Address.new
   end
 
   # GET /addresses/1/edit
@@ -52,10 +66,17 @@ class AddressesController < ApplicationController
     @city = City.find(params[:address][:city_id])
     @address = @city.addresses.new(address_params.merge(user_id: @current_user.id))
     
-    
+
     
     respond_to do |format|
       if @address.save
+          if @address.shipping == true
+            session[:shipping_id] = @address.id
+          else
+            session[:billing_id] = @address.id
+          end
+    
+
         format.html { redirect_to addresses_path, notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
@@ -91,15 +112,27 @@ class AddressesController < ApplicationController
     end
   end
 
-
-  
-  
-  def user_addresses
-    @user_addresses = @current_user.addresses.where.not(default: true)
-    
+  def new_billing_address
+    @new_billing = Address.new
   end
   
   
+  def user_addresses
+    @user_addresses = @current_user.addresses
+    @shipping_type = params[:type]
+  end
+  
+  def select_address
+    address = Address.where(id: params[:id]).first
+
+    if params[:type] == 'shipping'
+      session[:shipping_id] = address.id
+    end
+    if params[:type] == 'billing'
+      session[:billing_id] = address.id
+    end
+    redirect_to addresses_path, notice: 'New address is selected!'
+  end
   
   
   

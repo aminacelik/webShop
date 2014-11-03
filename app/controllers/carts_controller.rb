@@ -13,6 +13,9 @@ class CartsController < ApplicationController
   def show
     
 	  @cart_items = @cart.line_items
+
+    session[:shipping_id] = nil
+    session[:billing_id] = nil
 #	  session[:url] = request.path
   end
 

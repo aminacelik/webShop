@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+
+  post 'addresses/select_address'
   get 'addresses/user_addresses'
   get 'addresses/new_addresses'
   get 'addresses/new_billing_address'
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :countries
 
-  resources :addresses
+  resources :addresses 
 
   resources :address_types
 

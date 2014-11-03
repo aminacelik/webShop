@@ -6,7 +6,5 @@
   <%= address.street %>, <%= address.details %><br>
   <%= address.city_details %><br>
   <%= address.country_name %><br>
-
-  <br><%= link_to 'Select this address for order', addresses_select_address_path(id: address.id, type: type), method: :post %>
-
+  <br><%= link_to 'Change', addresses_user_addresses_path(type: 'billing') %>
 </div>

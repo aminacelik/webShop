@@ -1,10 +1,10 @@
 
-<div id="address_form">
+<div id="address_form" name="billing_form">
 
   <h1>Your billing address</h1>
 
 
-  <%= form_for(address) do |f| %>
+  <%= form_for(@new_billing) do |f| %>
 
   <div class="smaller_fields">
     <%= f.label :person_full_name %><br>
