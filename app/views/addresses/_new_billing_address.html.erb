@@ -2,8 +2,6 @@
 
 <div id="address_form" name="billing_form">
 
-  <h1>Your billing address</h1>
-
 
   <%= form_for(@new_billing) do |f| %>
 
@@ -19,14 +17,18 @@
     </div>
 <% end %>
 
-  <div class="smaller_fields">
-    <%= f.label :person_full_name %><br>
-    <%= f.text_field :first_name %><%= f.text_field :last_name %><br>
-  </div>
- 
   <div class="field">
-    <%= f.label :street_name_and_house_number %><br>
-    <%= f.text_field :street_name %><%= f.number_field :street_number %><br>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_name %><br>
+    <%= f.text_field :street_name %><br>
+    <%= f.label :street_number %><br>
+    <%= f.number_field :street_number %><br>
     <%= f.label :details %><br>
     <%= f.text_field :details %>
   </div>
@@ -35,8 +37,7 @@
   <div class="field">
     <%= f.label :city %><br>
     <%= f.collection_select :city_id, City.all, :id, :name %>
-  </div>
-    
+  </div>   
   
   
   
@@ -44,9 +45,8 @@
  
  
   
-  <div class="dugmad">
-    <%= f.submit 'Add Address', class: 'grey_button' %>
-  </div>
+  <%= f.submit 'Add Address', class: 'grey_button' %>
+
 <% end %>
 
 </div>

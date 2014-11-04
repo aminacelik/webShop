@@ -8,20 +8,15 @@
     <% if @selected_shipping.nil? %>
       <%= render partial: 'form' %>
     <% else %>
-     <h3>Shipping Address</h3>
       <%= render partial: 'selected_address_shipping', locals: {address: @selected_shipping} %>
-      
-
     <% end %>
   
+
     <% if @selected_billing.nil? %>
       <%= render partial: 'new_billing_address' %>
     <% else %>
       <% unless @the_same_addresses == true %>
-        <h3>Billing address</h3>
         <%= render partial: 'selected_address_billing', locals: {address: @selected_billing} %>
-        
-
       <% end %>
     <% end %>
  
@@ -47,7 +42,7 @@
 
 
   <div class="buttons">
-    <%= button_to 'Back to Cart', cart_path(@cart.id), method: :get, class: 'cancel_button' %>
+    
   	<%=form_tag '/orders/create_order' do %>
       <% if session[:shipping_id] && session[:billing_id] %>
       	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

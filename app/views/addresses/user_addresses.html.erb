@@ -10,17 +10,12 @@
       <% end %>
     <% end %>
 
+    <div class="links">
+      <br><%= link_to 'Add Biling Address', addresses_new_billing_address_path %> 
+      <br><%= link_to 'Add Shipping Address', new_address_path %> 
+      <br><%= link_to '<< Back to order', addresses_path %>
+    </div>
 
-    <br>
-    <% if @address_type == "billing" %>
-      <%= link_to 'Add Biling Address', addresses_new_billing_address_path %> 
-    <% else %>
-      <%= link_to 'Add Shipping Address', new_address_path %> 
-    <% end %>
-
-
-    <br>
-    <%= link_to '<< Back to order', addresses_path %>
   </div>
 
 
@@ -32,7 +27,6 @@
 
 
   <div class="buttons">
-    <%= button_to 'Back to Cart', cart_path(@cart.id), method: :get, class: 'cancel_button' %>
     <%=form_tag '/payment/do_payment' do %>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"

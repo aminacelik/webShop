@@ -82,13 +82,19 @@ body {
 			margin: 10px auto;
 			height: 40px;
 			color: white;
+
+			li:hover {
+
+				border-bottom: 3px solid #f0b49e;
+				text-align: center;
+			}
 			
 			li {
 				float: left;
 				margin: 0 30px 0 0;
 				color: white;
 				position: relative;
-				height: 50px;
+				height: 47px;
 				color: white;
 				
 				a {
@@ -96,9 +102,10 @@ body {
 					.orange {
 						color: #f0b49e;
 					}
-            &:hover {
-                background-color: transparent;
-            }
+		            &:hover {
+		                background-color: transparent;
+
+		            }
 				}
 				a:visited {
 					color: white;
@@ -141,8 +148,10 @@ body {
 			}
 			
 			li:hover {
+
 				a:hover {
 					color: #f0b49e;
+
 				}
 				
 				cursor: pointer;
@@ -421,6 +430,11 @@ input:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio])
 	padding: 0 10px 0 10px;
 	font-size: 18px;
 	font-weight: 200;
+}
+
+input[type=checkbox]{
+	width: 20px;
+	height: 20px;
 }
 
 select {

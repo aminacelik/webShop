@@ -15,7 +15,7 @@ class AddressesController < ApplicationController
     @selected_shipping = Address.where(id: session[:shipping_id]).first
     @selected_billing = Address.where(id: session[:billing_id]).first
 
-# If we dont find any, we are trying to find default addresses and to select them
+# If we dont find any, we are trying to find default addresses
     if @selected_shipping.nil?
       @selected_shipping = @current_user.default_shipping_address
     end
@@ -122,7 +122,7 @@ end
   
   
   def user_addresses
-    @user_addresses = @current_user.addresses
+    @user_addresses = @current_user.addresses.where(order_id: nil)
     @address_type = params[:type]
   end
   

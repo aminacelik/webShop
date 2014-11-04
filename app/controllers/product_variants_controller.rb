@@ -5,7 +5,7 @@ class ProductVariantsController < ApplicationController
   # GET /product_variants
   # GET /product_variants.json
   def index
-	 @product = Product.find(params[:product_id])    
+	 @product = Product.where(id: params[:product_id], order_id: nil).first    
 	 @product_variants = @product.product_variants
   end
 
@@ -16,7 +16,7 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/new
   def new
-	@product = Product.find(params[:product_id])
+	@product = Product.find(params[:product_id], order_id: nil).first
 	@all_sizes = Size.all
     @product_variant = ProductVariant.new
   end

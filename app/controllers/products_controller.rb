@@ -11,14 +11,14 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.where(order_id: nil)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-	  @similar_products = Product.where(category_id: @product.category.id).last(4)
-	  @variants = ProductVariant.where(product_id: @product.id)
+	  @similar_products = Product.where(category_id: @product.category.id, order_id: nil).last(4)
+	  @variants = ProductVariant.where(product_id: @product.id, order_id: nil)
 	  
 	  @sizes = []
 	  @variants.each do |var| 

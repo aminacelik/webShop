@@ -2,7 +2,7 @@
 
 <div id="address_form">
 
-  <h1>Your shipping address</h1>
+  <div class="title">Your shipping address</div>
 
 
 <%= form_for(@new_shipping) do |f| %>
@@ -18,14 +18,18 @@
     </div>
   <% end %>
  
-  <div class="smaller_fields">
-    <%= f.label :person_full_name %><br>
-    <%= f.text_field :first_name %><%= f.text_field :last_name %><br>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
   </div>
 
   <div class="field">
-    <%= f.label :street_name_and_house_number %><br>
-    <%= f.text_field :street_name %><%= f.number_field :street_number %><br>
+    <%= f.label :street_name %><br>
+    <%= f.text_field :street_name %><br>
+    <%= f.label :street_number %><br>
+    <%= f.number_field :street_number %><br>
     <%= f.label :details %><br>
     <%= f.text_field :details %>
   </div>
@@ -36,17 +40,19 @@
     <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
 
-  <div class="field">
-     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> I want this address to be my billing address too.
-  </div>
-
-
   
   <%= f.hidden_field :shipping, value: true %>
 
-  <div class="dugmad">
-    <%= f.submit 'Add Address', class: 'grey_button' %>
+  <%= f.submit 'Add Address', class: 'grey_button' %>
+
+
+
+  <div class="title">Your billing address</div>
+
+   <div class="checkbox">
+     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> Use shipping address.
   </div>
+  
 <% end %>
 
 </div>

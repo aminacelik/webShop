@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 	  if params[:price_range]
 	  	@products = @category.products.where("price between ? and ?", params[:price_range][0],params[:price_range][1])
 	  else
-		  @products = @category.products
+		  @products = @category.products.where(order_id: nil)
 	  end
   end
 

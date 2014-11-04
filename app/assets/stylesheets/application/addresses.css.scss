@@ -19,69 +19,86 @@
 }
   
 #address_form {
-	width: 600px;
+  
+  font-family: 'Montserrat';
+	width: 430px;
 	float: left;
-  border: 2px solid #aaaaaa;
-  border-radius: 5px;
   margin: 20px;
   margin-bottom: 40px;
-  padding: 30px 10px 10px 10px;
+  padding: 2px 10px 10px 10px;
+  margin-right: 300px;
+  overflow: hidden;
 
-  .field {
-    input[type="number"] {
-      width: 80px;
-    }
-
-    input[type="text"] {
-      width: 300px;
-    }
-
+  .title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
     select {
-      width: 320px;
+      width: 420px;
     }
   
-
+  .grey_button {
+    margin-left: 310px;
   }
-  .smaller_fields {
-     input[type="text"] {
-      width: 190px;
-    }
 
-  }
-	
 }
+
+
+
+	
 
 #address_container {
   width: 100%;
+  font-family: 'Montserrat';
   
   #all_user_addresses {
-    width: 600px;
+    width: 580px;
     float: left;
     min-height: 350px;
     margin-right: 60px;
     
     .grey_button {
-      float: left;
-      margin-right: 400px;
+      float: right;
     }
-   
+    
+    .links{
+
+      width: 580px;
+    }
+
+
     .user_address {
-      border: 2px solid lightgrey;
+      border: 3px solid lightgrey;
+      margin: 0 10px 10px 10px;
       border-radius: 5px;
       padding: 20px;
       margin-top: 20px;
-      width: 560px;
+      width: 220px;
       float: left;
-      margin-bottom: 30px;
+
       
-      .address_person {
-        border-bottom: 1px solid lightgrey;
-  
+      .title {
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 600;
       }
 
-      a {
-        width: 100%;
+       a {
         float: left;
+        color: #7ca3cc;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+      a:visited{
+        color: #7ca3cc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        background-color: transparent;
       }
 
       .orange {
@@ -91,7 +108,7 @@
     }
     
     .user_address:hover {
-      border: 2px solid #cbebd8;
+      border: 3px solid #cbebd8;
       border-radius: 5px;
     }
   }
