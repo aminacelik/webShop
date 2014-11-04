@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 	
+  post 'orders/create_order'
+
+  resources :orders
 
   post 'addresses/select_address'
   get 'addresses/user_addresses'
   get 'addresses/new_addresses'
   get 'addresses/new_billing_address'
   
+
   post 'payment/do_payment'
   get 'payment/confirmation'
   

@@ -1,14 +1,4 @@
-<% if @new_shipping.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@new_shipping.errors.count, "error") %> prohibited this address from being saved:</h2>
 
-      <ul>
-      <% @new_shipping.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-<% end %>
 
 <div id="address_form" name="billing_form">
 
@@ -16,6 +6,18 @@
 
 
   <%= form_for(@new_billing) do |f| %>
+
+  <% if @new_billing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_billing.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @new_billing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
 
   <div class="smaller_fields">
     <%= f.label :person_full_name %><br>

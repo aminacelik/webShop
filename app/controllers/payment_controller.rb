@@ -12,24 +12,32 @@ class PaymentController < ApplicationController
 		Stripe.api_key = CFG["secret_key"]
 			
 	  customer = Stripe::Customer.create(
-															:email => 'example@stripe.com',
-															:card  => params[:stripeToken]
+		:email => 'example@stripe.com',
+		:card  => params[:stripeToken]
 	  )			
 	
 		puts "customer = #{customer.inspect}"
 			
 		charge = Stripe::Charge.create(
-																:customer    => customer.id,
-																:amount      => (@cart.total_delivery_and_products_price*100).to_i,
-																:description => 'Rails Stripe customer',
-																:currency    => 'usd'
-	  )	
+			:customer    => customer.id,
+			:amount      => (@cart.total_delivery_and_products_price*100).to_i,
+			:description => 'Rails Stripe customer',
+			:currency    => 'usd'
+	  	)	
 		
 			
 		puts "charge = #{charge.inspect}"
 		
-    @cart.destroy
-		render 'charges/confirmation'
+
+	# creating order
+	# price = @cart.total_delivery_and_products_price
+ #    @order = Order.create(user_id: @current_user.id, price: price)
+
+
+    # @line_items = @cart.line_items
+    # @line_items.delete_all	
+
+    # render 'charges/confirmation'
 			
 	end
 	

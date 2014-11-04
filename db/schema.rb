@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102185253) do
+ActiveRecord::Schema.define(version: 20141103213236) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141102185253) do
     t.boolean  "shipping",      default: false
     t.boolean  "billing",       default: false
     t.boolean  "default",       default: false
+    t.integer  "order_id"
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
@@ -75,6 +76,15 @@ ActiveRecord::Schema.define(version: 20141102185253) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["product_variant_id"], name: "index_line_items_on_product_variant_id", using: :btree
 
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
   create_table "product_variants", force: true do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 20141102185253) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   add_index "product_variants", ["color_id"], name: "index_product_variants_on_color_id", using: :btree
@@ -96,6 +107,7 @@ ActiveRecord::Schema.define(version: 20141102185253) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.integer  "order_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree

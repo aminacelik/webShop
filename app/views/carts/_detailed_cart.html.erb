@@ -30,12 +30,14 @@
 
 
 <% unless @cart.number_of_products == 0 %>
-  <div class="step">Step 1 of 2</div>
-	<%= render("carts/order_cart") %>
-	<div class="buttons">
-    <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
-		<%= button_to 'Pick address', addresses_path, method: :get, class: 'grey_button' %>
-	</div>
+  <div class="order_display">
+  	<div class="step">Step 1 of 2</div>
+  	<%= render("carts/order_cart") %>
+	<%= button_to 'Continue', addresses_path, method: :get, class: 'grey_button' %>
+    <%= button_to 'Cancel', @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
+  </div>
+	
+
 <% else %>
 	<h2>Your cart is empty.</h2>
 <% end %>

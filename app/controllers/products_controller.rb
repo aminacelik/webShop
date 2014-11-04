@@ -22,7 +22,9 @@ class ProductsController < ApplicationController
 	  
 	  @sizes = []
 	  @variants.each do |var| 
-		  @sizes << var.size
+      if var.quantity > 0
+		    @sizes << var.size
+      end
 	  end
 	  
 

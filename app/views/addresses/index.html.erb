@@ -48,13 +48,14 @@
 
   <div class="buttons">
     <%= button_to 'Back to Cart', cart_path(@cart.id), method: :get, class: 'cancel_button' %>
-  	<%=form_tag '/payment/do_payment' do %>
+  	<%=form_tag '/orders/create_order' do %>
       <% if session[:shipping_id] && session[:billing_id] %>
       	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
                 data-description="Pay for your items"
                 data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i %>">
         </script>
+
       <% else %>
         Pick your shipping and billing addresses, please.
       <% end %>
