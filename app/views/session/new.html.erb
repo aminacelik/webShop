@@ -7,8 +7,11 @@
 	<%= link_to 'Create account', new_user_path %><br>
 	  <div id="login_data">
         <%= label_tag :email, 'Email:' %><br>
-        <%= email_field_tag :email, params[:email] %><br>
+        <%= email_field_tag :email, params[:email], autofocus: true %><br>
       
+        <script type="text/javascript">
+          document.getElementById('email').focus();
+        </script>
 		    <%= label_tag :password, 'Password:' %><br>
         <%= password_field_tag :password, params[:password] %><br>
      

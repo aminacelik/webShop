@@ -1,0 +1,10 @@
+<div class="user_address">
+  <div class="title">Your Billing And Shipping Address</div>
+
+  <%= address.first_name %> <%= address.last_name %><br>
+  
+  <%= address.street %>, <%= address.details %><br>
+  <%= address.city_details %><br>
+  <%= address.country_name %><br>
+  <br><%= link_to 'Change', addresses_user_addresses_path(type: 'billing') %>
+</div>

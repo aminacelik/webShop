@@ -1,51 +1,75 @@
 
+<div class="address_form" name="billing_form">
 
-<div id="address_form" name="billing_form">
-
+  <div class="title">Your billing address</div>
 
   <%= form_for(@new_billing) do |f| %>
-
+ 
   <% if @new_billing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@new_billing.errors.count, "error") %> prohibited this address from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@new_billing.errors.count, "error") %> prohibited this address from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @new_billing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
+  <% end %>
+
+<% if @new_shipping %>
+  <div class="checkbox">
+   <%= f.check_box 'billing', {checked: false, onchange: "hide_billing_form()"} %> Use shipping address.
+ </div>
 <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %><br>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br>
-  </div>
+ <script type="text/javascript">
+ function hide_billing_form() {
+  var billing_form = document.getElementsByName('billing_form')[0];
+  var billing_checkbox = document.getElementById('billing_checkbox');
+  if(this.checked==true) {
+   billing_form.style.display = 'none';
+   billing_checkbox.style.display= 'block';
+ } else {
+   billing_form.style.display = 'block';
+   billing_checkbox.style.display= 'none';
+ }
+};
+</script>
 
-  <div class="field">
-    <%= f.label :street_name %><br>
-    <%= f.text_field :street_name %><br>
-    <%= f.label :street_number %><br>
-    <%= f.number_field :street_number %><br>
-    <%= f.label :details %><br>
-    <%= f.text_field :details %>
-  </div>
+<div class="field">
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name, autofocus: true %><br>
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %><br>
+</div>
 
- 
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.collection_select :city_id, City.all, :id, :name %>
-  </div>   
-  
-  
-  
-   <%= f.hidden_field :billing, value: true %>
- 
- 
-  
-  <%= f.submit 'Add Address', class: 'grey_button' %>
+   <script type="text/javascript">
+      document.getElementById('name').focus();
+    </script>
+
+<div class="field">
+  <%= f.label :street_name %><br>
+  <%= f.text_field :street_name %><br>
+  <%= f.label :street_number %><br>
+  <%= f.number_field :street_number %><br>
+  <%= f.label :details %><br>
+  <%= f.text_field :details %>
+</div>
+
+
+<div class="field">
+  <%= f.label :city %><br>
+  <%= f.collection_select :city_id, City.all, :id, :name %>
+</div>   
+
+
+
+<%= f.hidden_field :billing, value: true %>
+
+
+
+<%= f.submit 'Add Address', class: 'grey_button' %>
 
 <% end %>
 

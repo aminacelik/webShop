@@ -12,6 +12,7 @@ class AddressesController < ApplicationController
   def index
 	   session[:redirect_to_address]=nil 
 # First we are searching addresses selected by session variables
+
     @selected_shipping = Address.where(id: session[:shipping_id]).first
     @selected_billing = Address.where(id: session[:billing_id]).first
 

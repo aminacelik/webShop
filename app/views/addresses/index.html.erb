@@ -5,32 +5,47 @@
   
   <div id="all_user_addresses">
     
-    <% if @selected_shipping.nil? %>
-      <%= render partial: 'form' %>
+    <% if @the_same_addresses == true %>
+      <%= render partial: 'selected_address', locals: {address: @selected_shipping} %>
     <% else %>
-      <%= render partial: 'selected_address_shipping', locals: {address: @selected_shipping} %>
-    <% end %>
-  
 
-    <% if @selected_billing.nil? %>
-      <%= render partial: 'new_billing_address' %>
-    <% else %>
-      <% unless @the_same_addresses == true %>
-        <%= render partial: 'selected_address_billing', locals: {address: @selected_billing} %>
+      <% if @selected_shipping.nil? %>
+        <%= render partial: 'form' %>
+      <% else %>
+        <%= render partial: 'selected_address_shipping', locals: {address: @selected_shipping} %>
       <% end %>
-    <% end %>
+    
+
+      <% if @selected_billing.nil? %>
+        <%= render partial: 'addresses/new_billing_address' %>
+      <% else %>
+          <%= render partial: 'selected_address_billing', locals: {address: @selected_billing} %>
+      <% end %>
+      
+    
  
       <script type="text/javascript">
         function show_billing_form() {
           var billing_form = document.getElementsByName('billing_form')[0];
-           if(this.checked) {
+          var billing_checkbox = document.getElementById('billing_checkbox');
+           if(this.checked == true) {
              billing_form.style.display = 'none';
+             billing_checkbox.style.display= 'block';
            } else {
              billing_form.style.display = 'block';
+             billing_checkbox.style.display= 'none';
            }
         };
       </script>
 
+      <% if @new_billing && !@new_shipping %>
+      <script type="text/javascript">
+        var billing_form = document.getElementsByName('billing_form')[0];
+        billing_form.style.display = 'block';
+      </script>
+      <% end %>
+
+    <% end %>
   </div>
 
   
