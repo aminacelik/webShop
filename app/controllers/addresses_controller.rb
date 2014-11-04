@@ -25,6 +25,7 @@ class AddressesController < ApplicationController
     end
 
 # If the user has no default addresses, we are offering a form for creating them
+# And if he has, we are selecting that address
     if @selected_shipping.nil?
       @new_shipping= Address.new
     else

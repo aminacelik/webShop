@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   include CurrentCart
 
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-  before_action :limit_access_to_administrator, only: [:index]
+  before_action :authorize, only: [:index]
 
 
   # GET /carts
