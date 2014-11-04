@@ -19,34 +19,20 @@
 
 <% if @new_shipping %>
   <div class="checkbox">
-   <%= f.check_box 'billing', {checked: false, onchange: "hide_billing_form()"} %> Use shipping address.
+   <%= check_box 'billing', {checked: false, onchange: "hide_billing_form()"} %> Use shipping address.
  </div>
 <% end %>
 
- <script type="text/javascript">
- function hide_billing_form() {
-  var billing_form = document.getElementsByName('billing_form')[0];
-  var billing_checkbox = document.getElementById('billing_checkbox');
-  if(this.checked==true) {
-   billing_form.style.display = 'none';
-   billing_checkbox.style.display= 'block';
- } else {
-   billing_form.style.display = 'block';
-   billing_checkbox.style.display= 'none';
- }
-};
-</script>
+
 
 <div class="field">
   <%= f.label :first_name %><br>
-  <%= f.text_field :first_name, autofocus: true %><br>
+  <%= f.text_field :first_name %><br>
   <%= f.label :last_name %><br>
   <%= f.text_field :last_name %><br>
 </div>
 
-   <script type="text/javascript">
-      document.getElementById('name').focus();
-    </script>
+ 
 
 <div class="field">
   <%= f.label :street_name %><br>
@@ -74,3 +60,16 @@
 <% end %>
 
 </div>
+ <script type="text/javascript">
+ function hide_billing_form() {
+  var billing_form = document.getElementsByName('billing_form')[0];
+  var billing_checkbox = document.getElementById('billing_checkbox');
+  if(this.checked==true) {
+   billing_form.style.display = 'none';
+   billing_checkbox.style.display= 'block';
+ } else {
+   billing_form.style.display = 'block';
+   billing_checkbox.style.display= 'none';
+ }
+};
+</script>

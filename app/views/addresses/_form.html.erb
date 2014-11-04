@@ -48,6 +48,7 @@
   
   <%= f.hidden_field :shipping, value: true %>
 
+<% if @new_shipping && @new_billing %>
 <div id= "billing_checkbox">
   <div class="title">Your billing address</div>
 
@@ -55,7 +56,7 @@
      <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> Use shipping address.
   </div>
 </div>
-
+<% end %>
 
  <script type="text/javascript">
  function show_billing_form() {

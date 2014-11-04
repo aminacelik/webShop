@@ -59,7 +59,7 @@
   <div class="buttons">
     
   	<%=form_tag '/orders/create_order' do %>
-      <% if session[:shipping_id] && session[:billing_id] %>
+      <% if @selected_shipping && @selected_billing %>
       	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
                 data-description="Pay for your items"
