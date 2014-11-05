@@ -6,5 +6,6 @@
   <%= address.street %>, <%= address.details %><br>
   <%= address.city_details %><br>
   <%= address.country_name %><br>
-  <br><%= link_to 'Change', addresses_user_addresses_path(type: 'billing') %>
+  <br><%= link_to 'Pick other billing address', addresses_user_addresses_path(type: 'billing') %>
+  <br><%= link_to 'Pick other shipping address', addresses_user_addresses_path(type: 'shipping') %>
 </div>
