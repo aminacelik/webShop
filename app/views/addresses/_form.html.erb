@@ -6,23 +6,13 @@
 
 
 <%= form_for(@new_shipping) do |f| %>
-  <% if @new_shipping.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@new_shipping.errors.count, "error") %> prohibited this address from being saved:</h2>
-
-      <ul>
-      <% @new_shipping.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
  
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, autofocus: true %><br>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br>
+    <%= f.label :first_name %><%= errors_for @new_shipping, :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.label :last_name %><%= errors_for @new_shipping, :last_name %><br />
+    <%= f.text_field :last_name %>
   </div>
 
      <script type="text/javascript">
@@ -31,11 +21,11 @@
 
 
   <div class="field">
-    <%= f.label :street_name %><br>
-    <%= f.text_field :street_name %><br>
-    <%= f.label :street_number %><br>
-    <%= f.number_field :street_number %><br>
-    <%= f.label :details %><br>
+    <%= f.label :street_name %><%= errors_for @new_shipping, :street_name %><br />
+    <%= f.text_field :street_name %>
+    <%= f.label :street_number %><%= errors_for @new_shipping, :street_number %><br />
+    <%= f.number_field :street_number %>
+    <%= f.label :details %>
     <%= f.text_field :details %>
   </div>
 

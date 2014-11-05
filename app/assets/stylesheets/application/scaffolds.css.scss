@@ -40,10 +40,20 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+
+  input[type=text], input[type=password], input[type=email]{
+    background-color: #f4aeae;
+
+  }
 }
+.error_explanation{
+  font-size: 10px;
+  color: #f4aeae;
+  margin-top: 1px;
+  margin-right: 10px;
+  text-align: right;
+}
+
 
 #error_explanation {
   width: 450px;

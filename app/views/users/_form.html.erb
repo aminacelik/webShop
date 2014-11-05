@@ -1,28 +1,23 @@
 <%= form_for(@user) do |f| %>
 
-  <% if @user.errors.any? %>
-    <br><%= @user.errors.full_messages.first %>
-  <% end %>
-  
-
 
 <div id="sign_up_data">
-	  <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true %><br>
+	  <%= f.label :name %><%= errors_for @user, :name %>
+    <%= f.text_field :name, autofocus: true %><br />
 
     <script type="text/javascript">
-      document.getElementById('name').focus();
+      document.getElementById('user_name').focus();
     </script>
     
-    <%= f.label :email %><br>
-    <%= f.email_field :email %><br>
+    <%= f.label :email %><%= errors_for @user, :email %>
+    <%= f.email_field :email %><br />
   
-    <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
+    <%= f.label :password %><%= errors_for @user, :password %>
+    <%= f.password_field :password %><br />
  
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %><br>
-
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= errors_for @user, :password_confirmation %><br />
 
 <% if @current_user && @current_user.role.name == 'administrator'  %>
  
