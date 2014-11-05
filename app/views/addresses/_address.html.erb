@@ -1,12 +1,8 @@
-<div class="user_address">
-  <div class="address_person">
-    <%= address.first_name %> <%= address.last_name %><br>
-  </div>
-  
-  <%= address.street %>, <%= address.details %><br>
-  <%= address.city_details %><br>
-  <%= address.country_name %><br>
-
-  <br><%= link_to 'Select this address', addresses_select_address_path(id: address.id, type: type), method: :post %>
-
-</div>
+<%= link_to addresses_select_address_path(id: address.id, type: type), method: :post do %>
+	<span class="user_address">
+	  <%= address.first_name %> <%= address.last_name %><br>
+	  <%= address.street %>, <%= address.details %><br>
+	  <%= address.city_details %><br>
+	  <%= address.country_name %><br>
+	</span>
+<% end %>

@@ -11,9 +11,11 @@
     <% end %>
 
     <div class="links">
-      <br><%= link_to 'Add Biling Address', addresses_new_billing_address_path %> 
-      <br><%= link_to 'Add Shipping Address', new_address_path %> 
-      <br><%= link_to '<< Back to order', addresses_path %>
+      <% if params[:type] == 'billing' %>
+        <%= link_to 'New Biling Address', addresses_new_billing_address_path %> 
+      <% else %>
+        <%= link_to 'Add Shipping Address', new_address_path %> 
+      <% end %>
     </div>
 
   </div>

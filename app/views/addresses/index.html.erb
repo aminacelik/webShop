@@ -22,21 +22,7 @@
           <%= render partial: 'selected_address_billing', locals: {address: @selected_billing} %>
       <% end %>
       
-    
- 
-      <script type="text/javascript">
-        function show_billing_form() {
-          var billing_form = document.getElementsByName('billing_form')[0];
-          var billing_checkbox = document.getElementById('billing_checkbox');
-           if(this.checked == true) {
-             billing_form.style.display = 'none';
-             billing_checkbox.style.display= 'block';
-           } else {
-             billing_form.style.display = 'block';
-             billing_checkbox.style.display= 'none';
-           }
-        };
-      </script>
+
 
       <% if @new_billing && !@new_shipping %>
       <script type="text/javascript">
@@ -45,21 +31,11 @@
       </script>
       <% end %>
 
+
+
     <% end %>
   </div>
- <script type="text/javascript">
- function hide_billing_form() {
-  var billing_form = document.getElementsByName('billing_form')[0];
-  var billing_checkbox = document.getElementById('billing_checkbox');
-  if(this.checked==true) {
-   billing_form.style.display = 'block';
-   billing_checkbox.style.display= 'none';
- } else {
-   billing_form.style.display = 'none';
-   billing_checkbox.style.display= 'block';
- }
-};
-</script>
+
   
 <!--  If user is ordering -->
 <% unless @cart.number_of_products == 0 %>
@@ -84,3 +60,31 @@
   <% end %>
   </div>
 </div>
+
+
+    
+ 
+<script type="text/javascript">
+  function show_billing_form() {
+    var billing_form = document.getElementsByName('billing_form')[0];
+    var billing_checkbox_div = document.getElementById('billing_checkbox');
+    var hide_billing_checkbox = document.getElementById('hide_billing_checkbox');
+     if(!this.checked) {
+       billing_form.style.display = 'block';
+       billing_checkbox_div.style.display = 'none';
+       hide_billing_checkbox.checked = false;
+     }
+  };
+
+  function hide_billing_form() {
+
+  var billing_form = document.getElementsByName('billing_form')[0];
+  var billing_checkbox_div = document.getElementById('billing_checkbox');
+  var show_billing_checkbox = document.getElementById('show_billing_checkbox');
+  if(this.checked) {
+     billing_form.style.display = 'none';
+     billing_checkbox_div.style.display = 'block';
+     show_billing_checkbox.checked = true;
+    } 
+  };
+</script>

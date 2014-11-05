@@ -1,9 +1,10 @@
 .address_form:nth-child(2) {
   display:none;
-
 }
 
-
+.address_form:nth-child(1) {
+  display:block;
+}
 
 #address_list {
 	width: 1180px;
@@ -115,6 +116,7 @@
     .user_address:hover {
       border: 3px solid #cbebd8;
       border-radius: 5px;
+      color: black;
     }
   }
    #cart_details {

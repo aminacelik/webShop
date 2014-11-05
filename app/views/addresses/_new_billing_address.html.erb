@@ -18,8 +18,8 @@
   <% end %>
 
 <% if @new_shipping %>
-  <div class="checkbox">
-   <%= check_box 'billing', {checked: false, onchange: "hide_billing_form()"} %> Use shipping address.
+  <div class="checkbox" id="hide_billing_checkbox">
+   <%= f.check_box 'shipping', {checked: false, onchange: "hide_billing_form()"} %> Use shipping address.
  </div>
 <% end %>
 
