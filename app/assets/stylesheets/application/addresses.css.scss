@@ -70,8 +70,23 @@
     }
     
     .links{
-
+      overflow: hidden;
       width: 580px;
+      a {
+        float: left;
+        color: #7ca3cc;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+      a:visited{
+        color: #7ca3cc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        background-color: transparent;
+      }
     }
 
 
@@ -91,7 +106,7 @@
         font-weight: 600;
       }
 
-       a {
+      a {
         float: left;
         color: #7ca3cc;
         text-decoration: none;
