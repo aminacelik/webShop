@@ -7,6 +7,6 @@ class StoreController < ApplicationController
 	before_action :set_cart
 	
  	def index
-		@products = Product.last(8)
+		@products = Product.where(order_id: nil).last(8)
   	end
 end
