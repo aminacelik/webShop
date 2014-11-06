@@ -3,9 +3,9 @@ class Address < ActiveRecord::Base
   belongs_to :city
 	
 	
-	validates :street_name, :street_number, :first_name, :last_name, presence: true
-	validates :user, associated: true
-	validates :city, associated: true
+	validates :street_name, :street_number, :first_name, :last_name, :user_id, :city_id, presence: true
+	# validates :user, associated: true
+	# validates :city, associated: true
 	
   def country_name
 	  self.city.country_name
@@ -19,4 +19,6 @@ class Address < ActiveRecord::Base
   def city_details
 	  "#{city.postal_code}, #{city.name}"
   end
+
+
 end

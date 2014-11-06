@@ -150,7 +150,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:street_name, :street_number, :shipping, :billing, :user_id, :first_name, :last_name, :details, :default)
+      params.require(:address).permit(:street_name, :street_number, :details, :shipping, :billing, :default, :user_id, :city_id, :first_name, :last_name)
     end
 	 
   

@@ -176,10 +176,13 @@
 }
 
 .order_display {
+	
+  	font-family: 'Montserrat';
 	width: 390px;
 	overflow: hidden;
 	margin: 0;
 	float:right;
+	right: 0;
 
 	 .step{
     	text-transform: uppercase;
