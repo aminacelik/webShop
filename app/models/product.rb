@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :color
+    belongs_to :order
     
 	has_many :product_variants
 

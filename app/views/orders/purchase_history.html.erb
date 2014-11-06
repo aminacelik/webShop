@@ -1,0 +1,31 @@
+<h2>Purchase History</h2>
+
+<table>
+	<% @order_items.each do |product_variant| %>
+	<tr>
+		<td>
+			<%= image_tag product_variant.get_product_image_url %>
+		</td>
+		<td>
+			<span class="title"><%= product_variant.get_product_title %></span><br/>
+			Size: <%= product_variant.get_product_size %><br/>
+			Color: <%= product_variant.get_product_color %><br />
+		</td>
+		<td>
+			Price: <br/>
+			<span class="price"><%= product_variant.get_product_price %></span><br/>
+			Quantity: <%= product_variant.quantity %><br/>
+		</td>
+		<td>
+			Order date: <br/>
+			<%= product_variant.order.get_order_date %><br />
+		</td>
+
+		<td>
+			Shipping address:<br/>
+			<%= render partial: 'addresses/address_display', locals: {address: product_variant.order.get_shipping_address} %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+	

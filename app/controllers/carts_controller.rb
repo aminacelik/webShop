@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   include CurrentCart
 
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:show, :edit, :update, :destroy] #deleted method
   before_action :authorize, only: [:index]
 
 

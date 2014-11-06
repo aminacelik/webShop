@@ -1,0 +1,11 @@
+<div id="confirm_container">
+  <div class="big">Thank you!</div>
+
+  	You bought the following items: <br>
+
+	<% @order_items.each do |product_variant| %>
+		<%= image_tag product_variant.get_product_image_url %>
+	<% end %><br>
+
+	You spent: <div class="big"><%= number_to_currency(@order.price) %></div>
+</div>

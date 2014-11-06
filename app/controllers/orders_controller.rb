@@ -82,9 +82,23 @@ class OrdersController < ApplicationController
     @line_items = @cart.line_items
     @line_items.delete_all  
 
-    render 'charges/confirmation'
+    redirect_to orders_purchase_confirmation_path(id: @order.id), notice: 'You have ordered!'
   end
 
+  def purchase_confirmation
+    @order = Order.where(id: params[:id]).first
+    @order_items = @order.product_variants
+  end
+
+  def purchase_history
+    @user_orders = Order.where(user_id: @current_user.id).order('created_at DESC')
+    @order_items = []
+    @user_orders.each do |order|
+      @order_items +=  order.product_variants
+    end
+
+
+  end
 
   private
 

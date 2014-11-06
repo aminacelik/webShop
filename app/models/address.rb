@@ -1,6 +1,7 @@
 class Address < ActiveRecord::Base
   belongs_to :user
   belongs_to :city
+  belongs_to :order
 	
 	
 	validates :street_name, :street_number, :first_name, :last_name, :user_id, :city_id, presence: true

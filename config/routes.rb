@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  get 'orders/purchase_confirmation'
+  get 'orders/purchase_history'
   post 'orders/create_order'
 
   resources :orders

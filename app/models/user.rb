@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   
   belongs_to :role
   has_many :addresses, dependent: :destroy
+  has_many :orders
 	
   validates :name, :email, :role_id, presence: true
   validates :email, uniqueness: true

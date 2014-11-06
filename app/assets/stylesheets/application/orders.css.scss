@@ -1,3 +1,56 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+	color: #7d7d7d;
+	margin-left: 50px;
+	
+	td {
+
+		height: 160px;
+		text-align: left;
+		border-bottom: 1px solid #d3c9c8;
+
+		img {
+			height: 150px;
+			width: 150px;
+
+		}
+
+		.price {
+			font-size: 16px;
+			font-weight: 600;
+		}
+		.title {
+			font-size: 14px;
+			font-weight: 600;
+		}
+	}
+}
+
+
+#confirm_container {
+  margin: 0 auto;
+  padding: 40px;
+  width: 500px;
+  height: auto;
+  overflow: hidden;
+  background-color: #faf9fa;
+  text-align: center;
+  color: #7d7d7d;
+  font-size: 14px;
+
+  .big {
+  	font-size: 22px;
+  	font-weight: 600;
+  }
+
+  img {
+  	height: 60px;
+  	width: 60px;
+  	margin-top: 30px;
+  	margin-bottom: 40px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	border-radius: 5px;
+  	border: 1px solid #7d7d7d;
+  }
+}
