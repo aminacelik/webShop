@@ -1,10 +1,10 @@
 <div class="user_address">
-  <div class="title">Billing Address</div>
+  <div class="title"><%= t('.billing_address_html') %></div>
 
   <%= address.first_name %> <%= address.last_name %><br>
   
   <%= address.street %>, <%= address.details %><br>
   <%= address.city_details %><br>
   <%= address.country_name %><br>
-  <br><%= link_to 'Change', addresses_user_addresses_path(type: 'billing') %>
+  <br><%= link_to t('.change'), addresses_user_addresses_path(type: 'billing') %>
 </div>

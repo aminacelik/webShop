@@ -2,20 +2,20 @@
 
   <%= form_tag do %>
   <div id="login_form">
-     <h3>Login to your account</h3>
+     <h3><%= t('.login') %></h3>
 
-	<%= link_to 'Create account', new_user_path %><br>
+	<%= link_to t('.create_account_html'), new_user_path %><br>
 	  <div id="login_data">
-        <%= label_tag :email, 'Email:' %>
+        <%= label_tag :email, t('.email') %>
         <%= email_field_tag :email, params[:email], autofocus: true %>
       
         <script type="text/javascript">
           document.getElementById('email').focus();
         </script>
-		    <%= label_tag :password, 'Password:' %>
+		    <%= label_tag :password, t('.password_html') %>
         <%= password_field_tag :password, params[:password] %>
      
-		<%= submit_tag "Login", class: 'grey_button' %>
+		<%= submit_tag t('.login_button'), class: 'grey_button' %>
 	</div>
   </div>
   <% end %>

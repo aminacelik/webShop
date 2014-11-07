@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
   protect_from_forgery with: :exception
+  before_action :set_i18n_locale_from_params
   before_action :find_current_user
   before_action :authorize, :find_categories
   
@@ -16,26 +16,34 @@ class ApplicationController < ActionController::Base
   end
 	
 protected 
-	
-	# provjerava da li je logovan user
-  def authorize
-	  
-	  
-	  
-	  puts "CONTROLLER : #{params.inspect}"
-	  
-	  
-	  unless (session[:user_id])
-	  	session[:redirect_to_address] = true if params[:action] == "index" && params[:controller] == "addresses"
-		redirect_to login_url, alert: "Before seeing this page you have to log in."
-	  end
-	  
+
+  def set_i18n_locale_from_params
+  	if params[:locale]
+  		if I18n.available_locales.map(&:to_s).include?(params[:locale])
+  			I18n.locale = params[:locale]
+  		else
+  			flash.now[:notice] = "The requested translation is not available."
+  			logger.error flash.now[:notice]
+  		end
+  	end
   end
 
-	# za stranice kojima pristup treba imati samo administrator
+  def default_url_options
+  	{ locale: I18n.locale }
+  end
+
+	# checks if user is logged in
+  def authorize
+	  unless (session[:user_id])
+	  	session[:redirect_to_address] = true if params[:action] == "index" && params[:controller] == "addresses"
+		redirect_to login_url, alert: t('.login_mssg')
+	  end
+  end
+
+
   def limit_access_to_administrator
 	  unless session[:role] == "administrator"
-		  redirect_to store_url, notice: "You are not allowed to access this page."
+		  redirect_to store_url, notice: t('.admin_mssg')
 	  end
   end
 end

@@ -1,11 +1,11 @@
 <div class="user_address">
 
-  <div class="title">Shipping Address</div>
+  <div class="title"><%= t('.shipping_address') %></div>
 
   <%= address.first_name %> <%= address.last_name %><br>
   
   <%= address.street %>, <%= address.details %><br>
   <%= address.city_details %><br>
   <%= address.country_name %><br>
-  <br><%= link_to 'Change', addresses_user_addresses_path(type: 'shipping') %>
+  <br><%= link_to t('.change'), addresses_user_addresses_path(type: 'shipping') %>
 </div>

@@ -20,4 +20,139 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      home_html: "Home"
+      purchase_history: "Purchase history"
+      settings: "Settings"
+      my_addresses: "My addresses"
+      login: "Log In"
+      logout: "Log out"
+      register: "Register"
+      rights_html: "All rights reserved."
+
+  store:
+    index:
+      new_in_store: "New in store"
+
+  users:
+    form:
+      username_html: "Name"
+      email: "Email address"
+      password_html: "Password"
+      password_confirmation_html: "Password confirmation"
+      create: "Create"
+    new:
+      signup: "Sign Up Now"
+      login: "Log In"
+    edit:
+      edit_html: "Editing user"
+      show: "Show"
+      back: "Back"
+    show:
+      username_html: "Username"
+      addresses: "My addresses"
+      edit_address: "Edit"
+      edit_profile: "Edit profile"
+
+  session:
+    new:
+      login: "Login to your account"
+      create_account_html: "Create account"
+      email: "Email address"
+      password_html: "Password"
+      login_button: "Log In"
+
+  products:
+    show:
+      price: "Price"
+      size_html: "Size"
+      add_html: "Add to Cart"
+      similar_products_html: "Similar products"
+  
+  carts:
+    detailed_cart:
+      cart_html: "Your cart"
+      size_html: "Size"
+      color: "Color"
+      price: "Price"
+      step_1of2: "Step 1 of 2"
+      continue: "Continue"
+      cancel: "Cancel"
+      empty_cart: "Your cart is empty."
+    order_cart:
+      order_html: "Order"
+      total_price_products: "Total price for products"
+      total_price_delivery: "Total price for delivery"
+      total_price: "Total"
+      product: "product"
+
+  addresses:
+    form:
+      shipping_address: "Shipping address"
+      billing_address_html: "Billing address"
+      first_name: "First name"
+      last_name: "Last name"
+      street_name: "Street name"
+      street_number: "Number"
+      details: "Details"
+      city: "City"
+      the_same: "The same as shipping address."
+      add_address: "Add Address"
+    new_billing_address:
+      shipping_address: "Shipping address"
+      billing_address_html: "Billing address"
+      first_name: "First name"
+      last_name: "Last name"
+      street_name: "Street name"
+      street_number: "Number"
+      details: "Details"
+      city: "City"
+      the_same: "The same as shipping address."
+      add_address: "Add Address"
+    selected_address:
+      selected_address_html: "Your billing and shipping address"
+      pick_other_billing_html: "Pick other billing address"
+      pick_other_shipping: "Pick other shipping address"
+    selected_address_billing:
+      billing_address_html: "Billing address"
+      change: "Change"
+    selected_address_shipping:
+      shipping_address: "Shipping address"
+      change: "Change"
+    edit:
+      edit_address: "Editing address"
+      show_html: "Show"
+      back: "Back"
+    user_addresses:
+      your_addresses: "Your addresses"
+      new_billing_html: "New billing address"
+      new_shipping: "New shipping address"
+      step_2of2: "Step 2 of 2"
+
+  orders:
+    purchase_history:
+      purchase_history: "Purchase history"
+      size_html: "Size"
+      color: "Color"
+      price: "Price"
+      qunatity_html: "Quantity"
+      order_date_html: "Order rade"
+      shipping_address: "Shipping address"
+    purchase_confirmation:
+      thank_you: "Thank you"
+      you_bought_html: "You bought the following products"
+      you_spent_html: "You spent"
+  
+
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+
+  login_mssg: "Before seeing this page you have to log in." 
+  admin_mssg: "You are not allowed to access this page."

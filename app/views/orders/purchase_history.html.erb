@@ -1,4 +1,4 @@
-<h2>Purchase History</h2>
+<h2><%= t('.purchase_history') %></h2>
 
 <table>
 	<% @order_items.each do |product_variant| %>
@@ -8,21 +8,21 @@
 		</td>
 		<td>
 			<span class="title"><%= product_variant.get_product_title %></span><br/>
-			Size: <%= product_variant.get_product_size %><br/>
-			Color: <%= product_variant.get_product_color %><br />
+			<%= t('.size_html') %>: <%= product_variant.get_product_size %><br/>
+			<%= t('.color') %>: <%= product_variant.get_product_color %><br />
 		</td>
 		<td>
-			Price: <br/>
+			<%= t('.price') %> <br/>
 			<span class="price"><%= product_variant.get_product_price %></span><br/>
-			Quantity: <%= product_variant.quantity %><br/>
+			<%= t('.quantity_html') %> <%= product_variant.quantity %><br/>
 		</td>
 		<td>
-			Order date: <br/>
+			<%= t('.order_date_html') %> <br/>
 			<%= product_variant.order.get_order_date %><br />
 		</td>
 
 		<td>
-			Shipping address:<br/>
+			<%= t('.shipping_address') %><br/>
 			<%= render partial: 'addresses/address_display', locals: {address: product_variant.order.get_shipping_address} %>
 		</td>
 	</tr>

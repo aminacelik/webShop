@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
 	
-  get 'orders/purchase_confirmation'
-  get 'orders/purchase_history'
-  post 'orders/create_order'
 
-  resources :orders
-
-  post 'addresses/select_address'
-  get 'addresses/user_addresses'
-  get 'addresses/new_addresses'
-  get 'addresses/new_billing_address'
-  
-
-  post 'payment/do_payment'
-  get 'payment/confirmation'
   
   resources :product_variants
 
@@ -25,45 +12,59 @@ Rails.application.routes.draw do
 
   resources :countries
 
-  resources :addresses 
-
   resources :address_types
-
-  resources :categories
 
   resources :roles
 
-  get 'admin' => 'admin#index'
-
-  controller :session do
-	 get 'login' => :new
-	 post 'login' => :create
-	 delete 'login' => :destroy
-   end
-
-  get 'session/create'
-
-  get 'session/destroy'
-
-  resources :users
-
   resources :line_items
 
-  resources :carts do
-    post 'check_user_addresses', :on => :collection
-  end
+  get 'admin' => 'admin#index'
 
-  get 'store/index'
-	
+
+
+  scope '(:locale)' do
+
+    get  'orders/purchase_confirmation'
+    get  'orders/purchase_history'
+    post 'orders/create_order'
+
+    post 'addresses/select_address'
+    get  'addresses/user_addresses'
+    get  'addresses/new_billing_address'
+    
+
+    post 'payment/do_payment'
+    get  'payment/confirmation'
+
+
+    get 'session/create'
+    get 'session/destroy'
   
+    get 'store/index'
 
-  resources :products
+    resources :orders
+    resources :addresses
+    resources :carts
+    resources :users
+    resources :products
+    resources :categories
+
+    controller :session do
+     get 'login' => :new
+     post 'login' => :create
+     delete 'login' => :destroy
+
+
+
+    end
+    
+    root 'store#index', as: 'store', via: :all
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'store#index', as: 'store'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

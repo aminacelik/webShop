@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-	  @addresses = @user.addresses
+	  @addresses = @user.addresses.where(order_id: nil)
   end
 
   # GET /users/new

@@ -3,7 +3,7 @@
 
 	<% cache ['store', Product.latest] do %>
 
-	<h2>New in store</h2>
+	<h2><%= t('.new_in_store') %></h2>
 		<% @products.each do |product| %>
 
 			<% cache ['entry', product] do %>

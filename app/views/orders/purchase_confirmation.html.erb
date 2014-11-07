@@ -1,11 +1,11 @@
 <div id="confirm_container">
-  <div class="big">Thank you!</div>
+  <div class="big"><%= t('.thank_you') %>!</div>
 
-  	You bought the following items: <br>
+  	<%= t('.you_bought_html') %>: <br>
 
 	<% @order_items.each do |product_variant| %>
 		<%= image_tag product_variant.get_product_image_url %>
 	<% end %><br>
 
-	You spent: <div class="big"><%= number_to_currency(@order.price) %></div>
+	<%= t('.you_spent_html') %>: <div class="big"><%= number_to_currency(@order.price) %></div>
 </div>

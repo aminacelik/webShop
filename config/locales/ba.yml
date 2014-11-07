@@ -1,0 +1,150 @@
+ba:
+  layouts:
+    application:
+      home_html: "Početna"
+      purchase_history: "Historija kupovine"
+      settings: "Postavke"
+      my_addresses: "Moje adrese"
+      login: "Prijava"
+      logout: "Odjava"
+      register: "Registracija"
+      rights_html: "Sva prava pridržana."
+
+  store:
+    index:
+      new_in_store: "Najnoviji artikli"
+
+  users:
+    form:
+      username_html: "Korisničko ime"
+      email: "Email adresa"
+      password_html: "Šifra za prijavu"
+      password_confirmation_html: "Potvrda šifre"
+      create: "Kreiraj"
+    new:
+      signup: "Registracija"
+      login: "Prijavi se"
+    edit:
+      edit_html: "Izmjena korisničkih podataka"
+      show: "Prikaz"
+      back: "Nazad"
+    show:
+      username_html: "Korisničko ime"
+      addresses: "Moje adrese"
+      edit_address: "Izmijeni"
+      edit_profile: "Izmijeni svoje podatke"
+
+  session:
+    new:
+      login: "Prijavite se"
+      create_account_html: "Registruj se"
+      email: "Email adresa"
+      password_html: "Prijavna šifra"
+      login_button: "Prijava"
+
+  products:
+    show:
+      price: "Cijena"
+      size_html: "Veličina"
+      add_html: "Dodaj u korpu"
+      similar_products_html: "Slični proizvodi"
+
+  carts:
+    detailed_cart:
+      cart_html: "Vaša korpa"
+      size_html: "Veličina"
+      color: "Boja"
+      price: "Cijena"
+      step_1of2: "Korak 1 od 2"
+      continue: "Nastavi"
+      cancel: "Odustani"
+      empty_cart: "Vaša korpa je prazna."
+    order_cart:
+      order_html: "Narudžba"
+      total_price_products: "Ukupna cijena za artikle"
+      total_price_delivery: "Ukupna cijena za dostavu"
+      total_price: "Ukupno"
+      product: "proizvod"
+
+  addresses:
+    form:
+      shipping_address: "Adresa za dostavu"
+      billing_address_html: "Adresa za račun"
+      first_name: "Ime"
+      last_name: "Prezime"
+      street_name: "Naziv ulice"
+      street_number: "Broj"
+      details: "Detalji"
+      city: "Grad"
+      the_same: "Ista kao i adresa za dostavu."
+      add_address: "Kreiraj adresu"
+    new_billing_address:
+      shipping_address: "Adresa za dostavu"
+      billing_address_html: "Adresa za račun"
+      first_name: "Ime"
+      last_name: "Prezime"
+      street_name: "Naziv ulice"
+      street_number: "Broj"
+      details: "Detalji"
+      city: "Grad"
+      the_same: "Ista kao i adresa za dostavu."
+      add_address: "Kreiraj adresu"
+    selected_address:
+      selected_address_html: "Adresa za račun i za dostavu"
+      pick_other_billing_html: "Izaberi drugu adresu za račun"
+      pick_other_shipping: "Izaberi drugu adresu za dostavu"
+    selected_address_billing:
+      billing_address_html: "Adresa za račun"
+      change: "Promijeni"
+    selected_address_shipping:
+      shipping_address: "Adresa za dostavu"
+      change: "Promijeni"
+    edit:
+      edit_address: "Izmjena adrese"
+      show_html: "Prikaži"
+      back: "Nazad"
+    user_addresses:
+      your_addresses: "Tvoje adrese"
+      new_billing_html: "Nova adresa za račun"
+      new_shipping: "Nova adresa za dostavu"
+      step_2of2: "Korak 2 od 2"
+
+  orders:
+    purchase_history:
+      purchase_history: "Historija kupovine"
+      size_html: "Veličina"
+      color: "Boja"
+      price: "Cijena"
+      qunatity_html: "Količina"
+      order_date_html: "Datum narudžbe"
+      shipping_address: "Adresa za dostavu"
+    purchase_confirmation:
+      thank_you: "Hvala"
+      you_bought_html: "Kupili ste sljedeće artikle"
+      you_spent_html: "Potrošili ste"
+
+  number:
+    currency:
+      format:
+        unit: "KM"
+        precision: 2
+        separator: ","
+        delimiter: "."
+        format: "%n%u"
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "nije uključeno u listu."
+        blank: "ne može ostati prazno."
+       
+
+  login_mssg: "Da biste otvorili traženu stranicu morate se prvo prijaviti."
+  admin_mssg: "Nije vam dozvoljen pristup traženoj stranici."
+
+
+
+
+
+
+

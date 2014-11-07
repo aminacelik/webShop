@@ -1,11 +1,11 @@
 <div class="user_address">
-  <div class="title">Your Billing And Shipping Address</div>
+  <div class="title"><%= t('.selected_address_html') %></div>
 
   <%= address.first_name %> <%= address.last_name %><br>
   
   <%= address.street %>, <%= address.details %><br>
   <%= address.city_details %><br>
   <%= address.country_name %><br>
-  <br><%= link_to 'Pick other billing address', addresses_user_addresses_path(type: 'billing') %>
-  <br><%= link_to 'Pick other shipping address', addresses_user_addresses_path(type: 'shipping') %>
+  <br><%= link_to t('.pick_other_billing_html'), addresses_user_addresses_path(type: 'billing') %>
+  <br><%= link_to t('.pick_other_shipping'), addresses_user_addresses_path(type: 'shipping') %>
 </div>

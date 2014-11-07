@@ -16,7 +16,7 @@
 					<div id="logo"><%=image_tag('logo.png')%></div>
 
 					<ul id="menu">
-						<li><%= link_to 'Home', store_url %></li>
+						<li><%= link_to t('.home_html'), store_url %></li>
 						<% @categories.each do |c| %>
 							<li><%= link_to c.name, category_path(c) %></li>
 						<% end %>						
@@ -32,21 +32,24 @@
 					<% if @current_user %>
 						<li><%= link_to @current_user.name, user_url(@current_user.id) %>
 							<ul>
-								 <% unless session[:role]=='administrator' %>
-								  <li><%= link_to 'Purchase History', orders_purchase_history_path %></li>
-                  <li><%= link_to 'Edit my Addresses', addresses_user_addresses_path %></li>
-                <% end %>
-								<li><%= link_to 'Account Settings', edit_user_path(@current_user) %></li>
+								<% unless session[:role]=='administrator' %>
+								  <li><%= link_to t('.purchase_history'), orders_purchase_history_path %></li>
+                				<% end %>
+								<li><%= link_to t('.settings'), edit_user_path(@current_user) %></li>
 
 							</ul>
 						</li> 
-						<li><%= link_to 'Log Out', login_url, method: :delete, class: 'orange' %></li>
+						<li><%= link_to t(".logout"), login_url, method: :delete, class: 'orange' %></li>
 					<% else %>
-						<li><%= link_to 'Register', new_user_url %></li> 
-						<li><%= link_to 'Log In', login_url, class: 'orange' %></li>
+						<li><%= link_to t('.register'), new_user_url %></li> 
+						<li><%= link_to t('.login'), login_url, class: 'orange' %></li>
 					<% end %>
 				</div>
 					
+			</div>
+
+			<div id="languages">
+				<%= link_to 'Bosanski', store_path(set_locale: 'ba') %>
 			</div>
 
 		</div>
@@ -122,10 +125,10 @@
 		
 		<div id="footer">
 			<div id="copyright">
-				<small>Copyright @abhShoes. All rights reserved. </small>
+				<small>Copyright @abhShoes. <%= t('.rights_html')%> </small>
 			</div>
 			<ul id="footer_menu">
-				<li><%= link_to 'Home', store_url %></li>
+				<li><%= link_to t('.home_html'), store_url %></li>
 				<% @categories.each do |c| %>
 					<li><%= link_to c.name, category_path(c) %></li>
 				<% end %>

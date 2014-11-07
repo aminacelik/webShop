@@ -2,7 +2,7 @@
   <div id="all_user_addresses">
 
     <% if @user_addresses.present? %>
-      <h1>Your Addresses</h1>
+      <h1><%= t('.your_addresses') %></h1>
       <% @user_addresses.each do |address| %>
      
         <%= render partial: 'address', locals: {address: address, type: @address_type} %>
@@ -12,9 +12,9 @@
 
     <div class="links">
       <% if params[:type] == 'billing' %>
-        <%= link_to 'New Biling Address', addresses_new_billing_address_path %> 
+        <%= link_to t('.new_billing_html'), addresses_new_billing_address_path %> 
       <% else %>
-        <%= link_to 'Add Shipping Address', new_address_path %> 
+        <%= link_to t('.new_shipping'), new_address_path %> 
       <% end %>
     </div>
 
@@ -23,7 +23,7 @@
 
   <!--  If user is ordering -->
 <% unless @cart.number_of_products == 0 %>
-  <div class="step">Step 2 of 2</div>
+  <div class="step"><%= t('.step_2of2') %></div>
   <%= render partial: "carts/order_cart" %>
 <% end %>
 

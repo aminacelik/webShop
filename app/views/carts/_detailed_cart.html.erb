@@ -1,6 +1,6 @@
 
 <div id="cart_items">
-	<h1>Your Cart</h1>
+	<h1><%= t('.cart_html') %></h1>
 
 	<div id="product_list">
 		<% items.each do |line_item| %>
@@ -8,12 +8,12 @@
 				<%= image_tag(line_item.product_variant.product.image_url) %>
 				<div class="product_details">
 					 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
-					Size: <%= line_item.product_variant.size.size %><br>
-					Color: <%= line_item.product_variant.color.name %><br>
+					<%= t('.size_html') %>: <%= line_item.product_variant.size.size %><br>
+					<%= t('.color') %>: <%= line_item.product_variant.color.name %><br>
 				</div>
 
 				<div class="product_price">
-					Price: <strong><%= number_to_currency(line_item.product_variant.product.price) %></strong><br>
+					<%= t('.price') %>: <strong><%= number_to_currency(line_item.product_variant.product.price) %></strong><br>
 				</div>
 
 
@@ -31,13 +31,13 @@
 
 <% unless @cart.number_of_products == 0 %>
   <div class="order_display">
-  	<div class="step">Step 1 of 2</div>
+  	<div class="step"><%= t('.step_1of2') %></div>
   	<%= render("carts/order_cart") %>
-	<%= button_to 'Continue', addresses_path, method: :get, class: 'grey_button' %>
-    <%= button_to 'Cancel', @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
+	<%= button_to t('.continue'), addresses_path, method: :get, class: 'grey_button' %>
+    <%= button_to t('.cancel'), @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
   </div>
 	
 
 <% else %>
-	<h2>Your cart is empty.</h2>
+	<h2><%= t('.empty_cart') %></h2>
 <% end %>

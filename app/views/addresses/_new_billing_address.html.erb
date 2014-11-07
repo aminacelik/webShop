@@ -1,7 +1,7 @@
 
 <div class="address_form" name="billing_form">
 
-  <div class="title">Your billing address</div>
+  <div class="title"><%= t('.billing_address_html') %></div>
 
   <%= form_for(@new_billing) do |f| %>
  
@@ -19,33 +19,33 @@
 
 <% if @new_shipping %>
   <div class="checkbox">
-   <%= f.check_box 'shipping', {checked: false, onchange: "hide_billing_form()"} %> The same as shipping.
+   <%= f.check_box 'shipping', {checked: false, onchange: "hide_billing_form()"} %> <%= t.('.the_same') %>
  </div>
 <% end %>
 
 
 
 <div class="field">
-  <%= f.label :first_name %><br>
+  <%= f.label :first_name, t('.first_name') %><br>
   <%= f.text_field :first_name %><br>
-  <%= f.label :last_name %><br>
+  <%= f.label :last_name, t('.last_name') %><br>
   <%= f.text_field :last_name %><br>
 </div>
 
  
 
 <div class="field">
-  <%= f.label :street_name %><br>
+  <%= f.label :street_name, t('.street_name') %><br>
   <%= f.text_field :street_name %><br>
-  <%= f.label :street_number %><br>
+  <%= f.label :street_number, t('.street_number') %><br>
   <%= f.number_field :street_number %><br>
-  <%= f.label :details %><br>
+  <%= f.label :details, t('.details') %><br>
   <%= f.text_field :details %>
 </div>
 
 
 <div class="field">
-  <%= f.label :city %><br>
+  <%= f.label :city, t('.city') %><br>
   <%= f.collection_select :city_id, City.all, :id, :name %>
 </div>   
 
@@ -55,7 +55,7 @@
 
 
 
-<%= f.submit 'Add Address', class: 'grey_button' %>
+<%= f.submit t('.add_address'), class: 'grey_button' %>
 
 <% end %>
 

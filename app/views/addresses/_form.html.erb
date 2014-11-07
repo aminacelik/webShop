@@ -2,16 +2,16 @@
 
 <div class="address_form">
 
-  <div class="title">Your shipping address</div>
+  <div class="title"><%= t('.shipping_address') %></div>
 
 
 <%= form_for(@new_shipping) do |f| %>
   
  
   <div class="field">
-    <%= f.label :first_name %><%= errors_for @new_shipping, :first_name %><br />
+    <%= f.label :first_name, t('.first_name') %><%= errors_for @new_shipping, :first_name %><br />
     <%= f.text_field :first_name, autofocus: true %>
-    <%= f.label :last_name %><%= errors_for @new_shipping, :last_name %><br />
+    <%= f.label :last_name, t('.last_name') %><%= errors_for @new_shipping, :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
 
@@ -21,17 +21,17 @@
 
 
   <div class="field">
-    <%= f.label :street_name %><%= errors_for @new_shipping, :street_name %><br />
+    <%= f.label :street_name, t('.street_name') %><%= errors_for @new_shipping, :street_name %><br />
     <%= f.text_field :street_name %>
-    <%= f.label :street_number %><%= errors_for @new_shipping, :street_number %><br />
+    <%= f.label :street_number, t('.street_number') %><%= errors_for @new_shipping, :street_number %><br />
     <%= f.number_field :street_number %>
-    <%= f.label :details %>
+    <%= f.label :details, t('.details') %>
     <%= f.text_field :details %>
   </div>
 
  
   <div class="field">
-    <%= f.label :city %><br>
+    <%= f.label :city, t('.city') %><br>
     <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
 
@@ -40,17 +40,17 @@
 
 <% if @new_shipping && @new_billing %>
 <div id= "billing_checkbox">
-  <div class="title">Your billing address</div>
+  <div class="title"><%= t.('.billing_address_html') %></div>
 
    <div class="checkbox">
-     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> The same as shipping.
+     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> <%= t('.the_same') %>
   </div>
 </div>
 <% end %>
 
 
   
-<%= f.submit 'Add Address', class: 'grey_button' %>
+<%= f.submit t('.add_address'), class: 'grey_button' %>
 
 
 

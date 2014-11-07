@@ -1,31 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('.username_html') %></strong>
   <%= @user.name %>
 </p>
 
 
 <p>
-	<h2>Addresses:</h2>
+	<h2><%= t('.addresses') %></h2>
 </p>
 <% unless session[:role]=='administrator' %>
 	<div id="address_list">
 		<% @addresses.each do |address| %>
 			<div class="address_display">
-				Address type: <strong><%= address.address_type.name %></strong><br>
 				<%= address.street %><br>
 				<%= address.city_details %><br>
 				<%= address.country_name %><br>
-				<%= link_to 'Edit Address', edit_address_path(address) %>
+				<%= link_to t('.edit_address'), edit_address_path(address) %>
 			</div>
 		<% end %>
 	</div>
 <% end %>
 
 <div id="user_links">
-	<%= link_to 'Edit profile', edit_user_path(@user) %> |
-	<% unless session[:role]=='administrator' %>
-		<%= link_to 'Add Address', new_address_path %> |
-	<% end %>
+	<%= link_to t('.edit_profile'), edit_user_path(@user) %>
 </div>

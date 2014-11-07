@@ -7,6 +7,12 @@ class StoreController < ApplicationController
 	before_action :set_cart
 	
  	def index
-		@products = Product.where(order_id: nil).last(8)
+ 		if params[:set_locale]
+ 			redirect_to store_url(locale: params[:set_locale])
+ 		else
+			@products = Product.where(order_id: nil).last(8)
+		end
   	end
+
+  	
 end

@@ -1,16 +1,16 @@
 <div id="cart_details">
 
-	<div class="lightgrey">Order:</div>
-	<div class="darkgrey"><%= pluralize(@cart.number_of_products, 'product') %></div> <br>
+	<div class="lightgrey"><%= t('.order_html') %></div>
+	<div class="darkgrey"><%= pluralize(@cart.number_of_products, t('.product')) %></div> <br>
 	
-	<div class="lightgrey">Total price for products:</div>
+	<div class="lightgrey"><%= t('.total_price_products') %></div>
 	<div class="darkgrey"><%= number_to_currency(@cart.total_price) %> </div>
 	
-	<div class="lightgrey">Total price for delivery: </div>
+	<div class="lightgrey"><%= t('.total_price_delivery') %> </div>
 	<div class="darkgrey"><%= number_to_currency(@cart.delivery_price) %></div>
 	
 	<div class="cart_total">
-		<div class="darkgrey"> Total: <%= number_to_currency(@cart.total_delivery_and_products_price) %></div>
+		<div class="darkgrey"><%= t('.total_price') %> <%= number_to_currency(@cart.total_delivery_and_products_price) %></div>
 	</div>
 	
 </div>
