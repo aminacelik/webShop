@@ -1,31 +1,24 @@
-
 table {
-	color: #7d7d7d;
-	margin-left: 50px;
-	
-	td {
-
-		height: 160px;
-		text-align: left;
-		border-bottom: 1px solid #d3c9c8;
-
-		img {
-			height: 150px;
-			width: 150px;
-
-		}
-
-		.price {
-			font-size: 16px;
-			font-weight: 600;
-		}
-		.title {
-			font-size: 14px;
-			font-weight: 600;
-		}
-	}
+  color: #7d7d7d;
+  margin-left: 50px;
+  td {
+    height: 160px;
+    text-align: left;
+    border-bottom: 1px solid #d3c9c8;
+    img {
+      height: 150px;
+      width: 150px;
+    }
+    .price {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
 }
-
 
 #confirm_container {
   margin: 0 auto;
@@ -37,20 +30,18 @@ table {
   text-align: center;
   color: #7d7d7d;
   font-size: 14px;
-
   .big {
-  	font-size: 22px;
-  	font-weight: 600;
+    font-size: 22px;
+    font-weight: 600;
   }
-
   img {
-  	height: 60px;
-  	width: 60px;
-  	margin-top: 30px;
-  	margin-bottom: 40px;
-  	margin-left: auto;
-  	margin-right: auto;
-  	border-radius: 5px;
-  	border: 1px solid #7d7d7d;
+    height: 60px;
+    width: 60px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: 1px solid #7d7d7d;
   }
 }
