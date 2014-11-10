@@ -6,6 +6,9 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 </head>
 <body class="<%= controller.controller_name %>">
 
@@ -48,7 +51,7 @@
 					
 			</div> 
         
-        <div id="languages">
+    <div id="languages">
       <%= link_to image_tag('bih.jpg'), store_url(locale: 'ba'), title: 'Bosanski jezik' %>
       <%= link_to image_tag('uk.jpg'), store_url(locale: 'en'), title: 'English' %>
     </div>
@@ -113,10 +116,8 @@
 	</div>
 	<% end %>
 	
-	
-	<% if notice %>
 		<p id="notice"><%= notice %></p>
-	<% end %>
+
 	
 	<div id="container">
 		<div id="content">
@@ -139,6 +140,58 @@
 		</div>
 	
 	</div>
+  
+  
+      <script type="text/javascript">
+ 
+      function fly_to_cart() {
+        var cart = $('#cart');
+        var product_display_form = $('#product_display_form');
+        var imgtodrag = product_display_form.find("img").eq(0);
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+            })
+                .appendTo($('body'))
+                .animate({
+                'top': cart.offset().top + 10,
+                    'left': cart.offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000, 'easeInOutExpo');
+            
+            setTimeout(function () {
+                cart.effect("shake", {
+                    times: 1
+                }, 200);
+            }, 1500);
+
+            imgclone.animate({
+                'width': 0,
+                    'height': 0
+            }, function () {
+                $(this).detach()
+            });
+          
+           var notice_area = $('#notice');
+           notice_area.fadeIn(3000);
+           notice_area.html('Added to your cart!');
+           notice_area.fadeOut(1500);
+        }
+    };
+    </script>
+
+  
+  
 </body>
 
 </html>

@@ -34,7 +34,7 @@
   	<div class="step"><%= t('.step_1of2') %></div>
   	<%= render("carts/order_cart") %>
 	<%= button_to t('.continue'), addresses_path, method: :get, class: 'grey_button' %>
-    <%= button_to t('.cancel'), @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
+    <%= button_to t('.empty_cart_button'), @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'cancel_button' %>
   </div>
 	
 

@@ -57,7 +57,7 @@ ba:
       price: "Cijena"
       step_1of2: "Korak 1 od 2"
       continue: "Nastavi"
-      cancel: "Odustani"
+      empty_cart_button: "Isprazni"
       empty_cart: "Vaša korpa je prazna."
     order_cart:
       order_html: "Narudžba"

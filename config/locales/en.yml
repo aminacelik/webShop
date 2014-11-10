@@ -78,7 +78,7 @@ en:
       price: "Price"
       step_1of2: "Step 1 of 2"
       continue: "Continue"
-      cancel: "Cancel"
+      empty_cart_button: "Empty Cart"
       empty_cart: "Your cart is empty."
     order_cart:
       order_html: "Order"

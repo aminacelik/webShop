@@ -34,7 +34,7 @@
 -->
 		
 	<% unless session[:role]=='administrator' %>
-		<%= submit_tag t('.add_html'), class: 'button' %>
+		<%= submit_tag t('.add_html'), class: 'button', onclick: "fly_to_cart()" %>
 	<% end %>
 		
 		
@@ -58,3 +58,4 @@
 		<% end %>
 </div>
 
+      
