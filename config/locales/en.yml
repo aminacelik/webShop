@@ -154,5 +154,38 @@ en:
         delimiter: ","
         format: "%u%n"
 
-  login_mssg: "Before seeing this page you have to log in." 
-  admin_mssg: "You are not allowed to access this page."
+
+
+  status_mssg:
+    address:
+      created: "Your address is now saved."
+      updated_html: "Your address is successfully updated."
+      deleted: "The address is deleted."
+      selected: "Address is selected!"
+    cart:
+      created: "New cart is created."
+      updated_html: "Your cart is updated."
+      emptied: "Your cart is now empty."
+      added: "Added to cart!"
+    order:
+      created: "The order is created."
+      updated_html: "The order is updated."
+      deleted: "The order is deleted."
+      ordered: "Your order is successfully created."
+    product:
+      created: "The product is successfully created."
+      updated_html: "The product is successfully updated."
+      deleted: "The product is deleted."
+    session:
+      logged_in: "Wellcome!"
+      logged_out: "Goodbye!"
+      invalid_login_combination: "Your email and password combination is incorrect."
+    store:
+      language_changed_html: "Language is changed to English."
+    user:
+      created: "User successfully registered."
+      updated_html: "User information are successfully updated."
+      deleted: "User is deleted."
+    application:
+      login_mssg: "Before seeing this page you have to log in." 
+      admin_mssg: "You are not allowed to access this page."

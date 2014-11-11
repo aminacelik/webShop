@@ -36,14 +36,14 @@ protected
   def authorize
 	  unless (session[:user_id])
 	  	session[:redirect_to_address] = true if params[:action] == "index" && params[:controller] == "addresses"
-		redirect_to login_url, alert: t('.login_mssg')
+		redirect_to login_url, alert: t('status_mssg.application.login_mssg')
 	  end
   end
 
 
   def limit_access_to_administrator
 	  unless session[:role] == "administrator"
-		  redirect_to store_url, notice: t('.admin_mssg')
+		  redirect_to store_url, notice: t('status_mssg.application.admin_mssg')
 	  end
   end
 end

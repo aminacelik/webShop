@@ -140,11 +140,41 @@ ba:
         blank: "ne može ostati prazno."
        
 
-  login_mssg: "Da biste otvorili traženu stranicu morate se prvo prijaviti."
-  admin_mssg: "Nije vam dozvoljen pristup traženoj stranici."
 
 
-
+  status_mssg:
+    address:
+      created: "Uspjesno ste kreirali novu adresu."
+      updated_html: "Adresa je uspješno ažurirana."
+      deleted: "Adresa je izbrisana."
+      selected: "Adresa je selektovana."
+    cart:
+      created: "Korpa je kreirana."
+      updated_html: "Korpa je ažurirana."
+      emptied: "Ispraznili ste svoju korpu."
+      added: "Dodano u korpu!"
+    order:
+      created: "Narudzba je kreirana."
+      updated_html: "Narudžba je ažurirana."
+      deleted: "Narudzba je izbrisana."
+      ordered: "Uspjesno ste narucili!"
+    product:
+      created: "Proizvod je uspjesno kreiran."
+      updated_html: "Proizvod je uspješno ažuriran."
+      deleted: "Proizvod je izbrisan."
+    session:
+      logged_in: "Dobrodosli!"
+      logged_out: "Uspjesno ste odjavljeni."
+      invalid_login_combination: "Kombinacija emaila i sifre za prijavu nije ispravna."
+    store:
+      language_changed_html: "Jezik stranice je promijenjen u bosanski."
+    user:
+      created: "Korisnik je registrovan."
+      updated_html: "Korisnikovi podaci su uspješno ažurirani."
+      deleted: "Korisnik je izbrisan."
+    application:
+      login_mssg: "Da biste otvorili traženu stranicu morate se prvo prijaviti."
+      admin_mssg: "Nije vam dozvoljen pristup traženoj stranici."
 
 
 

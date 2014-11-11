@@ -16,21 +16,21 @@ class SessionController < ApplicationController
       set_session_for_user(user)
 	
 	  if session[:role] == 'administrator'
-		  redirect_to products_url, notice: "Logged in!"
+		  redirect_to products_url, notice: t('status_mssg.session.logged_in')
 	  else 
 		  id = @cart.id
 		  redirect_to addresses_url and return if session[:redirect_to_address]
-		  redirect_to store_url, notice: "Logged in!"
+		  redirect_to store_url, notice: t('status_mssg.session.logged_in')
 	  end
 		
     else
-      redirect_to login_url, alert: "Invalid user/password combination."
+      redirect_to login_url, alert: t('status_mssg.session.invalid_login_combination')
     end
   end
 
   def destroy
 	  session[:user_id]= nil
 	  session[:role] = nil
-	  redirect_to store_url, notice: "Goodbye!"
+	  redirect_to store_url, notice: t('status_mssg.session.logged_out')
   end
 end

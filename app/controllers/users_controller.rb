@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
       format.html { 
         redirect_to addresses_url and return if session[:redirect_to_address]
-        redirect_to @user, alert: "User #{@user.name} was successfully created." 
+        redirect_to @user, alert: t('status_mssg.user.created') 
       }
       format.json { render :show, status: :created, location: @user }
     else
@@ -69,7 +69,7 @@ end
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User #{@user.name} was successfully updated." }
+        format.html { redirect_to @user, notice: t('status_mssg.user.updated_html') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -83,7 +83,7 @@ end
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: t('status_mssg.user.deleted') }
       format.json { head :no_content }
     end
   end

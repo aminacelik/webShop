@@ -45,11 +45,8 @@ class AddressesController < ApplicationController
     else
       @the_same_addresses = false
     end
-
-    
-  
-    
 end
+
 
   # GET /addresses/1
   # GET /addresses/1.json
@@ -83,7 +80,7 @@ end
           end
     
 
-        format.html { redirect_to addresses_path, notice: 'Address was successfully created.' }
+        format.html { redirect_to addresses_path, notice: t('status_mssg.address.created') }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -99,7 +96,7 @@ end
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to addresses_path, notice: 'Address was successfully updated.' }
+        format.html { redirect_to addresses_path, notice: t('status_mssg.address.updated_html') }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
@@ -113,7 +110,7 @@ end
   def destroy
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
+      format.html { redirect_to addresses_url, notice: t('status_mssg.address.deleted') }
       format.json { head :no_content }
     end
   end
@@ -137,7 +134,7 @@ end
     if params[:type] == 'billing'
       session[:billing_id] = address.id
     end
-    redirect_to addresses_path, notice: 'New address is selected!'
+    redirect_to addresses_path, notice: t('status_mssg.address.selected')
   end
   
   

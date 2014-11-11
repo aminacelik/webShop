@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to 'charges/confirmation', notice: 'Order was successfully created.' }
+        format.html { redirect_to 'charges/confirmation', notice: t('status_mssg.order.created')}
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: t('status_mssg.order.updated_html') }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: t('status_mssg.order.deleted') }
       format.json { head :no_content }
     end
   end
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
     @line_items = @cart.line_items
     @line_items.delete_all  
 
-    redirect_to orders_purchase_confirmation_path(id: @order.id), notice: 'You have ordered!'
+    redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
   end
 
   def purchase_confirmation
