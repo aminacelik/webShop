@@ -21,7 +21,7 @@ gem 'stripe'
 
 # gems for bootstrap
 gem 'bootstrap-sass', '~> 3.3.0'
-#gem 'autoprefixer-rails'
+# gem 'autoprefixer-rails'
 
 # gem that wraps up the Mandrill API
 gem 'mandrill_mailer'

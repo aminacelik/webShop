@@ -2,7 +2,7 @@
   <div id="all_user_addresses">
 
     <% if @user_addresses.present? %>
-      <h1><%= t('.your_addresses') %></h1>
+      <h1><%= t('.pick_address') %></h1>
       <% @user_addresses.each do |address| %>
      
         <%= render partial: 'address', locals: {address: address, type: @address_type} %>

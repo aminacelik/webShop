@@ -20,9 +20,15 @@
 
 					<ul id="menu">
 						<li><%= link_to t('.home_html'), store_url %></li>
-						<% @categories.each do |c| %>
-							<li><%= link_to c.name, category_path(c) %></li>
-						<% end %>						
+						<% if params[:locale] == 'ba' %>
+							<% @categories.each do |c| %>
+								<li><%= link_to c.translation_for_category_name('ba'), category_path(c) %></li>
+							<% end %>	
+						<% else %>
+							<% @categories.each do |c| %>
+								<li><%= link_to c.name, category_path(c) %></li>
+							<% end %>
+						<% end %>					
 					</ul>
 					
 						<% unless session[:role]=='administrator' %>
@@ -31,7 +37,7 @@
 							</div>
 						<% end %>
 					
-				<div id="login_register">
+				<ul id="login_register">
 					<% if @current_user %>
 						<li><%= link_to @current_user.name, user_url(@current_user.id) %>
 							<ul>
@@ -47,7 +53,7 @@
 						<li><%= link_to t('.register'), new_user_url %></li> 
 						<li><%= link_to t('.login'), login_url, class: 'orange' %></li>
 					<% end %>
-				</div>
+				</ul>
 					
 			</div> 
         
@@ -55,7 +61,7 @@
       <%= link_to image_tag('bih.jpg'), store_url(locale: 'ba'), title: 'Bosanski jezik' %>
       <%= link_to image_tag('uk.jpg'), store_url(locale: 'en'), title: 'English' %>
     </div>
-		</div>
+</div>
 
     
 	

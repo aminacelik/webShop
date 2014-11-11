@@ -13,6 +13,7 @@
  *= require_self
  *= require_tree ./application/
  */
+
 //@import "bootstrap-sprockets";
 //@import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
@@ -22,6 +23,22 @@
   margin: 0;
 }
 
+// LINKS ---------------------------------------------------------------------------------------------------------
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:link {
+  color: white;
+}
+
+
+// BODY --------------------------------------------------------------------------------------------------
 body {
   background-image: url(background.jpg);
   background-repeat: no-repeat;
@@ -30,13 +47,16 @@ body {
   font-family: "Montserrat";
 }
 
+// HEADER ---------------------------------------------------------------------------------------------------------
 #header {
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
   height: 80px;
-  overflow: hidden;
+//  overflow: hidden;
   margin-top: 0;
   position: relative;
   
+  
+  // LANGUAGES ----------------------------------------------------------------------------------------
   #languages {
      width: 30px;
      float: right;
@@ -54,24 +74,27 @@ body {
   }
   
  
-  
-  // 	MENU CONTAINER
+  // 	MENU CONTAINER -----------------------------------------------------------------------------
   #menu_container {
-    position: relative;
-    height: inherit;
+    height: 60px;
     width: 1180px;
     margin: 0 auto;
     padding-top: 20px;
     #logo {
       width: 150px;
-      //?-----------------------
       float: left;
     }
     #cart {
-      width: 47;
+      width: 47px;
       float: right;
-      img {
-        margin-top: 10px;
+      a {
+        img {
+          margin-top: 10px;
+          background-color: transparent;
+        }
+        &:hover {
+          background-color: transparent;
+        }
       }
       #number_of_products {
         float: right;
@@ -81,89 +104,170 @@ body {
         color: white;
         text-align: center;
         font-weight: 400;
-        width: 35%;
+        width: 18px;
         height: 18px;
       }
     }
-    #menu, #login_register {
-      list-style-type: none;
-      float: left;
-      font-family: "Montserrat";
-      font-weight: 600;
-      text-transform: uppercase;
-      margin: 10px auto;
-      height: 40px;
-      li {
-        float: left;
-        margin: 0 30px 0 0;
-        color: white;
-        position: relative;
-        height: 50px;
-        a {
-          color: white;
-          .orange {
-            color: #f0b49e;
-          }
-        }
-        a:visited {
-          color: white;
-        }
-        ul {
-          text-transform: lowercase;
-          font-weight: 400;
-          font-size: 12px;
-          display: none;
-          position: absolute;
-          top: 50px;
-          left: -75px;
-          width: 150px;
-          //------------------------------
-          li {
-            display: block;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 10px;
-            text-align: center;
-          }
-          li:hover {
-            background: rgba(0, 0, 0, 0.95);
-          }
-        }
-        a {
-          text-decoration: none;
-          font-size: 14px;
-        }
-        a:visited {
-          color: white;
-          text-decoration: none;
-        }
-        li:hover {
-          color: #f0b49e;
-        }
-      }
-      li:hover {
-        a:hover {
-          color: #f0b49e;
-        }
+    
+    // CATEGORY MENU & LOGIN REGISTER MENU -----------------------------------------------------------------
+   #menu, #login_register {
+			list-style-type: none;
+			float: left;
+			font-family: 'Montserrat';
+			font-weight: 600;
+			text-transform: uppercase;
+			margin: 10px auto;
+			height: 40px;
+			color: white;
+      position: relative;
+			
+			li {
+				float: left;
+				margin: 0 15px 0 15px;
+				color: white;
+				height: 47px;
+				color: white;
+				
+				
+				ul {
+					text-transform: lowercase;
+					font-weight: 400;
+					font-size: 12px;
+					display: none;
+					position: absolute;
+					top: 50px;
+					left: -50px;
+          width:  100px;
+					
+					li {
+						display: block;
+						background: rgba(103,94,101,0.95);
+						padding: 10px;
+            width: inherit;
+						text-align: center;
+       
+					}
+					
+					li:hover {
+						background: rgba(103,94,101,1);
+            border-bottom: none;
+            
+            a:hover {
+              color: white;
+            }
+					}
+				}
+			}
+			
+			li:hover {
         cursor: pointer;
-        ul {
-          display: block;
+        border-bottom: 3px solid #f0b49e;
+          
+		
+				ul {
+					display: block;
+				}
+        
+             
+        a:hover {
+         color: #f0b49e;
         }
-      }
-      a {
-        text-decoration: none;
-        font-size: 14px;
-      }
-      a:visited {
-        color: white;
-        text-decoration: none;
-      }
-    }
-    #login_register {
-      float: right;
-    }
-  }
+			}		
+		}
+		
+		#login_register {
+			float: right;
+      margin-right: 30px;
+		}
+	}	
 }
 
+
+// NOTICE AREA --------------------------------------------------------------------------------------------
+
+#notice {
+  height: 30px;
+  width: 250px;
+  text-align: right;
+//  background-color: rgba(100, 92, 100, 0.5);
+  background-color: white;
+  color: #e74c3c;
+  padding: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  float: right;
+  margin-right: 90px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+// ADMIN MENU ----------------------------------------------------------------------------------------------
+#admin_menu_container {
+	width: 100%;
+	background-color: #f16354;
+	
+	#admin_menu {
+		list-style-type: none;
+		width: 1180px;
+		font-family: 'Montserrat';
+		font-weight: 400;
+		text-transform: uppercase;
+		margin: 0 auto;
+		height: 30px;
+		padding-top: 10px;
+		color: white;
+
+		li {
+			float: left;
+			margin: 0 10px 0 10px;
+      padding: 10px;
+			color: white;
+			position: relative;
+      width: auto;
+
+			ul {
+				text-transform: lowercase;
+				font-weight: 400;
+				font-size: 12px;
+				display: none;
+				position: absolute;
+				top: 30px;
+				left: -30px;
+				width: inherit;
+        text-align: center;
+
+				li {
+					display: block;
+					background: rgba(241,99,84,1);
+					height: 30px;
+					padding: 10px;
+					width: 50px;
+					text-align: center;
+				}
+
+				li:hover {
+					background: rgba(241,99,84,0.85);
+
+				}
+			}
+		}
+
+		li:hover {
+      cursor: pointer;
+      
+			a:hover {
+				color: #f0b49e;
+			}
+			ul {
+				display: block;
+			}
+		}
+    
+
+	}
+}
+
+// CONTAINER ------------------------------------------------------------------------------------------
 #container {
   width: 1180px;
   margin: 0 auto;

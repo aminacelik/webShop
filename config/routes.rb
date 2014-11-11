@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 	
 
   
+  resources :category_translations
+
+  resources :product_translations
+
+  resources :languages
+
   resources :product_variants
 
   resources :sizes

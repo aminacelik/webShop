@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103213236) do
+ActiveRecord::Schema.define(version: 20141110125433) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20141103213236) do
     t.datetime "updated_at"
   end
 
+  create_table "category_translations", force: true do |t|
+    t.integer  "language_id"
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+  add_index "category_translations", ["language_id"], name: "index_category_translations_on_language_id", using: :btree
+
   create_table "cities", force: true do |t|
     t.string   "name"
     t.string   "postal_code"
@@ -65,6 +76,13 @@ ActiveRecord::Schema.define(version: 20141103213236) do
     t.datetime "updated_at"
   end
 
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "short_name"
+  end
+
   create_table "line_items", force: true do |t|
     t.integer  "cart_id"
     t.datetime "created_at"
@@ -84,6 +102,17 @@ ActiveRecord::Schema.define(version: 20141103213236) do
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "product_translations", force: true do |t|
+    t.integer "language_id"
+    t.integer "product_id"
+    t.string  "title"
+    t.text    "description"
+    t.decimal "price"
+  end
+
+  add_index "product_translations", ["language_id"], name: "index_product_translations_on_language_id", using: :btree
+  add_index "product_translations", ["product_id"], name: "index_product_translations_on_product_id", using: :btree
 
   create_table "product_variants", force: true do |t|
     t.integer  "product_id"

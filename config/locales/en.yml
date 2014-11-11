@@ -125,7 +125,7 @@ en:
       show_html: "Show"
       back: "Back"
     user_addresses:
-      your_addresses: "Your addresses"
+      pick_addres: "Pick an address"
       new_billing_html: "New billing address"
       new_shipping: "New shipping address"
       step_2of2: "Step 2 of 2"
@@ -136,7 +136,7 @@ en:
       size_html: "Size"
       color: "Color"
       price: "Price"
-      qunatity_html: "Quantity"
+      quantity_html: "Quantity"
       order_date_html: "Order rade"
       shipping_address: "Shipping address"
     purchase_confirmation:

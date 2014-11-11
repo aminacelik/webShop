@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authorize, :find_categories
   
   def find_categories
-	  @categories = Category.all
+    @categories = Category.all	  
   end
 
   def find_current_user

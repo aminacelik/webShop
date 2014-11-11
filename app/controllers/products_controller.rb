@@ -27,6 +27,10 @@ class ProductsController < ApplicationController
       end
 	  end
 	  
+    if params[:locale] == 'ba'
+      @language = Language.where(short_name: 'ba').first
+      @translation = @product.product_translations.where(language_id: @language.id).first
+    end
 
   end
 

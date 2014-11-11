@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @product_translation.language %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_translation.product %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product_translation.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_translation.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product_translation.price %>
+</p>
+
+<%= link_to 'Edit', edit_product_translation_path(@product_translation) %> |
+<%= link_to 'Back', product_translations_path %>

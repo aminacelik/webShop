@@ -5,7 +5,7 @@
 <div id="product_list">
 	<% @products.each do |product| %>
 	
-	<div id="product_in_cart">
+	<div class="product_in_cart">
 		<%= image_tag(product.image_url) %>
 		<div class="product_details">
 		 	Model: <%= product.title %><br>
@@ -16,7 +16,7 @@
   	
 		<div id="product_price">
 			Price: <strong><%= number_to_currency(product.price) %><br>
-			Quantity: 1 <br>
+			
 		
       <%= link_to 'Show', product %> <br>
       <%= link_to 'Edit', edit_product_path(product) %> <br>

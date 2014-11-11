@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
     belongs_to :order
     
 	has_many :product_variants
+    has_many :product_translations
 
 	validates :category, associated: true
     validates :title, :description, :image_url, presence: true

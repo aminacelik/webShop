@@ -15,6 +15,7 @@
  */
 
 
+
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 
@@ -23,6 +24,21 @@
   margin: 0;
 }
 
+// LINKS ---------------------------------------------------------------------------------------------------------
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:link {
+  color: white;
+}
+
+// BODY -----------------------------------------------------------------------------------------------------------
 body {
   font-family: "Montserrat";
   background-color: transparent;
@@ -32,30 +48,30 @@ body {
   background-image: url(menu_background.jpg);
   background-repeat: repeat-x;
   height: 80px;
-  overflow: hidden;
+//  overflow: hidden;
   margin-top: 0;
   
-    
+  // LANGUAGES -------------------------------------------------------------------------------
   #languages {
-     width: 30px;
-     float: right;
-     overflow: hidden;
-     position: absolute;
-     top: 0;
-     right: 0;
-     a {
-       margin-top: 2px;
-       float: left;
-      }
-      a:hover {
-        background-color: transparent;
-      }
-  }
-  
+   width: 30px;
+   float: right;
+   overflow: hidden;
+   position: absolute;
+   top: 0;
+   right: 0;
+   a {
+     margin-top: 2px;
+     float: left;
+    }
+    a:hover {
+      background-color: transparent;
+    }
+}
+    
 
-  // 	MENU CONTAINER
+  // 	MENU CONTAINER -----------------------------------------------------------------------------
   #menu_container {
-    height: 80px;
+    height: 60px;
     width: 1180px;
     margin: 0 auto;
     padding-top: 20px;
@@ -87,94 +103,82 @@ body {
         height: 18px;
       }
     }
-    #menu, #login_register {
-      list-style-type: none;
-      float: left;
-      font-family: "Montserrat";
-      font-weight: 600;
-      text-transform: uppercase;
-      margin: 10px auto;
-      height: 40px;
-      color: white;
-      li:hover {
-        border-bottom: 3px solid #f0b49e;
-        text-align: center;
-      }
-      li {
-        float: left;
-        margin: 0 30px 0 0;
-        color: white;
-        position: relative;
-        height: 47px;
-        color: white;
-        a {
-          color: white;
-          .orange {
-            color: #f0b49e;
-          }
-          &:hover {
-            background-color: transparent;
-          }
-        }
-        a:visited {
-          color: white;
-        }
-        ul {
-          text-transform: lowercase;
-          font-weight: 400;
-          font-size: 12px;
-          display: none;
-          position: absolute;
-          top: 50px;
-          left: -75px;
-          width: 150px;
-          li {
-            display: block;
-            background: rgba(103, 94, 101, 0.95);
-            padding: 10px;
-            text-align: center;
-          }
-          li:hover {
-            background: rgba(103, 94, 101, 1);
-          }
-        }
-        a {
-          text-decoration: none;
-          font-size: 14px;
-        }
-        a:visited {
-          color: white;
-          text-decoration: none;
-        }
-        li:hover {
-          color: #f0b49e;
-        }
-      }
-      li:hover {
-        a:hover {
-          color: #f0b49e;
-        }
+    
+    // CATEGORY MENU & LOGIN REGISTER MENU -----------------------------------------------------------------
+   #menu, #login_register {
+			list-style-type: none;
+			float: left;
+			font-family: 'Montserrat';
+			font-weight: 600;
+			text-transform: uppercase;
+			margin: 10px auto;
+			height: 40px;
+			color: white;
+      position: relative;
+			
+			li {
+				float: left;
+				margin: 0 15px 0 15px;
+				color: white;
+				height: 47px;
+				color: white;
+				
+				
+				ul {
+					text-transform: lowercase;
+					font-weight: 400;
+					font-size: 12px;
+					display: none;
+					position: absolute;
+					top: 50px;
+					left: -50px;
+          width:  100px;
+					
+					li {
+						display: block;
+						background: rgba(103,94,101,0.95);
+						padding: 10px;
+            width: inherit;
+						text-align: center;
+       
+					}
+					
+					li:hover {
+						background: rgba(103,94,101,1);
+            border-bottom: none;
+            
+            a:hover {
+              color: white;
+            }
+					}
+				}
+			}
+			
+			li:hover {
         cursor: pointer;
-        ul {
-          display: block;
+        border-bottom: 3px solid #f0b49e;
+          
+		
+				ul {
+					display: block;
+				}
+        
+             
+        a:hover {
+         color: #f0b49e;
         }
-      }
-      a {
-        text-decoration: none;
-        font-size: 14px;
-      }
-      a:visited {
-        color: white;
-        text-decoration: none;
-      }
-    }
-    #login_register {
-      float: right;
-    }
-  }
+			}		
+		}
+		
+		#login_register {
+			float: right;
+      margin-right: 30px;
+		}
+	}	
 }
 
-// NOTICE AREA
+
+// NOTICE AREA --------------------------------------------------------------------------------------------
 
 #notice {
   height: 30px;
@@ -192,85 +196,74 @@ body {
   border-bottom-right-radius: 7px;
 }
 
-// ADMIN MENU
+// ADMIN MENU ----------------------------------------------------------------------------------------------
 #admin_menu_container {
-  overflow: hidden;
-  background-color: #f16354;
-  #admin_menu {
-    list-style-type: none;
-    width: 1180px;
-    font-family: "Montserrat";
-    font-weight: 400;
-    text-transform: uppercase;
-    margin: 0 auto;
-    height: 30px;
-    padding-top: 10px;
-    color: white;
-    li {
-      margin-left: auto;
-      margin-right: auto;
-      float: left;
-      margin: 0 30px 0 0;
-      color: white;
-      position: relative;
-      height: 80px;
-      a {
-        .orange {
-          color: #f0b49e;
-        }
-      }
-      ul {
-        text-transform: lowercase;
-        font-weight: 400;
-        font-size: 12px;
-        display: none;
-        position: absolute;
-        top: 30px;
-        left: -40px;
-        width: 80px;
-        li {
-          display: block;
-          background: rgba(241, 99, 84, 0.85);
-          height: 30px;
-          padding: 10px;
-          width: 50px;
-          text-align: center;
-        }
-        li:hover {
-          background: rgba(241, 99, 84, 1);
-        }
-      }
-      a {
-        text-decoration: none;
-        font-size: 14px;
-      }
-      a:visited {
-        color: white;
-        text-decoration: none;
-      }
-      li:hover {
-        color: #f0b49e;
-      }
-    }
-    li:hover {
-      a:hover {
-        color: #f0b49e;
-      }
+	width: 100%;
+	background-color: #f16354;
+	
+	#admin_menu {
+		list-style-type: none;
+		width: 1180px;
+		font-family: 'Montserrat';
+		font-weight: 400;
+		text-transform: uppercase;
+		margin: 0 auto;
+		height: 30px;
+		padding-top: 10px;
+		color: white;
+
+		li {
+			float: left;
+			margin: 0 10px 0 10px;
+      padding: 10px;
+			color: white;
+			position: relative;
+      width: auto;
+
+			ul {
+				text-transform: lowercase;
+				font-weight: 400;
+				font-size: 12px;
+				display: none;
+				position: absolute;
+				top: 30px;
+				left: -30px;
+				width: inherit;
+        text-align: center;
+
+				li {
+					display: block;
+					background: rgba(241,99,84,1);
+					height: 30px;
+					padding: 10px;
+					width: 50px;
+					text-align: center;
+				}
+
+				li:hover {
+					background: rgba(241,99,84,0.85);
+
+				}
+			}
+		}
+
+		li:hover {
       cursor: pointer;
-      ul {
-        display: block;
-      }
-    }
-    a {
-      text-decoration: none;
-      font-size: 14px;
-    }
-    a:visited {
-      color: white;
-      text-decoration: none;
-    }
-  }
+      
+			a:hover {
+				color: #f0b49e;
+			}
+			ul {
+				display: block;
+			}
+		}
+    
+
+	}
 }
+
+
+// CONTAINER --------------------------------------------------------------------------------------------
 
 #container {
   width: 1180px;
@@ -480,6 +473,3 @@ a:hover {
   background-color: transparent;
 }
 
-
-//@import "bootstrap-sprockets";
-//@import "bootstrap";

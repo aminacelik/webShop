@@ -1,0 +1,2 @@
+module ProductTranslationsHelper
+end

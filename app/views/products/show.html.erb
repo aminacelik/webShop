@@ -2,8 +2,14 @@
 <div id="product_display_form">
 	
 	<div class="product_title">
-		<%= link_to @product.category.name, category_path(@product.category) %> » 
-		<%= link_to @product.title, product_path %>
+		
+		<% if @translation %>
+			<%= link_to @product.category.translation_for_category_name('ba'), category_path(@product.category) %> » 
+			<%= link_to @translation.title, product_path %>
+		<% else %>
+			<%= link_to @product.category.name, category_path(@product.category) %> »
+			<%= link_to @product.title, product_path %>
+		<% end %>
 		
 		<% if session[:role]=='administrator' %>
 			<%= link_to 'Edit', edit_product_path(@product) %> 
@@ -12,9 +18,15 @@
 	
 	<%= image_tag(@product.image_url) %>
 
+
 	<div class="product_description">
-		<%= @product.description %><br><br>
+		<% if @translation %>
+			<%= @translation.description %>
+		<% else %>
+			<%= @product.description %>
+		<% end %>
 		
+		<br><br>
 		
 		<br><%= t('.price') %><br>
 		<div class="price_line">
