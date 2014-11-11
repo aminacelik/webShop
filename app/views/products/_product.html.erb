@@ -1,6 +1,11 @@
 <div class="product">
 	<%= link_to image_tag(product.image_url), product_path(product) %>
-	<h3><%= link_to product.title, product_path(product) %></h3>
+  
+  <% if params[:locale] == 'ba' %>
+    <h3><%= link_to product.get_title_translation('ba', product.id) %></h3>
+  <% else %>
+	  <h3><%= link_to product.title, product_path(product) %></h3>
+  <% end %>
 	
 
 	<div class="price_line">

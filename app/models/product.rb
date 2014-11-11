@@ -21,6 +21,18 @@ class Product < ActiveRecord::Base
         Product.order(:updated_at).last
     end
     
+    def get_title_translation(short_name, id)
+      @language = Language.where(short_name: short_name).first
+      @product = Product.where(id: id).first
+      @product_translation = @product.product_translations.where(language_id: @language.id).first
+      if @product_translation
+        @title = @product_translation.title
+      else
+        @title = @product.title
+      end
+    end
+  
+   
     
    
     

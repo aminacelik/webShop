@@ -1,3 +1,6 @@
+
+
+
 // PRODUCT
 // store/index
 
@@ -64,8 +67,13 @@
     font-size: 16px;
     float: left;
     width: 1160px;
+    a {
+      color: darkgrey;
+      font-size: 16px;
+    }
     a:hover {
       background-color: transparent;
+      text-decoration: underline;
     }
     a:visited {
       background-color: transparent;
