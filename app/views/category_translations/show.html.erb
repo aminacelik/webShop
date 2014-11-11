@@ -2,12 +2,12 @@
 
 <p>
   <strong>Language:</strong>
-  <%= @category_translation.language %>
+  <%= @category_translation.language.name %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @category_translation.category %>
+  <%= @category_translation.category.name %>
 </p>
 
 <p>
@@ -15,5 +15,5 @@
   <%= @category_translation.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_translation_path(@category_translation) %> |
+<%= link_to 'Edit', edit_category_translation_path(@category_translation) %> 
 <%= link_to 'Back', category_translations_path %>

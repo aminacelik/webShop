@@ -16,6 +16,8 @@ class CategoryTranslationsController < ApplicationController
 
   # GET /category_translations/new
   def new
+    @languages = Language.all
+    @categories = Category.all
     @category_translation = CategoryTranslation.new
   end
 
@@ -26,7 +28,10 @@ class CategoryTranslationsController < ApplicationController
   # POST /category_translations
   # POST /category_translations.json
   def create
-    @category_translation = CategoryTranslation.new(category_translation_params)
+    @category = Category.where(id: params[:category_translation][:category_id]).first
+    @language = Language.where(id: params[:category_translation][:language_id]).first
+    
+    @category_translation = @category.category_translations.new(category_translation_params.merge(language_id: @language.id))
 
     respond_to do |format|
       if @category_translation.save

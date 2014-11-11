@@ -2,12 +2,12 @@
 
 <p>
   <strong>Language:</strong>
-  <%= @product_translation.language %>
+  <%= @product_translation.language.name %>
 </p>
 
 <p>
   <strong>Product:</strong>
-  <%= @product_translation.product %>
+  <%= @product_translation.product.title %>
 </p>
 
 <p>
@@ -25,5 +25,5 @@
   <%= @product_translation.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_translation_path(@product_translation) %> |
+<%= link_to 'Edit', edit_product_translation_path(@product_translation) %>
 <%= link_to 'Back', product_translations_path %>

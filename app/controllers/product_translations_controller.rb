@@ -16,6 +16,8 @@ class ProductTranslationsController < ApplicationController
 
   # GET /product_translations/new
   def new
+    @languages = Language.all
+    @products = Product.all
     @product_translation = ProductTranslation.new
   end
 
@@ -26,7 +28,9 @@ class ProductTranslationsController < ApplicationController
   # POST /product_translations
   # POST /product_translations.json
   def create
-    @product_translation = ProductTranslation.new(product_translation_params)
+    @language = Language.where(id: params[:product_translation][:language_id]).first
+    @product = Product.where(id: params[:product_translation][:product_id]).first
+    @product_translation = @product.product_translations.new(product_translation_params.merge(language_id: @language.id))
 
     respond_to do |format|
       if @product_translation.save
