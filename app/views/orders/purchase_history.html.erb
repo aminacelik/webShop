@@ -13,17 +13,17 @@
 			<%= t('.color') %>: <%= product_variant.get_product_color %><br />
 		</td>
 		<td class="col-xs-2">
-			<%= t('.price') %>: <br/>
-			<span class="price"><%= product_variant.get_product_price %></span><br/>
+			<span class="bold"><%= t('.price') %>:</span> <br/>
+			<%= product_variant.get_product_price %><br/>
 			<%= t('.quantity_html') %>: <%= product_variant.quantity %><br/>
 		</td>
 		<td class="col-xs-2">
-			<%= t('.order_date_html') %> <br/>
+      <span class="bold"><%= t('.order_date_html') %>:</span><br/>
 			<%= product_variant.order.get_order_date %><br />
 		</td>
 
 		<td class="col-xs-2">
-			<%= t('.shipping_address') %><br/>
+			<span class="bold"><%= t('.shipping_address') %>:</span><br/>
 			<%= render partial: 'addresses/address_display', locals: {address: product_variant.order.get_shipping_address} %>
 		</td>
 	</tr>

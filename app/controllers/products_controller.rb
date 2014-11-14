@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-	@category = Category.find(params[:product][:category_id])
+	  @category = Category.find(params[:product][:category_id])
     @product = @category.products.build(product_params)
 
     respond_to do |format|

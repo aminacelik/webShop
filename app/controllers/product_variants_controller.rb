@@ -16,8 +16,11 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/new
   def new
-	@product = Product.find(params[:product_id], order_id: nil).first
-	@all_sizes = Size.all
+    if params[:product_id]
+	     @product = Product.where(id: params[:product_id], order_id: nil).first
+    end
+	  @sizes = Size.all
+    @colors = Color.all
     @product_variant = ProductVariant.new
   end
 
@@ -28,9 +31,12 @@ class ProductVariantsController < ApplicationController
   # POST /product_variants
   # POST /product_variants.json
   def create
-	@product = Product.find(params[:product_id])
-
-	@product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
+  
+    if params[:product_id]
+	     @product = Product.where(id: params[:product_id], order_id: nil).first
+    end
+       @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
+  
 	   respond_to do |format|
 		  if @product_variant.save
 			format.html { redirect_to product_variants_url(product_id: @product.id) }

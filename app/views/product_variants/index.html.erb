@@ -1,29 +1,39 @@
 <h2>Sizes and colors for product</h2>
 
 
-	<div id="product_in_list">
-<!--		<%= image_tag(@product.image_url) %>-->
-		<div class="product_list_details">
-		 	Model: <%= @product.title %><br>
-         	<%= truncate(strip_tags(@product.description), length: 100) %><br>
-		</div>
+  <div id="product_list" class="col-xs-12 col-sm-6">
+    
+    
+      <div class="product_in_cart row">
+		    <%= image_tag @product.image_url, class: 'img-responsive col-xs-3' %>
+		    <div class="product_details col-xs-5">
+		 	    Model: <%= @product.title %><br>
+         	<%= truncate(strip_tags(@product.description), length: 50) %><br>
+		    </div>
   	
-		<div id="product_price">
-			Price: <strong><%= number_to_currency(@product.price) %><br>
-		</div>
-	</div>
+		    <div id="product_price col-xs-4">
+          Price: <strong><%= number_to_currency(@product.price) %><br>
+          <%= link_to 'Show', @product %> <br>
+          <%= link_to 'Edit', edit_product_path(@product) %> <br>
+          <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+	     </div>
+  
+    </div>
+    
+  
 
 
 
 
-<table>
+<table class='table table-striped'>
 	<tr>
 		<th>Product</th>
 		<th>Color</th>
 		<th>Size</th>
 		<th>Quantity</th>
 	</tr>
-	<%=  @product_variants.each do |pv| %>
+	<%  @product_variants.each do |pv| %>
 	
 		<tr>
 			<td><%= pv.product.title %></td>

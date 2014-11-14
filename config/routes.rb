@@ -1,32 +1,6 @@
 Rails.application.routes.draw do
 	
 
-  
-  resources :category_translations
-
-  resources :product_translations
-
-  resources :languages
-
-  resources :product_variants
-
-  resources :sizes
-
-  resources :colors
-
-  resources :cities
-
-  resources :countries
-
-  resources :address_types
-
-  resources :roles
-
-  resources :line_items
-
-  get 'admin' => 'admin#index'
-
-
 
   scope '(:locale)' do
 
@@ -49,19 +23,43 @@ Rails.application.routes.draw do
     get 'store/index'
 
     resources :orders
+    
     resources :addresses
+    
     resources :carts
+    
     resources :users
+    
     resources :products
+    
     resources :categories
+    
+    resources :category_translations
+
+    resources :product_translations
+
+    resources :languages
+
+    resources :product_variants
+
+    resources :sizes
+
+    resources :colors
+
+    resources :cities
+
+    resources :countries
+
+    resources :address_types
+
+    resources :roles
+
+    resources :line_items
 
     controller :session do
      get 'login' => :new
      post 'login' => :create
      delete 'login' => :destroy
-
-
-
     end
     
     root 'store#index', as: 'store', via: :all

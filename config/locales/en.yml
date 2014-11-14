@@ -137,7 +137,7 @@ en:
       color: "Color"
       price: "Price"
       quantity_html: "Quantity"
-      order_date_html: "Order rade"
+      order_date_html: "Order date"
       shipping_address: "Shipping address"
     purchase_confirmation:
       thank_you: "Thank you"

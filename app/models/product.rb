@@ -26,9 +26,9 @@ class Product < ActiveRecord::Base
       @product = Product.where(id: id).first
       @product_translation = @product.product_translations.where(language_id: @language.id).first
       if @product_translation
-        @title = @product_translation.title
+        @product_translation.title
       else
-        @title = @product.title
+        @product.title
       end
     end
   
