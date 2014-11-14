@@ -176,7 +176,7 @@ $grey: #a1a1a1;
   font-weight: 600;
   float: right;
   height: 31px;
-//  width: 120px;
+  min-width: 120px;
   margin: 1% 1% 1% 1%;
   border: 2px solid #645c64;
 }
@@ -213,7 +213,6 @@ $grey: #a1a1a1;
 
 .buttons {
   float: right;
-  width: 400px;
   text-align: right;
   margin-top: 10px;
 }

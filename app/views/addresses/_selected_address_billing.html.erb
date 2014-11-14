@@ -1,10 +1,12 @@
-<div class="user_address col-xs-12 col-sm-6">
-  <div class="title"><%= t('.billing_address_html') %></div>
+<div class="user_address_wrap col-xs-12 col-sm-6">
+  <div class="user_address">
+    <div class="title"><%= t('.billing_address_html') %></div>
 
-  <%= address.first_name %> <%= address.last_name %><br>
-  
-  <%= address.street %>, <%= address.details %><br>
-  <%= address.city_details %><br>
-  <%= address.country_name %><br>
-  <br><%= link_to t('.change'), addresses_user_addresses_path(type: 'billing') %>
+    <%= address.first_name %> <%= address.last_name %><br>
+
+    <%= address.street %>, <%= address.details %><br>
+    <%= address.city_details %><br>
+    <%= address.country_name %><br>
+    <br><%= link_to t('.change'), addresses_user_addresses_path(type: 'billing') %>
+  </div>
 </div>
