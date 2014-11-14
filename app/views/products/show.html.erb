@@ -1,7 +1,7 @@
 
-<div id="product_display_form">
+<div id="product_display_form" class="container-fluid">
 	
-	<div class="product_title">
+	<div class="product_title row">
 		
 		<% if @translation %>
 			<%= link_to @product.category.translation_for_category_name('ba'), category_path(@product.category) %> » 
@@ -16,41 +16,49 @@
 		<% end %>
 	</div>
 	
-	<%= image_tag(@product.image_url) %>
+  
+  <div class="row">
+    
+        <%= image_tag @product.image_url, class: 'img-responsive col-xs-12 col-sm-6' %>
+ 
 
 
-	<div class="product_description">
-		<% if @translation %>
-			<%= @translation.description %>
-		<% else %>
-			<%= @product.description %>
-		<% end %>
-		
-		<br><br>
-		
-		<br><%= t('.price') %><br>
-		<div class="price_line">
-			<%= number_to_currency(@product.price) %>
-		</div><br><br>
-	
-<%= form_tag(line_items_path, method: :post, remote: true) do %>
-	<%= hidden_field_tag :product_id, @product.id %>
-	<%= t('.size_html') %><br>
-	<%= select_tag "size_id", options_from_collection_for_select(@sizes, :id, :size) %><br>
-	
-	
-<!--
-	Quantity<br>
-	<%= text_field :quantity, params[:quantity], value: '1' %><br>
-		
--->
-		
-	<% unless session[:role]=='administrator' %>
-		<%= submit_tag t('.add_html'), class: 'button', onclick: "fly_to_cart()" %>
-	<% end %>
-		
-		
-	</div>
+
+        <div class="product_description col-xs-12 col-sm-6">
+          <% if @translation %>
+            <%= @translation.description %>
+          <% else %>
+            <%= @product.description %>
+          <% end %>
+
+          <br><br>
+
+          <br><%= t('.price') %><br>
+          <div class="price_line">
+            <%= number_to_currency(@product.price) %>
+          </div><br><br>
+
+      <%= form_tag(line_items_path, method: :post, remote: true) do %>
+        <%= hidden_field_tag :product_id, @product.id %>
+        <%= t('.size_html') %><br>
+        <%= select_tag "size_id", options_from_collection_for_select(@sizes, :id, :size), {class: 'form-control col-xs-12 col-s-6'} %><br>
+
+
+      <!--
+        Quantity<br>
+        <%= text_field :quantity, params[:quantity], value: '1' %><br>
+
+      -->
+
+        <% unless session[:role]=='administrator' %>
+          <%= submit_tag t('.add_html'), class: 'button', onclick: "fly_to_cart()" %>
+        <% end %>
+
+
+        </div>
+  
+  </div>
+
 	
 	
 
@@ -59,7 +67,7 @@
 </div>
 
 
-<div id="similar_products">
+<div id="similar_products"  class="container-fluid">
 <h2><%= t('.similar_products_html') %></h2>
 		<% @similar_products.each do |product| %>
 

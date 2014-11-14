@@ -81,12 +81,12 @@ class OrdersController < ApplicationController
 
     @line_items = @cart.line_items
     @line_items.delete_all  
-
-    redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
+    session[:last_order]=@order.id
+    redirect_to orders_purchase_confirmation_path(id: @order.id, locale: params[:locale]), notice: t('status_mssg.order.ordered')
   end
 
   def purchase_confirmation
-    @order = Order.where(id: params[:id]).first
+    @order = Order.where(id: session[:last_order]).first
     @order_items = @order.product_variants
   end
 

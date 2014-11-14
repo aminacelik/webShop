@@ -1,18 +1,16 @@
-
-
-
-// PRODUCT
-// store/index
+.price_line {
+  font-size: 20px;
+  margin-top: 10px;
+}
 
 .product {
-  width: 190px;
-  height: 240px;
+  max-height: 388px;
   float: left;
   color: #aaaaaa;
   font-size: 12px;
   text-decoration: none;
-  margin: 15px 25px 15px 25px;
-  padding: 20px 20px 20px 20px;
+//  margin: 15px 25px 15px 25px;
+  padding: 20px;
   border: 3px solid white;
   border-radius: 25px;
   text-align: center;
@@ -24,8 +22,7 @@
     margin-top: 10px;
   }
   img {
-    height: 160px;
-    max-width: 98%;
+    padding: 10px;
   }
   a {
     &:hover {
@@ -36,6 +33,7 @@
     a {
       text-decoration: none;
       color: #aaaaaa;
+      font-size: 14px;
       &:visited {
         text-decoration: none;
         color: #aaaaaa;
@@ -52,56 +50,5 @@
 
 .product:hover {
   border: 3px solid #e6e6e6;
-  border-radius: 25px;
-}
-
-// PRODUCT SHOW
-
-#product_display_form {
-  float: left;
-  width: 1180px;
-  height: 600px;
-  margin: 20px 20px 20px 20px;
-  overflow: hidden;
-  .product_title {
-    font-size: 16px;
-    float: left;
-    width: 1160px;
-    a {
-      color: darkgrey;
-      font-size: 16px;
-    }
-    a:hover {
-      background-color: transparent;
-      text-decoration: underline;
-    }
-    a:visited {
-      background-color: transparent;
-    }
-  }
-  .product_description {
-    width: 500px;
-    float: left;
-    margin: 30px 20px 30px 20px;
-    .price_line {
-      font-size: 30px;
-    }
-    .button {
-      float: right;
-    }
-  }
-  img {
-    width: 450px;
-    float: left;
-  }
-  .button {
-    float: right;
-    margin-right: 250px;
-  }
-
-}
-
-#similar_products {
-  width: 1180px;
-  margin-top: 150px;
+  border-radius: 15%;
 }

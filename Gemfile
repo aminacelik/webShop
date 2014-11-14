@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'stripe'
 
 # gems for bootstrap
-gem 'bootstrap-sass', '~> 3.3.0'
+# gem 'bootstrap-sass', '~> 3.3.0'
 # gem 'autoprefixer-rails'
 
 # gem that wraps up the Mandrill API

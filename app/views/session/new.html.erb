@@ -1,21 +1,23 @@
+<%= form_tag id: 'login-form', role: 'form' do %>
+  <div id='login_form', class= 'col-xs-12 col-sm-9 col-md-4'>
+      <h3><%= t('.login') %></h3>
+      <%= link_to t('.create_account_html'), new_user_path %><br>
+
+    <div class="form-group">
+      <%= label_tag :email, t('.email') %>
+      <%= email_field_tag :email, params[:email], autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password, t('.password_html') %>
+      <%= password_field_tag :password, params[:password], class: "form-control" %>
+    </div>
 
 
-  <%= form_tag do %>
-  <div id="login_form">
-     <h3><%= t('.login') %></h3>
-
-	<%= link_to t('.create_account_html'), new_user_path %><br>
-	  <div id="login_data">
-        <%= label_tag :email, t('.email') %>
-        <%= email_field_tag :email, params[:email], autofocus: true %>
-      
-        <script type="text/javascript">
-          document.getElementById('email').focus();
-        </script>
-		    <%= label_tag :password, t('.password_html') %>
-        <%= password_field_tag :password, params[:password] %>
-     
-		<%= submit_tag t('.login_button'), class: 'grey_button' %>
-	</div>
+    <%= submit_tag t('.login_button'), class: 'btn btn-default grey_button' %>
   </div>
-  <% end %>
+<% end %>
+
+<script type="text/javascript">
+  document.getElementById('email').focus();
+</script>

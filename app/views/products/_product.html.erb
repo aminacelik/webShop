@@ -1,6 +1,6 @@
-<div class="col-md-3">
-    <div class="product">
-      <%= link_to image_tag(product.image_url), product_path(product) %>
+
+    <div class="product col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <%= link_to image_tag(product.image_url, class: 'img-responsive'), product_path(product) %>
 
       <% if params[:locale] == 'ba' %>
         <h3><%= link_to product.get_title_translation('ba', product.id), product_path(product) %></h3>
@@ -14,4 +14,3 @@
       </div>
 
     </div>
-</div>

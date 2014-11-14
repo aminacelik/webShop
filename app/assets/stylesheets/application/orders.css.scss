@@ -1,29 +1,6 @@
-table {
-  color: #7d7d7d;
-  margin-left: 50px;
-  td {
-    height: 160px;
-    text-align: left;
-    border-bottom: 1px solid #d3c9c8;
-    img {
-      height: 150px;
-      width: 150px;
-    }
-    .price {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    .title {
-      font-size: 14px;
-      font-weight: 600;
-    }
-  }
-}
-
 #confirm_container {
   margin: 0 auto;
   padding: 40px;
-  width: 500px;
   height: auto;
   overflow: hidden;
   background-color: #faf9fa;
@@ -35,10 +12,7 @@ table {
     font-weight: 600;
   }
   img {
-    height: 60px;
-    width: 60px;
-    margin-top: 30px;
-    margin-bottom: 40px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;

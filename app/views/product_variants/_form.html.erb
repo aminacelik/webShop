@@ -2,7 +2,7 @@
 
 
 
-<%= form_for(@product_variant) do |f| %>
+<%= form_for(@product_variant, html: {role: 'form', class: 'col-xs-12 col-sm-6'}) do |f| %>
   <% if @product_variant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h2>
@@ -14,24 +14,25 @@
       </ul>
     </div>
   <% end %>
-<table>
+
+	<div class="form-group">
+	  	<%= f.label :size %>
+	  	<%= f.collection_select :size_id, Size.all, :id, :size %>
+  </div>
+
+  <div class="form-group">
+	  	<%= f.label :color %>
+	  	<%= f.collection_select :color_id, Color.all, :id, :name %>
+  </div>
+
+	<div class="form-group">
+		  <%= f.label :quantity %>
+    	<%= f.text_field :quantity %>
+  </div>
 	
-	 <tr>
-	  	<td><%= f.label :size %></td>
-	  	<td><%= f.collection_select :size_id, Size.all, :id, :size %></td>
-  	</tr>
-	
-	 <tr>
-	  	<td><%= f.label :color %></td>
-	  	<td><%= f.collection_select :color_id, Color.all, :id, :name %></td>
-  	</tr> 
-	<tr>
-		<td><%= f.label :quantity %></td>
-    	<td><%= f.text_field :quantity %></td>
-	</tr>
 	<%= hidden_field_tag :product_id, @product.id %>
-</table>
-<%= f.submit 'Create', class: 'button' %>
+
+  <%= f.submit 'Create', class: 'btn btn-default grey_button' %>
 
 
 <% end %>

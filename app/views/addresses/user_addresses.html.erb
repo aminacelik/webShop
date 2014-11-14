@@ -1,5 +1,5 @@
 <div id="address_container">
-  <div id="all_user_addresses">
+  <div id="all_user_addresses" class="col-xs-12">
 
     <% if @user_addresses.present? %>
       <h1><%= t('.pick_address') %></h1>
@@ -21,19 +21,4 @@
   </div>
 
 
-  <!--  If user is ordering -->
-<% unless @cart.number_of_products == 0 %>
-  <div class="step"><%= t('.step_2of2') %></div>
-  <%= render partial: "carts/order_cart" %>
-<% end %>
-
-
-  <div class="buttons">
-    <%=form_tag '/payment/do_payment' do %>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
-            data-description="Pay for your items"
-            data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i%>"></script>
-  <% end %>
-  </div>
 </div>

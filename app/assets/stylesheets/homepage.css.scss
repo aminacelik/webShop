@@ -14,383 +14,145 @@
  *= require_tree ./application/
  */
 
-//@import "bootstrap-sprockets";
-//@import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
+$light_orange: #f0b49e;
+$header_color: #625a62;
+$grey: #a1a1a1;
 
-*{
-  margin: 0;
-}
-
-// LINKS ---------------------------------------------------------------------------------------------------------
-
-a {
-  text-decoration: none;
-  font-size: 14px;
-}
-a:visited {
-  color: white;
-  text-decoration: none;
-}
-a:link {
-  color: white;
-}
-
-
-// BODY --------------------------------------------------------------------------------------------------
 body {
   background-image: url(background.jpg);
   background-repeat: no-repeat;
   background-position: top left;
   background-size: contain;
-  font-family: "Montserrat";
 }
 
-// HEADER ---------------------------------------------------------------------------------------------------------
 #header {
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
-  height: 80px;
-//  overflow: hidden;
-  margin-top: 0;
-  position: relative;
-  
-  
-  // LANGUAGES ----------------------------------------------------------------------------------------
-  #languages {
-     width: 30px;
-     float: right;
-     overflow: hidden;
-     position: absolute;
-     top: 0;
-     right: 0;
-     a {
-       margin-top: 2px;
-       float: left;
-      }
-      a:hover {
-        background-color: transparent;
-      }
-  }
-  
- 
-  // 	MENU CONTAINER -----------------------------------------------------------------------------
-  #menu_container {
-    height: 60px;
-    width: 1180px;
-    margin: 0 auto;
-    padding-top: 20px;
-    #logo {
-      width: 150px;
-      float: left;
-    }
-    #cart {
-      width: 47px;
-      float: right;
-      a {
-        img {
-          margin-top: 10px;
-          background-color: transparent;
-        }
-        &:hover {
-          background-color: transparent;
-        }
-      }
-      #number_of_products {
-        float: right;
-        margin-bottom: 20px;
-        background-color: #e74c3c;
-        border-radius: 10px;
-        color: white;
-        text-align: center;
-        font-weight: 400;
-        width: 18px;
-        height: 18px;
-      }
-    }
-    
-    // CATEGORY MENU & LOGIN REGISTER MENU -----------------------------------------------------------------
-   #menu, #login_register {
-			list-style-type: none;
-			float: left;
-			font-family: 'Montserrat';
-			font-weight: 600;
-			text-transform: uppercase;
-			margin: 10px auto;
-			height: 40px;
-			color: white;
-      position: relative;
-			
-			li {
-				float: left;
-				margin: 0 15px 0 15px;
-				color: white;
-				height: 47px;
-				color: white;
-				
-				
-				ul {
-					text-transform: lowercase;
-					font-weight: 400;
-					font-size: 12px;
-					display: none;
-					position: absolute;
-					top: 50px;
-					left: -50px;
-          width:  100px;
-					
-					li {
-						display: block;
-						background: rgba(103,94,101,0.95);
-						padding: 10px;
-            width: inherit;
-						text-align: center;
-       
-					}
-					
-					li:hover {
-						background: rgba(103,94,101,1);
-            border-bottom: none;
-            
-            a:hover {
-              color: white;
-            }
-					}
-				}
-			}
-			
-			li:hover {
-        cursor: pointer;
-        border-bottom: 3px solid #f0b49e;
-          
-		
-				ul {
-					display: block;
-				}
-        
-             
-        a:hover {
-         color: #f0b49e;
-        }
-			}		
-		}
-		
-		#login_register {
-			float: right;
-      margin-right: 30px;
-		}
-	}	
 }
 
-
-// NOTICE AREA --------------------------------------------------------------------------------------------
-
-#notice {
-  height: 30px;
-  width: 250px;
-  text-align: right;
-//  background-color: rgba(100, 92, 100, 0.5);
-  background-color: white;
-  color: #e74c3c;
-  padding: 10px;
-  font-size: 10px;
+#menu_container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+#menu {
+  font-family: "Montserrat";
+  text-transform: uppercase;
   font-weight: 600;
-  float: right;
-  margin-right: 90px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-
-// ADMIN MENU ----------------------------------------------------------------------------------------------
-#admin_menu_container {
-	width: 100%;
-	background-color: #f16354;
-	
-	#admin_menu {
-		list-style-type: none;
-		width: 1180px;
-		font-family: 'Montserrat';
-		font-weight: 400;
-		text-transform: uppercase;
-		margin: 0 auto;
-		height: 30px;
-		padding-top: 10px;
-		color: white;
-
-		li {
-			float: left;
-			margin: 0 10px 0 10px;
-      padding: 10px;
-			color: white;
-			position: relative;
-      width: auto;
-
-			ul {
-				text-transform: lowercase;
-				font-weight: 400;
-				font-size: 12px;
-				display: none;
-				position: absolute;
-				top: 30px;
-				left: -30px;
-				width: inherit;
-        text-align: center;
-
-				li {
-					display: block;
-					background: rgba(241,99,84,1);
-					height: 30px;
-					padding: 10px;
-					width: 50px;
-					text-align: center;
-				}
-
-				li:hover {
-					background: rgba(241,99,84,0.85);
-
-				}
-			}
-		}
-
-		li:hover {
-      cursor: pointer;
-      
-			a:hover {
-				color: #f0b49e;
-			}
-			ul {
-				display: block;
-			}
-		}
-    
-
-	}
-}
-
-// CONTAINER ------------------------------------------------------------------------------------------
-#container {
-  width: 1180px;
-  margin: 0 auto;
-  // CONTENT
-  #content {
-    width: 1180px;
-    overflow: hidden;
-    background-color: white;
-    margin-bottom: 80px;
-    margin-top: 320px;
-  }
-  // FOOTER
-  #footer {
-    width: 1180px;
-    height: 200px;
-    border-top: 1px solid grey;
-    background-color: white;
-    #copyright {
-      width: 30%;
-      float: left;
-      color: grey;
-      font-size: 12px;
-      padding-top: 10px;
+  margin-right: 50px;
+  
+  li {
+    float: left;
+//    border-bottom: none;
+    a {
+      color: white;
     }
-    #footer_menu {
-      margin-top: 0;
-      padding-top: 8px;
-      font-size: 14px;
-      font-weight: 400;
-      list-style: none;
-      float: right;
+    a:hover {
+      color: $light_orange;
+//      border-bottom: none;
+    }
+    ul {
+      background-color: grey;
       li {
-        text-decoration: none;
-        margin-left: 20px;
-        margin-right: 20px;
-        float: right;
-        list-style-type: circle;
+        width: 100%;
         a {
-          text-decoration: none;
-          color: grey;
-        }
-        a:visited {
-          text-decoration: none;
-          color: grey;
+          color: black;
         }
         a:hover {
-          text-decoration: underline;
+          color: black;
         }
       }
     }
   }
+
 }
 
-// NOTICE AREA
 
-#notice {
-  height: 30px;
-  width: 250px;
-  text-align: center;
-//  background-color: rgba(100, 92, 100, 0.5);
-  background-color: white;
-  color: #e74c3c;
-  padding: 10px;
-  font-size: 12px;
+
+#languages {
+   width: 5%;
+   float: right;
+   overflow: hidden;
+   position: absolute;
+   top: 0;
+   right: 0;
+   a {
+     margin-top: 2px;
+     float: left;
+      img {
+        width: 100%;
+      }
+    }
+    a:hover {
+      background-color: transparent;
+    }
+}
+
+
+#cart {
+  width: 47px;
   float: right;
-  margin-right: 90px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  margin-left: 20px;
+  a {
+    img {
+      margin-top: 10px;
+      background-color: transparent;
+    }
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  #number_of_products {
+    float: right;
+    margin-bottom: 20px;
+    background-color: #e74c3c;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    width: 18px;
+    height: 18px;
+  }
 }
 
-// CONTENT
 #content {
-  width: 80%;
-  margin-top: 450px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  overflow: hidden;
-  background-color: white;
-  margin-bottom: 80px;
-}
-
-.button {
-  background-color: #e74c3c;
-  border-radius: 6px;
-  color: white;
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  //	float: left;
-  height: 40px;
-  width: 100px;
-  margin: 10px 5px 10px 5px;
-}
-
-.button:hover {
-  cursor: pointer;
-  background-color: #f16354;
-}
-
-.cancel_button {
-  border: 2px solid #7d7d7d;
-  border-radius: 6px;
-  color: #555555;
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  //	float: left;
-  height: 40px;
-  width: 100px;
-  margin: 10px 5px 10px 5px;
+  width: 90%;
+  margin: 20% auto;
   background-color: white;
 }
 
-.cancel_button:hover {
-  background-color: #eff3f3;
-  cursor: pointer;
+
+#footer {
+  width: 90%;
+  margin: 100px auto;
+  height: 100px;
+  background-color: white;
+  border: none;
+  border-top: 1px solid $grey;
+    
+    #copyright {
+      float: left;
+      
+    }
+    
+    #footer_menu {
+      float: right;
+      
+      li {
+        display: inline;
+        a {
+          color: $grey;
+        }
+      }
+    }
 }
 
 h2 {
-  font-family: "Arial";
   margin-left: 5%;
   color: darkgrey;
   text-transform: uppercase;
   font-size: 12px;
   margin-top: 40px;
+  margin-bottom: 30px;
 }

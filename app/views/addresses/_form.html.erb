@@ -1,59 +1,54 @@
 
-
-<div class="address_form">
-
+<div id="shipping_form" class="address_form">
   <div class="title"><%= t('.shipping_address') %></div>
 
 
-<%= form_for(@new_shipping) do |f| %>
-  
- 
-  <div class="field">
-    <%= f.label :first_name, t('.first_name') %><%= errors_for @new_shipping, :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-    <%= f.label :last_name, t('.last_name') %><%= errors_for @new_shipping, :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-     <script type="text/javascript">
-      document.getElementById('address_first_name').focus();
-    </script>
+  <%= form_for(@new_shipping, role: 'form') do |f| %>
 
 
-  <div class="field">
-    <%= f.label :street_name, t('.street_name') %><%= errors_for @new_shipping, :street_name %><br />
-    <%= f.text_field :street_name %>
-    <%= f.label :street_number, t('.street_number') %><%= errors_for @new_shipping, :street_number %><br />
-    <%= f.number_field :street_number %>
-    <%= f.label :details, t('.details') %>
-    <%= f.text_field :details %>
-  </div>
+    <div class="form-group">
+      <%= f.label :first_name, t('.first_name') %><%= errors_for @new_shipping, :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
+      <%= f.label :last_name, t('.last_name') %><%= errors_for @new_shipping, :last_name %><br />
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
 
- 
-  <div class="field">
-    <%= f.label :city, t('.city') %><br>
-    <%= f.collection_select :city_id, City.all, :id, :name %>
-  </div>
 
-  
-  <%= f.hidden_field :shipping, value: true %>
 
-<% if @new_shipping && @new_billing %>
-<div id= "billing_checkbox">
-  <div class="title"><%= t('.billing_address_html') %></div>
 
-   <div class="checkbox">
-     <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()"} %> <%= t('.the_same') %>
-  </div>
+    <div class="form-group">
+      <%= f.label :street_name, t('.street_name') %><%= errors_for @new_shipping, :street_name %><br />
+      <%= f.text_field :street_name, class: 'form-control' %>
+      <%= f.label :street_number, t('.street_number') %><%= errors_for @new_shipping, :street_number %><br />
+      <%= f.number_field :street_number, class: 'form-control' %>
+      <%= f.label :details, t('.details') %>
+      <%= f.text_field :details, class: 'form-control' %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :city, t('.city') %><br>
+      <%= f.collection_select :city_id, City.all, :id, :name, {}, {class: 'form-control'} %>
+    </div>
+
+
+    <%= f.hidden_field :shipping, value: true %>
+
+    <% if @new_shipping && @new_billing %>
+    <div id="billing_checkbox">
+      <div class="title"><%= t('.billing_address_html') %></div>
+
+       <div class="checkbox">
+         <%= f.check_box 'billing', {checked: true, onchange: "show_billing_form()", class: 'checkbox'} %> <%= t('.the_same') %>
+      </div>
+    </div>
+    <% end %>
+
+
+  <%= f.submit t('.add_address'), class: 'btn btn-default grey_button' %>
+  <% end %>
 </div>
-<% end %>
 
-
-  
-<%= f.submit t('.add_address'), class: 'grey_button' %>
-
-
-
-<% end %>
-
-</div>
+  <script type="text/javascript">
+    document.getElementById('address_first_name').focus();
+  </script>

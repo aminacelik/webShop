@@ -1,11 +1,14 @@
-<div id="confirm_container">
+<div id="confirm_container" class="col-xs-12 col-sm-9 col-md-6">
   <div class="big"><%= t('.thank_you') %>!</div>
 
   	<%= t('.you_bought_html') %>: <br>
 
 	<% @order_items.each do |product_variant| %>
-		<%= image_tag product_variant.get_product_image_url %>
+		<%= image_tag product_variant.get_product_image_url, class: 'img-responsive col-xs-6 col-sm-4 col-md-3' %>
 	<% end %><br>
 
-	<%= t('.you_spent_html') %>: <div class="big"><%= number_to_currency(@order.price) %></div>
+   <div class="col-xs-12 big">
+	   <%= t('.you_spent_html') %>: <br />
+     <%= number_to_currency(@order.price) %>
+  </div>
 </div>

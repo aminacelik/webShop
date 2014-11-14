@@ -1,31 +1,32 @@
 <h2><%= t('.purchase_history') %></h2>
 
-<table>
+<div class="table-responsive col-xs-12">
+<table class="table">
 	<% @order_items.each do |product_variant| %>
 	<tr>
-		<td>
-			<%= image_tag product_variant.get_product_image_url %>
+		<td class="col-xs-3">
+			<%= image_tag product_variant.get_product_image_url, class: 'img-responsive col-xs-6' %>
 		</td>
-		<td>
+		<td class="col-xs-3">
 			<span class="title"><%= product_variant.get_product_title %></span><br/>
 			<%= t('.size_html') %>: <%= product_variant.get_product_size %><br/>
 			<%= t('.color') %>: <%= product_variant.get_product_color %><br />
 		</td>
-		<td>
+		<td class="col-xs-2">
 			<%= t('.price') %>: <br/>
 			<span class="price"><%= product_variant.get_product_price %></span><br/>
 			<%= t('.quantity_html') %>: <%= product_variant.quantity %><br/>
 		</td>
-		<td>
+		<td class="col-xs-2">
 			<%= t('.order_date_html') %> <br/>
 			<%= product_variant.order.get_order_date %><br />
 		</td>
 
-		<td>
+		<td class="col-xs-2">
 			<%= t('.shipping_address') %><br/>
 			<%= render partial: 'addresses/address_display', locals: {address: product_variant.order.get_shipping_address} %>
 		</td>
 	</tr>
 	<% end %>
 </table>
-	
+</div>

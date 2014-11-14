@@ -5,6 +5,15 @@
   <%= @user.name %>
 </p>
 
+<p>
+  <strong>Email</strong>
+  <%= @user.email %>
+</p>
+
+
+<p>
+  <%= @user.role.name %>
+</p>
 
 <p>
 	<h2><%= t('.addresses') %></h2>
@@ -12,7 +21,7 @@
 <% unless session[:role]=='administrator' %>
 	<div id="address_list">
 		<% @addresses.each do |address| %>
-			<div class="address_display">
+			<div class="address_display col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<%= address.street %><br>
 				<%= address.city_details %><br>
 				<%= address.country_name %><br>

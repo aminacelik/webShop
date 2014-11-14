@@ -1,62 +1,44 @@
+<div name="billing_form" id="billing_form" class="address_form col-xs-12">
 
-<div class="address_form" name="billing_form">
-
+<%= form_for(@new_billing, role: 'form') do |f| %>
   <div class="title"><%= t('.billing_address_html') %></div>
 
-  <%= form_for(@new_billing) do |f| %>
- 
-  <% if @new_billing.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@new_billing.errors.count, "error") %> prohibited this address from being saved:</h2>
-
-    <ul>
-      <% @new_billing.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <% if @new_shipping %>
+    <div class="checkbox">
+     <%= f.check_box 'shipping', {checked: false, onchange: "hide_billing_form()", class: 'checkbox'} %> <%= t('.the_same') %>
+   </div>
   <% end %>
 
-<% if @new_shipping %>
-  <div class="checkbox">
-   <%= f.check_box 'shipping', {checked: false, onchange: "hide_billing_form()"} %> <%= t('.the_same') %>
- </div>
-<% end %>
+
+
+  <div class="form-group">
+    <%= f.label :first_name, t('.first_name') %><br>
+    <%= f.text_field :first_name, class: 'form-control' %><br>
+    <%= f.label :last_name, t('.last_name') %><br>
+    <%= f.text_field :last_name, class: 'form-control' %><br>
+  </div>
 
 
 
-<div class="field">
-  <%= f.label :first_name, t('.first_name') %><br>
-  <%= f.text_field :first_name %><br>
-  <%= f.label :last_name, t('.last_name') %><br>
-  <%= f.text_field :last_name %><br>
-</div>
-
- 
-
-<div class="field">
-  <%= f.label :street_name, t('.street_name') %><br>
-  <%= f.text_field :street_name %><br>
-  <%= f.label :street_number, t('.street_number') %><br>
-  <%= f.number_field :street_number %><br>
-  <%= f.label :details, t('.details') %><br>
-  <%= f.text_field :details %>
-</div>
+  <div class="form-group">
+    <%= f.label :street_name, t('.street_name') %><br>
+    <%= f.text_field :street_name, class: 'form-control' %><br>
+    <%= f.label :street_number, t('.street_number') %><br>
+    <%= f.number_field :street_number, class: 'form-control' %><br>
+    <%= f.label :details, t('.details') %><br>
+    <%= f.text_field :details, class: 'form-control' %>
+  </div>
 
 
-<div class="field">
-  <%= f.label :city, t('.city') %><br>
-  <%= f.collection_select :city_id, City.all, :id, :name %>
-</div>   
+  <div class="form-group">
+    <%= f.label :city, t('.city') %><br>
+    <%= f.collection_select :city_id, City.all, :id, :name, {}, {class: "form-control"} %>
+  </div>   
 
 
 
-<%= f.hidden_field :billing, value: true %>
-
-
-
-<%= f.submit t('.add_address'), class: 'grey_button' %>
-
+  <%= f.hidden_field :billing, value: true %>
+  <%= f.submit t('.add_address'), class: 'btn btn-default grey_button' %>
 <% end %>
 
 </div>
