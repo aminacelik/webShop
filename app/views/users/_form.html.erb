@@ -1,7 +1,7 @@
 <%= form_for(@user, role: 'form') do |f| %>
 
 
-<div id="sign_up_data" class="col-xs-12 col-sm-9 col-md-4" >
+<div id="sign_up_data" class="col-xs-12" >
   
   <div class="form-group">
 	  <%= f.label :name, t('.username_html') %><%= errors_for @user, :name %>

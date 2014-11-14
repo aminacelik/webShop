@@ -1,8 +1,9 @@
 
 
-<div id="sign_up_form">
-	<h3><%= t('.signup') %></h3>
-	<%= link_to t('.login'), login_url %><br>
+<div id="sign_up_form" class="col-xs-12 col-sm-6 col-sm-offset-3">
+	
+  <span class="right"><%= link_to t('.login'), login_url %></span><br>
+  <h3><%= t('.signup') %></h3>
 	<%= render 'form' %>
 
 </div>
