@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
 
+    post 'orders/ship_order'
     get  'orders/purchase_confirmation'
     get  'orders/purchase_history'
     post 'orders/create_order'

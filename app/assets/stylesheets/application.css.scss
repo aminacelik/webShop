@@ -71,7 +71,6 @@ $grey: #a1a1a1;
 
 
 #languages {
-   width: 5%;
    float: right;
    overflow: hidden;
    position: absolute;
@@ -79,7 +78,7 @@ $grey: #a1a1a1;
    right: 0;
    a {
      margin-top: 2px;
-     float: left;
+     float: right;
       img {
         width: 100%;
       }
@@ -229,7 +228,25 @@ h2 {
   margin-left: 5%;
   color: darkgrey;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 40px;
   margin-bottom: 30px;
+  font-family: 'Montserrat';
+}
+
+h1 {
+  margin-left: 5%;
+  color: darkgrey;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-family: 'Montserrat';
+}
+#notice_area {
+  height: 50px;
+  text-align: center;
+  color: $light_orange;
+  font-size: 16px;
+  font-weight: 600;
 }

@@ -1,8 +1,11 @@
-.product_in_cart {
-//      height: 120px;
-      border-bottom: 1px solid grey;
-      padding: 1% 1% 1% 1%;
-      margin-bottom: 5%;
+#product_list {
+  margin-top: 20px;
+  .product_in_cart {
+  //      height: 120px;
+        border-bottom: 1px solid grey;
+        padding: 1%;
+        margin-bottom: 5%;
+  }
 }
 
 .order_display {
@@ -16,6 +19,7 @@
       color: #b7b7b7;
       float: right;
       text-align: right;
+      margin-top: 0;
     }
     #cart_details {
       float: right;

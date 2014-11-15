@@ -20,6 +20,11 @@ class Address < ActiveRecord::Base
   def city_details
 	  "#{city.postal_code}, #{city.name}"
   end
+  
+  def print_format
+    "#{street} \n #{city_details} \n #{country_name}"
+  end
+  
 
 
 end

@@ -4,11 +4,23 @@ class OrdersController < ApplicationController
 
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_cart
+  before_action :authorize
+  before_action :limit_access_to_administrator, only: [:index]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if params[:shipped]=='true'
+      @orders = Order.where(shipped: 'true').order('created_at ASC')
+    else
+      @orders = Order.where(shipped: 'false').order('created_at ASC')
+    end
+    
+    @order_items = []
+    @orders.each do |order|
+      @order_items +=  order.product_variants
+    end
+
   end
 
   # GET /orders/1
@@ -57,6 +69,7 @@ class OrdersController < ApplicationController
     end
   end
 
+
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
@@ -96,9 +109,18 @@ class OrdersController < ApplicationController
     @user_orders.each do |order|
       @order_items +=  order.product_variants
     end
-
-
   end
+  
+    
+  def ship_order
+    order = Order.where(id: params[:id]).first
+    order.shipped = true
+    if order.save
+      redirect_to orders_url, notice: 'Order is now marked as shipped!'
+    end
+  end
+    
+    
 
   private
 
