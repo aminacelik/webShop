@@ -109,6 +109,8 @@ ba:
       new_billing_html: "Nova adresa za račun"
       new_shipping: "Nova adresa za dostavu"
       step_2of2: "Korak 2 od 2"
+    index:
+      step_2of2: "Korak 2 od 2"
 
   orders:
     purchase_history:

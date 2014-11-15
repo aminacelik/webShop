@@ -22,6 +22,10 @@ $light_orange: #f0b49e;
 $header_color: #625a62;
 $grey: #a1a1a1;
 
+body {
+  font-family: 'Montserrat';
+}
+
 #header {
   background-color: $header_color;
   margin-bottom: 0px;

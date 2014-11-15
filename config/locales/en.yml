@@ -129,6 +129,8 @@ en:
       new_billing_html: "New billing address"
       new_shipping: "New shipping address"
       step_2of2: "Step 2 of 2"
+    index:
+      step_2of2: "Step 2 of 2"
 
   orders:
     purchase_history:

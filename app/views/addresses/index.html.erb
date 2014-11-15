@@ -39,7 +39,7 @@
 
   <div class="order_display col-xs-12 col-sm-6 col-md-5">
     <% unless @cart.number_of_products == 0 %>
-        <div class="step">Step 2 of 2</div>
+        <div class="step"><%= t('.step_2of2') %></div>
         <%= render partial: "carts/order_cart" %>
     
 
