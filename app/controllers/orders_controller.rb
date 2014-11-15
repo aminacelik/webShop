@@ -11,16 +11,10 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     if params[:shipped]=='true'
-      @orders = Order.where(shipped: 'true').order('created_at ASC')
+      find_orders_items(true)
     else
-      @orders = Order.where(shipped: 'false').order('created_at ASC')
+      find_orders_items(false)
     end
-    
-    @order_items = []
-    @orders.each do |order|
-      @order_items +=  order.product_variants
-    end
-
   end
 
   # GET /orders/1
@@ -115,14 +109,30 @@ class OrdersController < ApplicationController
   def ship_order
     order = Order.where(id: params[:id]).first
     order.shipped = true
-    if order.save
-      redirect_to orders_url, notice: 'Order is now marked as shipped!'
+    
+
+    respond_to do |format|
+      if order.save
+        find_orders_items(false)
+        format.html { redirect_to orders_url, notice: 'Order is now marked as shipped!'}
+	      format.js
+        format.json { head :no_content }
+      end
     end
   end
     
     
 
   private
+  
+  def find_orders_items(shipped_bool)
+    orders = Order.where(shipped: shipped_bool).order('created_at ASC')
+    @order_items = []
+    orders.each do |order|
+      @order_items +=  order.product_variants
+    end
+  end
+    
 
    
 
