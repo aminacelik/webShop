@@ -10,7 +10,12 @@
     
     <div class="images col-xs-12 col-sm-6">
       <% @images.each do |product_image| %>
-        <%= image_tag product_image.image.url(:thumb) %>
+        <div class="image col-xs-6 col-sm-4 col-md-3">
+          <%= image_tag product_image.image.url(:thumb) %>
+          <div class="delete_icon">
+            <%= link_to image_tag('delete.png'), product_product_image_path(product_id: @product.id, id: product_image.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
       <% end %>
 
       <br>
