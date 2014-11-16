@@ -1,4 +1,4 @@
-<%= form_for(@product_variant, html: {role: 'form', class: 'col-xs-12 col-sm-6'}) do |f| %>
+<%= form_for [@product, @product_variant], html: {role: 'form', class: 'col-xs-12 col-sm-6'} do |f| %>
   <% if @product_variant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h2>

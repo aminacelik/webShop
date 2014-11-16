@@ -1,0 +1,42 @@
+<div id="product_display_form" class="container-fluid">
+	
+	<div class="product_title row">
+	 <%= @product.category.name %> »
+	 <%= @product.title %>
+  </div>
+	
+	
+  <div class="row">
+    
+    <div class="images col-xs-12 col-sm-6">
+      <% @images.each do |product_image| %>
+        <%= image_tag product_image.image.url(:thumb) %>
+      <% end %>
+
+      <br>
+      <%= link_to 'Add image', new_product_product_image_path(product_id: @product.id) %>
+    </div>
+
+    <div class="product_description col-xs-12 col-sm-6">
+      <% if @translation %>
+        <%= @translation.description %>
+      <% else %>
+        <%= @product.description %>
+      <% end %>
+
+      <br><br>
+
+      <br><%= t('.price') %><br>
+      <div class="price_line">
+        <%= number_to_currency(@product.price) %>
+      </div><br><br>
+
+      <%= link_to 'Edit', edit_product_path(@product) %> 
+    </div>
+  
+  </div>
+
+	<%= render partial: 'product_variants/table_display', locals: {product_variants: @variants} %>
+	<%= link_to 'Add variant', new_product_product_variant_path(product_id: @product.id) %>
+			
+</div>

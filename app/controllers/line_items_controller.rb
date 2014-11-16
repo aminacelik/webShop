@@ -34,7 +34,7 @@ class LineItemsController < ApplicationController
   
     product_variant = ProductVariant.where(product_id: params[:product_id], size_id: params[:size_id]).first
     @line_item = @cart.add_product_variant(product_variant.id)
-	@product = @line_item.product_variant.product
+	  @product = @line_item.product_variant.product
 	  
     respond_to do |format|
       if @line_item.save

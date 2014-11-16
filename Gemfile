@@ -17,7 +17,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# gem for integrating Stripe
 gem 'stripe'
+
+# gem used for product images
+gem 'paperclip', '~> 3.0'
+
 
 # gems for bootstrap
 # gem 'bootstrap-sass', '~> 3.3.0'

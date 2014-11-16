@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :limit_access_to_administrator, except: [:show] #unregistered user can access only :show
   skip_before_action :authorize, only: [:show]
+  
   include CurrentCart
   before_action :set_cart
 	
@@ -46,6 +47,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+
 	  @category = Category.find(params[:product][:category_id])
     @product = @category.products.build(product_params)
 
@@ -82,6 +84,12 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: t('status_mssg.product.deleted') }
       format.json { head :no_content }
     end
+  end
+
+  def detailed_show
+    @product = Product.find(params[:id])
+    @images = @product.product_images
+    @variants = ProductVariant.where(product_id: @product.id, order_id: nil)
   end
 
   private

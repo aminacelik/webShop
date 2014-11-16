@@ -1,0 +1,11 @@
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_image.product.title %>
+</p>
+
+<%= image_tag @product_image.image.url(:medium) %>
+<%= image_tag @product_image.image.url(:thumb) %>
+
+<%= link_to 'Edit', edit_product_product_image_path(id: @product_image.id) %> |
+<%= link_to 'Back', product_product_images_path %>

@@ -1,4 +1,4 @@
-<h2>Sizes and colors for product</h2>
+<h2>Product variants</h2>
 
 
   <div id="product_list" class="col-xs-12 col-sm-6">
@@ -23,28 +23,4 @@
     
   
 
-
-
-
-<table class='table table-striped'>
-	<tr>
-		<th>Product</th>
-		<th>Color</th>
-		<th>Size</th>
-		<th>Quantity</th>
-	</tr>
-	<%  @product_variants.each do |pv| %>
-	
-		<tr>
-			<td><%= pv.product.title %></td>
-			<td><%= pv.color.name %></td>
-			<td><%= pv.size.size %></td>
-			<td><%= pv.quantity %></td>
-		</tr>
-	
-<% end %>
-
-</table>
-
-
-<%= link_to 'New Product variant', new_product_variant_path(product_id: params[:product_id]) %>
+<%= render partial: 'table_display', locals: {product_variants: @product_variants} %>

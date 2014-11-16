@@ -1,10 +1,11 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :color
-    belongs_to :order
+  belongs_to :order
     
 	has_many :product_variants
-    has_many :product_translations
+  has_many :product_translations
+  has_many :product_images
 
 	validates :category, associated: true
     validates :title, :description, :image_url, presence: true

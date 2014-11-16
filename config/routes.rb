@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 	
 
 
+  
+
   scope '(:locale)' do
+
+    get 'products/detailed_show'
 
     post 'orders/ship_order'
     get  'orders/purchase_confirmation'
@@ -31,17 +35,18 @@ Rails.application.routes.draw do
     
     resources :users
     
-    resources :products
+    resources :products do
+      resources :product_images
+      resources :product_variants
+    end
     
     resources :categories
-    
+
     resources :category_translations
 
     resources :product_translations
 
     resources :languages
-
-    resources :product_variants
 
     resources :sizes
 
@@ -50,8 +55,6 @@ Rails.application.routes.draw do
     resources :cities
 
     resources :countries
-
-    resources :address_types
 
     resources :roles
 

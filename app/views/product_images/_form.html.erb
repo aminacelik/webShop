@@ -1,0 +1,24 @@
+<%= form_for [@product, @product_image], url: product_product_images_path, html: {multipart: true, role: 'form', class: 'col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3' } do |f| %>
+  <% if @product_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_image.errors.count, "error") %> prohibited this product_image from being saved:</h2>
+
+      <ul>
+      <% @product_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+ 
+  <div class="form-group">
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-default grey_button' %>
+  </div>
+<% end %>

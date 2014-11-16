@@ -1,0 +1,23 @@
+<div class='table-responsive'>
+<table class='table table-striped'>
+	<tr>
+		<th>Variant ID </th>
+		<th>Product</th>
+		<th>Color</th>
+		<th>Size</th>
+		<th>Quantity in stock</th>
+	</tr>
+	<%  product_variants.each do |pv| %>
+	
+		<tr>
+			<td><%= pv.id %></td>
+			<td><%= pv.product.title %></td>
+			<td><%= pv.color.name %></td>
+			<td><%= pv.size.size %></td>
+			<td><%= pv.quantity %></td>
+		</tr>
+	
+<% end %>
+
+</table>
+</div>

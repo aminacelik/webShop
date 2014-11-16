@@ -1,6 +1,7 @@
 class ProductVariantsController < ApplicationController
   before_action :set_product_variant, only: [:show, :edit, :update, :destroy]
   before_action :limit_access_to_administrator, only: [:new, :create, :edit, :update, :delete]
+  before_action :set_product
 
   # GET /product_variants
   # GET /product_variants.json
@@ -31,15 +32,11 @@ class ProductVariantsController < ApplicationController
   # POST /product_variants
   # POST /product_variants.json
   def create
-  
-    if params[:product_id]
-	     @product = Product.where(id: params[:product_id], order_id: nil).first
-    end
-       @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
+   @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
   
 	   respond_to do |format|
 		  if @product_variant.save
-			format.html { redirect_to product_variants_url(product_id: @product.id) }
+			format.html { redirect_to products_detailed_show_url(id: @product.id) }
 			format.json {  }
 		  else
 			format.html { render :new }
@@ -77,6 +74,10 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_product_variant
       @product_variant = ProductVariant.find(params[:id])
+    end
+
+    def set_product
+      @product = Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
