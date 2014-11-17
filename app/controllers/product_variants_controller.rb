@@ -7,7 +7,7 @@ class ProductVariantsController < ApplicationController
   # GET /product_variants.json
   def index
 	 @product = Product.where(id: params[:product_id], order_id: nil).first    
-	 @product_variants = @product.product_variants
+	 @product_variants = @product.product_variants.order('size_id ASC')
   end
 
   # GET /product_variants/1

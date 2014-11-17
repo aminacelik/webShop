@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
   def detailed_show
     @product = Product.find(params[:id])
     @images = @product.product_images
-    @variants = ProductVariant.where(product_id: @product.id, order_id: nil)
+    @variants = ProductVariant.where(product_id: @product.id, order_id: nil).order('size_id ASC')
   end
 
   private
