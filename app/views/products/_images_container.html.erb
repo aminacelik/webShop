@@ -1,0 +1,14 @@
+    <div id="images_container" class="images col-xs-12 col-sm-6">
+      <% images.each do |product_image| %>
+        <div class="image col-xs-6 col-sm-4 col-md-3">
+          <%= image_tag product_image.image.url(:thumb) %>
+          <div class="delete_icon">
+            <%= link_to image_tag('delete.png'), product_product_image_path(product_id: product.id, id: product_image.id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          </div>
+        </div>
+      <% end %>
+
+      <div id='add_image_link'>
+        <%= link_to 'Add image', new_product_product_image_path(product_id: product.id)%>
+      </div>
+    </div>

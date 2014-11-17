@@ -61,7 +61,9 @@ class ProductImagesController < ApplicationController
   def destroy
     @product_image.destroy
     respond_to do |format|
+      @images = @product.product_images
       format.html { redirect_to products_detailed_show_url(id: @product.id), notice: 'Product image was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end

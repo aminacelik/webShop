@@ -17,9 +17,6 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/new
   def new
-    if params[:product_id]
-	     @product = Product.where(id: params[:product_id], order_id: nil).first
-    end
 	  @sizes = Size.all
     @colors = Color.all
     @product_variant = ProductVariant.new
@@ -27,13 +24,20 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/1/edit
   def edit
+    @sizes = Size.all
+    @colors = Color.all
   end
 
   # POST /product_variants
   # POST /product_variants.json
   def create
-   @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
-  
+    @existing_variant = ProductVariant.where(product_id: @product.id, size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]).first
+    if @existing_variant
+      @existing_variant.quantity += params[:product_variant][:quantity].to_i
+      @product_variant = @existing_variant
+    else
+      @product_variant = @product.product_variants.new(product_variant_params.merge(size_id: params[:product_variant][:size_id], color_id: params[:product_variant][:color_id]))
+    end
 	   respond_to do |format|
 		  if @product_variant.save
 			format.html { redirect_to products_detailed_show_url(id: @product.id) }
@@ -51,7 +55,7 @@ end
   def update
     respond_to do |format|
       if @product_variant.update(product_variant_params)
-        format.html { redirect_to @product_variant, notice: 'Product variant was successfully updated.' }
+        format.html { redirect_to products_detailed_show_url(id: @product.id), notice: 'Updated!' }
         format.json { render :show, status: :ok, location: @product_variant }
       else
         format.html { render :edit }
@@ -65,7 +69,7 @@ end
   def destroy
     @product_variant.destroy
     respond_to do |format|
-      format.html { redirect_to product_variants_url, notice: 'Product variant was successfully destroyed.' }
+      format.html { redirect_to products_detailed_show_url(id: @product.id), notice: 'Product variant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
