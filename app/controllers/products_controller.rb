@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
       @translation = @product.product_translations.where(language_id: @language.id).first
     end
 
+    @images = @product.product_images
+
   end
 
   # GET /products/new

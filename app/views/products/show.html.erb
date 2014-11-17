@@ -20,8 +20,13 @@
   
   <div class="row">
     
-        <%= image_tag @product.image_url, class: 'img-responsive col-xs-12 col-sm-6' %>
- 
+        <div class= "col-xs-12 col-sm-6">
+          <ul class="bxslider" id='bxslider'>
+            <% @images.each do |img| %>
+              <li><%= image_tag img.image.url(:medium) %></li>
+            <% end %>
+          </ul>
+        </div>
 
 
 
@@ -59,12 +64,7 @@
         </div>
   
   </div>
-
-	
-	
-
 <% end %>			
-			
 </div>
 
 
@@ -79,4 +79,9 @@
 		<% end %>
 </div>
 
-      
+<script type="text/javascript">
+      $(document).ready(function(){
+
+          $('#bxslider').bxSlider();
+        });
+</script>

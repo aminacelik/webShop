@@ -24,6 +24,9 @@ gem 'stripe'
 gem 'paperclip', '~> 3.0'
 
 
+# image slider
+gem 'bxslider-rails'
+
 # gems for bootstrap
 # gem 'bootstrap-sass', '~> 3.3.0'
 # gem 'autoprefixer-rails'
