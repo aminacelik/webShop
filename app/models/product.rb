@@ -22,14 +22,13 @@ class Product < ActiveRecord::Base
         Product.order(:updated_at).last
     end
     
-    def get_title_translation(short_name, id)
+    def get_title_translation(short_name)
       @language = Language.where(short_name: short_name).first
-      @product = Product.where(id: id).first
-      @product_translation = @product.product_translations.where(language_id: @language.id).first
+      @product_translation = product_translations.where(language_id: @language.id).first
       if @product_translation
         @product_translation.title
       else
-        @product.title
+        title
       end
     end
   

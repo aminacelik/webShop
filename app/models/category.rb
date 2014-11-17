@@ -9,10 +9,10 @@ class Category < ActiveRecord::Base
 	def translation_for_category_name(short_name)
 		language = Language.where(short_name: short_name).first
 		@translation = category_translations.where(language_id: language.id).first
-    if @translation
-		  @translation.name
-    else
-      name
-    end
+	    if @translation
+			@translation.name
+	    else
+      		name
+    	end
 	end
 end

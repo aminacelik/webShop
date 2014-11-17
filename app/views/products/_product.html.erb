@@ -3,7 +3,7 @@
       <%= link_to image_tag(product.image_url, class: 'img-responsive'), product_path(product) %>
 
       <% if params[:locale] == 'ba' %>
-        <h3><%= link_to product.get_title_translation('ba', product.id), product_path(product) %></h3>
+        <h3><%= link_to product.get_title_translation('ba'), product_path(product) %></h3>
       <% else %>
         <h3><%= link_to product.title, product_path(product) %></h3>
       <% end %>

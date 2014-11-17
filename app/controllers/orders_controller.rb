@@ -86,8 +86,10 @@ class OrdersController < ApplicationController
     save_billing_address_copy
     save_items_copy
 
+    # deleting line items from cart
     @line_items = @cart.line_items
     @line_items.delete_all  
+    # 
     session[:last_order]=@order.id
     redirect_to orders_purchase_confirmation_path(id: @order.id, locale: params[:locale]), notice: t('status_mssg.order.ordered')
   end
