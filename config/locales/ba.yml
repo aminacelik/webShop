@@ -126,15 +126,6 @@ ba:
       you_bought_html: "Kupili ste sljedeće artikle"
       you_spent_html: "Potrošili ste"
 
-  number:
-    currency:
-      format:
-        unit: "KM"
-        precision: 2
-        separator: ","
-        delimiter: "."
-        format: "%n%u"
-
   activerecord:
     errors:
       messages:

@@ -140,6 +140,9 @@ class OrdersController < ApplicationController
 
     def save_shipping_address_copy
       @address = Address.where(id: session[:shipping_id]).first
+      @address.transaction do
+        @address.lock!
+      end
       @address_copy = Address.new(street_name: @address.street_name,
                                    street_number: @address.street_number,
                                    details: @address.details,

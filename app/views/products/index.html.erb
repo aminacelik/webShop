@@ -5,7 +5,7 @@
     
     <% @products.each do |product| %>
       <div class="product_in_cart row">
-		    <%= image_tag product.image_url, class: 'img-responsive col-xs-3' %>
+		    <%= image_tag product.get_thumb_image, class: 'img-responsive col-xs-3' %>
 		    <div class="product_details col-xs-5">
 		 	    Model: <%= product.title %><br>
          	<%= truncate(strip_tags(product.description), length: 50) %><br>
@@ -17,7 +17,7 @@
           Price: <strong><%= number_to_currency(product.price) %><br>
           <%= link_to 'Show', products_detailed_show_path(id: product.id) %> <br>
           <%= link_to 'Edit', edit_product_path(product) %> <br>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
 	     </div>
     <% end %>

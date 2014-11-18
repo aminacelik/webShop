@@ -76,20 +76,20 @@ body {
 
 
 #languages {
-   float: right;
+   float: left;
    overflow: hidden;
    position: absolute;
+   list-style: none;
    top: 0;
    right: 0;
    a {
      margin-top: 2px;
      float: right;
-      img {
-        width: 100%;
-      }
+     color: $light_orange;
     }
     a:hover {
       background-color: transparent;
+      text-decoration: none;
     }
 }
 

@@ -1,11 +1,7 @@
 <%= stylesheet_link_tag "homepage" %>
 
-
-
 	<h2><%= t('.new_in_store') %></h2>
-		<% @products.each do |product| %>
-
-				<%= render partial: "products/product", locals: {product: product} %>
-	
-		<% end %>
+	<% @products.each do |product| %>
+		<%= render partial: "products/product", locals: {product: product} %>
+	<% end %>
 	

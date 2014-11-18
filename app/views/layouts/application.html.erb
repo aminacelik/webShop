@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>abhShoes</title>
-
+  <%= favicon_link_tag('shoes.png') %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -26,17 +26,16 @@
       </button>
       
  
-      <a class="navbar-brand" href="#">
-        <%=image_tag('logo.png')%>
-      </a>
+      
+      <%= link_to image_tag('logo.png'), store_url, class:'navbar-brand' %>
+      
     </div>
 
     
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
-        <li><%= link_to t('.home_html'), store_url %></li>
         
-        <% if params[:locale] == 'ba' %>
+        <% if session[:locale] == 'ba' %>
 				  <% @categories.each do |c| %>
 						<li><%= link_to c.translation_for_category_name('ba'), category_path(c) %></li>
 				  <% end %>	
@@ -81,9 +80,9 @@
 
   </div>
     
-    <div id="languages" class="col-xs-4 col-sm-3 col-md-2 col-lg-1">
-      <%= link_to image_tag('bih.jpg'), store_path(locale: 'ba'), title: 'bosanski' %>
-      <%= link_to image_tag('uk.jpg'), store_path(locale: 'en'), title: 'English' %>
+    <ul id="languages">
+      <li><%= link_to 'BA', store_path(locale: 'ba'), title: 'bosanski' %></li>
+      <li><%= link_to 'EN', store_path(locale: 'en'), title: 'English' %></li>
     </div>
     
 </nav>		

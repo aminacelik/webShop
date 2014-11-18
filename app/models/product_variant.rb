@@ -3,9 +3,12 @@ class ProductVariant < ActiveRecord::Base
   belongs_to :size
   belongs_to :color
   belongs_to :order
+  
   has_many :line_items
 	
-	def get_product_image_url
+  before_destroy :ensure_not_referenced_by_any_line_item
+	
+  def get_product_image_url
     product.image_url
   end
 

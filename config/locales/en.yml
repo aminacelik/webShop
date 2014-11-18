@@ -146,18 +146,6 @@ en:
       you_bought_html: "You bought the following products"
       you_spent_html: "You spent"
   
-
-  number:
-    currency:
-      format:
-        unit: "$"
-        precision: 2
-        separator: "."
-        delimiter: ","
-        format: "%u%n"
-
-
-
   status_mssg:
     address:
       created: "Your address is now saved."
