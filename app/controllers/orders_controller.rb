@@ -76,34 +76,39 @@ class OrdersController < ApplicationController
 
 
   def create_order
-    do_payment
+    
     price = @cart.total_delivery_and_products_price
-    @order = Order.new(user_id: @current_user.id, price: price)
-    @order.save
+
+    ActiveRecord::Base.transaction do
+      do_payment
+      puts "#{params[:locale]} ---------------------------------------------------------------------------"
+      shipping_id = save_address_copy(session[:shipping_id])
+      billing_id = save_address_copy(session[:billing_id])
+
+      @order = Order.new(user_id: @current_user.id, price: price, shipping_address_id: shipping_id, billing_address_id: billing_id)
+      @order.save
 
 
-    save_shipping_address_copy
-    save_billing_address_copy
-    save_items_copy
+      save_items_copy
 
-    # deleting line items from cart
-    @line_items = @cart.line_items
-    @line_items.delete_all  
-    # 
-    session[:last_order]=@order.id
-    redirect_to orders_purchase_confirmation_path(id: @order.id, locale: params[:locale]), notice: t('status_mssg.order.ordered')
+      # deleting line items from cart
+      @cart.line_items.delete_all  
+     
+      session[:last_order]=@order.id
+      redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
+    end
   end
 
   def purchase_confirmation
     @order = Order.where(id: session[:last_order]).first
-    @order_items = @order.product_variants
+    @order_items = @order.items
   end
 
   def purchase_history
     @user_orders = Order.where(user_id: @current_user.id).order('created_at DESC')
     @order_items = []
     @user_orders.each do |order|
-      @order_items +=  order.product_variants
+      @order_items +=  order.items
     end
   end
   
@@ -138,75 +143,67 @@ class OrdersController < ApplicationController
 
    
 
-    def save_shipping_address_copy
-      @address = Address.where(id: session[:shipping_id]).first
-      @address.transaction do
-        @address.lock!
-      end
-      @address_copy = Address.new(street_name: @address.street_name,
-                                   street_number: @address.street_number,
-                                   details: @address.details,
-                                   user_id: @address.user_id,
-                                   city_id: @address.city_id,
-                                   first_name: @address.first_name,
-                                   last_name: @address.last_name,
-                                   shipping: true,
-                                   order_id: @order.id)
-      @address_copy.save
+    def save_address_copy(id)
+      address = Address.find(id)
+      address.lock!
+      address_copy = OrderAddress.new(street_name: address.street_name,
+                                      street_number: address.street_number,
+                                      details: address.details,
+                                      user_id: address.user_id,
+                                      city_id: address.city_id,
+                                      first_name: address.first_name,
+                                      last_name: address.last_name)
+      address_copy.save!
+      address_copy.id
     end
 
-    def save_billing_address_copy
-      @address = Address.where(id: session[:billing_id]).first
-      @address_copy = Address.new(street_name: @address.street_name,
-                                   street_number: @address.street_number,
-                                   details: @address.details,
-                                   user_id: @address.user_id,
-                                   city_id: @address.city_id,
-                                   first_name: @address.first_name,
-                                   last_name: @address.last_name,
-                                   billing: true,
-                                   order_id: @order.id)
-      @address_copy.save
-    end
   
 
     def save_items_copy
-      @cart_items = @cart.line_items
-
-      @cart_items.each do |item|
+    
+      @cart.line_items.each do |item|
       
-        @product_variant = item.product_variant
-        @product = @product_variant.product
+        product_variant = item.product_variant
+        raise ActiveRecord::RecordNotFound if product_variant.nil?
+        product_variant.lock!
+        product = product_variant.product 
+        raise ActiveRecord::RecordNotFound if product.nil?
+        product.lock!
 
-        @product_copy = Product.new(title: @product.title, 
-                                    description: @product.description, 
-                                    image_url: @product.image_url, 
-                                    price: @product.price, 
-                                    category_id: @product.category_id, 
-                                    order_id: @order.id)
-        @product_copy.save
+        # saving product copy in order products table
+        product_copy = OrderProduct.new(title: product.title, 
+                                        description: product.description,
+                                        price: product.price, 
+                                        category_id: product.category_id)
+        product_copy.save!
+
+        # save copy of product image
+        
+        image_copy = OrderProductImage.new()
+        image_copy.image = product.get_image_object
+        image_copy.order_product_id = product_copy.id
+        image_copy.save!
 
         # quantity management
-        @product_variant.quantity -= item.quantity
-        @product_variant.save
+        item.lock!
+        product_variant.quantity -= item.quantity 
+        # raise ArgumentError if product_variant.quantity < 0
+        product_variant.save!
 
-        @product_variant_copy = ProductVariant.new(product_id: @product_copy.id,
-                                                   size_id: @product_variant.size.id,
-                                                   color_id: @product_variant.color.id,
-                                                   quantity: item.quantity,
-                                                   order_id: @order.id)
-        @product_variant_copy.save
-
-
-
-        
+        # saving product variant copy
+        product_variant_copy = OrderProductVariant.new(order_product_id: product_copy.id,
+                                                      size_id: product_variant.size.id,
+                                                      color_id: product_variant.color.id,
+                                                      quantity: item.quantity,
+                                                      order_id: @order.id)
+        product_variant_copy.save!
       end
     end
 
 
       def do_payment
        
-        puts "PaymentController::do_payment params= #{params.inspect}"
+        # puts "PaymentController::do_payment params= #{params.inspect}"
         Stripe.api_key = CFG["secret_key"]
           
         customer = Stripe::Customer.create(
@@ -222,17 +219,6 @@ class OrdersController < ApplicationController
           :description => 'Rails Stripe customer',
           :currency    => 'usd'
           ) 
-        
-          
-        puts "charge = #{charge.inspect}"
-        
-
-      # creating order
-      # price = @cart.total_delivery_and_products_price
-     #    @order = Order.create(user_id: @current_user.id, price: price)
-
-
-      
           
       end
 

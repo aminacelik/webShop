@@ -5,7 +5,7 @@
   
   <div id="product_images">
     <% @order_items.each do |product_variant| %>
-      <%= image_tag product_variant.get_product_image_url, class: 'img-responsive col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-4' %>
+      <%= image_tag product_variant.get_order_product_image, class: 'img-responsive col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-4' %>
     <% end %><br>
   </div>
 

@@ -43,7 +43,7 @@
         <%= render partial: "carts/order_cart" %>
     
 
-  	<%=form_tag "/orders/create_order" do %>
+  	<%=form_tag "orders/create_order" do %>
       <% if @selected_shipping && @selected_billing %>
         <div class="col-xs-12 col-sm-6 buttons" style="float: right">
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" 

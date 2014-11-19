@@ -9,4 +9,8 @@ class LineItem < ActiveRecord::Base
   def get_product
 	  product_variant.product
   end
+
+  def get_image
+    product_variant.get_product_image
+  end
 end

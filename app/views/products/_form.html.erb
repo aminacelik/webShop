@@ -13,7 +13,12 @@
 
   <div class="form-group">
     <%= f.label :price %><%= errors_for @product, :price %>
-    <%= f.text_field :price, class: 'form-control' %>
+    <%= f.number_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sale_price %><%= errors_for @product, :sale_price %>
+    <%= f.number_field :sale_price, class: 'form-control' %>
   </div>
 
   <div class="form-group">

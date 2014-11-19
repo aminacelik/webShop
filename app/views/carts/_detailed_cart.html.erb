@@ -6,7 +6,7 @@
 		<% items.each do |line_item| %>
     
 			<div class="product_in_cart row">
-				<%= image_tag line_item.product_variant.product.image_url, class: 'img-responsive col-xs-3' %>
+				<%= image_tag line_item.get_image, class: 'img-responsive col-xs-3' %>
 				<div class="product_details col-xs-5">
 					 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
 					<%= t('.size_html') %>: <%= line_item.product_variant.size.size %><br>

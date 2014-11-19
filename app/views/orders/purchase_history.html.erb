@@ -5,7 +5,7 @@
 	<% @order_items.each do |product_variant| %>
 	<tr>
 		<td class="col-xs-3">
-			<%= image_tag product_variant.get_product_image_url, class: 'img-responsive col-xs-6' %>
+			<%= image_tag product_variant.get_order_product_image, class: 'img-responsive col-xs-9' %>
 		</td>
 		<td class="col-xs-3">
 			<span class="title"><%= product_variant.get_product_title %></span><br/>
@@ -24,7 +24,7 @@
 
 		<td class="col-xs-2">
 			<span class="bold"><%= t('.shipping_address') %>:</span><br/>
-			<%= render partial: 'addresses/address_display', locals: {address: product_variant.order.get_shipping_address} %>
+			<%= simple_format product_variant.order.get_shipping_address.print_format %>
 		</td>
 	</tr>
 	<% end %>

@@ -8,8 +8,8 @@ class ProductVariant < ActiveRecord::Base
 	
   before_destroy :ensure_not_referenced_by_any_line_item
 	
-  def get_product_image_url
-    product.image_url
+  def get_product_image
+    product.get_medium_image
   end
 
   def get_product_color

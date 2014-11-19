@@ -20,7 +20,7 @@ $header_color: #625a62;
 $grey: #a1a1a1;
 
 body {
-  background-image: url(background.jpg);
+  background-image: url(shoes_background.jpg);
   background-repeat: no-repeat;
   background-position: top left;
   background-size: contain;
@@ -118,9 +118,13 @@ body {
 }
 
 #content {
-  width: 90%;
-  margin: 20% auto;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20%;
   background-color: white;
+  border-radius: 3%;
+  padding-right: 3%;
+  padding-left: 3%;
 }
 
 

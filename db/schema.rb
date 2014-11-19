@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118130134) do
+ActiveRecord::Schema.define(version: 20141118201408) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
@@ -94,12 +94,59 @@ ActiveRecord::Schema.define(version: 20141118130134) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["product_variant_id"], name: "index_line_items_on_product_variant_id", using: :btree
 
+  create_table "order_addresses", force: true do |t|
+    t.string  "street_name"
+    t.integer "street_number"
+    t.integer "user_id"
+    t.integer "city_id"
+    t.string  "details"
+    t.string  "first_name"
+    t.string  "last_name"
+  end
+
+  add_index "order_addresses", ["city_id"], name: "index_order_addresses_on_city_id", using: :btree
+  add_index "order_addresses", ["user_id"], name: "index_order_addresses_on_user_id", using: :btree
+
+  create_table "order_product_images", force: true do |t|
+    t.integer  "order_product_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "order_product_images", ["order_product_id"], name: "index_order_product_images_on_order_product_id", using: :btree
+
+  create_table "order_product_variants", force: true do |t|
+    t.integer "order_product_id"
+    t.integer "size_id"
+    t.integer "color_id"
+    t.integer "quantity"
+    t.integer "order_id"
+  end
+
+  add_index "order_product_variants", ["color_id"], name: "index_order_product_variants_on_color_id", using: :btree
+  add_index "order_product_variants", ["order_id"], name: "index_order_product_variants_on_order_id", using: :btree
+  add_index "order_product_variants", ["order_product_id"], name: "index_order_product_variants_on_order_product_id", using: :btree
+  add_index "order_product_variants", ["size_id"], name: "index_order_product_variants_on_size_id", using: :btree
+
+  create_table "order_products", force: true do |t|
+    t.string  "title"
+    t.text    "description"
+    t.decimal "price",       precision: 8, scale: 2
+    t.integer "category_id"
+  end
+
+  add_index "order_products", ["category_id"], name: "index_order_products_on_category_id", using: :btree
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
-    t.decimal  "price",      precision: 8, scale: 2
+    t.decimal  "price",               precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "shipped",                            default: false
+    t.boolean  "shipped",                                     default: false
+    t.integer  "shipping_address_id"
+    t.integer  "billing_address_id"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -121,7 +168,6 @@ ActiveRecord::Schema.define(version: 20141118130134) do
     t.integer "product_id"
     t.string  "title"
     t.text    "description"
-    t.decimal "price"
   end
 
   add_index "product_translations", ["language_id"], name: "index_product_translations_on_language_id", using: :btree
@@ -149,6 +195,7 @@ ActiveRecord::Schema.define(version: 20141118130134) do
     t.datetime "updated_at"
     t.integer  "category_id"
     t.integer  "order_id"
+    t.decimal  "sale_price",  precision: 8, scale: 2
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree

@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
 	has_many :products
+	has_many :prder_products
 	has_many :category_translations 
 	
 	validates :name, presence: true
@@ -16,4 +17,6 @@ class Category < ActiveRecord::Base
       		name
     	end
 	end
+
+	
 end

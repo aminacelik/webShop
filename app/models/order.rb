@@ -1,17 +1,15 @@
 class Order < ActiveRecord::Base
 	belongs_to :user
 
-	has_many :product_variants
-	has_many :products 
-	has_many :addresses
+	has_many :order_product_variants
 
 
 	def get_shipping_address
-		Address.where(order_id: self.id, shipping: true).first
+		OrderAddress.where(id: shipping_address_id).first
 	end
 
 	def get_billing_address
-		Address.where(order_id: self.id, billing: true).first
+		OrderAddress.where(id: billing_address_id).first
 	end
 
 	def get_order_date
@@ -30,5 +28,8 @@ class Order < ActiveRecord::Base
     user.email
   end
 
+  def items
+  	order_product_variants
+  end
 
 end

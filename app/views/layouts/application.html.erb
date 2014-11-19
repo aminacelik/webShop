@@ -35,7 +35,7 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         
-        <% if session[:locale] == 'ba' %>
+        <% if params[:locale] == 'ba' %>
 				  <% @categories.each do |c| %>
 						<li><%= link_to c.translation_for_category_name('ba'), category_path(c) %></li>
 				  <% end %>	

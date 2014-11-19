@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   validate :has_at_least_one_image
 
   validates :title, :description, :category_id, presence: true
-  validates :price, numericality: {greater_than_or_equal_to: 0.01}
+  validates :price, :sale_price, numericality: {greater_than_or_equal_to: 0.01}
   
     
     
@@ -28,7 +28,12 @@ class Product < ActiveRecord::Base
         title
       end
     end
-  
+    
+    def get_image_object
+      if product_images.present?
+        product_images.first.image
+      end
+    end
    
     def get_thumb_image
       if product_images.present?
@@ -41,6 +46,13 @@ class Product < ActiveRecord::Base
         product_images.first.image.url(:medium)
       end
     end
+
+    def get_large_image
+      if product_images.present?
+        product_images.first.image.url(:large)
+      end
+    end
+
 
     def has_at_least_one_image
       errors.add(:product_images, 'must have at least one image') if self.product_images.blank?
