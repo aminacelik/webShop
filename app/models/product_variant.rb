@@ -6,7 +6,7 @@ class ProductVariant < ActiveRecord::Base
   
   has_many :line_items
 	
-  before_destroy :ensure_not_referenced_by_any_line_item
+  # before_destroy :ensure_not_referenced_by_any_line_item
 	
   def get_product_image
     product.get_medium_image

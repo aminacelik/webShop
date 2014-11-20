@@ -3,8 +3,8 @@ class Product < ActiveRecord::Base
 	belongs_to :color
   belongs_to :order
     
-	has_many :product_variants
-  has_many :product_translations
+	has_many :product_variants, dependent: :destroy
+  has_many :product_translations, dependent: :destroy
 
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
