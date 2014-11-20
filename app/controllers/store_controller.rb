@@ -10,7 +10,7 @@ class StoreController < ApplicationController
  		if params[:set_locale]
  			redirect_to store_url(locale: params[:set_locale]), notice: t('status_mssg.store.language_changed_html')
  		else
-			@products = Product.where(order_id: nil).last(8)
+			@products = Product.last(8)
 		end
   	end
 

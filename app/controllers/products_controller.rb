@@ -12,13 +12,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(order_id: nil)
+    @products = Product.all
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-	  @similar_products = Product.where(category_id: @product.category.id, order_id: nil).last(4)
+	  @similar_products = Product.where(category_id: @product.category.id).last(4)
 	  @variants = ProductVariant.where(product_id: @product.id, order_id: nil)
 	  
 	  @sizes = []
@@ -93,7 +93,7 @@ class ProductsController < ApplicationController
   def detailed_show
     @product = Product.find(params[:id])
     @images = @product.product_images
-    @variants = ProductVariant.where(product_id: @product.id, order_id: nil).order('size_id ASC')
+    @variants = ProductVariant.where(product_id: @product.id).order('size_id ASC')
   end
 
   private

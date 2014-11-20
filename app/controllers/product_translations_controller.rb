@@ -17,7 +17,7 @@ class ProductTranslationsController < ApplicationController
   # GET /product_translations/new
   def new
     @languages = Language.all
-    @products = Product.where(order_id: nil)
+    @products = Product.all
     @product_translation = ProductTranslation.new
   end
 

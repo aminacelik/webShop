@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118201408) do
+ActiveRecord::Schema.define(version: 20141120135153) do
 
   create_table "addresses", force: true do |t|
     t.string   "street_name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20141118201408) do
     t.boolean  "shipping",      default: false
     t.boolean  "billing",       default: false
     t.boolean  "default",       default: false
-    t.integer  "order_id"
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
@@ -180,7 +179,6 @@ ActiveRecord::Schema.define(version: 20141118201408) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order_id"
   end
 
   add_index "product_variants", ["color_id"], name: "index_product_variants_on_color_id", using: :btree
@@ -194,7 +192,6 @@ ActiveRecord::Schema.define(version: 20141118201408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.integer  "order_id"
     t.decimal  "sale_price",  precision: 8, scale: 2
   end
 

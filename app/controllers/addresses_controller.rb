@@ -121,7 +121,7 @@ end
   
   
   def user_addresses
-    @user_addresses = @current_user.addresses.where(order_id: nil)
+    @user_addresses = @current_user.addresses
     @address_type = params[:type]
   end
   
