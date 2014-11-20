@@ -21,11 +21,24 @@
   <div class="row">
     
         <div class= "col-xs-12 col-sm-6">
-          <ul class="bxslider" id='bxslider'>
-            <% @images.each do |img| %>
-              <li><%= image_tag img.image.url(:medium) %></li>
-            <% end %>
-          </ul>
+
+          <% if @image %>
+            <%= image_tag @image.image.url(:medium) %>
+          <% else %>
+
+            <ul class="bxslider" id='bxslider'>
+              <% @images.each do |img| %>
+                <li><%= image_tag img.image.url(:medium) %></li>
+              <% end %>
+             </ul>
+
+              <div id="bx-pager">
+                <% @images.each_with_index do |img, index| %>
+                  <a data-slide-index="<%= index %>" href=""><%= image_tag img.get_thumb_image %></a>
+                <% end %>
+              </div>
+
+          <% end %>
         </div>
 
 
@@ -77,7 +90,9 @@
 
 <script type="text/javascript">
       $(document).ready(function(){
-
-          $('#bxslider').bxSlider();
+          $('#bxslider').bxSlider({
+            mode: 'fade',
+            pagerCustom: '#bx-pager'
+          });
         });
 </script>

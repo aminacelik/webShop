@@ -33,7 +33,11 @@ class ProductsController < ApplicationController
       @translation = @product.product_translations.where(language_id: @language.id).first
     end
 
-    @images = @product.product_images
+    if @product.has_only_one_image?
+      @image = @product.product_images.first
+    else
+      @images = @product.product_images
+    end
 
   end
 

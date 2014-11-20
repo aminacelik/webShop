@@ -58,5 +58,9 @@ class Product < ActiveRecord::Base
       errors.add(:product_images, 'must have at least one image') if self.product_images.blank?
     end
 
+    def has_only_one_image?
+      product_images.count == 1
+    end
+
 
 end
