@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
 	  @similar_products = Product.where(category_id: @product.category.id).last(4)
-	  @variants = ProductVariant.where(product_id: @product.id, order_id: nil)
+	  @variants = ProductVariant.where(product_id: @product.id)
 	  
 	  @sizes = []
 	  @variants.each do |var| 
