@@ -11,8 +11,6 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
-  
-
 	<nav class="navbar navbar-inverse navbar-static-top" role="navigation" id="header">
   <div class="container-fluid" id="menu_container">
     
@@ -81,7 +79,7 @@
   </div>
     
     <ul id="languages">
-      <li><%= link_to 'BA', store_path(locale: 'ba'), title: 'bosanski' %></li>
+      <li><%= link_to 'BA', store_path(locale: 'ba'), title: 'bosanski' %></li> |
       <li><%= link_to 'EN', store_path(locale: 'en'), title: 'English' %></li>
     </div>
     
@@ -209,7 +207,7 @@
     <p id="notice"><%= notice %></p>
   </div>
   
-  
+
   
 
   
@@ -245,9 +243,8 @@
 </div>
 
   
-
     
-      <script type="text/javascript">
+    <script type="text/javascript">
 
       function fly_to_cart() {
         var cart = $('#cart');

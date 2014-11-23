@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :limit_access_to_administrator, except: [:show] #unregistered user can access only :show
-  skip_before_action :authorize, only: [:show]
+  before_action :limit_access_to_administrator, except: [:show, :on_sale] #unregistered user can access only :show
+  skip_before_action :authorize, only: [:show, :on_sale]
   
   include CurrentCart
   before_action :set_cart
@@ -98,6 +98,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @images = @product.product_images
     @variants = ProductVariant.where(product_id: @product.id).order('size_id ASC')
+  end
+
+  def on_sale
+    @products_on_sale = Product.where.not(sale_price: nil)
   end
 
   private

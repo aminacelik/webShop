@@ -62,5 +62,25 @@ class Product < ActiveRecord::Base
       product_images.count == 1
     end
 
+    def discount_percent
+      percent = sale_price * 100 / price
+      percent = 100 - percent 
+      percent.round(1)
+    end
+
+    def self.highest_discount
+      products_on_sale = Product.where.not(sale_price: nil)
+      highest_discount = 0
+      products_on_sale.each do |prod|
+        if prod.discount_percent > highest_discount
+          highest_discount = prod.discount_percent
+        end
+      end
+      highest_discount
+    end
+
+    def on_sale?
+      !sale_price.nil?
+    end
 
 end

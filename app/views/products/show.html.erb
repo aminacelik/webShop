@@ -23,7 +23,7 @@
         <div class= "col-xs-12 col-sm-6">
 
           <% if @image %>
-            <%= image_tag @image.image.url(:medium) %>
+            <%= image_tag @image.image.url(:medium), class: 'img-responsive' %>
           <% else %>
 
             <ul class="bxslider" id='bxslider'>

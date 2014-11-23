@@ -1,13 +1,10 @@
-#bxslider, .by-viewport {
-	
-	height: 400px;
-}
 
-#bx-pager {
-	margin-top: 0;
-	height: 100px;
-}
+#bxslider {
+	li {
+		img {
+			vertical-align: middle;
+		}
 
-.bx-wrapper, .bx-viewport {
-    height: 400px !important; 
+	}
+
 }

@@ -31,6 +31,12 @@ en:
       register: "Register"
       rights_html: "All rights reserved."
 
+    homepage:
+      products_on_sale: "Products on sale"
+      highest_discount_html: "Highest discount"
+      see_offer: "See offer"
+
+
   store:
     index:
       new_in_store: "New in store"
@@ -69,6 +75,10 @@ en:
       size_html: "Size"
       add_html: "Add to Cart"
       similar_products_html: "Similar products"
+    on_sale:
+      products_on_sale: "Products on sale"
+    product:
+      new_price: "New price"
   
   carts:
     detailed_cart:

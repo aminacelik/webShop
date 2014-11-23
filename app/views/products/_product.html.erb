@@ -9,8 +9,27 @@
       	<h3><%= link_to product.title, product_path(product) %></h3>
       <% end %>
     
+    <% if product.on_sale? %>
+      <div id="discount_display">
+        <div class="price_line">
+          <span class="outer">
+            <span class="price">
+              <%= number_to_currency(product.price) %>
+            </span><br />
+          </span>
+          <span class="discount">
+            - <%= product.discount_percent %> %
+          </span>
+        </div>
+        <div class="new_price">
+          <small><%= t('.new_price') %></small>
+          <%= number_to_currency(product.sale_price) %>
+        </div>
+      </div>
+    <% else %>
       <div class="price_line">
         <%= number_to_currency(product.price) %>
       </div>
+    <% end %>
 
     </div>

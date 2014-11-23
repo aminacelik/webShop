@@ -77,21 +77,29 @@ body {
 
 
 #languages {
+   font-family: 'Montserrat';
    float: left;
    overflow: hidden;
    position: absolute;
-   list-style: none;
    top: 0;
    right: 0;
-   a {
-     margin-top: 2px;
-     float: right;
-     color: $light_orange;
-    }
-    a:hover {
-      background-color: transparent;
-      text-decoration: none;
-    }
+   margin-top: 45px;
+   list-style-type: none;
+   color: $light_orange;
+   font-weight: 200;
+   li {
+    display: inline;
+     a {
+        margin-right: 5px;
+        margin-left: 5px;
+        color: $light_orange;
+      }
+      a:hover {
+        background-color: transparent;
+        text-decoration: none;
+        color: white;
+      }
+  }
 }
 
 
@@ -173,6 +181,12 @@ body {
   border: 2px solid #e74c3c;
 }
 
+.button:hover {
+  cursor: pointer;
+  background-color: #f16354;
+  border: 2px solid #f16354;
+}
+
 .grey_button {
   background-color: #645c64;
   border-radius: 6px;
@@ -192,11 +206,7 @@ body {
   background-color: #807880;
 }
 
-.button:hover {
-  cursor: pointer;
-  background-color: #f16354;
-  border: 2px solid #f16354;
-}
+
 
 .cancel_button {
   border: 2px solid #7d7d7d;
@@ -256,4 +266,24 @@ h1 {
   color: $light_orange;
   font-size: 16px;
   font-weight: 600;
+}
+
+@media all and (min-width: 1600px) {
+  
+  #menu_container {
+    width: 1180px;
+    margin: 0 auto;
+  }
+  #content {
+    width: 1180px;
+    margin: 0 auto;
+  }
+  #notice_area {
+    width: 1180px;
+    margin: 0 auto;
+  }
+  #footer {
+    width: 1180px;
+    margin: 0 auto;
+  }
 }

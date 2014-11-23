@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
 
+    get 'products/on_sale'
     get 'products/detailed_show'
 
     post 'orders/ship_order'

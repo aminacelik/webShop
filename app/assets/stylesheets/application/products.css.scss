@@ -87,3 +87,39 @@
   border: 3px solid #e6e6e6;
   border-radius: 15%;
 }
+
+#discount_display {
+
+  .price_line {
+    font-size: 15px;
+    font-weight: 600;
+
+    color: red;
+    width: 40%;
+    float: left;
+
+    .outer {
+      text-decoration: line-through;
+      .price{
+        color: darkgrey;
+        font-weight: 400;
+      }
+
+    }
+
+
+
+    .discount {
+      text-decoration: none;
+    }
+
+  }
+
+  .new_price {
+    mergin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+  }
+
+}

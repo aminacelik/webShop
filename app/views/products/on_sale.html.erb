@@ -1,0 +1,8 @@
+<h2><%= t('.products_on_sale') %></h2>
+ 
+
+<div id="product_list">
+	<% @products_on_sale.each do |product| %>
+		<%= render partial: "products/product", locals: {product: product} %>
+	<% end %>
+</div>

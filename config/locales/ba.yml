@@ -11,6 +11,11 @@ ba:
       register: "Registracija"
       rights_html: "Sva prava pridržana."
 
+    homepage:
+      products_on_sale: "Proizvodi na rasprodaji"
+      highest_discount_html: "Najveći popust"
+      see_offer: "Pogledaj ponudu"
+
   store:
     index:
       new_in_store: "Najnoviji artikli"
@@ -49,6 +54,10 @@ ba:
       size_html: "Veličina"
       add_html: "Dodaj u korpu"
       similar_products_html: "Slični proizvodi"
+    on_sale:
+      products_on_sale: "Proizvodi na rasporodaji"
+    product:
+      new_price: "Nova cijena"
 
   carts:
     detailed_cart:
