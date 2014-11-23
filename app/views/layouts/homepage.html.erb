@@ -85,117 +85,119 @@
 
   
 <% if session[:role]=='administrator' %>
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid">
-    
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin_menu">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+  <div id="admin_menu_container">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin_menu">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      
+      <div class="collapse navbar-collapse" id="admin_menu">
+        <ul class="nav navbar-nav">
+          
+          
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orders<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Not shipped', orders_url %></li>
+                  <li><%= link_to 'Shipped', orders_url(shipped: true) %></li>
+  							</ul>
+  				  </li> 
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_product_url %></li>
+  					      <li><%= link_to 'All', products_url %></li>
+  							</ul>
+  				  </li> 
+          
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+  					       <li><%= link_to 'Add', new_category_url %></li>
+  					       <li><%= link_to 'All', categories_url %></li>
+  							</ul>
+  				  </li>
+          
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cities<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_city_url %></li>
+                  <li><%= link_to 'All', cities_url %></li>
+  							</ul>
+  				  </li> 
+          
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_country_url %></li>
+                  <li><%= link_to 'All', countries_url %></li>
+  							</ul>
+  				  </li>
+          
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sizes<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_size_url %></li>
+                  <li><%= link_to 'All', sizes_url %></li>
+  							</ul>
+  				  </li> 
+          
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Colors<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_color_url %></li>
+                  <li><%= link_to 'All', colors_url %></li>
+  							</ul>
+  				  </li> 
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">User roles<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_role_url %></li>
+                  <li><%= link_to 'All', roles_url %></li>
+  							</ul>
+  				  </li> 
+          
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage users<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Add', new_user_url %></li>
+                  <li><%= link_to 'All', users_url %></li>
+  							</ul>
+  				  </li> 
+          
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Translations<span class="caret"></span></a>
+  							<ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'New Language', new_language_url %></li>
+                  <li><%= link_to 'All Languages', languages_url %></li>
+                  <li><%= link_to 'New category translation', new_category_translation_url %></li>
+                  <li><%= link_to 'New product translation', new_product_translation_url %></li>
+  							</ul>
+  				  </li> 
+          
+           
+        </ul>
+  			
+      </div>
     </div>
-
-    
-    <div class="collapse navbar-collapse" id="admin_menu">
-      <ul class="nav navbar-nav">
-        
-        
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orders<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Not shipped', orders_url %></li>
-                <li><%= link_to 'Shipped', orders_url(shipped: true) %></li>
-							</ul>
-				  </li> 
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_product_url %></li>
-					      <li><%= link_to 'All', products_url %></li>
-							</ul>
-				  </li> 
-        
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-					       <li><%= link_to 'Add', new_category_url %></li>
-					       <li><%= link_to 'All', categories_url %></li>
-							</ul>
-				  </li>
-        
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cities<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_city_url %></li>
-                <li><%= link_to 'All', cities_url %></li>
-							</ul>
-				  </li> 
-        
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_country_url %></li>
-                <li><%= link_to 'All', countries_url %></li>
-							</ul>
-				  </li>
-        
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sizes<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_size_url %></li>
-                <li><%= link_to 'All', sizes_url %></li>
-							</ul>
-				  </li> 
-        
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Colors<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_color_url %></li>
-                <li><%= link_to 'All', colors_url %></li>
-							</ul>
-				  </li> 
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User roles<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_role_url %></li>
-                <li><%= link_to 'All', roles_url %></li>
-							</ul>
-				  </li> 
-        
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage users<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Add', new_user_url %></li>
-                <li><%= link_to 'All', users_url %></li>
-							</ul>
-				  </li> 
-        
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Translations<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'New Language', new_language_url %></li>
-                <li><%= link_to 'All Languages', languages_url %></li>
-                <li><%= link_to 'New category translation', new_category_translation_url %></li>
-                <li><%= link_to 'New product translation', new_product_translation_url %></li>
-							</ul>
-				  </li> 
-        
-         
-      </ul>
-			
-    </div>
-  </div>
-</nav>		
+  </nav>		
+</div>
 <% end %>
   
     

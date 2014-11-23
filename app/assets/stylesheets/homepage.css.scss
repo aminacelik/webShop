@@ -19,6 +19,14 @@ $light_orange: #f0b49e;
 $header_color: #625a62;
 $grey: #a1a1a1;
 
+#admin_menu_container {
+  width: 100%;
+  border-bottom: none;
+  position: absolute;
+  z-index: 2;
+  margin-top: 80px;
+}
+
 #on_sale {
   color: white;
   text-transform: uppercase;
@@ -258,3 +266,5 @@ div.row {
   background-color: #f16354;
   border: 2px solid #f16354;
 }
+
+
