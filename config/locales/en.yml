@@ -78,6 +78,7 @@ en:
       sold_out: "Product is sold out."
       coming_soon_html: "New supplies coming soon.."
       quantity_html: "Quantity"
+      new_price: "New price"
     on_sale:
       products_on_sale: "Products on sale"
     product:

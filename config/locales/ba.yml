@@ -57,6 +57,7 @@ ba:
       sold_out: "Proizvod je rasprodat."
       coming_soon_html: "Nove zalihe će uskoro doći.."
       quantity_html: "Količina"
+      new_price: "Nova cijena"
     on_sale:
       products_on_sale: "Proizvodi na rasporodaji"
     product:

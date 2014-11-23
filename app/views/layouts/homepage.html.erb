@@ -34,15 +34,11 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         
-        <% if params[:locale] == 'ba' %>
+        
 				  <% @categories.each do |c| %>
-						<li><%= link_to c.translation_for_category_name('ba'), category_path(c) %></li>
+						<li><%= link_to c.name, category_path(c) %></li>
 				  <% end %>	
-		    <% else %>
-				  <% @categories.each do |c| %>
-				    <li><%= link_to c.name, category_path(c) %></li>
-				  <% end %>
-		    <% end %>
+		 
       </ul>
      
       
@@ -240,15 +236,11 @@
 		<ul id="footer_menu">
 		  <li><%= link_to t('.home_html'), store_url %></li>
         
-        <% if params[:locale] == 'ba' %>
+        
 				  <% @categories.each do |c| %>
-						<li><%= link_to c.translation_for_category_name('ba'), category_path(c) %></li>
+						<li><%= link_to c.name, category_path(c) %></li>
 				  <% end %>	
-		    <% else %>
-				  <% @categories.each do |c| %>
-				    <li><%= link_to c.name, category_path(c) %></li>
-				  <% end %>
-		    <% end %>
+	
 		</ul>
     
       <div id="copyright">

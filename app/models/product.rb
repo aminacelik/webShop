@@ -19,14 +19,36 @@ class Product < ActiveRecord::Base
         Product.order(:updated_at).last
     end
     
-    def get_title_translation(short_name)
-      @language = Language.where(short_name: short_name).first
-      @product_translation = product_translations.where(language_id: @language.id).first
-      if @product_translation
-        @product_translation.title
+    def title
+      if I18n.locale == 'en'
+        read_attribute(:title)
       else
-        title
+        @language = Language.where(short_name: I18n.locale).first
+        @product_translation = product_translations.where(language_id: @language.id).first
+        if @product_translation
+          @product_translation.title
+        else
+          read_attribute(:title)
+        end
       end
+    end
+
+    def description
+      if I18n.locale == 'en'
+        read_attribute(:description)
+      else
+        @language = Language.where(short_name: I18n.locale).first
+        @product_translation = product_translations.where(language_id: @language.id).first
+        if @product_translation
+          @product_translation.title
+        else
+          read_attribute(:description)
+        end
+      end
+    end
+
+    def category_name
+      category.name 
     end
     
     def get_image_object

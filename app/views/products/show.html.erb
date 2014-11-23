@@ -3,13 +3,10 @@
 	
 	<div class="product_title row">
 		
-		<% if @translation %>
-			<%= link_to @product.category.translation_for_category_name('ba'), category_path(@product.category) %> » 
-			<%= link_to @translation.title, product_path %>
-		<% else %>
-			<%= link_to @product.category.name, category_path(@product.category) %> »
+	
+			<%= link_to @product.category_name, category_path(@product.category) %> » 
 			<%= link_to @product.title, product_path %>
-		<% end %>
+
 		
 		<% if session[:role]=='administrator' %>
 			<%= link_to 'Edit', edit_product_path(@product) %> 
@@ -43,11 +40,10 @@
 
 
         <div class="product_description col-xs-12 col-sm-6">
-          <% if @translation %>
-            <%= @translation.description %>
-          <% else %>
+          
+  
             <%= @product.description %>
-          <% end %>
+          
 
           <br><br>
 

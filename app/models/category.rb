@@ -8,14 +8,18 @@ class Category < ActiveRecord::Base
 
 
 
-	def translation_for_category_name(short_name)
-		language = Language.where(short_name: short_name).first
-		@translation = category_translations.where(language_id: language.id).first
+	def name
+		if I18n.locale == 'en'
+			read_attribute(:name)
+		else
+			language = Language.where(short_name: I18n.locale).first
+			@translation = category_translations.where(language_id: language.id).first
 	    if @translation
-			@translation.name
+				@translation.name
 	    else
-      		name
+      		read_attribute(:name)
     	end
+    end
 	end
 
 	
