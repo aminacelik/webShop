@@ -123,3 +123,36 @@
   }
 
 }
+
+#sold_out {
+  width: 100%;
+  margin: 5%;
+  margin-top: 10%;
+  margin-bottom: 80%;
+  color: #625a62;
+  font-weight: 600;
+  font-size: 20px;
+
+}
+
+#product_display_form {
+  
+  .size {
+    width: 60%;
+    float: left;
+
+    select {
+      max-width: 300px;
+    }
+  }
+
+  .quantity {
+    width: 40%;
+    padding-left: 2%;
+    float: left;
+  }
+}
+
+.product_description {
+  max-width: 550px;
+}

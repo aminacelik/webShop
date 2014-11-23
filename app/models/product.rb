@@ -83,4 +83,13 @@ class Product < ActiveRecord::Base
       !sale_price.nil?
     end
 
+    def sold_out?
+      product_variants.each do |v|
+        if v.quantity > 0
+          return false
+        end
+      end
+      true
+    end
+
 end

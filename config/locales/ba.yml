@@ -54,6 +54,9 @@ ba:
       size_html: "Veličina"
       add_html: "Dodaj u korpu"
       similar_products_html: "Slični proizvodi"
+      sold_out: "Proizvod je rasprodat."
+      coming_soon_html: "Nove zalihe će uskoro doći.."
+      quantity_html: "Količina"
     on_sale:
       products_on_sale: "Proizvodi na rasporodaji"
     product:

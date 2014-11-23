@@ -75,6 +75,9 @@ en:
       size_html: "Size"
       add_html: "Add to Cart"
       similar_products_html: "Similar products"
+      sold_out: "Product is sold out."
+      coming_soon_html: "New supplies coming soon.."
+      quantity_html: "Quantity"
     on_sale:
       products_on_sale: "Products on sale"
     product:
