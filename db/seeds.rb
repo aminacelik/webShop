@@ -86,11 +86,11 @@ winter_shoes = Category.create!(name: "Winter 14/15")
 #CATEGORY TRANSLATIONS
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{women_shoes.id}",
-                            name: "Ženska obuća")
+                            name: "Zenska obuca")
 
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{men_shoes.id}",
-                            name: "Muška obuća")
+                            name: "Mucka obuca")
 
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{accessorize.id}",
@@ -106,7 +106,7 @@ CategoryTranslation.create!(language_id: "#{bosanski.id}",
 Product.delete_all
 
 # PRODUCT IMAGES
-ProductImages.delete_all
+ProductImage.delete_all
 
 # PRODUCT VARIANTS
 ProductVariant.delete_all
