@@ -1,5 +1,5 @@
 #LANGUAGES
-#Language.delete_all
+Language.delete_all
 bosanski = Language.create!(name: 'bosanski', short_name: 'ba')
 
 # ADDRESSES
@@ -74,35 +74,45 @@ City.create!(name: "Rio de Janeiro", postal_code: "75580", country_id: "#{br.id}
 
 #CATEGORIES
 Category.delete_all
-# men_shoes = Category.find_or_initialize_by(name: 'Men Shoes')
-# men_shoes.save!
+men_shoes = Category.find_or_initialize_by(name: "Men's Shoes")
+men_shoes.save!
 
-# women_shoes = Category.find_or_initialize_by(name: 'Women Shoes')
-# women_shoes.save! 
+women_shoes = Category.find_or_initialize_by(name: "Women's Shoes")
+women_shoes.save! 
 
-# men_shoes_id = men_shoes.id
-# women_shoes_id = women_shoes.id
+accessorize = Category.create!(name: "Accessorize")
+winter_shoes = Category.create!(name: "Winter 14/15")
 
-# Category.create!(name: "Accessorize")
-# Category.create!(name: "Winter 14/15")
+#CATEGORY TRANSLATIONS
+CategoryTranslation.create!(language_id: "#{bosanski.id}",
+                            category_id: "#{women_shoes.id}",
+                            name: "Ženska obuća")
 
-# #CATEGORY TRANSLATIONS
-# CategoryTranslation.create!(language_id: "#{bosanski.id}",
-#                             category_id: "#{women_shoes.id}",
-#                             name: "Zenska obuca")
+CategoryTranslation.create!(language_id: "#{bosanski.id}",
+                            category_id: "#{men_shoes.id}",
+                            name: "Muška obuća")
 
-# CategoryTranslation.create!(language_id: "#{bosanski.id}",
-#                             category_id: "#{men_shoes.id}",
-#                             name: "Muska obuca")
+CategoryTranslation.create!(language_id: "#{bosanski.id}",
+                            category_id: "#{accessorize.id}",
+                            name: "Dodaci")
+
+CategoryTranslation.create!(language_id: "#{bosanski.id}",
+                            category_id: "#{winter_shoes.id}",
+                            name: "Zima 14/15")
 
 
-# FIND CATEGORIES
-#men = Category.where(name: 'Muska obuca')
-#women = Category.where(name: 'Zenska obuca')
 
 # PRODUCTS
 Product.delete_all
 
+# PRODUCT IMAGES
+ProductImages.delete_all
+
+# PRODUCT VARIANTS
+ProductVariant.delete_all
+
+# PRODUCT TRANSLATIONS
+ProductTranslation.delete_all
 
 
 
