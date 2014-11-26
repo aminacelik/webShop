@@ -206,7 +206,7 @@
     <p id="notice"><%= notice %></p>
   </div>
   
-  <% unless items_on_sale_images.empty? %>
+  <% if items_on_sale_images.present? %>
     <ul class="bxslider" id="items_on_sale_slider">
       <% items_on_sale_images.each do |img| %>
         <li><%= image_tag img.image.url(:background) %></li>
