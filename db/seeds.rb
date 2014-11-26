@@ -74,26 +74,26 @@ City.create!(name: "Rio de Janeiro", postal_code: "75580", country_id: "#{br.id}
 
 #CATEGORIES
 Category.delete_all
-men_shoes = Category.find_or_initialize_by(name: 'Men Shoes')
-men_shoes.save!
+# men_shoes = Category.find_or_initialize_by(name: 'Men Shoes')
+# men_shoes.save!
 
-women_shoes = Category.find_or_initialize_by(name: 'Women Shoes')
-women_shoes.save! 
+# women_shoes = Category.find_or_initialize_by(name: 'Women Shoes')
+# women_shoes.save! 
 
-men_shoes_id = men_shoes.id
-women_shoes_id = women_shoes.id
+# men_shoes_id = men_shoes.id
+# women_shoes_id = women_shoes.id
 
-Category.create!(name: "Accessorize")
-Category.create!(name: "Winter 14/15")
+# Category.create!(name: "Accessorize")
+# Category.create!(name: "Winter 14/15")
 
-#CATEGORY TRANSLATIONS
-CategoryTranslation.create!(language_id: "#{bosanski.id}",
-                            category_id: "#{women_shoes.id}",
-                            name: "Zenska obuca")
+# #CATEGORY TRANSLATIONS
+# CategoryTranslation.create!(language_id: "#{bosanski.id}",
+#                             category_id: "#{women_shoes.id}",
+#                             name: "Zenska obuca")
 
-CategoryTranslation.create!(language_id: "#{bosanski.id}",
-                            category_id: "#{men_shoes.id}",
-                            name: "Muska obuca")
+# CategoryTranslation.create!(language_id: "#{bosanski.id}",
+#                             category_id: "#{men_shoes.id}",
+#                             name: "Muska obuca")
 
 
 # FIND CATEGORIES
