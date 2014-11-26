@@ -13,6 +13,7 @@ role.save!
 
 
 # USERS
+User.delete_all
 role = Role.find_by(name: 'administrator');
 User.create!(name: 'amina',
              password: 'amina',
@@ -53,12 +54,14 @@ s42 = Size.create!(size: 42)
 s43 = Size.create!(size: 43)
 
 # COUNTRIES
+Country.delete_all
 ba = Country.create!(name: "Bosna i Hercegovina")
 hr = Country.create!(name: "Hrvatska")
 sr = Country.create!(name: "Srbija")
 br = Country.create!(name: "Brazil")
 
 # CITIES
+City.delete_all
 City.create!(name: "Sarajevo", postal_code: "71000", country_id: "#{ba.id}")
 City.create!(name: "Tuzla", postal_code: "73245", country_id: "#{ba.id}")
 City.create!(name: "Banja Luka", postal_code: "73312", country_id: "#{ba.id}")
@@ -70,6 +73,7 @@ City.create!(name: "Rio de Janeiro", postal_code: "75580", country_id: "#{br.id}
 
 
 #CATEGORIES
+Category.delete_all
 men_shoes = Category.find_or_initialize_by(name: 'Men Shoes')
 men_shoes.save!
 
