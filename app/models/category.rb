@@ -9,17 +9,15 @@ class Category < ActiveRecord::Base
 
 
 	def name
-		if I18n.locale == 'en'
-			read_attribute(:name)
-		else
+		if I18n.locale && I18n.locale != 'en'
 			language = Language.where(short_name: I18n.locale).first
-			@translation = category_translations.where(language_id: language.id).first
-	    if @translation
-				@translation.name
-	    else
-      		read_attribute(:name)
-    	end
-    end
+			translation = category_translations.where(language_id: language.id).first
+			if translation
+				translation.name
+			end
+		else
+			read_attribute(:name)
+		end
 	end
 
 	

@@ -20,16 +20,14 @@ class Product < ActiveRecord::Base
     end
     
     def title
-      if I18n.locale == 'en'
-        read_attribute(:title)
-      else
+      if I18n.locale && I18n.locale != 'en'
         @language = Language.where(short_name: I18n.locale).first
         @product_translation = product_translations.where(language_id: @language.id).first
         if @product_translation
           @product_translation.title
-        else
-          read_attribute(:title)
         end
+      else
+        read_attribute(:title)
       end
     end
 
