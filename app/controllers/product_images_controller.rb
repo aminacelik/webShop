@@ -59,6 +59,8 @@ class ProductImagesController < ApplicationController
   # DELETE /product_images/1
   # DELETE /product_images/1.json
   def destroy
+    @product_image.image = nil
+    @product_image.save
     @product_image.destroy
     respond_to do |format|
       @images = @product.product_images
