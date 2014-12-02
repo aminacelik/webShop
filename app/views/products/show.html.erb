@@ -17,15 +17,15 @@
   
   <div class="row">
     
-        <div class= "col-xs-12 col-sm-6">
+        <div class= "col-xs-12 col-sm-6" id="product_images_slider">
 
           <% if @image %>
             <%= image_tag @image.image.url(:medium), class: 'img-responsive' %>
           <% else %>
 
-            <ul class="bxslider" id='bxslider'>
+            <ul id="single_item_page_slider">
               <% @images.each do |img| %>
-                <li><%= image_tag img.image.url(:medium) %></li>
+                <li><%= image_tag img.image.url(:medium), class: 'img-responsive' %></li>
               <% end %>
              </ul>
 
@@ -92,7 +92,7 @@
 
         <span class="quantity">
           <%= t('.quantity_html') %>:<br>
-          <%= number_field :quantity, params[:quantity], value: '1', class: 'form-control' %><br>
+          <%= number_field :quantity, params[:quantity], value: '1', class: 'form-control', readonly: true %><br>
         </span>
 
     
@@ -109,7 +109,7 @@
 </div>
 
 
-<div id="similar_products"  class="container-fluid">
+<div id="similar_products"  class="col-xs-12">
 <h2><%= t('.similar_products_html') %></h2>
   
 		<% @similar_products.each do |product| %>
@@ -119,7 +119,7 @@
 
 <script type="text/javascript">
       $(document).ready(function(){
-          $('#bxslider').bxSlider({
+          $('#single_item_page_slider').bxSlider({
             mode: 'fade',
             pagerCustom: '#bx-pager'
           });

@@ -66,9 +66,11 @@ end
   # POST /addresses.json
   def create
 
+    @address = Address.new(address_params.merge(user_id: @current_user.id))
     @city = City.find(params[:address][:city_id])
-    @address = @city.addresses.new(address_params.merge(user_id: @current_user.id))
-    
+    if @city
+      @address.city_id = @city.id
+    end
 
     
     respond_to do |format|

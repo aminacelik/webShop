@@ -11,14 +11,22 @@ class Product < ActiveRecord::Base
   validate :has_at_least_one_image
 
   validates :title, :description, :category_id, presence: true
-  validates :price, :sale_price, numericality: {greater_than_or_equal_to: 0.01}
-  
-    
+  validates :price, numericality: {greater_than_or_equal_to: 0.01}
+  validate  :sale_price_lesser_than_original_price
+
+    def sale_price_lesser_than_original_price
+      if sale_price
+        errors.add(:sale_price, 'must be lesser than original price') if sale_price >= price
+      end
+    end
     
     def self.latest
         Product.order(:updated_at).last
     end
-    
+
+
+
+
     def title
       if I18n.locale == 'en'
         read_attribute(:title)
@@ -43,9 +51,9 @@ class Product < ActiveRecord::Base
       else
         language = Language.where(short_name: I18n.locale).first
         if language
-          product_translation = product_translations.where(language_id: @language.id).first
+          product_translation = product_translations.where(language_id: language.id).first
           if product_translation
-            product_translation.title
+            product_translation.description
           else
             read_attribute(:description)
           end
@@ -77,7 +85,7 @@ class Product < ActiveRecord::Base
       end
     end
 
-    def get_large_image
+    def get_background_image
       if product_images.present?
         product_images.first.image.url(:large)
       end

@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
 	skip_before_action :authorize
-	 layout "homepage"
+	layout "homepage"
 
 	
 	include CurrentCart

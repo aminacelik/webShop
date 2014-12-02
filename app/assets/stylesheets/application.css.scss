@@ -43,7 +43,7 @@ body {
   font-family: "Montserrat";
   text-transform: uppercase;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 70px;
   
   li {
     float: left;
@@ -106,7 +106,12 @@ body {
 #cart {
   width: 47px;
   float: right;
-  margin-left: 20px;
+
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 80px;
+  margin-top: 30px;
   a {
     img {
       margin-top: 10px;
@@ -261,11 +266,23 @@ h1 {
   font-family: 'Montserrat';
 }
 #notice_area {
-  height: 50px;
+  height: 30px;
   text-align: center;
   color: $light_orange;
   font-size: 16px;
   font-weight: 600;
+}
+
+#logo {
+  width: 100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media all and (max-width: 800px) {
+  #languages {
+    display: none;
+  }
 }
 
 @media all and (min-width: 1600px) {

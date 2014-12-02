@@ -25,7 +25,7 @@
       
  
       
-      <%= link_to image_tag('logo.png'), store_url, class:'navbar-brand' %>
+      <%= link_to image_tag('logo.png', class: 'img-responsive'), store_url, class:'navbar-brand', id: 'logo' %>
       
     </div>
 
@@ -40,18 +40,11 @@
 	
       </ul>
      
-      
+    
 
       
       <ul class="nav navbar-nav navbar-right">
-        
-      
-      <% unless session[:role]=='administrator' %>
-				<div id="cart">
-						<%= render @cart %>
-				</div>
-		  <% end %>
-        
+              
         
         <% if @current_user %>
 				  <li class="dropdown">
@@ -71,8 +64,15 @@
       </ul>
     </div>
     
+      <% unless session[:role]=='administrator' %>
+				<div id="cart">
+						<%= render @cart %>
+				</div>
+		  <% end %>
 
   </div>
+    
+
     
     <ul id="languages">
       <li><%= link_to 'BA', store_path(locale: 'ba'), title: 'bosanski' %></li> |

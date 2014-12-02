@@ -19,6 +19,15 @@ $light_orange: #f0b49e;
 $header_color: #625a62;
 $grey: #a1a1a1;
 
+
+
+#logo {
+  width: 100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
 #admin_menu_container {
   width: 100%;
   border-bottom: none;
@@ -88,6 +97,11 @@ body {
 #notice_area {
   z-index: 2;
   position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 80px;
+  left: 0;
+  height: 30px;
 }
 
 #content {
@@ -119,7 +133,7 @@ body {
   font-family: "Montserrat";
   text-transform: uppercase;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 63px;
   
   li {
     float: left;
@@ -179,7 +193,8 @@ body {
 #cart {
   width: 47px;
   float: right;
-  margin-left: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
   a {
     img {
       margin-top: 10px;
@@ -267,4 +282,40 @@ div.row {
   border: 2px solid #f16354;
 }
 
+@media all and (max-width: 800px) {
+  #header {
+    li {
+      a{
+        font-size: 10px;
+      }
+    }
+  }
+  
+  a {
+    font-size: 10px;
+  }
+  p{
+    font-size: 10px;
+  }
+}
 
+@media all and (max-width: 1000px) {
+  #header {
+    li {
+      a{
+        font-size: 12px;
+      }
+    }
+  }
+
+}
+@media all and (max-width: 1200px) {
+  #header {
+    li {
+      a{
+        font-size: 14px;
+      }
+    }
+  }
+
+}

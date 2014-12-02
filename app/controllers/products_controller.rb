@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :limit_access_to_administrator, except: [:show, :on_sale] #unregistered user can access only :show
-  skip_before_action :authorize, only: [:show, :on_sale]
-  
+
   include CurrentCart
+
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :limit_access_to_administrator, except: [:show, :on_sale] 
+  skip_before_action :authorize, only: [:show, :on_sale]
   before_action :set_cart
-	
-	
+
+  # after_action :save_image, only: [:create, :update]
+
 	
 
   # GET /products
@@ -51,9 +53,15 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
 
+    @product = Product.new(product_params)
 	  @category = Category.where(id: params[:product][:category_id]).first
-    @product = @category.products.build(product_params)
-    @product_image = @product.product_images.build(image: params[:product][:image])
+    if @category
+      @product.category_id = @category.id
+    end
+
+    if params[:product][:image]
+      @product_image = @product.product_images.build(image: params[:product][:image])
+    end
 
     respond_to do |format|
       if @product.save
@@ -101,6 +109,11 @@ class ProductsController < ApplicationController
   end
 
   private
+
+    def save_image
+
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

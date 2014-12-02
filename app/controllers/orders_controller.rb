@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    do_payment
+ 
     price = @cart.total_delivery_and_products_price
     @order = Order.new(user_id: @current_user.id, price: price)
 
@@ -75,30 +75,6 @@ class OrdersController < ApplicationController
   end
 
 
-  def create_order
-    
-    price = @cart.total_delivery_and_products_price
-
-    ActiveRecord::Base.transaction do
-      do_payment
-      puts "#{params[:locale]} ---------------------------------------------------------------------------"
-      shipping_id = save_address_copy(session[:shipping_id])
-      billing_id = save_address_copy(session[:billing_id])
-
-      @order = Order.new(user_id: @current_user.id, price: price, shipping_address_id: shipping_id, billing_address_id: billing_id)
-      @order.save
-
-
-      save_items_copy
-
-      # deleting line items from cart
-      @cart.line_items.delete_all  
-     
-      session[:last_order]=@order.id
-      redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
-    end
-  end
-
   def purchase_confirmation
     @order = Order.where(id: session[:last_order]).first
     @order_items = @order.items
@@ -128,7 +104,35 @@ class OrdersController < ApplicationController
     end
   end
     
+  
+
+  def create_order
+    price = @cart.total_delivery_and_products_price
     
+    begin 
+      ActiveRecord::Base.transaction do
+        do_payment
+        shipping_id = save_address_copy(session[:shipping_id])
+        billing_id = save_address_copy(session[:billing_id])
+
+        @order = Order.new(user_id: @current_user.id, price: price, shipping_address_id: shipping_id, billing_address_id: billing_id)
+        @order.save
+
+
+        save_items_copy
+
+        # deleting line items from cart
+        @cart.line_items.delete_all  
+       
+        session[:last_order]=@order.id
+        redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to store_url, notice: "Something went wrong. We are sory about that."
+    rescue ActiveRecord::ActiveRecordError
+      redirect_to store_url, notice: "Not enough products in stock."
+    end
+  end
 
   private
   
@@ -163,18 +167,17 @@ class OrdersController < ApplicationController
     
       @cart.line_items.each do |item|
       
+
         product_variant = item.product_variant
         raise ActiveRecord::RecordNotFound if product_variant.nil?
         product_variant.lock!
+
         product = product_variant.product 
         raise ActiveRecord::RecordNotFound if product.nil?
         product.lock!
 
         # saving product copy in order products table
-        product_copy = OrderProduct.new(title: product.title, 
-                                        description: product.description,
-                                        price: product.price, 
-                                        category_id: product.category_id)
+        product_copy = OrderProduct.new(title: product.title, description: product.description, price: product.price, category_id: product.category_id)
         product_copy.save!
 
         # save copy of product image
@@ -186,15 +189,21 @@ class OrdersController < ApplicationController
 
         # quantity management
         item.lock!
-        product_variant.quantity -= item.quantity 
+
+        # in stock more than user wants to order
+        if product_variant.quantity >= item.quantity
+          product_variant.quantity -= item.quantity
+        # in stock less than user wants to order
+        else
+          raise ActiveRecord::ActiveRecordError
+        end
+          
         # raise ArgumentError if product_variant.quantity < 0
         product_variant.save!
 
         # saving product variant copy
-        product_variant_copy = OrderProductVariant.new(order_product_id: product_copy.id,
-                                                      size_id: product_variant.size.id,
-                                                      color_id: product_variant.color.id,
-                                                      quantity: item.quantity,
+        product_variant_copy = OrderProductVariant.new(order_product_id: product_copy.id, size_id: product_variant.size.id,
+                                                      color_id: product_variant.color.id, quantity: item.quantity,
                                                       order_id: @order.id)
         product_variant_copy.save!
       end
@@ -211,14 +220,14 @@ class OrdersController < ApplicationController
         :card  => params[:stripeToken]
         )     
       
-        puts "customer = #{customer.inspect}"
+        # puts "customer = #{customer.inspect}"
           
         charge = Stripe::Charge.create(
           :customer    => customer.id,
           :amount      => (@cart.total_delivery_and_products_price*100).to_i,
           :description => 'Rails Stripe customer',
           :currency    => 'usd'
-          ) 
+        ) 
           
       end
 

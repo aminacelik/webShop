@@ -1,11 +1,13 @@
-<div class="user_address col-xs-12 col-sm-6">
-  <div class="title"><%= t('.selected_address_html') %></div>
+<div class="user_address_wrap col-xs-12 col-sm-6 col-md-4 col-lg-3">
+	<div class="user_address col-xs-12 col-sm-6">
+	  <div class="title"><%= t('.selected_address_html') %></div>
 
-  <%= address.first_name %> <%= address.last_name %><br>
-  
-  <%= address.street %>, <%= address.details %><br>
-  <%= address.city_details %><br>
-  <%= address.country_name %><br>
-  <br><%= link_to t('.pick_other_billing_html'), addresses_user_addresses_path(type: 'billing') %>
-  <br><%= link_to t('.pick_other_shipping'), addresses_user_addresses_path(type: 'shipping') %>
+	  <%= address.first_name %> <%= address.last_name %><br>
+	  
+	  <%= address.street %>, <%= address.details %><br>
+	  <%= address.city_details %><br>
+	  <%= address.country_name %><br>
+	  <br><%= link_to t('.pick_other_billing_html'), addresses_user_addresses_path(type: 'billing') %>
+	  <br><%= link_to t('.pick_other_shipping'), addresses_user_addresses_path(type: 'shipping') %>
+	</div>
 </div>
