@@ -143,6 +143,7 @@ ba:
       quantity_html: "Količina"
       order_date_html: "Datum narudžbe"
       shipping_address: "Adresa za dostavu"
+      order_status_html: "Status narudžbe"
     purchase_confirmation:
       thank_you: "Hvala"
       you_bought_html: "Kupili ste sljedeće artikle"
@@ -198,7 +199,6 @@ ba:
     application:
       login_mssg: "Da biste otvorili traženu stranicu morate se prvo prijaviti."
       admin_mssg: "Nije vam dozvoljen pristup traženoj stranici."
-
 
 
 

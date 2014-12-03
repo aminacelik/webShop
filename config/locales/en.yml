@@ -165,6 +165,7 @@ en:
       quantity_html: "Quantity"
       order_date_html: "Order date"
       shipping_address: "Shipping address"
+      order_status_html: "Order status"
     purchase_confirmation:
       thank_you: "Thank you"
       you_bought_html: "You bought the following products"
@@ -211,3 +212,4 @@ en:
     application:
       login_mssg: "Before seeing this page you have to log in." 
       admin_mssg: "You are not allowed to access this page."
+
