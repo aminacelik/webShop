@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
 
     def sale_price_lesser_than_original_price
       if sale_price
-        errors.add(:sale_price, 'must be lesser than original price') if sale_price >= price
+        errors.add(:sale_price, 'must be lesser than original price') if sale_price >= read_attribute(:price)
       end
     end
     
