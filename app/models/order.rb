@@ -32,4 +32,13 @@ class Order < ActiveRecord::Base
   	order_product_variants
   end
 
+  def status
+    if shipped == true
+      return "shipped"
+    else 
+      return "not shipped yet"
+    end
+  end
+
+
 end

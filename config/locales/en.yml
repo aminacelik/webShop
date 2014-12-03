@@ -75,14 +75,21 @@ en:
       size_html: "Size"
       add_html: "Add to Cart"
       similar_products_html: "Similar products"
-      sold_out: "Product is sold out."
-      coming_soon_html: "New supplies coming soon.."
       quantity_html: "Quantity"
       new_price: "New price"
     on_sale:
       products_on_sale: "Products on sale"
     product:
       new_price: "New price"
+    add_to_cart:
+      price: "Price"
+      new_price: "New price"
+      size_html: "Size"
+      quantity_html: "Quantity"
+      add_html: "Add to Cart"
+      sold_out: "Product is sold out."
+      coming_soon_html: "New supplies coming soon.."
+
   
   carts:
     detailed_cart:
@@ -90,16 +97,18 @@ en:
       size_html: "Size"
       color: "Color"
       price: "Price"
-      step_1of2: "Step 1 of 2"
+      step_1: "Step 1 of 3"
       continue: "Continue"
       empty_cart_button: "Empty Cart"
-      empty_cart: "Your cart is empty."
+      empty_cart: "You don't have available items for purchase."
     order_cart:
       order_html: "Order"
       total_price_products: "Total price for products"
       total_price_delivery: "Total price for delivery"
       total_price: "Total"
       product: "product"
+    unavailable_items:
+      sorry_html: "We are sorry"
 
   addresses:
     form:
@@ -142,9 +151,10 @@ en:
       pick_addres: "Pick an address"
       new_billing_html: "New billing address"
       new_shipping: "New shipping address"
-      step_2of2: "Step 2 of 2"
+      step_2: "Step 2 of 3"
     index:
-      step_2of2: "Step 2 of 2"
+      step_2: "Step 2 of 3"
+      continue: "Continue"
 
   orders:
     purchase_history:
@@ -159,6 +169,14 @@ en:
       thank_you: "Thank you"
       you_bought_html: "You bought the following products"
       you_spent_html: "You spent"
+    available_items:
+      available_items: "Available items for purchase"
+      step_3: "Step 2 of 3"
+      size_html: "Size"
+      color: "Color"
+      price: "Price"
+      sorry_html: "We are sorry, all the products you wanted are sold in meanwhile."
+      homepage_html: "Back to homepage"
   
   status_mssg:
     address:

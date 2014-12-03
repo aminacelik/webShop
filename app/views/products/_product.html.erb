@@ -3,18 +3,16 @@
       <%= link_to image_tag(product.get_medium_image, class: 'img-responsive'), product_path(product) %>
 
 
-      <% if params[:locals]=='ba' %>
-      	<h3><%= link_to product.get_title_translation('ba'), product_path(product) %></h3>
-      <% else %>
-      	<h3><%= link_to product.title, product_path(product) %></h3>
-      <% end %>
+     
+      <h3><%= link_to product.title, product_path(product) %></h3>
+     
     
     <% if product.on_sale? %>
       <div id="discount_display">
         <div class="price_line">
           <span class="outer">
             <span class="price">
-              <%= number_to_currency(product.price) %>
+              <%= number_to_currency(product.old_price) %>
             </span><br />
           </span>
           <span class="discount">

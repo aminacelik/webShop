@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get  'orders/purchase_confirmation'
     get  'orders/purchase_history'
     post 'orders/create_order'
+    get  'orders/available_items'
 
     post 'addresses/select_address'
     get  'addresses/user_addresses'

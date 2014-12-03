@@ -42,70 +42,14 @@
         <div class="product_description col-xs-12 col-sm-6">
           
   
-            <%= @product.description %>
-          
+           
 
-          <br><br>
-
-          <br><%= t('.price') %><br>
-
-          <% if @product.on_sale? %>
-            <div id="discount_display">
-              <div class="price_line">
-                <span class="outer">
-                  <span class="price">
-                    <%= number_to_currency(@product.price) %>
-                  </span><br />
-                </span>
-                <span class="discount">
-                  - <%= @product.discount_percent %> %
-                </span>
-              </div>
-              <div class="new_price">
-                <small><%= t('.new_price') %></small>
-                <%= number_to_currency(@product.sale_price) %>
-              </div>
-            </div>
-          <% else %>
-            <div class="price_line">
-              <%= number_to_currency(@product.price) %>
-            </div>
-          <% end %>
-          <br><br>
-
-
-    <% if @product.sold_out? %>
-      <div id="sold_out">
-        <%= t('.sold_out') %><br />
-        <small><%= t('.coming_soon_html') %></small>
+          <%= render partial: 'add_to_cart', locals: {sizes: @sizes} %>
+     
+      
       </div>
-
-    <% else %>
-      <%= form_tag(line_items_path, method: :post, remote: true) do %>
-        <%= hidden_field_tag :product_id, @product.id %>
-
-        <span class="size">
-          <%= t('.size_html') %>:<br>
-          <%= select_tag "size_id", options_from_collection_for_select(@sizes, :id, :size), {class: 'form-control col-xs-12 col-s-6'} %><br>
-        </span>
-
-
-        <span class="quantity">
-          <%= t('.quantity_html') %>:<br>
-          <%= number_field :quantity, params[:quantity], value: '1', class: 'form-control', readonly: true %><br>
-        </span>
-
-    
-
-        <% unless session[:role]=='administrator' %>
-          <%= submit_tag t('.add_html'), class: 'button', onclick: "fly_to_cart()" %>
-        <% end %>
-
-    <% end %>
-        </div>
   
-  </div>
-<% end %>			
+  </div>		
 </div>
 
 

@@ -15,11 +15,13 @@
 		<td class="col-xs-2">
 			<span class="bold"><%= t('.price') %>:</span> <br/>
 			<%= product_variant.get_product_price %><br/>
-			<%= t('.quantity_html') %>: <%= product_variant.quantity %><br/>
+			<span class="bold"><%= t('.quantity_html') %>:</span> <%= product_variant.quantity %><br/>
 		</td>
 		<td class="col-xs-2">
       <span class="bold"><%= t('.order_date_html') %>:</span><br/>
 			<%= product_variant.order.get_order_date %><br />
+      <span class="bold"><%= t('.order_status') %>:</span><br/>
+			<%= product_variant.order.status %><br />
 		</td>
 
 		<td class="col-xs-2">

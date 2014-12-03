@@ -101,7 +101,7 @@ class Product < ActiveRecord::Base
     end
 
     def discount_percent
-      percent = sale_price * 100 / price
+      percent = sale_price * 100 / read_attribute(:price)
       percent = 100 - percent 
       percent.round(1)
     end
@@ -118,16 +118,43 @@ class Product < ActiveRecord::Base
     end
 
     def on_sale?
-      !sale_price.nil?
+      if sale_price
+        return sale_price < read_attribute(:price)
+      end
+      false
     end
 
     def sold_out?
       product_variants.each do |v|
-        if v.quantity > 0
+        if !v.sold_out?
           return false
         end
       end
       true
     end
+  
+    def available_sizes(cart_id)
+      cart = Cart.where(id: cart_id).first
+      sizes = []
+      product_variants.each do |var| 
+        if var.quantity > 0 && cart.not_all_in_cart?(var.id)
+		      sizes << var.size
+        end
+	    end
+      sizes
+    end
+
+  def old_price
+    read_attribute(:price)
+  end
+
+  def price
+    if sale_price != nil
+      price = sale_price
+    else
+      price = read_attribute(:price)
+    end
+    price
+  end
 
 end

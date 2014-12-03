@@ -23,12 +23,8 @@ class ProductsController < ApplicationController
 	  @similar_products = Product.where(category_id: @product.category.id).last(4)
 	  @variants = ProductVariant.where(product_id: @product.id)
 	  
-	  @sizes = []
-	  @variants.each do |var| 
-      if var.quantity > 0
-		    @sizes << var.size
-      end
-	  end
+	  @sizes = @product.available_sizes(@cart.id)
+	  
 	  
 
     if @product.has_only_one_image?

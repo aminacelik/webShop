@@ -31,18 +31,20 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-  
+    
     product_variant = ProductVariant.where(product_id: params[:product_id], size_id: params[:size_id]).first
     @line_item = @cart.add_product_variant(product_variant.id)
 	  @product = @line_item.product_variant.product
+    
 	  
     respond_to do |format|
       if @line_item.save
+        @sizes = @product.available_sizes(@cart.id)
         format.html { redirect_to product_url(@product.id), notice: t('status_mssg.cart.added')}
 		    format.js {}
         format.json { render :show, status: :created, location: @line_item }
       else
-        format.html { render :new }
+        format.html { redirect_to product_url(@product.id), notice: "Couldn't add to cart." }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end

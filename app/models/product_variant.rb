@@ -28,6 +28,13 @@ class ProductVariant < ActiveRecord::Base
     product.price 
   end
 
+  def sold_out?
+    quantity <= 0
+  end
+
+  def available?(number_of_products)
+    quantity >= number_of_products
+  end
 
 
 	private

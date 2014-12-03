@@ -89,6 +89,10 @@ class OrdersController < ApplicationController
   end
   
     
+  def available_items
+    @available_items = @cart.available_items
+  end
+
   def ship_order
     order = Order.where(id: params[:id]).first
     order.shipped = true
@@ -108,10 +112,15 @@ class OrdersController < ApplicationController
 
   def create_order
     price = @cart.total_delivery_and_products_price
-    
+
+    items = @cart.items
+    available_items = @cart.available_items
+    if items.count != available_items.count
+      redirect_to orders_available_items_path and return
+    end
+
     begin 
       ActiveRecord::Base.transaction do
-        do_payment
         shipping_id = save_address_copy(session[:shipping_id])
         billing_id = save_address_copy(session[:billing_id])
 
@@ -120,6 +129,9 @@ class OrdersController < ApplicationController
 
 
         save_items_copy
+
+        # if everything goes fine, user credit card will be charged
+        do_payment
 
         # deleting line items from cart
         @cart.line_items.delete_all  
@@ -132,6 +144,8 @@ class OrdersController < ApplicationController
     rescue ActiveRecord::ActiveRecordError
       redirect_to store_url, notice: "Not enough products in stock."
     end
+
+
   end
 
   private

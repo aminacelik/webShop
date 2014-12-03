@@ -54,14 +54,22 @@ ba:
       size_html: "Veličina"
       add_html: "Dodaj u korpu"
       similar_products_html: "Slični proizvodi"
-      sold_out: "Proizvod je rasprodat."
-      coming_soon_html: "Nove zalihe će uskoro doći.."
       quantity_html: "Količina"
       new_price: "Nova cijena"
     on_sale:
       products_on_sale: "Proizvodi na rasporodaji"
     product:
       new_price: "Nova cijena"
+    add_to_cart:
+      price: "Cijena"
+      new_price: "Nova cijena"
+      size_html: "Veličina"
+      quantity_html: "Količina"
+      add_html: "Dodaj u korpu"
+      sold_out: "Proizvod je rasprodat."
+      coming_soon_html: "Nove zalihe će uskoro doći.."
+
+      
 
   carts:
     detailed_cart:
@@ -69,10 +77,10 @@ ba:
       size_html: "Veličina"
       color: "Boja"
       price: "Cijena"
-      step_1of2: "Korak 1 od 2"
+      step_1: "Korak 1 od 3"
       continue: "Nastavi"
       empty_cart_button: "Isprazni"
-      empty_cart: "Vaša korpa je prazna."
+      empty_cart: "Nemate dostupnih proizvoda za kupovinu."
     order_cart:
       order_html: "Narudžba"
       total_price_products: "Ukupna cijena za artikle"
@@ -121,9 +129,10 @@ ba:
       pick_address: "Izaberi adresu"
       new_billing_html: "Nova adresa za račun"
       new_shipping: "Nova adresa za dostavu"
-      step_2of2: "Korak 2 od 2"
+      step_2: "Korak 2 od 3"
     index:
-      step_2of2: "Korak 2 od 2"
+      step_2: "Korak 2 od 3"
+      continue: "Nastavi"
 
   orders:
     purchase_history:
@@ -138,6 +147,14 @@ ba:
       thank_you: "Hvala"
       you_bought_html: "Kupili ste sljedeće artikle"
       you_spent_html: "Potrošili ste"
+    available_items:
+      available_items: "Dostupni proizvodi za kupovinu"
+      step_3: "Korak 3 od 3"
+      size_html: "Veličina"
+      color: "Boja"
+      price: "Cijena"
+      sorry_html: "Žao nam je, svi proizvodi koje ste željeli su u međuvremenu rasprodati."
+      homepage_html: "Povratak na početnu stranicu"
 
   activerecord:
     errors:

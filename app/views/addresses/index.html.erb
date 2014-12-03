@@ -39,27 +39,11 @@
 
   <div class="order_display col-xs-12 col-sm-6 col-md-5">
     <% unless @cart.number_of_products == 0 %>
-        <div class="step"><%= t('.step_2of2') %></div>
+        <div class="step"><%= t('.step_2') %></div>
         <%= render partial: "carts/order_cart" %>
-    
-
-  	<%=form_tag "orders/create_order" do %>
-      <% if @selected_shipping && @selected_billing %>
-        <div class="col-xs-12 col-sm-6 buttons" style="float: right">
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" 
-                  data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
-                  data-description="Pay for your items"
-                  data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i %>">
-          </script>
-        </div>
-      <% else %>
-      <div class='col-xs-12 col-sm-6' >
-        Pick your shipping and billing addresses, please.
-      </div>
-        
-      <% end %>
     <% end %>
-  <% end %>
+    
+    <%= button_to t('.continue'), orders_available_items_path, method: :get, class: 'btn btn-default grey_button' %>
   </div>
 
 

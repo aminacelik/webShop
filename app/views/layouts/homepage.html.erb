@@ -203,7 +203,9 @@
     
 
   <div class="container-fluid" id="notice_area">
-    <p id="notice"><%= notice %></p>
+    <% unless session[:role] == 'administrator' %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
   </div>
   
   <% if items_on_sale_images.present? %>

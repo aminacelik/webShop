@@ -1,0 +1,62 @@
+<h2><%= t('.available_items') %></h2>
+
+
+	<div id="product_list" class="col-xs-12 col-sm-6" >
+		<% @available_items.each do |line_item| %>
+    
+			<div class="product_in_cart row">
+				<%= image_tag line_item.get_image, class: 'img-responsive col-xs-3' %>
+				<div class="product_details col-xs-5">
+					 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
+					<%= t('.size_html') %>: <%= line_item.product_variant.size.size %><br>
+					<%= t('.color') %>: <%= line_item.product_variant.color.name %><br>
+				</div>
+
+				<div class="product_price col-xs-3">
+					<% if line_item.product_variant.sold_out? %>
+					<br /> <strong style="color: red">Sold Out</strong><br>
+					<% else %>
+					<%= t('.price') %>:<br /> <strong><%= number_to_currency(line_item.get_product.price) %></strong><br>
+					<% end %>
+				</div>
+
+			</div>
+
+		<% end %>
+
+
+		<% if @available_items.empty? %>
+			<%= t('.sorry_html') %><br />
+			<%= link_to t('.homepage_html'), store_url %>
+		<% end %>
+	</div>
+
+
+
+
+<!--  If user is ordering -->
+
+  <div class="order_display col-xs-12 col-sm-6 col-md-5">
+    <% unless @cart.number_of_products == 0 %>
+        <div class="step"><%= t('.step_3') %></div>
+        <%= render partial: "carts/order_cart" %>
+    
+
+  	<%=form_tag "create_order" do %>
+      <% if session[:shipping_id] && session[:billing_id] %>
+        <div class="col-xs-12 col-sm-6 buttons" style="float: right">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" 
+                  data-key="pk_test_Cnh27zogL5NcjyVeTcLBWmle"
+                  data-description="Pay for your items"
+                  data-amount="<%= (@cart.total_delivery_and_products_price*100).to_i %>">
+          </script>
+        </div>
+      <% else %>
+      <div class='col-xs-12 col-sm-6' >
+        Pick your shipping and billing addresses, please.
+      </div>
+        
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>

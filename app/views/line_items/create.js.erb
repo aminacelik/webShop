@@ -1,1 +1,2 @@
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+$('.product_description').html("<%= escape_javascript render partial: 'products/add_to_cart', locals: {sizes: @sizes} %>");
