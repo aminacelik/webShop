@@ -86,11 +86,11 @@ winter_shoes = Category.create!(name: "Winter 14/15")
 #CATEGORY TRANSLATIONS
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{women_shoes.id}",
-                            name: "Zenska obuca")
+                            name: "Ženska obuća")
 
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{men_shoes.id}",
-                            name: "Mucka obuca")
+                            name: "Muška obuca")
 
 CategoryTranslation.create!(language_id: "#{bosanski.id}",
                             category_id: "#{accessorize.id}",
