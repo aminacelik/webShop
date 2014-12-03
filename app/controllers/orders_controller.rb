@@ -154,7 +154,7 @@ class OrdersController < ApplicationController
     orders = Order.where(shipped: shipped_bool).order('created_at ASC')
     @order_items = []
     orders.each do |order|
-      @order_items +=  order.product_variants
+      @order_items +=  order.order_product_variants
     end
   end
     
