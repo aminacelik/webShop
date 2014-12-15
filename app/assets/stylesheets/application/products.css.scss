@@ -71,7 +71,8 @@
 }
 
 .product {
-  max-height: 364px;
+  height: 364px;
+
   overflow: hidden;
   float: left;
   color: #aaaaaa;
@@ -87,6 +88,8 @@
     margin: 0 auto;
     color: black;
     margin-top: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   img {
     padding: 10px;

@@ -22,8 +22,11 @@ class ProductsController < ApplicationController
   def show
 	  @similar_products = Product.where(category_id: @product.category.id).last(4)
 	  @variants = ProductVariant.where(product_id: @product.id)
+	  @sizes = []
+    unless session[:role]=='administrator'
+      @sizes = @product.available_sizes(@cart.id)
+    end
 	  
-	  @sizes = @product.available_sizes(@cart.id)
 	  
 	  
 

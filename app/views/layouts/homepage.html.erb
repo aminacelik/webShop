@@ -208,12 +208,15 @@
     <% end %>
   </div>
   
+
   <% if items_on_sale_images.present? %>
+  <div id="slider_wrapper">
     <ul class="bxslider" id="items_on_sale_slider">
       <% items_on_sale_images.each do |img| %>
         <li><%= image_tag img.image.url(:background) %></li>
       <% end %>
     </ul>
+  <div>
   <% end %>
 
 
@@ -237,14 +240,10 @@
  
   <div class="panel-footer">
   
-		<ul id="footer_menu">
-		  <li><%= link_to t('.home_html'), store_url %></li>
-        
-        
-				  <% @categories.each do |c| %>
-						<li><%= link_to c.name, category_path(c) %></li>
-				  <% end %>	
-	
+		<ul id="footer_menu">       
+		  <% @categories.each do |c| %>
+				<li><%= link_to c.name, category_path(c) %></li>
+		  <% end %>	
 		</ul>
     
       <div id="copyright">
@@ -257,11 +256,7 @@
   <script type="text/javascript">
       $(document).ready(function(){
         $('#items_on_sale_slider').bxSlider({
-          minSlides: 3,
-          maxSlides: 3,
-          slideMargin: 0,
-          ticker: true,
-          speed: 13000,
+          auto: true,
           autoControls: true
         });
       });
