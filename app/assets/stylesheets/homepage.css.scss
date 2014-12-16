@@ -63,7 +63,7 @@ $grey: #a1a1a1;
   position: absolute;
   z-index: 2;
   top: 180px;
-  right: 290px;
+  right: 20%;
   background-color: rgba(0,0,0,0.5);
   border-radius: 10px;
   padding: 15px;
@@ -336,4 +336,17 @@ div.row {
     }
   }
 
+}
+  li.on_sale_link {
+    a{
+      color: $light_orange;
+    }
+  }
+@media all and (max-width: 850px) {
+  li.on_sale_link {
+    display: block;
+  }
+  #on_sale {
+    display: none;
+  }
 }

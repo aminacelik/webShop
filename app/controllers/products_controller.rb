@@ -25,6 +25,8 @@ class ProductsController < ApplicationController
 	  @sizes = []
     unless session[:role]=='administrator'
       @sizes = @product.available_sizes(@cart.id)
+    else
+      @sizes = @product.sizes
     end
 	  
 	  
