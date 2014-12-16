@@ -14,6 +14,24 @@
  *= require_tree ./application/
  */
 
+#slider_wrapper {
+    
+    .bx-viewport, .bx-wrapper, .bx-caption {
+      max-height: 500px;
+
+      img {
+        max-height: 450px;
+        margin: 0 auto;
+        float: left;
+        margin-left: 10%;
+      }
+    }
+
+    ul.bxslider li {
+      left: 0;
+    } 
+
+}
 
 $light_orange: #f0b49e;
 $header_color: #625a62;
@@ -115,7 +133,7 @@ body {
 }
 
 #header {
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(98,90,98,0.5));
   position: absolute;
   top: 0;
   left: 0;
