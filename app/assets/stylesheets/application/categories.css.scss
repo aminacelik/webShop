@@ -2,4 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#category_filter {
+	width: 120px;
+	float: left;
+	margin-right: 5%;
+	margin-left: 5%;
+}
 
+#product_list {
+	max-width: 800px;
+	float: left;
+}

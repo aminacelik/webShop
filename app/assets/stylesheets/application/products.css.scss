@@ -1,8 +1,8 @@
 #product_images_slider {
     
     .bx-viewport, .bx-wrapper, .bx-caption {
-      max-width: 560px;
       max-height: 250px;
+      max-width: 550px;
 
       img {
         max-height: 250px;
@@ -27,11 +27,9 @@
 }
 
 
-
-
 // detailed show
 
-#add_image_link{
+#add_image_link {
   width: 100%;
   float: left;
 }

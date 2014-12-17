@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :color
   belongs_to :order
-    
+
 	has_many :product_variants, dependent: :destroy
   has_many :product_translations, dependent: :destroy
 
@@ -14,12 +14,19 @@ class Product < ActiveRecord::Base
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validate  :sale_price_lesser_than_original_price
 
+
+  scope :cheaper_than, lambda { |price| where("price <= ?", price) } 
+  scope :more_expensive_than, lambda { |price| where("price >= ?", price) } 
+  scope :with_size_id, lambda { |size_id| joins(:product_variants).merge(ProductVariant.with_size_id(size_id)) } 
+  scope :with_color_id, lambda { |color_id| joins(:product_variants).merge(ProductVariant.with_color_id(color_id)) } 
+
+
     def sale_price_lesser_than_original_price
       if sale_price
         errors.add(:sale_price, 'must be lesser than original price') if sale_price >= read_attribute(:price)
       end
     end
-    
+
     def self.latest
         Product.order(:updated_at).last
     end
@@ -73,6 +80,8 @@ class Product < ActiveRecord::Base
       end
     end
    
+
+
     def get_thumb_image
       if product_images.present?
         product_images.first.image.url(:thumb)
@@ -155,6 +164,11 @@ class Product < ActiveRecord::Base
       price = read_attribute(:price)
     end
     price
+  end
+
+  def has_size?(size_id)
+    variants = product_variants.where(size_id: size_id)
+    return variants.empty?
   end
 
 end

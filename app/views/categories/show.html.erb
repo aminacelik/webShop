@@ -9,16 +9,35 @@
 <% end %>
 
 
-<!--
-<div id="category_menu">
-	<ul>
-		<li>Newest products</li>
-		<li>Lowest price products</li>
-		<li>Highest price products</li>
-	</ul>
 
+<div id="category_filter">
+
+<%= form_tag(category_path(@category.id), method: :get) do %>
+  <div class="form-group">
+    <%= label_tag :size %><br>
+    <%= select_tag "size", options_from_collection_for_select(Size.all, :id, :size, params[:size]), { class: 'form-control', include_blank: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :color %><br>
+    <%= select_tag "color", options_from_collection_for_select(Color.all, :id, :name, params[:color]), { class: 'form-control', include_blank: true  }  %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :min_price %><br>
+    <%= number_field_tag :min_price, params[:min_price], { class: 'form-control', :min => 0 }  %>
+  </div>
+  <div class="form-group">
+  	<%= label_tag :max_price %><br>
+  	<!-- number_field_tag 'quantity', nil, in: 1...10 -->
+    <%= number_field_tag :max_price, params[:max_price], { class: 'form-control', :min => 0} %>
+  </div>
+
+  <%= submit_tag 'Update', class: 'btn btn-default grey_button' %>
 </div>
--->
+<% end %>
+
+
 
 <div id="product_list">
 <% @products.each do |product| %>

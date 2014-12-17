@@ -5,6 +5,9 @@ class ProductVariant < ActiveRecord::Base
   belongs_to :order
   
   has_many :line_items
+
+  scope :with_size_id, lambda { |size_id| where(size_id: size_id)  } 
+  scope :with_color_id, lambda { |color_id| where(color_id: color_id) }
 	
   # before_destroy :ensure_not_referenced_by_any_line_item
 	
