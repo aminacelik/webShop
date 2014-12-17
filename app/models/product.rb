@@ -15,8 +15,8 @@ class Product < ActiveRecord::Base
   validate  :sale_price_lesser_than_original_price
 
 
-  scope :cheaper_than, lambda { |price| where("price <= ?", price) } 
-  scope :more_expensive_than, lambda { |price| where("price >= ?", price) } 
+  scope :cheaper_than, lambda { |price| where("price <= ? or sale_price <= ?", price, price) } 
+  scope :more_expensive_than, lambda { |price| where("price >= ? or sale_price <= ?", price, price) } 
   scope :with_size_id, lambda { |size_id| joins(:product_variants).merge(ProductVariant.with_size_id(size_id)) } 
   scope :with_color_id, lambda { |color_id| joins(:product_variants).merge(ProductVariant.with_color_id(color_id)) } 
 

@@ -14,18 +14,13 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @products = @category.products.where(nil) # creates an anonymous scope
-    puts " #1 @products : #{@products.count}" 
+
     # product price filtering
     @products = @products.more_expensive_than(params[:min_price]) if !params[:min_price].blank? && params[:min_price].to_i >=0
-    puts " #2 @products : #{@products.count}" 
     @products = @products.cheaper_than(params[:max_price]) if !params[:max_price].blank? && params[:max_price].to_i >=0
-    puts " #3 @products : #{@products.count}" 
     # product variant size and color filtering
     @products = @products.with_size_id(params[:size]) if !params[:size].blank?
-    puts " #4 @products : #{@products.count}" 
     @products = @products.with_color_id(params[:color]) if !params[:color].blank?
-    puts " #5 @products : #{@products.count}" 
-
 
   end
 
