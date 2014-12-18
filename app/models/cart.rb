@@ -92,5 +92,8 @@ class Cart < ActiveRecord::Base
     available_items
   end
 
+	def all_cart_items_are_available?
+    return items.count != available_items.count
+	end
     
 end

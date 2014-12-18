@@ -112,13 +112,11 @@ class OrdersController < ApplicationController
 
   def create_order
     price = @cart.total_delivery_and_products_price
-
-    items = @cart.items
-    available_items = @cart.available_items
-    if items.count != available_items.count
-      redirect_to orders_available_items_path and return
-    end
-
+		
+		if !all_cart_items_are_available? 
+			redirect_to orders_available_items_path and return
+		end
+		
     begin 
       ActiveRecord::Base.transaction do
         shipping_id = save_address_copy(session[:shipping_id])
@@ -149,6 +147,9 @@ class OrdersController < ApplicationController
   end
 
   private
+	
+	
+
   
   def find_orders_items(shipped_bool)
     orders = Order.where(shipped: shipped_bool).order('created_at ASC')
