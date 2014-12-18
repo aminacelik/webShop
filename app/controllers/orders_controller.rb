@@ -230,8 +230,8 @@ class OrdersController < ApplicationController
         Stripe.api_key = CFG["secret_key"]
           
         customer = Stripe::Customer.create(
-        :email => @current_user.email,
-        :card  => params[:stripeToken]
+        	:email => @current_user.email,
+        	:card  => params[:stripeToken]
         )     
       
         # puts "customer = #{customer.inspect}"

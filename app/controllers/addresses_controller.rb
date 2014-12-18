@@ -12,9 +12,9 @@ class AddressesController < ApplicationController
   def index
 	   session[:redirect_to_address]=nil 
 
-      if !@cart.available_items?
-        redirect_to cart_path(@cart.id) and return
-      end
+		if !@cart.available_items?
+			redirect_to cart_path(@cart.id) and return
+		end
 # First we are searching addresses selected by session variables
 
     @selected_shipping = Address.where(id: session[:shipping_id]).first
