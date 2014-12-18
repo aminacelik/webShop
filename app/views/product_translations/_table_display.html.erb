@@ -1,0 +1,29 @@
+<div class='table-responsive'>
+<table class='table table-striped'>
+	<tr>
+		
+		<th>Product</th>
+		<th>Language</th>
+		<th>Name translation</th>
+		<th>Description translation</th>
+		<th>Actions</th>
+
+	</tr>
+	<%  product_translations.each do |pt| %>
+	
+		<tr>
+
+			<td><%= pt.product.title %></td>
+			<td><%= pt.language.name %></td>
+			<td><%= pt.title %></td>
+			<td><%= pt.description %></td>
+			<td>
+				<%= link_to 'Edit', edit_product_product_translation_path(product_id: pt.product.id, id: pt.id) %> |
+				<%= link_to 'Delete', product_product_translation_path(product_id: pt.product.id, id: pt.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		</tr>
+	
+<% end %>
+
+</table>
+</div>

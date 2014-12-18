@@ -31,5 +31,7 @@
 
 	<%= render partial: 'product_variants/table_display', locals: {product_variants: @variants} %>
 	<%= link_to 'Add variant', new_product_product_variant_path(product_id: @product.id) %>
-			
+	
+	<%= render partial: 'product_translations/table_display', locals: {product_translations: @translations} %>
+	<%= link_to 'Add translation', new_product_product_translation_path(product_id: @product.id) %>
 </div>

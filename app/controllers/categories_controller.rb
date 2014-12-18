@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:show]
+	before_action :limit_access_to_administrator, only: [:detailed_show]
+
+	
+	skip_before_action :authorize, only: [:show]
+
 	
   include CurrentCart
   before_action :set_cart
@@ -72,6 +76,11 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+	def detailed_show
+		@category = Category.where(id: params[:id]).first
+		@translations = CategoryTranslation.where(category_id: @category.id)
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.

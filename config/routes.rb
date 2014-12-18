@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
     get 'products/on_sale'
     get 'products/detailed_show'
-
+		get 'categories/detailed_show'
+		
     post 'orders/ship_order'
     get  'orders/purchase_confirmation'
     get  'orders/purchase_history'
@@ -36,13 +37,13 @@ Rails.application.routes.draw do
     resources :products do
       resources :product_images
       resources :product_variants
+			resources :product_translations
     end
     
-    resources :categories
+    resources :categories do 
+			resources :category_translations
+		end
 
-    resources :category_translations
-
-    resources :product_translations
 
     resources :languages
 

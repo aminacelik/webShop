@@ -2,11 +2,13 @@ class CategoryTranslationsController < ApplicationController
   before_action :set_category_translation, only: [:show, :edit, :update, :destroy]
   before_action :authorize
   before_action :limit_access_to_administrator
+	before_action :set_category
 
   # GET /category_translations
   # GET /category_translations.json
   def index
-    @category_translations = CategoryTranslation.all
+    @category = Category.find(params[:id])
+    @category_translations = @category.category_translations
   end
 
   # GET /category_translations/1
@@ -28,14 +30,14 @@ class CategoryTranslationsController < ApplicationController
   # POST /category_translations
   # POST /category_translations.json
   def create
-    @category = Category.where(id: params[:category_translation][:category_id]).first
+
     @language = Language.where(id: params[:category_translation][:language_id]).first
     
     @category_translation = @category.category_translations.new(category_translation_params.merge(language_id: @language.id))
 
     respond_to do |format|
       if @category_translation.save
-        format.html { redirect_to @category_translation, notice: 'Category translation was successfully created.' }
+        format.html { redirect_to categories_detailed_show_path(id: @category.id), notice: 'Category translation was successfully created.' }
         format.json { render :show, status: :created, location: @category_translation }
       else
         format.html { render :new }
@@ -49,7 +51,7 @@ class CategoryTranslationsController < ApplicationController
   def update
     respond_to do |format|
       if @category_translation.update(category_translation_params)
-        format.html { redirect_to @category_translation, notice: 'Category translation was successfully updated.' }
+        format.html { redirect_to categories_detailed_show_path(id: @category.id), notice: 'Category translation was successfully updated.' }
         format.json { render :show, status: :ok, location: @category_translation }
       else
         format.html { render :edit }
@@ -63,7 +65,7 @@ class CategoryTranslationsController < ApplicationController
   def destroy
     @category_translation.destroy
     respond_to do |format|
-      format.html { redirect_to category_translations_url, notice: 'Category translation was successfully destroyed.' }
+      format.html { redirect_to categories_detailed_show_path(id: @category.id), notice: 'Category translation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +74,10 @@ class CategoryTranslationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category_translation
       @category_translation = CategoryTranslation.find(params[:id])
+    end
+	
+	   def set_category
+      @category = Category.find(params[:category_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

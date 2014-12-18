@@ -1,0 +1,27 @@
+<div class='table-responsive'>
+<table class='table table-striped'>
+	<tr>
+		
+		<th>Category</th>
+		<th>Language</th>
+		<th>Name translation</th>
+		<th>Actions</th>
+
+	</tr>
+	<%  category_translations.each do |ct| %>
+	
+		<tr>
+
+			<td><%= ct.category.name %></td>
+			<td><%= ct.language.name %></td>
+			<td><%= ct.name %></td>
+			<td>
+				<%= link_to 'Edit', edit_category_category_translation_path(category_id: ct.category.id, id: ct.id) %> |
+				<%= link_to 'Delete', category_category_translation_path(category_id: ct.category.id, id: ct.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		</tr>
+	
+<% end %>
+
+</table>
+</div>

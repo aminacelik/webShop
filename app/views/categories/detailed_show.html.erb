@@ -1,0 +1,11 @@
+   <h2><%= @category.name %></h2>
+ 
+
+
+
+<% if session[:role]=='administrator' %>
+<%= link_to 'Edit', edit_category_path(@category) %>
+<% end %>
+
+	<%= render partial: 'category_translations/table_display', locals: {category_translations: @translations} %>
+	<%= link_to 'Add translation', new_category_category_translation_path(category_id: @category.id) %>

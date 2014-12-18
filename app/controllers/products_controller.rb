@@ -103,6 +103,7 @@ class ProductsController < ApplicationController
     @product = Product.where(id: params[:id]).first
     @images = @product.product_images
     @variants = ProductVariant.where(product_id: @product.id).order('size_id ASC')
+		@translations = ProductTranslation.where(product_id: @product.id)
   end
 
   def on_sale

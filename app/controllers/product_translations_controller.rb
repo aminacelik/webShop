@@ -2,6 +2,7 @@ class ProductTranslationsController < ApplicationController
   before_action :set_product_translation, only: [:show, :edit, :update, :destroy]
   before_action :authorize
   before_action :limit_access_to_administrator
+	before_action :set_product
 
   # GET /product_translations
   # GET /product_translations.json
@@ -28,13 +29,12 @@ class ProductTranslationsController < ApplicationController
   # POST /product_translations
   # POST /product_translations.json
   def create
-    @language = Language.where(id: params[:product_translation][:language_id]).first
-    @product = Product.where(id: params[:product_translation][:product_id]).first
-    @product_translation = @product.product_translations.new(product_translation_params.merge(language_id: @language.id))
+		language = Language.where(id: params[:product_translation][:language_id]).first
+    @product_translation = @product.product_translations.new(product_translation_params.merge(language_id: language.id))
 
     respond_to do |format|
       if @product_translation.save
-        format.html { redirect_to @product_translation, notice: 'Product translation was successfully created.' }
+        format.html { redirect_to products_detailed_show_path(id: @product_translation.product.id), notice: 'Product translation was successfully created.' }
         format.json { render :show, status: :created, location: @product_translation }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class ProductTranslationsController < ApplicationController
   def update
     respond_to do |format|
       if @product_translation.update(product_translation_params)
-        format.html { redirect_to @product_translation, notice: 'Product translation was successfully updated.' }
+        format.html { redirect_to products_detailed_show_path(id: @product_translation.product.id), notice: 'Product translation was successfully updated.' }
         format.json { render :show, status: :ok, location: @product_translation }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class ProductTranslationsController < ApplicationController
   def destroy
     @product_translation.destroy
     respond_to do |format|
-      format.html { redirect_to product_translations_url, notice: 'Product translation was successfully destroyed.' }
+      format.html { redirect_to products_detailed_show_path(id: @product_translation.product.id), notice: 'Product translation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,10 @@ class ProductTranslationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product_translation
       @product_translation = ProductTranslation.find(params[:id])
+    end
+	
+	   def set_product
+      @product = Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
