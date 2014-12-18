@@ -3,13 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #category_filter {
-	width: 120px;
+	min-width: 120px;
 	float: left;
-	margin-right: 5%;
-	margin-left: 5%;
+	margin: 0 auto;
+
 }
 
 #product_list {
-	max-width: 800px;
 	float: left;
 }

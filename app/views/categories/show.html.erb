@@ -10,7 +10,7 @@
 
 
 
-<div id="category_filter">
+<div id="category_filter" class='col-xs-2'>
 
 <%= form_tag(category_path(@category.id), method: :get) do %>
   <div class="form-group">
@@ -39,7 +39,7 @@
 
 
 
-<div id="product_list">
+<div id="product_list" class='col-xs-10'>
 <% @products.each do |product| %>
 	<%= render partial: "products/product", locals: {product: product} %>
 <% end %>

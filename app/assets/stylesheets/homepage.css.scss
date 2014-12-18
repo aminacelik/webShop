@@ -151,7 +151,7 @@ body {
   font-family: "Montserrat";
   text-transform: uppercase;
   font-weight: 600;
-  margin-right: 63px;
+  margin-right: 85px;
   
   li {
     float: left;
@@ -211,8 +211,12 @@ body {
 #cart {
   width: 47px;
   float: right;
-  margin-left: 8px;
-  margin-right: 8px;
+
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 100px;
+  margin-top: 30px;
   a {
     img {
       margin-top: 10px;
@@ -300,6 +304,10 @@ div.row {
   border: 2px solid #f16354;
 }
 
+
+
+// MEDIA QUERIES
+
 @media all and (max-width: 800px) {
   #header {
     li {
@@ -350,3 +358,4 @@ div.row {
     display: none;
   }
 }
+

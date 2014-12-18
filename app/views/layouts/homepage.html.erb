@@ -46,12 +46,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         
-      
-      <% unless session[:role]=='administrator' %>
-				<div id="cart">
-						<%= render @cart %>
-				</div>
-		  <% end %>
+
         
         
         <% if @current_user %>
@@ -72,6 +67,12 @@
       </ul>
     </div>
     
+		      
+      <% unless session[:role]=='administrator' %>
+				<div id="cart">
+						<%= render @cart %>
+				</div>
+		  <% end %>
 
   </div>
     

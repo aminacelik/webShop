@@ -1,33 +1,39 @@
 
     <div class="product col-xs-6 col-sm-4 col-md-3">
-      <%= link_to image_tag(product.get_medium_image, class: 'img-responsive'), product_path(product) %>
+				
+			<div class="image_wrapper">
+				<%= link_to image_tag(product.get_medium_image, class: 'img-responsive'), product_path(product) %>
+			</div>
+      
 
 
-     
-      <h3><%= link_to product.title, product_path(product) %></h3>
+     <div class="product_small_display_details">
+				<h3><%= link_to product.title, product_path(product) %></h3>
      
     
-    <% if product.on_sale? %>
-      <div id="discount_display">
-        <div class="price_line">
-          <span class="outer">
-            <span class="price">
-              <%= number_to_currency(product.old_price) %>
-            </span><br />
-          </span>
-          <span class="discount">
-            - <%= product.discount_percent %> %
-          </span>
-        </div>
-        <div class="new_price">
-          <small><%= t('.new_price') %></small>
-          <%= number_to_currency(product.sale_price) %>
-        </div>
-      </div>
-    <% else %>
-      <div class="price_line">
-        <%= number_to_currency(product.price) %>
-      </div>
-    <% end %>
+				<% if product.on_sale? %>
+					<div id="discount_display">
+						<div class="price_line">
+							<span class="outer">
+								<span class="price">
+									<%= number_to_currency(product.old_price) %>
+								</span><br />
+							</span>
+							<span class="discount">
+								- <%= product.discount_percent %> %
+							</span>
+						</div>
+						<div class="new_price">
+							<small><%= t('.new_price') %></small>
+							<%= number_to_currency(product.sale_price) %>
+						</div>
+					</div>
+				<% else %>
+					<div class="price_line">
+						<%= number_to_currency(product.price) %>
+					</div>
+				<% end %>
+		 </div>
+      
 
     </div>
