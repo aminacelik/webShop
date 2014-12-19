@@ -21,7 +21,7 @@
 
       <br><%= t('.price') %><br>
       <div class="price_line">
-        <%= number_to_currency(@product.price) %>
+        <%= adapt_currency(@product.price) %>
       </div><br><br>
 
       <%= link_to 'Edit', edit_product_path(@product) %> 

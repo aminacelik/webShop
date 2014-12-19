@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+
   belongs_to :category
   belongs_to :color
   belongs_to :order
@@ -21,6 +22,7 @@ class Product < ActiveRecord::Base
   scope :with_color_id, lambda { |color_id| joins(:product_variants).merge(ProductVariant.with_color_id(color_id)) } 
 
 
+# validation methods
     def sale_price_lesser_than_original_price
       if sale_price
         errors.add(:sale_price, 'must be lesser than original price') if sale_price >= read_attribute(:price)
@@ -31,9 +33,12 @@ class Product < ActiveRecord::Base
         Product.order(:updated_at).last
     end
 
+	  def has_at_least_one_image
+      errors.add(:product_images, 'must have at least one image') if self.product_images.blank?
+    end
 
 
-
+# attribute override methods
     def title
       if I18n.locale == 'en'
         read_attribute(:title)
@@ -70,6 +75,24 @@ class Product < ActiveRecord::Base
       end
     end
 
+	  def price
+    if sale_price != nil
+      price = sale_price
+    else
+      price = read_attribute(:price)
+    end			
+    price
+  end
+	
+	
+  def old_price
+    read_attribute(:price)
+  end
+	
+
+	
+	# other
+	
     def category_name
       category.name 
     end
@@ -80,8 +103,6 @@ class Product < ActiveRecord::Base
       end
     end
    
-
-
     def get_thumb_image
       if product_images.present?
         product_images.first.image.url(:thumb)
@@ -100,10 +121,6 @@ class Product < ActiveRecord::Base
       end
     end
 
-
-    def has_at_least_one_image
-      errors.add(:product_images, 'must have at least one image') if self.product_images.blank?
-    end
 
     def has_only_one_image?
       product_images.count == 1
@@ -152,23 +169,19 @@ class Product < ActiveRecord::Base
 	    end
       sizes
     end
-
-  def old_price
-    read_attribute(:price)
-  end
-
-  def price
-    if sale_price != nil
-      price = sale_price
-    else
-      price = read_attribute(:price)
-    end
-    price
-  end
+	
+	def sizes
+		sizes = []
+		product_variants.each do |var|
+			sizes << var.size
+		end
+		sizes
+	end
 
   def has_size?(size_id)
     variants = product_variants.where(size_id: size_id)
     return variants.empty?
   end
+	
 
 end

@@ -10,7 +10,7 @@
               <div class="price_line">
                 <span class="outer">
                   <span class="price">
-                    <%= number_to_currency(@product.old_price) %>
+                    <%= adapt_currency(@product.old_price) %>
                   </span><br />
                 </span>
                 <span class="discount">
@@ -19,12 +19,12 @@
               </div>
               <div class="new_price">
                 <small><%= t('.new_price') %></small>
-                <%= number_to_currency(@product.sale_price) %>
+                <%= adapt_currency(@product.sale_price) %>
               </div>
             </div>
           <% else %>
             <div class="price_line">
-              <%= number_to_currency(@product.price) %>
+              <%= adapt_currency(@product.price) %>
             </div>
           <% end %>
           <br><br>

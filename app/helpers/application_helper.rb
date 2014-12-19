@@ -9,6 +9,18 @@ def errors_for(model, attribute)
   end
 end
 
-
-
+def adapt_currency(price)
+	if params[:locale] == 'ba'
+			begin
+				fx = OpenExchangeRates::Rates.new
+				price = fx.convert(price, :from => "USD", :to => "BAM")
+			end
+			price = number_to_currency(price, unit: "KM", separator: ",", delimiter: "", format: "%n %u")
+	else
+		price = number_to_currency(price, unit: "$", separator: ".", delimiter: ",", format: "%u%n")
+	end
+	
+	price
+end
+	
 end

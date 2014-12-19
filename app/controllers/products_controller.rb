@@ -30,8 +30,7 @@ class ProductsController < ApplicationController
     end
 	  
 	  
-	  
-
+	
     if @product.has_only_one_image?
       @image = @product.product_images.first
     else

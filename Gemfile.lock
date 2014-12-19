@@ -79,6 +79,8 @@ GEM
       mini_portile (~> 0.6.0)
     nokogiri (1.6.5-x86-mingw32)
       mini_portile (~> 0.6.0)
+    open_exchange_rates (0.4.0)
+      yajl-ruby
     paperclip (3.5.4)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -148,6 +150,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -161,6 +164,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mandrill_mailer
+  open_exchange_rates
   paperclip (~> 3.0)
   pg
   rails (= 4.1.6)

@@ -1,3 +1,9 @@
+$orange: #e74c3c;
+$light_orange: #f0b49e;
+$header_color: #625a62;
+$grey: #a1a1a1;
+
+
 #product_images_slider {
     
     .bx-viewport, .bx-wrapper, .bx-caption {
@@ -137,7 +143,7 @@
     font-size: 15px;
     font-weight: 600;
 
-    color: red;
+    color: $orange;
     width: 40%;
     float: left;
 
@@ -202,6 +208,28 @@
 .product_description {
   max-width: 550px;
   max-height: 450px;
+	#discount_display {
+		.price_line {
+			.outer {
+				text-decoration: line-through;
+				color: $orange;
+				.price {
+					color: $header_color;
+					font-size: 14px;
+				}
+			}
+			.discount {
+				color: $orange;
+				font-size: 16px;
+			}
+		}
+		.new_price {
+			color: $orange;
+			font-size: 20px;
+			margin-top: 20px;
+
+		}
+	}
 }
 
 // MEDIA QUERIES
