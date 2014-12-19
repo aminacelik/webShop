@@ -46,16 +46,16 @@ body {
   
   li {
     float: left;
-//    border-bottom: 3px solid $header_color;
+//    border-bottom: none;
     a {
       color: white;
     }
     a:hover {
       color: $light_orange;
+//      border-bottom: none;
     }
     ul {
-      position: absolute;
-      background-color: $header_color;
+      background-color: grey;
       li {
         width: 100%;
         a {
@@ -66,9 +66,6 @@ body {
         }
       }
     }
-  }
-  li:hover {
-//    border-bottom: 3px solid $light_orange;
   }
 
 }
@@ -274,6 +271,7 @@ h1 {
 
 #logo {
   width: 100px;
+  padding-top: 10px;
   padding-left: 0;
   padding-right: 0;
 }

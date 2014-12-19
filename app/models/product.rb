@@ -81,30 +81,15 @@ class Product < ActiveRecord::Base
     else
       price = read_attribute(:price)
     end			
-			
-			
-    convert_price(price)
+    price
   end
 	
 	
   def old_price
-    convert_price(read_attribute(:price))
+    read_attribute(:price)
   end
 	
-	def convert_price(price)
-		if I18n.locale == 'ba'
-			begin
-				fx = OpenExchangeRates::Rates.new
-				price = fx.convert(price, :from => "USD", :to => "BAM")
-			end
-		end
-		
-		price
-	end
-			
-	def sale_price
-		convert_price(read_attribute(:sale_price))
-	end
+
 	
 	# other
 	

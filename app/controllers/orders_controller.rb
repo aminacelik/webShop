@@ -113,7 +113,7 @@ class OrdersController < ApplicationController
   def create_order
     price = @cart.total_delivery_and_products_price
 		
-		if !all_cart_items_are_available? 
+		if @cart.all_cart_items_are_not_available? 
 			redirect_to orders_available_items_path and return
 		end
 		
