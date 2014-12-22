@@ -75,30 +75,43 @@ class Product < ActiveRecord::Base
       end
     end
 
-	  def price
-    if sale_price != nil
+	 def price
+    if read_attribute(:sale_price) != nil
       price = sale_price
     else
-      price = read_attribute(:price)
+      price = old_price
     end			
-
-    if I18n.locale == 'ba'
-      currency = Currency.where(name: 'BAM').first
-      price = price * currency.exchange_rate
-    end
-
-    price
   end
 	
 	
   def old_price
-    if I18n.locale == 'ba'
+    if I18n.locale.to_s == 'ba'
       currency = Currency.where(name: 'BAM').first
-      price = read_attribute(:price) * currency.exchange_rate
+      if currency
+        price = read_attribute(:price) * currency.exchange_rate
+      else
+        price = read_attribute(:price)
+      end
     else
       price = read_attribute(:price)
     end
     price
+  
+  end
+
+  def sale_price
+    if I18n.locale.to_s == 'ba'
+      currency = Currency.where(name: 'BAM').first
+      if currency
+        price = read_attribute(:sale_price) * currency.exchange_rate
+      else
+        price = read_attribute(:sale_price)
+      end
+    else
+      price = read_attribute(:sale_price)
+    end
+    price
+   
   end
 	
 
@@ -139,7 +152,7 @@ class Product < ActiveRecord::Base
     end
 
     def discount_percent
-      percent = sale_price * 100 / read_attribute(:price)
+      percent = read_attribute(:sale_price) * 100 / read_attribute(:price)
       percent = 100 - percent 
       percent.round(1)
     end
@@ -156,8 +169,8 @@ class Product < ActiveRecord::Base
     end
 
     def on_sale?
-      if sale_price
-        return sale_price < read_attribute(:price)
+      if read_attribute(:sale_price)
+        return read_attribute(:sale_price) < read_attribute(:price)
       end
       false
     end
