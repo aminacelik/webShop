@@ -91,6 +91,11 @@ class OrdersController < ApplicationController
     
   def available_items
     @cart_items = @cart.line_items
+    if I18n.locale.to_s == 'ba'
+      @currency = Currency.where(name: 'BAM').first
+    else
+      @currency = Currency.where(name: 'USD').first
+    end
   end
 
   def ship_order

@@ -10,7 +10,7 @@
 					<% if line_item.product_variant.sold_out? %>
 					<br /> <strong style="color: red">Sold Out</strong><br>
 					<% else %>
-					<%= t('.price') %>:<br /> <strong><%= number_to_currency(line_item.get_product.price) %></strong><br>
+					<%= t('.price') %>:<br /> <strong><%= adapt_currency(line_item.get_product.price) %></strong><br>
 					<% end %>
 				</div>
 
