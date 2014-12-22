@@ -1,4 +1,23 @@
+<h2><%= t('.cart_html') %></h2>
 
 <div id="cart_container">
 	<%= render partial: "detailed_cart", locals: {items: @cart_items} %>
 </div>
+
+
+<% unless @cart.number_of_products == 0 %>
+  <div class="order_display col-xs-12 col-sm-6">
+  	<div class="step col-xs-12"><%= t('.step_1') %></div>
+    <div id="order_cart" class="col-xs-12"><%= render("carts/order_cart") %></div>
+  	<div class="col-xs-12">
+
+	  <%= button_to t('.continue'), addresses_path, method: :get, class: 'btn btn-default grey_button' %>
+
+      <%= button_to t('.empty_cart_button'), @cart, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-default cancel_button' %>
+    </div>
+  </div>
+	
+
+<% else %>
+	<h2><%= t('.empty_cart') %></h2>
+<% end %>

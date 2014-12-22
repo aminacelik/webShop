@@ -1,42 +1,25 @@
 
 <h2><%= t('.available_items') %></h2>
 
+<div id="cart_container">
+	<%= render partial: "carts/detailed_cart", locals: {items: @cart_items} %>
+</div>
 
-	<div id="product_list" class="col-xs-12 col-sm-6" >
-		<% @cart_items.each do |line_item| %>
-    	<%= render partial: 'carts/product_in_cart', locals: {line_item: line_item }%>
-		<% end %>
-
-
-		<% if @cart_items.empty? %>
-			<%= t('.sorry_html') %><br />
-			<%= link_to t('.homepage_html'), store_url %>
-		<% end %>
-	</div>
-
-
-
-
-<!--  If user is ordering -->
-
-<script src="https://checkout.stripe.com/checkout.js"></script>
-
-
-
-  <div class="order_display col-xs-12 col-sm-6 col-md-5">
+<div class="order_display col-xs-12 col-sm-6 col-md-5">
     <% unless @cart.number_of_products == 0 %>
         <div class="step"><%= t('.step_3') %></div>
-        <%= render partial: "carts/order_cart" %>
-    
-
-  	<%=form_tag "create_order", id: 'chargeForm' do %>
+        <div id = "order_cart"> 
+        	<%= render partial: "carts/order_cart" %>
+        </div>
+        
+    <%=form_tag "create_order", id: 'chargeForm' do %>
       <% if session[:shipping_id] && session[:billing_id] %>
         <div class="col-xs-12 col-sm-6 buttons" style="float: right">
-        	<script src="https://checkout.stripe.com/checkout.js"></script>
-  			<%= hidden_field_tag 'stripeToken' %>
-  			<%= hidden_field_tag 'stripeEmail' %>
-  			<%= hidden_field_tag 'stripeCard' %>
-    		<button id="payment_button" class="btn btn-large btn-primary">Buy Now</button>
+          <script src="https://checkout.stripe.com/checkout.js"></script>
+        <%= hidden_field_tag 'stripeToken' %>
+        <%= hidden_field_tag 'stripeEmail' %>
+        <%= hidden_field_tag 'stripeCard' %>
+        <button id="payment_button" class="btn btn-large btn-primary">Buy Now</button>
         </div>
       <% else %>
       <div class='col-xs-12 col-sm-6' >
@@ -48,6 +31,7 @@
   <% end %>
   </div>
 
+<script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
   var handler = StripeCheckout.configure({
