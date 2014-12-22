@@ -10,14 +10,11 @@ def errors_for(model, attribute)
 end
 
 def adapt_currency(price)
-	if params[:locale] == 'ba'
-			begin
-				fx = OpenExchangeRates::Rates.new
-				price = fx.convert(price, :from => "USD", :to => "BAM")
-			end
-			price = number_to_currency(price, unit: "KM", separator: ",", delimiter: "", format: "%n %u")
-	else
+	if params[:locale] == 'en'
 		price = number_to_currency(price, unit: "$", separator: ".", delimiter: ",", format: "%u%n")
+	else
+		currency = Currency.where(name: 'BAM').first
+		price = number_to_currency(price, unit: currency.unit, separator: ".", delimiter: ",", format: "%n %u")
 	end
 	
 	price

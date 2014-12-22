@@ -109,6 +109,9 @@ en:
       product: "product"
     unavailable_items:
       sorry_html: "We are sorry"
+    show:
+      continue: "Continue"
+      empty_cart_button: "Empty Cart"
 
   addresses:
     form:

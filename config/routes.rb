@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
+ 
+
   scope '(:locale)' do
+
+    post 'currencies/update_exchange_rates'
+    resources :currencies
 
     get 'products/on_sale'
     get 'products/detailed_show'

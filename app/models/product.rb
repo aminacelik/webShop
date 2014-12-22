@@ -81,12 +81,24 @@ class Product < ActiveRecord::Base
     else
       price = read_attribute(:price)
     end			
+
+    if I18n.locale == 'ba'
+      currency = Currency.where(name: 'BAM').first
+      price = price * currency.exchange_rate
+    end
+
     price
   end
 	
 	
   def old_price
-    read_attribute(:price)
+    if I18n.locale == 'ba'
+      currency = Currency.where(name: 'BAM').first
+      price = read_attribute(:price) * currency.exchange_rate
+    else
+      price = read_attribute(:price)
+    end
+    price
   end
 	
 

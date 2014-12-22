@@ -1,3 +1,9 @@
 $('#cart').html("<%= escape_javascript render(@cart) %>");
-$('#cart_container').html("<%= escape_javascript render partial: 'carts/detailed_cart', locals: {items: @cart.line_items } %>");
 
+if ($('#cart_container') != null) {
+	$('#cart_container').html("<%= escape_javascript render partial: 'carts/detailed_cart', locals: {items: @cart.line_items } %>");
+}
+else {
+	$('#product_list').html("<%= escape_javascript render partial: 'carts/detailed_cart', locals: {items: @cart.line_items } %>");
+
+}

@@ -1,0 +1,14 @@
+<%= form_for(@currency, html: {role: 'form', class: 'col-xs-12 col-sm-6'}) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><%= errors_for(@currency, :name) %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit %><%= errors_for(@currency, :unit) %>
+    <%= f.text_field :unit, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-default grey_button' %>
+  </div>
+<% end %>

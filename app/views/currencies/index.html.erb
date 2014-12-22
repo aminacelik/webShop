@@ -1,0 +1,34 @@
+<h1>Available currencies</h1>
+
+<%= button_to 'Update Exchange Rates', currencies_update_exchange_rates_path, class: 'btn grey_button' %>
+<div id="last_update">
+  Last update on <%= @currencies.first.updated_at %>
+</div>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Unit</th>
+      <th style="color: red;">Exchange Rate relative to USD </th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @currencies.each do |currency| %>
+      <tr>
+        <td><%= currency.name %></td>
+        <td><%= currency.unit %></td>
+        <td><%= currency.exchange_rate %></td>
+        <td><%= link_to 'Show', currency %></td>
+        <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+        <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Currency', new_currency_path %>

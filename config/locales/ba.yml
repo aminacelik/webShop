@@ -87,6 +87,9 @@ ba:
       total_price_delivery: "Ukupna cijena za dostavu"
       total_price: "Ukupno"
       product: "proizvod"
+    show:
+      continue: "Nastavi"
+      empty_cart_button: "Isprazni"
 
   addresses:
     form:

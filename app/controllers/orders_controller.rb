@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
   
     
   def available_items
-    @available_items = @cart.available_items
+    @cart_items = @cart.line_items
   end
 
   def ship_order
