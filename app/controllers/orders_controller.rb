@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   before_action :set_cart
   before_action :authorize
   before_action :limit_access_to_administrator, only: [:index]
+  before_action :check_if_user_can_access_purchase, only: [:purchase_confirmation, :show]
 
   # GET /orders
   # GET /orders.json
@@ -76,8 +77,12 @@ class OrdersController < ApplicationController
 
 
   def purchase_confirmation
-    @order = Order.where(id: session[:last_order]).first
-    @order_items = @order.items
+    @order = Order.where(id: params[:id]).first
+    if @order
+      @order_items = @order.items
+    else
+      redirect_to store_url, notice: "Could not find requested purchase."
+    end
   end
 
   def purchase_history
@@ -139,7 +144,6 @@ class OrdersController < ApplicationController
         # deleting line items from cart
         @cart.line_items.delete_all  
        
-        session[:last_order]=@order.id
         redirect_to orders_purchase_confirmation_path(id: @order.id), notice: t('status_mssg.order.ordered')
       end
     rescue ActiveRecord::RecordNotFound
@@ -257,6 +261,16 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    def check_if_user_can_access_purchase
+      order = Order.where(id: params[:id]).first
+      
+      user_orders = @current_user.orders
+      unless user_orders.include? order
+        redirect_to store_url, notice: "You cannot access this page."
+      end
+
+
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:user_id, :price, :shipping_address_id, :billing_address_id, :stripeEmail, :stripeToken)
