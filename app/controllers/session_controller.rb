@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   include SessionHelper
   include CurrentCart
 	
-	before_action :set_cart
+  before_action :set_cart
 		
   skip_before_action :authorize
   
@@ -31,6 +31,7 @@ class SessionController < ApplicationController
   def destroy
 	  session[:user_id]= nil
 	  session[:role] = nil
+	  session[:cart_id] = nil
 	  redirect_to store_url, notice: t('status_mssg.session.logged_out')
   end
 end

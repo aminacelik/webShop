@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   
   belongs_to :role
+  belongs_to :cart
+
   has_many :addresses, dependent: :destroy
   has_many :orders
 	

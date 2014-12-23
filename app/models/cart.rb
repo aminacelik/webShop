@@ -2,6 +2,9 @@ class Cart < ActiveRecord::Base
 
     has_many :line_items, dependent: :destroy
     
+    has_one :user
+
+
     def all_in_cart?(product_variant_id)
       line_item = find_line_item(product_variant_id)
       product_variant = ProductVariant.find(product_variant_id)

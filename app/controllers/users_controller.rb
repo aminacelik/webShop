@@ -40,8 +40,11 @@ class UsersController < ApplicationController
 		@role = Role.find_by(name: 'registered user');
 	end
 	@user = @role.users.build(user_params)
-	
-    
+
+# administrator has no cart
+  unless @user.role.name == 'administrator'
+    @user.cart = session[:cart_id]
+  end
     
   respond_to do |format|
     if @user.save
