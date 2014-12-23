@@ -32,6 +32,10 @@ class Order < ActiveRecord::Base
   	order_product_variants
   end
 
+  def number_of_items
+    items.count
+  end
+
   def status
     if shipped == true
       return "shipped"

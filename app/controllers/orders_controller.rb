@@ -162,6 +162,10 @@ class OrdersController < ApplicationController
   
   def find_orders_items(shipped_bool)
     @orders = Order.where(shipped: shipped_bool).order('created_at ASC')
+    # @order_items = []
+    # orders.each do |order|
+    #   @order_items +=  order.order_product_variants
+    # end
   end
     
 
