@@ -16,26 +16,27 @@
   </thead>
 
   <tbody>
-    <% items.each do |item| %>
+    <% orders.each do |order| %>
       <tr>
-        <td><%= item.order.id %></td>
-        <td><%= item.get_product_title %></td>
-        <td><%= item.get_product_color %></td>
-        <td><%= item.get_product_size %></td>
-        <td><%= item.quantity %></td>
-        <td><%= simple_format item.order.get_shipping_address.print_format %></td>
-        <td><%= item.order.get_order_date %></td>
-        <td><%= item.order.get_user_name %></td>
-        <td><%= item.order.get_user_email %></td>
-        <td>
-          
-          <% unless params[:shipped]=='true' %>
-            <%= item.order.shipped %>
-            <%= button_to "Ship", orders_ship_order_url(id: item.order.id), class: 'btn btn-default btn-sm', remote: true %>
-          <% else %>
-            <%= item.order.get_shipping_date %>
-          <% end %>
-        </td>
+        <% order.items.each do |item| %>
+          <td><%= item.order.id %></td>
+          <td><%= item.get_product_title %></td>
+          <td><%= item.get_product_color %></td>
+          <td><%= item.get_product_size %></td>
+          <td><%= item.quantity %></td>
+          <td><%= simple_format item.order.get_shipping_address.print_format %></td>
+          <td><%= item.order.get_order_date %></td>
+          <td><%= item.order.get_user_name %></td>
+          <td><%= item.order.get_user_email %></td>
+        <% end %>
+          <td>
+            <% unless params[:shipped]=='true' %>
+              <%= order.shipped %>
+              <%= button_to "Ship", orders_ship_order_url(id: order.id), class: 'btn btn-default btn-sm', remote: true %>
+            <% else %>
+              <%= order.get_shipping_date %>
+            <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
