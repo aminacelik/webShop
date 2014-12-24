@@ -184,6 +184,7 @@ class Product < ActiveRecord::Base
       true
     end
   
+  # method used to decide wheather to show product variant size in size selector
     def available_sizes(cart_id)
       cart = Cart.where(id: cart_id).first
       sizes = []

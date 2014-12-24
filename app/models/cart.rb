@@ -40,7 +40,6 @@ class Cart < ActiveRecord::Base
   
   def find_line_item(id)
       line_items.where(product_variant_id: id).first
-
   end
 
   def available_items?

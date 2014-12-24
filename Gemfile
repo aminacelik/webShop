@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# activejob is not supported bz default in Rails 4.1.x so we have to add it as a gem
+gem 'activejob'
 
 # gem that wraps openexchangerates.org API
 gem 'open_exchange_rates'

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_cart
   before_action :authorize
-  before_action :limit_access_to_administrator, only: [:index]
+  before_action :limit_access_to_administrator, only: [:index, :ship]
   before_action :check_if_user_can_access_purchase, only: [:purchase_confirmation, :show]
 
   # GET /orders
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     end
   end
   
-    
+  # 3rd step of purchase process 
   def available_items
     @cart_items = @cart.line_items
     if I18n.locale.to_s == 'ba'

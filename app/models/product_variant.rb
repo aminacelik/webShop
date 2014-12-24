@@ -39,6 +39,14 @@ class ProductVariant < ActiveRecord::Base
     quantity >= number_of_products
   end
 
+  def availability(number_of_products)
+    if available?(number_of_products)
+      return "Available"
+    else
+      return "Only #{quantity} available."
+    end
+  end
+
 
 	private
 	

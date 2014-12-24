@@ -1,17 +1,21 @@
 			<div class="product_in_cart row">
 				<%= image_tag line_item.get_image, class: 'img-responsive col-xs-3' %>
 				<div class="product_details col-xs-5">
-					 <%= line_item.quantity %>&times; <%= line_item.product_variant.product.title %><br>
-					<%= t('.size_html') %>: <%= line_item.product_variant.size.size %><br>
-					<%= t('.color') %>: <%= line_item.product_variant.color.name %><br>
+					 <%= line_item.quantity %>&times; <%= line_item.get_product_title %><br>
+					<%= t('.size_html') %>: <%= line_item.get_size %><br>
+					<%= t('.color') %>: <%= line_item.get_color %><br>
 				</div>
 
 				<div class="product_price col-xs-3">
-					<% if line_item.product_variant.sold_out? %>
+					<% if line_item.sold_out? %>
 					<br /> <strong style="color: red">Sold Out</strong><br>
 					<% else %>
-					<%= t('.price') %>:<br /> <strong><%= adapt_currency(line_item.get_product.price) %></strong><br>
+					<%= t('.price') %>:<br /> <strong><%= adapt_currency(line_item.get_price) %></strong><br>
 					<% end %>
+
+					<div class="availability">
+						<%= line_item.availability(line_item.quantity) %>
+					</div>
 				</div>
 
 
